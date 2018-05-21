@@ -2,6 +2,8 @@
 
 ## TODO
 
+* Convert these TODOs to Github issues, remove them from here.
+
 * Clean up content to make sense in a Jupyter notebook
   - remove references to the terminal, remove chevrons `>>>`
   - make output examples real output from code cells)
@@ -75,3 +77,7 @@ Go to [http://127.0.0.1:8000](http://127.0.0.1:8000)
 This workshop material is made available under a [Creative Commons Attribution license (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/legalcode)
 
 Parts of this content have been adapted from the [Data Carpentry "Python for ecologists"](http://www.datacarpentry.org/python-ecology-lesson/) workshop material, used under a [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/legalcode).
+
+Code is made available under the [MIT License](http://opensource.org/licenses/mit-license.html).
+
+See [LICENCE.md](LICENSE.md) for the full text.
