@@ -1,3 +1,14 @@
 .ipynb_checkpoints
-site
-*.pyc
+
+# mkdocs generated site
+/workshops/site
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+
