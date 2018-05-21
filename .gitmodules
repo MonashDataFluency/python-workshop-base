@@ -1,0 +1,3 @@
+[submodule "themes/mkdocs-windmill"]
+	path = themes/mkdocs-windmill
+	url = https://github.com/gristlabs/mkdocs-windmill

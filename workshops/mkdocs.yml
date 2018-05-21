@@ -1,0 +1,20 @@
+---
+site_name: Introduction to Python Workshop
+theme: cinder
+# theme: windmill
+# theme: cluster
+# theme: bootswatch
+
+extra_css:
+  - css/extra.css
+
+pages:
+  - 'Home': 'index.md'
+  - 'Modules':
+    - 'Introduction - the basics of Python': 'modules/intro.md'
+    - 'Working with Data': 'modules/working_with_data.md'
+    - 'Loops': 'modules/loops.md'
+    - 'Indexing': 'modules/indexing.md'
+    - 'Plotting with ggplot for Python': 'modules/plotting_with_ggplot.md'
+  - 'Half Day Course': 'halfday.md'
+  - 'Full Day Course': 'fullday.md'
