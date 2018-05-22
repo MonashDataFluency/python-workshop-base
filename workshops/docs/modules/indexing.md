@@ -46,6 +46,33 @@ In this lesson, we will explore **ways to access different parts of the data** i
 
 
 
+## Ensure the Pandas package is installed
+
+
+
+
+
+
+```python
+!pip install pandas
+```
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas) (1.11.0)
+
+</code>
+</pre>
+
+
+
+
+
 ## Loading our data
 
 We will continue to use the surveys dataset that we worked with in the last lesson. Let's reopen and read in the data again:
@@ -160,53 +187,213 @@ order. This is useful when we need to reorganize our data.
 
 ```python
 # Select the species and plot columns from the DataFrame
-surveys_df[['species_id', 'plot_id']].head()
+surveys_df[['species_id', 'site_id']].head()
+```
 
-# What happens when you flip the order?
-surveys_df[['plot_id', 'species_id']].head()
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species_id</th>
+      <th>site_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NL</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NL</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>DM</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>DM</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DM</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+```python
 # What happens if you ask for a column that doesn't exist?
 surveys_df['speciess']
 ```
 
+Outputs:
 
-    ---------------------------------------------------------------------------
+```
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   2521             try:
+-> 2522                 return self._engine.get_loc(key)
+   2523             except KeyError:
 
-    KeyError                                  Traceback (most recent call last)
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
-    <ipython-input-4-ffeceb9345fa> in <module>()
-          1 # Select the species and plot columns from the DataFrame
-    ----> 2 surveys_df[['species_id', 'plot_id']].head()
-          3 
-          4 # What happens when you flip the order?
-          5 surveys_df[['plot_id', 'species_id']].head()
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'speciess'
+
+During handling of the above exception, another exception occurred:
+
+KeyError                                  Traceback (most recent call last)
+<ipython-input-15-211eec9ce8b9> in <module>()
+      1 # What happens if you ask for a column that doesn't exist?
+----> 2 surveys_df['speciess']
+
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
+   2137             return self._getitem_multilevel(key)
+   2138         else:
+-> 2139             return self._getitem_column(key)
+   2140 
+   2141     def _getitem_column(self, key):
+
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
+   2144         # get column
+   2145         if self.columns.is_unique:
+-> 2146             return self._get_item_cache(key)
+   2147 
+   2148         # duplicate columns & possible reduce dimensionality
+
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
+   1840         res = cache.get(item)
+   1841         if res is None:
+-> 1842             values = self._data.get(item)
+   1843             res = self._box_item_values(item, values)
+   1844             cache[item] = res
+
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
+   3836 
+   3837             if not isna(item):
+-> 3838                 loc = self.items.get_loc(item)
+   3839             else:
+   3840                 indexer = np.arange(len(self.items))[isna(self.items)]
+
+~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   2522                 return self._engine.get_loc(key)
+   2523             except KeyError:
+-> 2524                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   2525 
+   2526         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'speciess'
+```
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
-       2677         if isinstance(key, (Series, np.ndarray, Index, list)):
-       2678             # either boolean or fancy integer index
-    -> 2679             return self._getitem_array(key)
-       2680         elif isinstance(key, DataFrame):
-       2681             return self._getitem_frame(key)
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_array(self, key)
-       2721             return self._take(indexer, axis=0)
-       2722         else:
-    -> 2723             indexer = self.loc._convert_to_indexer(key, axis=1)
-       2724             return self._take(indexer, axis=1)
-       2725 
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py in _convert_to_indexer(self, obj, axis, is_setter)
-       1325                 if mask.any():
-       1326                     raise KeyError('{mask} not in index'
-    -> 1327                                    .format(mask=objarr[mask]))
-       1328 
-       1329                 return com._values_from_object(indexer)
+```python
+# What happens when you flip the order?
+surveys_df[['site_id', 'species_id']].head()
+```
 
 
-    KeyError: "['plot_id'] not in index"
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>site_id</th>
+      <th>species_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>NL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>NL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>DM</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>DM</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>DM</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 
@@ -467,13 +654,6 @@ surveys_df = pd.read_csv("data/surveys.csv")
 
 
 
-
-
-
-
-
-
-
 ## Slicing Subsets of Rows and Columns in Python
 
 We can select specific ranges of our data in both the row and column directions
@@ -582,7 +762,7 @@ Let's explore some other ways to index and select subsets of data:
 surveys_df.loc[[0, 10], :]
 
 # What does this do?
-surveys_df.loc[0, ['species_id', 'plot_id', 'weight']]
+surveys_df.loc[0, ['species_id', 'site_id', 'weight']]
 
 # What happens when you type the code below?
 surveys_df.loc[[0, 10, 35549], :]
@@ -591,13 +771,6 @@ surveys_df.loc[[0, 10, 35549], :]
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py:1027: FutureWarning: 
-Passing list-likes to .loc or [] with any missing label will raise
-KeyError in the future, you can use .reindex() as an alternative.
-
-See the documentation here:
-https://pandas.pydata.org/pandas-docs/stable/indexing.html#deprecate-loc-reindex-listlike
-  return getattr(section, self.name)[new_key]
 /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py:1472: FutureWarning: 
 Passing list-likes to .loc or [] with any missing label will raise
 KeyError in the future, you can use .reindex() as an alternative.

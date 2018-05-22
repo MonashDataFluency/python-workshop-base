@@ -44,12 +44,24 @@ full or half day workshops.
 
 ### Jupyter notebook conventions
 
-* Challenges should be tagged `challenge` and **solutions should be tagged** `solution`.
+The intention of developing the workshop materials directly from Jupyter notebooks is to:
+
+1. Ensure code examples run correctly, catch errors early.
+2. Make each module a self-contained unit, including pulling in dependencies.
+3. Enable generation of student and instructor notes from a single source.
+
+Here are some conventions to follow to achieve this:
+
+* **Cell tagging**: challenges should be tagged `challenge` and **solutions should be tagged** `solution`.
   The `nbconvert` templates hide cells tagged `solution` from the main student notes,
-  but output them for instructor notes.
-  
-Currently (May-2018) only `jupyter notebook` allows editing cell tags - the 
-required UI for `jupyter lab` hasn't been completed yet. 
+  but output them for instructor notes. Currently (May-2018) only `jupyter notebook` 
+  allows editing cell tags - the required UI for `jupyter lab` hasn't been completed yet.
+* **Package dependencies**: Include a `!pip install somepackage` cell near to start of every module
+  that installs any required dependencies. This makes the modules work as standalone units in a range 
+  of environments (local Jupyter or IPython REPL, Azure Notebooks, Colaboratory, Python Anywhere).
+* **Acquire data via URLs in the notebook**: Include cells like `import urllib; urllib.request.urlretrieve("https://files.rcsb.org/download/3FPR.pdb")` to download external data.
+  This allows the notes to be used in various hosted or local Jupyter environments 
+  (it's also a useful operation for students to learn).
 
 ## Viewing the generated site
 
