@@ -16,8 +16,8 @@ pages:
   - 'Modules':
     - 'Introduction - the basics of Python': 'modules/intro.md'
     - 'Working with Data': 'modules/working_with_data.md'
-    - 'Loops': 'modules/loops.md'
     - 'Indexing': 'modules/indexing.md'
+    - 'Loops': 'modules/loops.md'
     - 'Plotting with ggplot for Python': 'modules/plotting_with_ggplot.md'
   - 'Half Day Course': 'halfday.md'
   - 'Full Day Course': 'fullday.md'
