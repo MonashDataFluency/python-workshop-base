@@ -1,35 +1,12 @@
 # Python workshops base
 
-## TODO
+This is a base repository for Data Fluency Python Workshop modules.
 
-* Convert these TODOs to Github issues, remove them from here.
-
-* Clean up content to make sense in a Jupyter notebook
-  - remove references to the terminal, remove chevrons `>>>`
-  - make output examples real output from code cells)
-  - remove empty newlines at the start/end of cells
-  - final code example Extra bit 3 in ggplot notebook broken ?
-
-* Fix image and data links in notebooks (`images/someimg.svg`, `data/surveys.csv`)
-
-* Sort modules in logical order in `mkdocs.yml`.
-  - Add module list to `workshops/halfday.md` use numeric prefixes "01 - Intro" here, but not in the module/notebook names (they may be composed in different orders for different workshops).
-  
-* More carefully crafted multiple choice questions - convert some challenges.
-
-* Add 'challenge' and 'solution' tags to cell (Jupyter Notebook only, no UI yet in Juypter Lab)
-
-* Pull in data via URLs at the start of each module, to make the self contained.
-
-* Add eg `!pip install pandas numpy plotnine` at the top of each module, 
-  to pull in required dependencies.
-
-* Move intentional traceback cells into Markdown cells to allow execution on build.
-
+To add or modify content, edit the notebooks in `workshops/docs/modules/notebooks`.
 
 ## Setup
 
-Install [Pipenv](https://docs.pipenv.org/).
+Install [Pipenv](https://docs.pipenv.org/) (eg `pip install pipenv`).
 
 Run:
 
