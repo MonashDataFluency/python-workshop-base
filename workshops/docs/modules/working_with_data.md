@@ -114,14 +114,43 @@ Pandas library provides data structures, produces high quality plots with
 [matplotlib](http://matplotlib.org/) and integrates nicely with other libraries
 that use [NumPy](http://www.numpy.org/) (which is another Python library) arrays.
 
+First, lets make sure the Pandas and matplotlib packages are **installed**.
+
+
+
+
+
+
+```python
+!pip install pandas matplotlib
+```
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
+
+</code>
+</pre>
+
+
+
+
+
 Python doesn't load all of the libraries available to it by default. We have to
 add an `import` statement to our code in order to use library functions. To import
 a library, we use the syntax `import libraryName`. If we want to give the
 library a nickname to shorten the command, we can add `as nickNameHere`.  An
 example of importing the pandas library using the common nickname `pd` is below.
-
-
-
 
 
 
@@ -2007,6 +2036,14 @@ what they return.
 
 
 
+<!-- 
+## Solution - DataFrames
+
+... try it yourself !
+ -->
+
+
+
 
 ## Calculating Statistics From Data In A Pandas DataFrame
 
@@ -2082,11 +2119,39 @@ array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
 
 ## Challenge - Statistics
 
-1. Create a list of unique plot ID's found in the surveys data. Call it
-  `plot_names`. How many unique plots are there in the data? How many unique
+1. Create a list of unique site ID's found in the surveys data. Call it
+  `site_names`. How many unique sites are there in the data? How many unique
   species are in the data?
 
-2. What is the difference between `len(plot_names)` and `surveys_df['plot_id'].nunique()`?
+2. What is the difference between `len(site_names)` and `surveys_df['site_id'].nunique()`?
+
+
+
+
+<!-- 
+## Solution - Statistics
+ -->
+
+
+
+<!-- 
+
+```python
+site_names = pd.unique(surveys_df['site_id'])
+print(len(site_names), surveys_df['site_id'].nunique())
+```
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+24 24
+
+</code>
+</pre>
+ -->
+
+
+
 
 # Groups in Pandas
 
@@ -2096,8 +2161,6 @@ weight of all individuals per plot.
 
 We can calculate basic statistics for all records in a single column using the
 syntax below:
-
-
 
 
 
@@ -2294,23 +2357,23 @@ summary stats.
 1. How many recorded individuals are female `F` and how many male `M`
 2. What happens when you group by two columns using the following syntax and
     then grab mean values:
-	- `grouped_data2 = surveys_df.groupby(['plot_id','sex'])`
+	- `grouped_data2 = surveys_df.groupby(['site_id','sex'])`
 	- `grouped_data2.mean()`
-3. Summarize weight values for each plot in your data. HINT: you can use the
+3. Summarize weight values for each site in your data. HINT: you can use the
   following syntax to only create summary statistics for one column in your data
-  `by_plot['weight'].describe()`
+  `by_site['weight'].describe()`
 
 
 
 
 
 
-
+<!-- 
 ## Did you get #3 right?
- **A Snippet of the Output from challenge 3 looks like:**
+ **A Snippet of the Output from part 3 of the challenge looks like:**
 
 ```
-	plot
+	site_id
 	1     count    1903.000000
 	      mean       51.822911
 	      std        38.176670
@@ -2323,7 +2386,7 @@ summary stats.
 ```
 
 
-
+ -->
 
 
 
@@ -2554,7 +2617,7 @@ species_counts.plot(kind='bar');
 ```
 
 
-![png](working_with_data_files/working_with_data_43_0.png)
+![png](working_with_data_files/working_with_data_49_0.png)
 
 
 
@@ -2582,14 +2645,14 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x110a21780>
+<matplotlib.axes._subplots.AxesSubplot at 0x10d0ef128>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_45_1.png)
+![png](working_with_data_files/working_with_data_51_1.png)
 
 
 
@@ -2891,7 +2954,7 @@ Text(0.5,0,'Site')
 
 
 
-![png](working_with_data_files/working_with_data_52_1.png)
+![png](working_with_data_files/working_with_data_58_1.png)
 
 
 
