@@ -23,7 +23,7 @@ enviroment of the virtualenv with `pipenv run`.
 Workshop modules can be found in `workshops/docs/modules/notebooks`.
 
 To edit and update a module:
-* edit the Juypter Notebook
+* edit the Jupyter Notebook, following the required [conventions](#jupyter-notebook-conventions).
 * ensure your code runs
 * save the notebook
 * **stop the kernel for the notebook**
@@ -36,11 +36,20 @@ pipenv run ./build.sh
 ```
 
 This script runs `jupyter nbconvert` to generate Markdown from the notebooks, 
-then run `mkdocs build` to generate the static HTML.
+then runs `mkdocs build` to generate the static HTML.
 
-New modules should be added to `workshops/mkdocs.yml` and possibly 
-`workshops/fullday.md` and/or `workshops/halfday.md` if they form part of the 
+New modules should be listed in `workshops/mkdocs.yml`, `workshops/docs/index.md` 
+and possibly `workshops/docs/fullday.md` and/or `workshops/docs/halfday.md` if they form part of the 
 full or half day workshops.
+
+### Jupyter notebook conventions
+
+* Challenges should be tagged `challenge` and **solutions should be tagged** `solution`.
+  The `nbconvert` templates hide cells tagged `solution` from the main student notes,
+  but output them for instructor notes.
+  
+Currently (May-2018) only `jupyter notebook` allows editing cell tags - the 
+required UI for `jupyter lab` hasn't been completed yet. 
 
 ## Viewing the generated site
 

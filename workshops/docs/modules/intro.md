@@ -567,7 +567,6 @@ a + b
 
 
 
-
 ```python
 some_words = "I'm a string"
 a = 6
@@ -575,18 +574,23 @@ a + some_words
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    TypeError                                 Traceback (most recent call last)
 
-    <ipython-input-21-781eba7cf148> in <module>()
-          1 some_words = "I'm a string"
-          2 a = 6
-    ----> 3 a + some_words
-    
 
-    TypeError: unsupported operand type(s) for +: 'int' and 'str'
 
+
+Outputs:
+
+```
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-1-781eba7cf148> in <module>()
+      1 some_words = "I'm a string"
+      2 a = 6
+----> 3 a + some_words
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+```
 
 
 
@@ -603,7 +607,7 @@ str(a) + " " + some_words
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-"6 I'm a string"
+'5 Python3 strings are Unicode (UTF-8) ❤❤❤ 😸 蛇'
 </code>
 </pre>
 
@@ -629,7 +633,7 @@ a
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-7
+6
 </code>
 </pre>
 
@@ -1159,22 +1163,24 @@ tuples_are_immutable[1]
 
 
 
-
 ```python
 tuples_are_immutable[1] = 666
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    TypeError                                 Traceback (most recent call last)
 
-    <ipython-input-39-c91965b0815a> in <module>()
-    ----> 1 tuples_are_immutable[1] = 666
-    
 
-    TypeError: 'tuple' object does not support item assignment
+Outputs:
 
+```
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-39-c91965b0815a> in <module>()
+----> 1 tuples_are_immutable[1] = 666
+
+TypeError: 'tuple' object does not support item assignment
+```
 
 
 
@@ -1195,38 +1201,33 @@ a_tuple = (1, 2, 3)
 
 
 
-
+<!-- 
 ## Solution - Tuples
-
-
-
-
-
 
 ```python
 a_tuple= (1, 2, 3)
 a_tuple[2] = 5
 ```
 
+Outputs:
 
-    ---------------------------------------------------------------------------
+```
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-39-7092dae1484a> in <module>()
+      1 a_tuple= (1, 2, 3)
+----> 2 a_tuple[2] = 5
 
-    TypeError                                 Traceback (most recent call last)
-
-    <ipython-input-40-7092dae1484a> in <module>()
-          1 a_tuple= (1, 2, 3)
-    ----> 2 a_tuple[2] = 5
-    
-
-    TypeError: 'tuple' object does not support item assignment
-
-
-
+TypeError: 'tuple' object does not support item assignment
+```
+ -->
 
 
 
+<!-- 
 
 ```python
+a_tuple= (1, 2, 3)
 type(a_tuple)
 ```
 
@@ -1241,7 +1242,7 @@ tuple
 </pre>
 
 
-
+ -->
 
 
 
@@ -1445,27 +1446,38 @@ dict_of_dicts
 
 
 
-## Challenge - dictionaries
+## Challenge - Dictionaries
 
-Can you do reassignment in a dictionary? 
-
-Define a dictionary:
+Given the dictionary:
 
 ```python
-rev = {1: 'one', 2: 'two', 3: 'three'}
+jam_ratings = {'Plum': 6, 'Apricot': 2, 'Strawberry': 8}
 ```
 
-1. First check what `rev` is right now (remember `rev` is the name of our dictionary).  Type: **rev**
+How would you change the value associated with the key `Apricot` to `9`.
 
-2. Try to reassign the second value (in the *key value pair*) so that it no longer reads "two" but instead reads "apple-sauce". 
+A) `jam_ratings = {'apricot': 9}`
 
-3. Now display `rev` again to see if it has changed. 
+B) `jam_ratings[9] = 'Apricot'`
 
-It is important to note that dictionaries are "unordered" and do not remember
-the sequence of their items (i.e. the order in which key:value pairs were
-added to the dictionary). Because of this, the order in which items are
-returned from loops over dictionaries might appear random and can even change
-with time.
+C) `jam_ratings['Apricot'] = 9`
+
+D) `jam_ratings[2] = 'Apricot'`
 
 
+
+
+<!-- 
+## Solution - Dictionaries
+
+The correct answer is **C**.
+
+**A** assigns the name `jam_ratings` to a new dictionary with only the key `apricot` - not only are the other jam ratings now missing, but strings used as dictionary keys are *case sensitive* - `apricot` is not the same key as `Apricot`.
+
+**B** mixes up the value and the key. Assigning to a dictionary uses the form: `dictionary[key] = value`.
+
+**C** is correct. Bonus - another way to do this would be `jam_ratings.update({'Apricot': 9})` or even `jam_ratings.update(Apricot=9)`.
+
+**D** mixes up the value and the key (and doesn't actually include the new value to be assigned, `9`, anywhere). `2` is the original *value*, `Apricot` is the key. Assigning to a dictionary uses the form: `dictionary[key] = value`.
+ -->
 
