@@ -2756,7 +2756,7 @@ species_counts.plot(kind='bar');
 
 
 
-![Weight by Species Plot](../images/each_species.jpg)
+![Weight by Species Plot](images/each_species.jpg)
 
 Weight by species plot
 
@@ -3120,7 +3120,7 @@ s_plot.set_xlabel("Plot")
 
 
 
-![Stacked Bar Plot](../images/stacked_barplot.png)
+![Stacked Bar Plot](images/stacked_barplot.png)
 
 
 
