@@ -176,8 +176,6 @@
         <li class="first-level "><a href="#groups-in-pandas">Groups in Pandas</a></li>
             <li class="second-level"><a href="#challenge-summary-data">Challenge - Summary Data</a></li>
                 
-            <li class="second-level"><a href="#did-you-get-3-right">Did you get #3 right?</a></li>
-                
             <li class="second-level"><a href="#quickly-creating-summary-counts-in-pandas">Quickly Creating Summary Counts in Pandas</a></li>
                 
             <li class="second-level"><a href="#basic-math-functions">Basic Math Functions</a></li>
@@ -310,6 +308,27 @@ Once a library is set up, it can be used or called to perform many tasks.</p>
 Pandas library provides data structures, produces high quality plots with
 <a href="http://matplotlib.org/">matplotlib</a> and integrates nicely with other libraries
 that use <a href="http://www.numpy.org/">NumPy</a> (which is another Python library) arrays.</p>
+<p>First, lets make sure the Pandas and matplotlib packages are <strong>installed</strong>.</p>
+<pre><code class="python">!pip install pandas matplotlib
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
+
+</code>
+</pre>
+
 <p>Python doesn't load all of the libraries available to it by default. We have to
 add an <code>import</code> statement to our code in order to use library functions. To import
 a library, we use the syntax <code>import libraryName</code>. If we want to give the
@@ -2051,6 +2070,12 @@ what they return.</p>
 <li><code>surveys_df.head()</code> Also, what does <code>surveys_df.head(15)</code> do?</li>
 <li><code>surveys_df.tail()</code></li>
 </ol>
+<!-- 
+## Solution - DataFrames
+
+... try it yourself !
+ -->
+
 <h2 id="calculating-statistics-from-data-in-a-pandas-dataframe">Calculating Statistics From Data In A Pandas DataFrame</h2>
 <p>We've read our data into Python. Next, let's perform some quick summary
 statistics to learn more about the data that we're working with. We might want
@@ -2090,14 +2115,32 @@ array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
 <h2 id="challenge-statistics">Challenge - Statistics</h2>
 <ol>
 <li>
-<p>Create a list of unique plot ID's found in the surveys data. Call it
-  <code>plot_names</code>. How many unique plots are there in the data? How many unique
+<p>Create a list of unique site ID's found in the surveys data. Call it
+  <code>site_names</code>. How many unique sites are there in the data? How many unique
   species are in the data?</p>
 </li>
 <li>
-<p>What is the difference between <code>len(plot_names)</code> and <code>surveys_df['plot_id'].nunique()</code>?</p>
+<p>What is the difference between <code>len(site_names)</code> and <code>surveys_df['site_id'].nunique()</code>?</p>
 </li>
 </ol>
+<!-- 
+## Solution - Statistics
+ -->
+
+<!--
+
+wzxhzdk:11
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+24 24
+
+</code>
+</pre>
+ -->
+
 <h1 id="groups-in-pandas">Groups in Pandas</h1>
 <p>We often want to calculate summary statistics grouped by subsets or attributes
 within fields of our data. For example, we might want to calculate the average
@@ -2224,27 +2267,23 @@ summary stats.</p>
 <li>How many recorded individuals are female <code>F</code> and how many male <code>M</code></li>
 <li>What happens when you group by two columns using the following syntax and
     then grab mean values:<ul>
-<li><code>grouped_data2 = surveys_df.groupby(['plot_id','sex'])</code></li>
+<li><code>grouped_data2 = surveys_df.groupby(['site_id','sex'])</code></li>
 <li><code>grouped_data2.mean()</code></li>
 </ul>
 </li>
-<li>Summarize weight values for each plot in your data. HINT: you can use the
+<li>Summarize weight values for each site in your data. HINT: you can use the
   following syntax to only create summary statistics for one column in your data
-  <code>by_plot['weight'].describe()</code></li>
+  <code>by_site['weight'].describe()</code></li>
 </ol>
-<h2 id="did-you-get-3-right">Did you get #3 right?</h2>
-<p><strong>A Snippet of the Output from challenge 3 looks like:</strong></p>
-<pre><code>    plot
-    1     count    1903.000000
-          mean       51.822911
-          std        38.176670
-          min         4.000000
-          25%        30.000000
-          50%        44.000000
-          75%        53.000000
-          max       231.000000
-         ...
-</code></pre>
+<!-- 
+## Did you get #3 right?
+ **A Snippet of the Output from part 3 of the challenge looks like:**
+
+wzxhzdk:16
+
+
+
+ -->
 
 <h2 id="quickly-creating-summary-counts-in-pandas">Quickly Creating Summary Counts in Pandas</h2>
 <p>Let's next count the number of samples for each species. We can do this in a few
@@ -2408,7 +2447,7 @@ Name: weight, Length: 35549, dtype: float64
 species_counts.plot(kind='bar');
 </code></pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_43_0.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_49_0.png" /></p>
 <p>Weight by species plot</p>
 <p>We can also look at how many animals were captured in each plot:</p>
 <pre><code class="python">total_count = surveys_df.groupby('site_id')['record_id'].nunique()
@@ -2419,11 +2458,11 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x110a21780>
+<matplotlib.axes._subplots.AxesSubplot at 0x10d0ef128>
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_45_1.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_51_1.png" /></p>
 <h2 id="extra-plotting-challenge"><em>Extra Plotting Challenge</em></h2>
 <ol>
 <li>
@@ -2662,7 +2701,7 @@ Text(0.5,0,'Site')
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_52_1.png" /></p></div>
+<p><img alt="png" src="../working_with_data_files/working_with_data_58_1.png" /></p></div>
         
     </div>
 
