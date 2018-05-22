@@ -175,10 +175,8 @@
                 <li class="third-level"><a href="#tuples">Tuples</a></li>
             <li class="second-level"><a href="#challenge-tuples">Challenge - Tuples</a></li>
                 
-            <li class="second-level"><a href="#solution-tuples">Solution - Tuples</a></li>
-                
                 <li class="third-level"><a href="#dictionaries">Dictionaries</a></li>
-            <li class="second-level"><a href="#challenge-dictionaries">Challenge - dictionaries</a></li>
+            <li class="second-level"><a href="#challenge-dictionaries">Challenge - Dictionaries</a></li>
                 
     </ul>
 </div></div>
@@ -479,25 +477,24 @@ a = 6
 a + some_words
 </code></pre>
 
+<p>Outputs:</p>
 <pre><code>---------------------------------------------------------------------------
-
 TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-21-781eba7cf148&gt; in &lt;module&gt;()
-      1 some_words = "I'm a string"
+&lt;ipython-input-1-781eba7cf148&gt; in &lt;module&gt;()
+      1 some_words = &quot;I'm a string&quot;
       2 a = 6
 ----&gt; 3 a + some_words
 
-
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 </code></pre>
+
 <pre><code class="python">str(a) + &quot; &quot; + some_words
 </code></pre>
 
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-"6 I'm a string"
+'5 Python3 strings are Unicode (UTF-8) ❤❤❤ 😸 蛇'
 </code>
 </pre>
 
@@ -512,7 +509,7 @@ a
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-7
+6
 </code>
 </pre>
 
@@ -825,16 +822,15 @@ tuples_are_immutable
 <pre><code class="python">tuples_are_immutable[1] = 666
 </code></pre>
 
+<p>Outputs:</p>
 <pre><code>---------------------------------------------------------------------------
-
 TypeError                                 Traceback (most recent call last)
-
 &lt;ipython-input-39-c91965b0815a&gt; in &lt;module&gt;()
 ----&gt; 1 tuples_are_immutable[1] = 666
 
-
 TypeError: 'tuple' object does not support item assignment
 </code></pre>
+
 <h2 id="challenge-tuples">Challenge - Tuples</h2>
 <p>Define a tuple:</p>
 <pre><code class="python">a_tuple = (1, 2, 3)
@@ -844,24 +840,26 @@ TypeError: 'tuple' object does not support item assignment
 <li>What happens when you type <code>a_tuple[2] = 5</code> vs <code>a_list[1] = 5</code> ?</li>
 <li>Type <code>type(a_tuple)</code> into python - what is the object type?</li>
 </ol>
-<h2 id="solution-tuples">Solution - Tuples</h2>
-<pre><code class="python">a_tuple= (1, 2, 3)
-a_tuple[2] = 5
-</code></pre>
+<!-- 
+## Solution - Tuples
 
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-40-7092dae1484a&gt; in &lt;module&gt;()
-      1 a_tuple= (1, 2, 3)
-----&gt; 2 a_tuple[2] = 5
+wzxhzdk:45
 
 
-TypeError: 'tuple' object does not support item assignment
-</code></pre>
-<pre><code class="python">type(a_tuple)
-</code></pre>
+Outputs:
+
+
+wzxhzdk:46
+
+ -->
+
+<!--
+
+wzxhzdk:47
+
+
+
+
 
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
@@ -869,6 +867,9 @@ TypeError: 'tuple' object does not support item assignment
 tuple
 </code>
 </pre>
+
+
+ -->
 
 <h3 id="dictionaries">Dictionaries</h3>
 <p>Dictionaries are a container that store key-value pairs. They are unordered. </p>
@@ -965,28 +966,29 @@ dict_of_dicts
 </code>
 </pre>
 
-<h2 id="challenge-dictionaries">Challenge - dictionaries</h2>
-<p>Can you do reassignment in a dictionary? </p>
-<p>Define a dictionary:</p>
-<pre><code class="python">rev = {1: 'one', 2: 'two', 3: 'three'}
+<h2 id="challenge-dictionaries">Challenge - Dictionaries</h2>
+<p>Given the dictionary:</p>
+<pre><code class="python">jam_ratings = {'Plum': 6, 'Apricot': 2, 'Strawberry': 8}
 </code></pre>
 
-<ol>
-<li>
-<p>First check what <code>rev</code> is right now (remember <code>rev</code> is the name of our dictionary).  Type: <strong>rev</strong></p>
-</li>
-<li>
-<p>Try to reassign the second value (in the <em>key value pair</em>) so that it no longer reads "two" but instead reads "apple-sauce". </p>
-</li>
-<li>
-<p>Now display <code>rev</code> again to see if it has changed. </p>
-</li>
-</ol>
-<p>It is important to note that dictionaries are "unordered" and do not remember
-the sequence of their items (i.e. the order in which key:value pairs were
-added to the dictionary). Because of this, the order in which items are
-returned from loops over dictionaries might appear random and can even change
-with time.</p></div>
+<p>How would you change the value associated with the key <code>Apricot</code> to <code>9</code>.</p>
+<p>A) <code>jam_ratings = {'apricot': 9}</code></p>
+<p>B) <code>jam_ratings[9] = 'Apricot'</code></p>
+<p>C) <code>jam_ratings['Apricot'] = 9</code></p>
+<p>D) <code>jam_ratings[2] = 'Apricot'</code></p>
+<!-- 
+## Solution - Dictionaries
+
+The correct answer is **C**.
+
+**A** assigns the name `jam_ratings` to a new dictionary with only the key `apricot` - not only are the other jam ratings now missing, but strings used as dictionary keys are *case sensitive* - `apricot` is not the same key as `Apricot`.
+
+**B** mixes up the value and the key. Assigning to a dictionary uses the form: `dictionary[key] = value`.
+
+**C** is correct. Bonus - another way to do this would be `jam_ratings.update({'Apricot': 9})` or even `jam_ratings.update(Apricot=9)`.
+
+**D** mixes up the value and the key (and doesn't actually include the new value to be assigned, `9`, anywhere). `2` is the original *value*, `Apricot` is the key. Assigning to a dictionary uses the form: `dictionary[key] = value`.
+ --></div>
         
     </div>
 
