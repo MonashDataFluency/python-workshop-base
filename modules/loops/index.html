@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Loops - Introduction to Python Workshop</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Introduction to Python Workshop</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../intro/">Introduction - the basics of Python</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../working_with_data/">Working with Data</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Loops</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../indexing/">Indexing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plotting_with_ggplot/">Plotting with ggplot for Python</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../halfday/">Half Day Course</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../fullday/">Full Day Course</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../working_with_data/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../indexing/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#automation-with-loops">Automation with Loops</a></li>
+            <li class="second-level"><a href="#whats-in-a-name">What's in a name?</a></li>
+                
+            <li class="second-level"><a href="#from-1-to-n">From 1 to N</a></li>
+                
+            <li class="second-level"><a href="#challenge">Challenge</a></li>
+                
+            <li class="second-level"><a href="#solution">Solution</a></li>
+                
+            <li class="second-level"><a href="#computing-powers-with-loops">Computing Powers With Loops</a></li>
+                
+            <li class="second-level"><a href="#solution_1">Solution</a></li>
+                
+            <li class="second-level"><a href="#reverse-a-string">Reverse a String</a></li>
+                
+            <li class="second-level"><a href="#solution_2">Solution</a></li>
+                
+            <li class="second-level"><a href="#computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</a></li>
+                
+            <li class="second-level"><a href="#solution_3">Solution</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<style>
+.output_label {
+    text-align: right;
+    margin: -1em;
+    padding: 0;
+    font-size: 0.5em;
+    color: grey
+}
+</style>
+
+<h1 id="automation-with-loops">Automation with Loops</h1>
+<p><em>Estimated teaching time:</em> 30 min</p>
+<p><em>Estimated challenge time:</em> 0 min</p>
+<p><em>Key questions:</em></p>
+<ul>
+<li>"How can I do the same operations on many different values?""</li>
+</ul>
+<p><em>Learning objectives:</em></p>
+<ul>
+<li>"Explain what a <code>for</code> loop does."</li>
+<li>"Correctly write <code>for</code> loops to repeat simple calculations."</li>
+<li>"Trace changes to a loop variable as the loop runs."</li>
+<li>"Trace changes to other variables as they are updated by a <code>for</code> loop."</li>
+</ul>
+<p><em>Key points:</em></p>
+<ul>
+<li>"Use <code>for variable in sequence</code> to process the elements of a sequence one at a time."</li>
+<li>"The body of a <code>for</code> loop must be indented."</li>
+<li>"Use <code>len(thing)</code> to determine the length of something that contains other values."</li>
+</ul>
+<hr />
+<p>An example task that we might want to repeat is printing each character in a
+word on a line of its own.</p>
+<pre><code class="python">word = 'lead'
+</code></pre>
+
+<p>We can access a character in a string using its index. For example, we can get the first
+character of the word <code>'lead'</code>, by using <code>word[0]</code>. One way to print each character is to use
+four <code>print</code> statements:</p>
+<pre><code class="python">print(word[0])
+print(word[1])
+print(word[2])
+print(word[3])
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+l
+e
+a
+d
+
+</code>
+</pre>
+
+<p>While this works, it's a bad approach for two reasons:</p>
+<ol>
+<li>
+<p>It doesn't scale:
+    if we want to print the characters in a string that's hundreds of letters long,
+    we'd be better off just typing them in.</p>
+</li>
+<li>
+<p>It's fragile:
+    if we give it a longer string,
+    it only prints part of the data,
+    and if we give it a shorter one,
+    it produces an error because we're asking for characters that don't exist.</p>
+</li>
+</ol>
+<pre><code class="python">word = 'tin'
+print(word[0])
+print(word[1])
+print(word[2])
+print(word[3])
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+t
+i
+n
+
+</code>
+</pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+IndexError                                Traceback (most recent call last)
+
+&lt;ipython-input-3-e59d5eac5430&gt; in &lt;module&gt;()
+      3 print(word[1])
+      4 print(word[2])
+----&gt; 5 print(word[3])
+
+
+IndexError: string index out of range
+</code></pre>
+<p>Here's a better approach:</p>
+<pre><code class="python">word = 'lead'
+for char in word:
+    print(char)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+l
+e
+a
+d
+
+</code>
+</pre>
+
+<p>This is shorter --- certainly shorter than something that prints every character in a hundred-letter string --- and
+more robust as well:</p>
+<pre><code class="python">word = 'oxygen'
+for char in word:
+    print(char)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+o
+x
+y
+g
+e
+n
+
+</code>
+</pre>
+
+<p>The improved version uses a <strong>for loop</strong> to repeat an operation --- in this case, printing --- once for each thing in a sequence.
+The general form of a loop is:</p>
+<pre><code class="python">for variable in collection:
+    # do things with variable
+</code></pre>
+
+<p>Using the oxygen example above, the loop might look like this:</p>
+<p><img alt="loop_image" src="../images/loops_image.png" /></p>
+<p>where each character (<code>char</code>) in the variable <code>word</code> is looped through and printed one character after another.
+The numbers in the diagram denote which loop cycle the character was printed in (1 being the first loop, and 6 being the final loop).</p>
+<p>We can call the <strong>loop variable</strong> anything we like,
+but there must be a colon at the end of the line starting the loop, and we must indent anything we want to run inside the loop. Unlike many other languages, there is no command to signify the end of the loop body (e.g. <code>end for</code>); what is indented after the <code>for</code> statement belongs to the loop.</p>
+<h2 id="whats-in-a-name">What's in a name?</h2>
+<p>In the example above, the loop variable was given the name <code>char</code> as a mnemonic; it is short for 'character'. 
+We can choose any name we want for variables. We might just as easily have chosen the name <code>banana</code> for the loop variable, as long as we use the same name when we invoke the variable inside the loop:</p>
+<pre><code class="python">word = 'oxygen'
+for banana in word:
+    print(banana)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+o
+x
+y
+g
+e
+n
+
+</code>
+</pre>
+
+<p>It is a good idea to choose variable names that are meaningful, otherwise it would be more difficult to understand what the loop is doing.</p>
+<p>Here's another loop that repeatedly updates a variable:</p>
+<pre><code class="python">length = 0
+for vowel in 'aeiou':
+    length = length + 1
+print('There are', length, 'vowels')
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+There are 5 vowels
+
+</code>
+</pre>
+
+<p>It's worth tracing the execution of this little program step by step.</p>
+<p>Since there are five characters in <code>'aeiou'</code>,
+the statement on line 3 will be executed five times.</p>
+<p>The first time around,
+<code>length</code> is zero (the value assigned to it on line 1)
+and <code>vowel</code> is <code>'a'</code>.
+The statement adds 1 to the old value of <code>length</code>,
+producing 1,
+and updates <code>length</code> to refer to that new value.</p>
+<p>The next time around,
+<code>vowel</code> is <code>'e'</code> and <code>length</code> is 1,
+so <code>length</code> is updated to be 2.</p>
+<p>After three more updates,
+<code>length</code> is 5;
+since there is nothing left in <code>'aeiou'</code> for Python to process,
+the loop finishes
+and the <code>print</code> statement on line 4 tells us our final answer.</p>
+<p>Note that a loop variable is just a variable that's being used to record progress in a loop.
+It still exists after the loop is over,
+and we can re-use variables previously defined as loop variables as well:</p>
+<pre><code class="python">letter = 'z'
+for letter in 'abc':
+    print(letter)
+print('after the loop, letter is', letter)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+a
+b
+c
+after the loop, letter is c
+
+</code>
+</pre>
+
+<p>Note also that finding the length of a string is such a common operation that Python actually has a built-in function to do it called <code>len</code>:</p>
+<pre><code class="python">print(len('aeiou'))
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+5
+
+</code>
+</pre>
+
+<p><code>len</code> is much faster than any function we could write ourselves,
+and much easier to read than a two-line loop;
+it will also give us the length of many other things that we haven't met yet,
+so we should always use it when we can.</p>
+<h2 id="from-1-to-n">From 1 to N</h2>
+<p>Python has a built-in function called <code>range</code> that creates a sequence of numbers. <code>range</code> can
+accept 1, 2, or 3 parameters.</p>
+<ul>
+<li>If one parameter is given, <code>range</code> creates an array of that length,
+  starting at zero and incrementing by 1.
+  For example, <code>range(3)</code> produces the numbers <code>0, 1, 2</code>.</li>
+<li>If two parameters are given, <code>range</code> starts at
+  the first and ends just before the second, incrementing by one.
+  For example, <code>range(2, 5)</code> produces <code>2, 3, 4</code>.</li>
+<li>If <code>range</code> is given 3 parameters,
+  it starts at the first one, ends just before the second one, and increments by the third one.
+  For exmaple <code>range(3, 10, 2)</code> produces <code>3, 5, 7, 9</code>.</li>
+</ul>
+<h2 id="challenge">Challenge</h2>
+<p>Using <code>range</code>,
+write a loop that uses <code>range</code> to print the first 3 natural numbers:</p>
+<pre><code>1
+2
+3
+</code></pre>
+
+<h2 id="solution">Solution</h2>
+<pre><code>for i in range(1, 4):
+   print(i)
+</code></pre>
+
+<h2 id="computing-powers-with-loops">Computing Powers With Loops</h2>
+<p>Exponentiation is built into Python:</p>
+<pre><code>print(5 ** 3)
+</code></pre>
+
+<pre><code>125
+</code></pre>
+
+<p>Write a loop that calculates the same result as <code>5 ** 3</code> using
+multiplication (and without exponentiation).</p>
+<h2 id="solution_1">Solution</h2>
+<pre><code>result = 1
+for i in range(0, 3):
+   result = result * 5
+print(result)
+</code></pre>
+
+<h2 id="reverse-a-string">Reverse a String</h2>
+<p>Knowing that two strings can be concatenated using the <code>+</code> operator,
+write a loop that takes a string
+and produces a new string with the characters in reverse order,
+so <code>'Newton'</code> becomes <code>'notweN'</code>.</p>
+<h2 id="solution_2">Solution</h2>
+<pre><code>newstring = ''
+oldstring = 'Newton'
+for char in oldstring:
+   newstring = char + newstring
+print(newstring)
+</code></pre>
+
+<h2 id="computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</h2>
+<p>The built-in function <code>enumerate</code> takes a sequence (e.g. a list) and generates a
+new sequence of the same length. Each element of the new sequence is a pair composed of the index
+(0, 1, 2,...) and the value from the original sequence:</p>
+<pre><code>for i, x in enumerate(xs):
+    # Do something with i and x
+</code></pre>
+
+<p>The code above loops through <code>xs</code>, assigning the index to <code>i</code> and the value to <code>x</code>.</p>
+<p>Suppose you have encoded a polynomial as a list of coefficients in
+the following way: the first element is the constant term, the
+second element is the coefficient of the linear term, the third is the
+coefficient of the quadratic term, etc.</p>
+<pre><code>x = 5
+cc = [2, 4, 3]
+</code></pre>
+
+<pre><code>y = cc[0] * x**0 + cc[1] * x**1 + cc[2] * x**2
+y = 97
+</code></pre>
+
+<p>Write a loop using <code>enumerate(cc)</code> which computes the value <code>y</code> of any
+polynomial, given <code>x</code> and <code>cc</code>.</p>
+<h2 id="solution_3">Solution</h2>
+<pre><code>y = 0
+for i, c in enumerate(cc):
+    y = y + x**i * c
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/require.js"></script>
+    <script src="../../search/search.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

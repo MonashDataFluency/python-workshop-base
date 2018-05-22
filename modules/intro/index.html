@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Introduction - the basics of Python - Introduction to Python Workshop</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Introduction to Python Workshop</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Introduction - the basics of Python</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../working_with_data/">Working with Data</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../loops/">Loops</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../indexing/">Indexing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plotting_with_ggplot/">Plotting with ggplot for Python</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../halfday/">Half Day Course</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../fullday/">Full Day Course</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../working_with_data/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#python-the-basics">Python: the basics</a></li>
+            <li class="second-level"><a href="#interpreter">Interpreter</a></li>
+                
+            <li class="second-level"><a href="#using-interactive-python-in-jupyter-style-notebooks">Using interactive Python in Jupyter-style notebooks</a></li>
+                
+                <li class="third-level"><a href="#jupyter-style-notebooks-a-quick-tour">Jupyter-style notebooks: a quick tour</a></li>
+            <li class="second-level"><a href="#variables-and-data-types">Variables and data types</a></li>
+                
+                <li class="third-level"><a href="#integers-floats-strings">Integers, floats, strings</a></li>
+            <li class="second-level"><a href="#challenge-types">Challenge - Types</a></li>
+                
+                <li class="third-level"><a href="#strings">Strings</a></li>
+            <li class="second-level"><a href="#operators">Operators</a></li>
+                
+                <li class="third-level"><a href="#boolean-operations">Boolean operations</a></li>
+            <li class="second-level"><a href="#lists-and-sequence-types">Lists and sequence types</a></li>
+                
+                <li class="third-level"><a href="#lists">Lists</a></li>
+                <li class="third-level"><a href="#loops">Loops</a></li>
+                <li class="third-level"><a href="#tuples">Tuples</a></li>
+            <li class="second-level"><a href="#challenge-tuples">Challenge - Tuples</a></li>
+                
+            <li class="second-level"><a href="#solution-tuples">Solution - Tuples</a></li>
+                
+                <li class="third-level"><a href="#dictionaries">Dictionaries</a></li>
+            <li class="second-level"><a href="#challenge-dictionaries">Challenge - dictionaries</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<style>
+.output_label {
+    text-align: right;
+    margin: -1em;
+    padding: 0;
+    font-size: 0.5em;
+    color: grey
+}
+</style>
+
+<h1 id="python-the-basics">Python: the basics</h1>
+<p>Python is a general purpose programming language that supports rapid development
+of scripts and applications.</p>
+<p>Python's main advantages:</p>
+<ul>
+<li>Open Source software, supported by Python Software Foundation</li>
+<li>Available on all major platforms (ie. Windows, Linux and MacOS) </li>
+<li>It is a general-purpose programming language, designed for readability</li>
+<li>Supports multiple programming paradigms ('functional', 'object oriented')</li>
+<li>Very large community with a rich ecosystem of third-party packages</li>
+</ul>
+<h2 id="interpreter">Interpreter</h2>
+<p>Python is an interpreted language<a href="https://softwareengineering.stackexchange.com/a/24560">*</a> which can be used in two ways:</p>
+<ul>
+<li>"Interactive" Mode: It functions like an "advanced calculator", executing
+  one command at a time:</li>
+</ul>
+<pre><code class="bash">user:host:~$ python
+Python 3.5.1 (default, Oct 23 2015, 18:05:06)
+[GCC 4.8.3] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; 2 + 2
+4
+&gt;&gt;&gt; print(&quot;Hello World&quot;)
+Hello World
+</code></pre>
+
+<ul>
+<li>"Scripting" Mode: Executing a series of "commands" saved in text file,
+  usually with a <code>.py</code> extension after the name of your file:</li>
+</ul>
+<pre><code class="bash">user:host:~$ python my_script.py
+Hello World
+</code></pre>
+
+<h2 id="using-interactive-python-in-jupyter-style-notebooks">Using interactive Python in Jupyter-style notebooks</h2>
+<p>A convenient and powerful way to use interactive-mode Python is via a Jupyter Notebook, or similar browser-based interface.</p>
+<p>This particularly lends itself to data analysis since the notebook records a history of commands and shows output and graphs immediately in the browser.</p>
+<p>There are several ways you can run a Jupyter(-style) notebook - locally installed on your computer or hosted as a service on the web. Today we will use a Jupyter notebook service provided by Google: https://colab.research.google.com (Colaboratory).</p>
+<h3 id="jupyter-style-notebooks-a-quick-tour">Jupyter-style notebooks: a quick tour</h3>
+<p>Go to https://colab.research.google.com and login with your Google account.</p>
+<p>Select <strong><em>NEW NOTEBOOK → NEW PYTHON 3 NOTEBOOK</em></strong> - a new notebook will be created.</p>
+<hr />
+<p>Type some Python code in the top cell, eg:</p>
+<pre><code class="python">print(&quot;Hello Jupyter !&quot;)
+</code></pre>
+
+<p><strong><em>Shift-Enter</em></strong> to run the contents of the cell</p>
+<hr />
+<p>You can add new cells.</p>
+<p><strong><em>Insert → Insert Code Cell</em></strong></p>
+<hr />
+<p>NOTE: When the text on the left hand of the cell is: <code>In [*]</code> (with an asterisk rather than a number), the cell is still running. It's usually best to wait until one cell has finished running before running the next.</p>
+<p>Let's begin writing some code in our notebook.</p>
+<pre><code class="python">print(&quot;Hello Jupyter !&quot;)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Hello Jupyter !
+
+</code>
+</pre>
+
+<p>In Jupyter/Collaboratory, just typing the name of a variable in the cell prints its representation:</p>
+<pre><code class="python">message = &quot;Hello again !&quot;
+message
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+'Hello again !'
+</code>
+</pre>
+
+<pre><code class="python"># A 'hash' symbol denotes a comment
+# This is a comment. Anything after the 'hash' symbol on the line is ignored by the Python interpreter
+
+print(&quot;No comment&quot;)  # comment
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+No comment
+
+</code>
+</pre>
+
+<h2 id="variables-and-data-types">Variables and data types</h2>
+<h3 id="integers-floats-strings">Integers, floats, strings</h3>
+<pre><code class="python">a = 5
+</code></pre>
+
+<pre><code class="python">a
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+5
+</code>
+</pre>
+
+<pre><code class="python">type(a)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+int
+</code>
+</pre>
+
+<p>Adding a decimal point creates a <code>float</code></p>
+<pre><code class="python">b = 5.0
+</code></pre>
+
+<pre><code class="python">b
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+5.0
+</code>
+</pre>
+
+<pre><code class="python">type(b)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+float
+</code>
+</pre>
+
+<p><code>int</code> and <code>float</code> are collectively called 'numeric' types</p>
+<p>(There are also other numeric types like <code>hex</code> for hexidemical and <code>complex</code> for complex numbers)</p>
+<h2 id="challenge-types">Challenge - Types</h2>
+<p>What is the <strong>type</strong> of the variable <code>letters</code> defined below ?</p>
+<p><code>letters = "ABACBS"</code></p>
+<ul>
+<li>A) <code>int</code></li>
+<li>B) <code>str</code></li>
+<li>C) <code>float</code></li>
+<li>D) <code>text</code></li>
+</ul>
+<p>Write some code the outputs the type - paste your answer into the Etherpad.</p>
+<!-- 
+## Solution
+
+Option B - `str`.
+ -->
+
+<!--
+
+wzxhzdk:12
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+str
+</code>
+</pre>
+
+
+ -->
+
+<h3 id="strings">Strings</h3>
+<pre><code class="python">some_words = &quot;Python3 strings are Unicode (UTF-8) ❤❤❤ 😸 蛇&quot;
+</code></pre>
+
+<pre><code class="python">some_words
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+'Python3 strings are Unicode (UTF-8) ❤❤❤ 😸 蛇'
+</code>
+</pre>
+
+<pre><code class="python">type(some_words)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+str
+</code>
+</pre>
+
+<p>The variable <code>some_words</code> is of type <code>str</code>, short for "string". Strings hold
+sequences of characters, which can be letters, numbers, punctuation
+or more exotic forms of text (even emoji!).</p>
+<h2 id="operators">Operators</h2>
+<p>We can perform mathematical calculations in Python using the basic operators:</p>
+<p><code>+</code>  <code>-</code>  <code>*</code>  <code>/</code>  <code>%</code>  <code>**</code></p>
+<pre><code class="python">2 + 2  # Addition
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+4
+</code>
+</pre>
+
+<pre><code class="python">6 * 7  # Multiplication
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42
+</code>
+</pre>
+
+<pre><code class="python">2 ** 16  # Power
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+65536
+</code>
+</pre>
+
+<pre><code class="python">13 % 5  # Modulo
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+3
+</code>
+</pre>
+
+<pre><code class="python"># int + int = int
+a = 5
+a + 1
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+6
+</code>
+</pre>
+
+<pre><code class="python"># float + int = float
+b = 5.0
+b + 1
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+6.0
+</code>
+</pre>
+
+<pre><code class="python">a + b
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+10.0
+</code>
+</pre>
+
+<pre><code class="python">some_words = &quot;I'm a string&quot;
+a = 6
+a + some_words
+</code></pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-21-781eba7cf148&gt; in &lt;module&gt;()
+      1 some_words = "I'm a string"
+      2 a = 6
+----&gt; 3 a + some_words
+
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+</code></pre>
+<pre><code class="python">str(a) + &quot; &quot; + some_words
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+"6 I'm a string"
+</code>
+</pre>
+
+<pre><code class="python"># Shorthand: operators with assignment
+a += 1
+a
+
+# Equivalent to:
+# a = a + 1
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+7
+</code>
+</pre>
+
+<h3 id="boolean-operations">Boolean operations</h3>
+<p>We can also use comparison and logic operators:
+<code>&lt;, &gt;, ==, !=, &lt;=, &gt;=</code> and statements of identity such as
+<code>and, or, not</code>. The data type returned by this is
+called a <em>boolean</em>.</p>
+<pre><code class="python">3 &gt; 4
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+False
+</code>
+</pre>
+
+<pre><code class="python">True and True
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+True
+</code>
+</pre>
+
+<pre><code class="python">True or False
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+True
+</code>
+</pre>
+
+<h2 id="lists-and-sequence-types">Lists and sequence types</h2>
+<h3 id="lists">Lists</h3>
+<pre><code class="python">numbers = [2, 4, 6, 8, 10]
+numbers
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+[2, 4, 6, 8, 10]
+</code>
+</pre>
+
+<pre><code class="python"># `len` get the length of a list
+len(numbers)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+5
+</code>
+</pre>
+
+<pre><code class="python"># Lists can contain multiple data types, including other lists
+mixed_list = [&quot;asdf&quot;, 2, 3.142, numbers, ['a','b','c']]
+mixed_list
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+['asdf', 2, 3.142, [2, 4, 6, 8, 10], ['a', 'b', 'c']]
+</code>
+</pre>
+
+<p>You can retrieve items from a list by their <em>index</em>. In Python, the first item has an index of 0 (zero).</p>
+<pre><code class="python">numbers[0]
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+2
+</code>
+</pre>
+
+<pre><code class="python">numbers[3]
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+8
+</code>
+</pre>
+
+<p>You can also assign a new value to any position in the list.</p>
+<pre><code class="python">numbers[3] = numbers[3] * 100
+numbers
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+[2, 4, 6, 800, 10]
+</code>
+</pre>
+
+<p>You can append items to the end of the list.</p>
+<pre><code class="python">numbers.append(12)
+numbers
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+[2, 4, 6, 800, 10, 12]
+</code>
+</pre>
+
+<p>You can add multiple items to the end of a list with <code>extend</code>.</p>
+<pre><code class="python">numbers.extend([14, 16, 18])
+numbers
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+[2, 4, 6, 800, 10, 12, 14, 16, 18]
+</code>
+</pre>
+
+<h3 id="loops">Loops</h3>
+<p>A for loop can be used to access the elements in a list or other Python data structure one at a time. We will learn about loops in other lesson.</p>
+<pre><code class="python">for num in numbers:
+    print(num)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+2
+4
+6
+800
+10
+12
+14
+16
+18
+
+</code>
+</pre>
+
+<p><strong>Indentation</strong> is very important in Python. Note that the second line in the
+example above is indented, indicating the code that is the body of the loop.</p>
+<p>To find out what methods are available for an object, we can use the built-in <code>help</code> command:</p>
+<pre><code class="python">help(numbers)
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Help on list object:
+
+class list(object)
+ |  list() -> new empty list
+ |  list(iterable) -> new list initialized from iterable's items
+ |  
+ |  Methods defined here:
+ |  
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |  
+ |  __contains__(self, key, /)
+ |      Return key in self.
+ |  
+ |  __delitem__(self, key, /)
+ |      Delete self[key].
+ |  
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |  
+ |  __ge__(self, value, /)
+ |      Return self>=value.
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __getitem__(...)
+ |      x.__getitem__(y) <==> x[y]
+ |  
+ |  __gt__(self, value, /)
+ |      Return self>value.
+ |  
+ |  __iadd__(self, value, /)
+ |      Implement self+=value.
+ |  
+ |  __imul__(self, value, /)
+ |      Implement self*=value.
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __le__(self, value, /)
+ |      Return self<=value.
+ |  
+ |  __len__(self, /)
+ |      Return len(self).
+ |  
+ |  __lt__(self, value, /)
+ |      Return self<value.
+ |  
+ |  __mul__(self, value, /)
+ |      Return self*value.n
+ |  
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |  
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |  
+ |  __reversed__(...)
+ |      L.__reversed__() -- return a reverse iterator over the list
+ |  
+ |  __rmul__(self, value, /)
+ |      Return self*value.
+ |  
+ |  __setitem__(self, key, value, /)
+ |      Set self[key] to value.
+ |  
+ |  __sizeof__(...)
+ |      L.__sizeof__() -- size of L in memory, in bytes
+ |  
+ |  append(...)
+ |      L.append(object) -> None -- append object to end
+ |  
+ |  clear(...)
+ |      L.clear() -> None -- remove all items from L
+ |  
+ |  copy(...)
+ |      L.copy() -> list -- a shallow copy of L
+ |  
+ |  count(...)
+ |      L.count(value) -> integer -- return number of occurrences of value
+ |  
+ |  extend(...)
+ |      L.extend(iterable) -> None -- extend list by appending elements from the iterable
+ |  
+ |  index(...)
+ |      L.index(value, [start, [stop]]) -> integer -- return first index of value.
+ |      Raises ValueError if the value is not present.
+ |  
+ |  insert(...)
+ |      L.insert(index, object) -- insert object before index
+ |  
+ |  pop(...)
+ |      L.pop([index]) -> item -- remove and return item at index (default last).
+ |      Raises IndexError if list is empty or index is out of range.
+ |  
+ |  remove(...)
+ |      L.remove(value) -> None -- remove first occurrence of value.
+ |      Raises ValueError if the value is not present.
+ |  
+ |  reverse(...)
+ |      L.reverse() -- reverse *IN PLACE*
+ |  
+ |  sort(...)
+ |      L.sort(key=None, reverse=False) -> None -- stable sort *IN PLACE*
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __hash__ = None
+
+
+</code>
+</pre>
+
+<h3 id="tuples">Tuples</h3>
+<p>A tuple is similar to a list in that it's an ordered sequence of elements.
+However, tuples can not be changed once created (they are "immutable"). Tuples
+are created by placing comma-separated values inside parentheses <code>()</code>.</p>
+<pre><code class="python">tuples_are_immutable = (&quot;bar&quot;, 100, 200, &quot;foo&quot;)
+tuples_are_immutable
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+('bar', 100, 200, 'foo')
+</code>
+</pre>
+
+<pre><code class="python">tuples_are_immutable[1]
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+100
+</code>
+</pre>
+
+<pre><code class="python">tuples_are_immutable[1] = 666
+</code></pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-39-c91965b0815a&gt; in &lt;module&gt;()
+----&gt; 1 tuples_are_immutable[1] = 666
+
+
+TypeError: 'tuple' object does not support item assignment
+</code></pre>
+<h2 id="challenge-tuples">Challenge - Tuples</h2>
+<p>Define a tuple:</p>
+<pre><code class="python">a_tuple = (1, 2, 3)
+</code></pre>
+
+<ol>
+<li>What happens when you type <code>a_tuple[2] = 5</code> vs <code>a_list[1] = 5</code> ?</li>
+<li>Type <code>type(a_tuple)</code> into python - what is the object type?</li>
+</ol>
+<h2 id="solution-tuples">Solution - Tuples</h2>
+<pre><code class="python">a_tuple= (1, 2, 3)
+a_tuple[2] = 5
+</code></pre>
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-40-7092dae1484a&gt; in &lt;module&gt;()
+      1 a_tuple= (1, 2, 3)
+----&gt; 2 a_tuple[2] = 5
+
+
+TypeError: 'tuple' object does not support item assignment
+</code></pre>
+<pre><code class="python">type(a_tuple)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+tuple
+</code>
+</pre>
+
+<h3 id="dictionaries">Dictionaries</h3>
+<p>Dictionaries are a container that store key-value pairs. They are unordered. </p>
+<p>Other programming languages might call this a 'hash', 'hashtable' or 'hashmap'.</p>
+<pre><code class="python">pairs = {'Apple': 1, 'Orange': 2, 'Pear': 4}
+pairs
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+{'Apple': 1, 'Orange': 2, 'Pear': 4}
+</code>
+</pre>
+
+<pre><code class="python">pairs['Orange']
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+2
+</code>
+</pre>
+
+<pre><code class="python">pairs['Orange'] = 16
+pairs
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+{'Apple': 1, 'Orange': 16, 'Pear': 4}
+</code>
+</pre>
+
+<p>The <code>items</code> method returns a sequence of the key-value pairs as tuples.</p>
+<p><code>values</code> returns a sequence of just the values.</p>
+<p><code>keys</code> returns a sequence of just the keys.</p>
+<hr />
+<p>In Python 3, the <code>.items()</code>, <code>.values()</code> and <code>.keys()</code> methods return a <a href="https://docs.python.org/3/library/stdtypes.html#dictionary-view-objects">'dictionary view' object</a> that behaves like a list or tuple in for loops but doesn't support indexing. 'Dictionary views' stay in sync even when the dictionary changes.</p>
+<p>You can turn them into a normal list or tuple with the <code>list()</code> or <code>tuple()</code> functions.</p>
+<pre><code class="python">pairs.items()
+# list(pairs.items())
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+dict_items([('Apple', 1), ('Orange', 16), ('Pear', 4)])
+</code>
+</pre>
+
+<pre><code class="python">pairs.values()
+# list(pairs.values())
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+dict_values([1, 16, 4])
+</code>
+</pre>
+
+<pre><code class="python">pairs.keys()
+# list(pairs.keys())
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+dict_keys(['Apple', 'Orange', 'Pear'])
+</code>
+</pre>
+
+<pre><code class="python">len(pairs)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+3
+</code>
+</pre>
+
+<pre><code class="python">dict_of_dicts = {'first': {1:2, 2: 4, 4: 8, 8: 16}, 'second': {'a': 2.2, 'b': 4.4}}
+dict_of_dicts
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+{'first': {1: 2, 2: 4, 4: 8, 8: 16}, 'second': {'a': 2.2, 'b': 4.4}}
+</code>
+</pre>
+
+<h2 id="challenge-dictionaries">Challenge - dictionaries</h2>
+<p>Can you do reassignment in a dictionary? </p>
+<p>Define a dictionary:</p>
+<pre><code class="python">rev = {1: 'one', 2: 'two', 3: 'three'}
+</code></pre>
+
+<ol>
+<li>
+<p>First check what <code>rev</code> is right now (remember <code>rev</code> is the name of our dictionary).  Type: <strong>rev</strong></p>
+</li>
+<li>
+<p>Try to reassign the second value (in the <em>key value pair</em>) so that it no longer reads "two" but instead reads "apple-sauce". </p>
+</li>
+<li>
+<p>Now display <code>rev</code> again to see if it has changed. </p>
+</li>
+</ol>
+<p>It is important to note that dictionaries are "unordered" and do not remember
+the sequence of their items (i.e. the order in which key:value pairs were
+added to the dictionary). Because of this, the order in which items are
+returned from loops over dictionaries might appear random and can even change
+with time.</p></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/require.js"></script>
+    <script src="../../search/search.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
