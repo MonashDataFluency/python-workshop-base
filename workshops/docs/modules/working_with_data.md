@@ -67,7 +67,7 @@ single animal, and the columns represent:
 | month            | month of observation               |
 | day              | day of observation                 |
 | year             | year of observation                |
-| plot_id          | ID of a particular plot            |
+| site_id          | ID of a particular plot            |
 | species_id       | 2-letter code                      |
 | sex              | sex of animal ("M", "F")           |
 | hindfoot_length  | length of the hindfoot in mm       |
@@ -77,7 +77,7 @@ single animal, and the columns represent:
 The first few rows of our first file look like this:
 
 ```
-record_id,month,day,year,plot_id,species_id,sex,hindfoot_length,weight
+record_id,month,day,year,site_id,species_id,sex,hindfoot_length,weight
 1,7,16,1977,2,NL,M,32,
 2,7,16,1977,3,NL,M,33,
 3,7,16,1977,2,DM,F,37,
@@ -130,7 +130,6 @@ example of importing the pandas library using the common nickname `pd` is below.
 
 ```python
 import pandas as pd
-
 ```
 
 
@@ -176,7 +175,6 @@ an element in the data structure.
 ```python
 # Note that pd.read_csv is used because we imported pandas as pd
 pd.read_csv("data/surveys.csv")
-
 ```
 
 
@@ -955,25 +953,7 @@ pd.read_csv("data/surveys.csv")
 
 
 
-
-The above command yields the **output** below:
-
-```
-record_id  month  day  year  plot_id species_id sex  hindfoot_length  weight
-0          1      7   16  1977        2         NL   M               32   NaN
-1          2      7   16  1977        3         NL   M               33   NaN
-2          3      7   16  1977        2         DM   F               37   NaN
-3          4      7   16  1977        7         DM   M               36   NaN
-4          5      7   16  1977        3         DM   M               35   NaN
-...
-35544      35545     12   31  2002       15     AH  NaN              NaN  NaN
-35545      35546     12   31  2002       15     AH  NaN              NaN  NaN
-35546      35547     12   31  2002       10     RM    F               15   14
-35547      35548     12   31  2002        7     DO    M               36   51
-35548      35549     12   31  2002        5     NaN  NaN             NaN  NaN
-
-[35549 rows x 9 columns]
-```
+The above command outputs a `DateFrame` object, which Jupyter displays as a table (snipped in the middle since there are many rows).
 
 We can see that there were 33,549 rows parsed. Each row has 9
 columns. The first column is the index of the DataFrame. The index is used to
@@ -981,7 +961,7 @@ identify the position of the data, but it is not an actual column of the DataFra
 It looks like  the `read_csv` function in Pandas  read our file properly. However,
 we haven't saved any data to memory so we can work with it.We need to assign the
 DataFrame to a variable. Remember that a variable is a name for a value, such as `x`,
-or  `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
+or `data`. We can create a new  object with a variable name by assigning a value to it using `=`.
 
 Let's call the imported survey data `surveys_df`:
 
@@ -990,13 +970,9 @@ Let's call the imported survey data `surveys_df`:
 
 
 
-
-
 ```python
 surveys_df = pd.read_csv("data/surveys.csv")
-
 ```
-
 
 
 
@@ -1004,9 +980,7 @@ surveys_df = pd.read_csv("data/surveys.csv")
 
 Notice when you assign the imported DataFrame to a variable, Python does not
 produce any output on the screen. We can view the value of the `surveys_df`
-object by typing its name into the Python command prompt.
-
-
+object by typing its name into the cell.
 
 
 
@@ -1015,7 +989,6 @@ object by typing its name into the Python command prompt.
 
 ```python
 surveys_df
-
 ```
 
 
@@ -1797,83 +1770,11 @@ surveys_df
 
 which prints contents like above.
 
-Note: if the output is too wide to print on your narrow terminal window, you may see something 
-slightly different as the large set of data scrolls past. You may see simply the last column
-of data:
 
 
 
 
-
-
-
-```python
-17        NaN  
-18        NaN  
-19        NaN  
-20        NaN  
-21        NaN  
-22        NaN  
-23        NaN  
-24        NaN  
-25        NaN  
-26        NaN  
-27        NaN  
-28        NaN  
-29        NaN  
-...       ...  
-35519    36.0  
-35520    48.0  
-35521    45.0  
-35522    44.0  
-35523    27.0  
-35524    26.0  
-35525    24.0  
-35526    43.0  
-35527     NaN  
-35528    25.0  
-35529     NaN  
-35530     NaN  
-35531    43.0  
-35532    48.0  
-35533    56.0  
-35534    53.0  
-35535    42.0  
-35536    46.0  
-35537    31.0  
-35538    68.0  
-35539    23.0  
-35540    31.0  
-35541    29.0  
-35542    34.0  
-35543     NaN  
-35544     NaN  
-35545     NaN  
-35546    14.0  
-35547    51.0  
-35548     NaN  
-
-[35549 rows x 9 columns]
-
-```
-
-
-      File "<ipython-input-5-6b622d1530fb>", line 1
-        17        NaN
-                    ^
-    SyntaxError: invalid syntax
-
-
-
-
-
-
-
-Never fear, all the data is there, if you scroll up. Selecting just a few rows, so it is
-easier to fit on one window, you can see that pandas has neatly formatted the data to fit
-our screen:
-
-
+You can also select just a few rows, so it is easier to fit on one window, you can see that pandas has neatly formatted the data to fit our screen:
 
 
 
@@ -1881,37 +1782,106 @@ our screen:
 
 
 ```python
-
->>> surveys_df.head() # The head() function displays the first several lines of a file. It
-		      # is discussed below.
-   record_id  month  day  year  plot_id species_id sex  hindfoot_length  \
-5          6      7   16  1977        1         PF   M             14.0   
-6          7      7   16  1977        2         PE   F              NaN   
-7          8      7   16  1977        1         DM   M             37.0   
-8          9      7   16  1977        1         DM   F             34.0   
-9         10      7   16  1977        6         PF   F             20.0   
-
-   weight  
-5     NaN  
-6     NaN  
-7     NaN  
-8     NaN  
-9     NaN  
-
+# The head() function displays the first several lines of a file. It is discussed below.
+surveys_df.head()
 ```
 
 
-      File "<ipython-input-6-d7d7288f1688>", line 4
-        record_id  month  day  year  plot_id species_id sex  hindfoot_length  5          6      7   16  1977        1         PF   M             14.0
-        ^
-    IndentationError: unexpected indent
 
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-
-
-
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>33.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -1932,24 +1902,18 @@ Again, we can use the `type` function to see what kind of thing `surveys_df` is:
 
 ```python
 type(surveys_df)
-
-## Returns
-pandas.core.frame.DataFrame
-
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-7-268d34800047> in <module>()
-          2 
-          3 ## Returns
-    ----> 4 pandas.core.frame.DataFrame
-    
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+pandas.core.frame.DataFrame
+</code>
+</pre>
 
-    NameError: name 'pandas' is not defined
 
 
 
@@ -1972,27 +1936,26 @@ called `dtypes` that answers this:
 
 ```python
 surveys_df.dtypes
+```
 
-## Returns
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
 record_id            int64
 month                int64
 day                  int64
 year                 int64
-plot_id              int64
+site_id              int64
 species_id          object
 sex                 object
 hindfoot_length    float64
 weight             float64
 dtype: object
-
-```
-
-
-      File "<ipython-input-8-03de3d6eb642>", line 4
-        record_id            int64
-                                 ^
-    SyntaxError: invalid syntax
-
+</code>
+</pre>
 
 
 
@@ -2005,7 +1968,6 @@ All the values in a column have the same type. For example, months have type
 fractional values, but the weight and hindfoot_length columns can, because they
 have type `float64`. The `object` type doesn't have a very helpful name, but in
 this case it represents strings (such as 'M' and 'F' in the case of sex).
-
 
 ### Useful Ways to View DataFrame objects in Python
 
@@ -2023,8 +1985,6 @@ As an example, `surveys_df.head()` gets the first few rows in the DataFrame
 information in the parens to control behaviour.
 
 Let's look at the data using these.
-
-
 
 
 
@@ -2068,7 +2028,6 @@ Let's begin by exploring our data:
 ```python
 # Look at the column names
 surveys_df.columns
-
 ```
 
 
@@ -2089,15 +2048,6 @@ Index(['record_id', 'month', 'day', 'year', 'site_id', 'species_id', 'sex',
 
 
 
-
-which **returns**:
-
-```
-Index(['record_id', 'month', 'day', 'year', 'plot_id', 'species_id', 'sex',
-       'hindfoot_length', 'weight'],
-      dtype='object')
-```
-
 Let's get a list of all the species. The `pd.unique` function tells us all of
 the unique values in the `species_id` column.
 
@@ -2106,11 +2056,8 @@ the unique values in the `species_id` column.
 
 
 
-
-
 ```python
 pd.unique(surveys_df['species_id'])
-
 ```
 
 
@@ -2126,52 +2073,6 @@ array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
        'PB', 'PL', 'PX', 'CT', 'US'], dtype=object)
 </code>
 </pre>
-
-
-
-
-
-
-
-
-which **returns**:
-
-
-
-
-
-
-
-
-```python
-array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
-       'OL', 'RM', nan, 'SA', 'PM', 'AH', 'DX', 'AB', 'CB', 'CM', 'CQ',
-       'RF', 'PC', 'PG', 'PH', 'PU', 'CV', 'UR', 'UP', 'ZL', 'UL', 'CS',
-       'SC', 'BA', 'SF', 'RO', 'AS', 'SO', 'PI', 'ST', 'CU', 'SU', 'RX',
-       'PB', 'PL', 'PX', 'CT', 'US'], dtype=object)
-
-```
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-11-7e0dd798cafd> in <module>()
-    ----> 1 array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
-          2        'OL', 'RM', nan, 'SA', 'PM', 'AH', 'DX', 'AB', 'CB', 'CM', 'CQ',
-          3        'RF', 'PC', 'PG', 'PH', 'PU', 'CV', 'UR', 'UP', 'ZL', 'UL', 'CS',
-          4        'SC', 'BA', 'SF', 'RO', 'AS', 'SO', 'PI', 'ST', 'CU', 'SU', 'RX',
-          5        'PB', 'PL', 'PX', 'CT', 'US'], dtype=object)
-
-
-    NameError: name 'array' is not defined
-
-
-
-
-
-
 
 
 
@@ -2205,7 +2106,6 @@ syntax below:
 
 ```python
 surveys_df['weight'].describe()
-
 ```
 
 
@@ -2232,40 +2132,6 @@ Name: weight, dtype: float64
 
 
 
-gives **output**
-
-
-
-
-
-
-
-
-```python
-count    32283.000000
-mean        42.672428
-std         36.631259
-min          4.000000
-25%         20.000000
-50%         37.000000
-75%         48.000000
-max        280.000000
-Name: weight, dtype: float64
-
-```
-
-
-      File "<ipython-input-13-85b785d1d6fc>", line 1
-        count    32283.000000
-                            ^
-    SyntaxError: invalid syntax
-
-
-
-
-
-
-
 
 We can also extract one specific metric if we wish:
 
@@ -2281,8 +2147,8 @@ surveys_df['weight'].min()
 surveys_df['weight'].max()
 surveys_df['weight'].mean()
 surveys_df['weight'].std()
+# only the last command shows output below - you can try the others above in new cells
 surveys_df['weight'].count()
-
 ```
 
 
@@ -2316,7 +2182,6 @@ can quickly calculate summary statistics by a group of our choice.
 ```python
 # Group data by sex
 grouped_data = surveys_df.groupby('sex')
-
 ```
 
 
@@ -2341,7 +2206,6 @@ numeric data.
 grouped_data.describe()
 # Provide the mean for each numeric column by sex
 grouped_data.mean()
-
 ```
 
 
@@ -2416,42 +2280,6 @@ grouped_data.mean()
 
 
 
-`grouped_data.mean()` **OUTPUT:**
-
-
-
-
-
-
-
-
-```python
-        record_id     month        day         year    plot_id  \
-sex                                                              
-F    18036.412046  6.583047  16.007138  1990.644997  11.440854   
-M    17754.835601  6.392668  16.184286  1990.480401  11.098282   
-
-     hindfoot_length     weight  
-sex                              
-F          28.836780  42.170555  
-M          29.709578  42.995379  
-
-
-```
-
-
-      File "<ipython-input-17-791f853201b3>", line 1
-        record_id     month        day         year    plot_id  sex
-                          ^
-    SyntaxError: invalid syntax
-
-
-
-
-
-
-
-
 The `groupby` command is powerful in that it allows us to quickly generate
 summary stats.
 
@@ -2517,7 +2345,6 @@ ways, but we'll use `groupby` combined with **a `count()` method**.
 # Count the number of samples by species
 species_counts = surveys_df.groupby('species_id')['record_id'].count()
 print(species_counts)
-
 ```
 
 <pre class="output">
@@ -2593,7 +2420,6 @@ Or, we can also count just the rows that have the species "DO":
 
 ```python
 surveys_df.groupby('species_id')['record_id'].count()['DO']
-
 ```
 
 
@@ -2605,13 +2431,6 @@ surveys_df.groupby('species_id')['record_id'].count()['DO']
 3027
 </code>
 </pre>
-
-
-
-
-
-
-
 
 
 
@@ -2634,12 +2453,8 @@ calculated from our data.
 
 
 ```python
-
 # Multiply all weight values by 2 but does not change the original weight data
-
 surveys_df['weight']*2
-
-
 ```
 
 
@@ -2719,13 +2534,6 @@ Name: weight, Length: 35549, dtype: float64
 
 
 
-
-
-
-
-
-
-
 ## Quick & Easy Plotting Data Using Pandas
 
 We can plot our summary stats using Pandas, too.
@@ -2738,25 +2546,20 @@ We can plot our summary stats using Pandas, too.
 
 
 ```python
-
 ## To make sure figures appear inside Jupyter Notebook
 %matplotlib inline
 
 # Create a quick bar chart
 species_counts.plot(kind='bar');
-
 ```
 
 
-![png](working_with_data_files/working_with_data_54_0.png)
+![png](working_with_data_files/working_with_data_43_0.png)
 
 
 
 
 
-
-
-![Weight by Species Plot](images/each_species.jpg)
 
 Weight by species plot
 
@@ -2767,66 +2570,26 @@ We can also look at how many animals were captured in each plot:
 
 
 
-
-
 ```python
-total_count = surveys_df.groupby('plot_id')['record_id'].nunique()
+total_count = surveys_df.groupby('site_id')['record_id'].nunique()
 # Let's plot that too
-total_count.plot(kind='bar');
-
+total_count.plot(kind='bar')
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-22-a50060d93aea> in <module>()
-    ----> 1 total_count = surveys_df.groupby('plot_id')['record_id'].nunique()
-          2 # Let's plot that too
-          3 total_count.plot(kind='bar');
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/generic.py in groupby(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, **kwargs)
-       6657         return groupby(self, by=by, axis=axis, level=level, as_index=as_index,
-       6658                        sort=sort, group_keys=group_keys, squeeze=squeeze,
-    -> 6659                        observed=observed, **kwargs)
-       6660 
-       6661     def asfreq(self, freq, method=None, how=None, normalize=False,
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in groupby(obj, by, **kwds)
-       2150         raise TypeError('invalid type: %s' % type(obj))
-       2151 
-    -> 2152     return klass(obj, by, **kwds)
-       2153 
-       2154 
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in __init__(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, **kwargs)
-        597                                                     sort=sort,
-        598                                                     observed=observed,
-    --> 599                                                     mutated=self.mutated)
-        600 
-        601         self.obj = obj
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in _get_grouper(obj, key, axis, level, sort, observed, mutated, validate)
-       3289                 in_axis, name, level, gpr = False, None, gpr, None
-       3290             else:
-    -> 3291                 raise KeyError(gpr)
-       3292         elif isinstance(gpr, Grouper) and gpr.key is not None:
-       3293             # Add key to exclusions
-
-
-    KeyError: 'plot_id'
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+<matplotlib.axes._subplots.AxesSubplot at 0x110a21780>
+</code>
+</pre>
 
 
 
 
-
-
-
+![png](working_with_data_files/working_with_data_45_1.png)
 
 
 
@@ -2896,55 +2659,9 @@ First we group data by plot and by sex, and then calculate a total for each plot
 
 
 ```python
-by_plot_sex = surveys_df.groupby(['plot_id','sex'])
+by_plot_sex = surveys_df.groupby(['site_id','sex'])
 plot_sex_count = by_plot_sex['weight'].sum()
-
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-23-2d137cef00de> in <module>()
-    ----> 1 by_plot_sex = surveys_df.groupby(['plot_id','sex'])
-          2 plot_sex_count = by_plot_sex['weight'].sum()
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/generic.py in groupby(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, **kwargs)
-       6657         return groupby(self, by=by, axis=axis, level=level, as_index=as_index,
-       6658                        sort=sort, group_keys=group_keys, squeeze=squeeze,
-    -> 6659                        observed=observed, **kwargs)
-       6660 
-       6661     def asfreq(self, freq, method=None, how=None, normalize=False,
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in groupby(obj, by, **kwds)
-       2150         raise TypeError('invalid type: %s' % type(obj))
-       2151 
-    -> 2152     return klass(obj, by, **kwds)
-       2153 
-       2154 
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in __init__(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, **kwargs)
-        597                                                     sort=sort,
-        598                                                     observed=observed,
-    --> 599                                                     mutated=self.mutated)
-        600 
-        601         self.obj = obj
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in _get_grouper(obj, key, axis, level, sort, observed, mutated, validate)
-       3289                 in_axis, name, level, gpr = False, None, gpr, None
-       3290             else:
-    -> 3291                 raise KeyError(gpr)
-       3292         elif isinstance(gpr, Grouper) and gpr.key is not None:
-       3293             # Add key to exclusions
-
-
-    KeyError: 'plot_id'
-
 
 
 
@@ -2977,74 +2694,171 @@ Below we'll use `.unstack()` on our grouped data to figure out the total weight 
 
 
 ```python
-by_plot_sex = surveys_df.groupby(['plot_id','sex'])
-plot_sex_count = by_plot_sex['weight'].sum()
-plot_sex_count.unstack()
-
+by_site_sex = surveys_df.groupby(['site_id','sex'])
+site_sex_count = by_site_sex['weight'].sum()
+site_sex_count.unstack()
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-24-b5fe6fd21c8a> in <module>()
-    ----> 1 by_plot_sex = surveys_df.groupby(['plot_id','sex'])
-          2 plot_sex_count = by_plot_sex['weight'].sum()
-          3 plot_sex_count.unstack()
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/generic.py in groupby(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, **kwargs)
-       6657         return groupby(self, by=by, axis=axis, level=level, as_index=as_index,
-       6658                        sort=sort, group_keys=group_keys, squeeze=squeeze,
-    -> 6659                        observed=observed, **kwargs)
-       6660 
-       6661     def asfreq(self, freq, method=None, how=None, normalize=False,
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>sex</th>
+      <th>F</th>
+      <th>M</th>
+    </tr>
+    <tr>
+      <th>site_id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>38253.0</td>
+      <td>59979.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50144.0</td>
+      <td>57250.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>27251.0</td>
+      <td>28253.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>39796.0</td>
+      <td>49377.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>21143.0</td>
+      <td>23326.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>26210.0</td>
+      <td>27245.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6522.0</td>
+      <td>6422.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>37274.0</td>
+      <td>47755.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>44128.0</td>
+      <td>48727.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2359.0</td>
+      <td>2776.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>34638.0</td>
+      <td>43106.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>51825.0</td>
+      <td>57420.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>24720.0</td>
+      <td>30354.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>32770.0</td>
+      <td>46469.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>12455.0</td>
+      <td>11037.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>5446.0</td>
+      <td>6310.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>42106.0</td>
+      <td>48082.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>27353.0</td>
+      <td>26433.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>11297.0</td>
+      <td>11514.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>33206.0</td>
+      <td>25988.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>15481.0</td>
+      <td>9815.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>34656.0</td>
+      <td>35363.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3352.0</td>
+      <td>3883.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>22951.0</td>
+      <td>18835.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in groupby(obj, by, **kwds)
-       2150         raise TypeError('invalid type: %s' % type(obj))
-       2151 
-    -> 2152     return klass(obj, by, **kwds)
-       2153 
-       2154 
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in __init__(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, **kwargs)
-        597                                                     sort=sort,
-        598                                                     observed=observed,
-    --> 599                                                     mutated=self.mutated)
-        600 
-        601         self.obj = obj
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in _get_grouper(obj, key, axis, level, sort, observed, mutated, validate)
-       3289                 in_axis, name, level, gpr = False, None, gpr, None
-       3290             else:
-    -> 3291                 raise KeyError(gpr)
-       3292         elif isinstance(gpr, Grouper) and gpr.key is not None:
-       3293             # Add key to exclusions
-
-
-    KeyError: 'plot_id'
 
 
 
 
-
-
-
-The `unstack` function above will display the following output:
-
-```
-sex          F      M
-plot_id              
-1        38253  59979
-2        50144  57250
-3        27251  28253
-4        39796  49377
-<other plots removed for brevity>
-```
 
 Now, create a stacked bar plot with that data where the weights for each sex are stacked by plot.
 
@@ -3055,74 +2869,29 @@ Rather than display it as a table, we can plot the above data by stacking the va
 
 
 
-
-
 ```python
-by_plot_sex = surveys_df.groupby(['plot_id','sex'])
+by_plot_sex = surveys_df.groupby(['site_id','sex'])
 plot_sex_count = by_plot_sex['weight'].sum()
 spc = plot_sex_count.unstack()
-s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by plot and sex")
+s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by site and sex")
 s_plot.set_ylabel("Weight")
-s_plot.set_xlabel("Plot")
-
+s_plot.set_xlabel("Site")
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-25-24fccb5ab92d> in <module>()
-    ----> 1 by_plot_sex = surveys_df.groupby(['plot_id','sex'])
-          2 plot_sex_count = by_plot_sex['weight'].sum()
-          3 spc = plot_sex_count.unstack()
-          4 s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by plot and sex")
-          5 s_plot.set_ylabel("Weight")
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/generic.py in groupby(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, **kwargs)
-       6657         return groupby(self, by=by, axis=axis, level=level, as_index=as_index,
-       6658                        sort=sort, group_keys=group_keys, squeeze=squeeze,
-    -> 6659                        observed=observed, **kwargs)
-       6660 
-       6661     def asfreq(self, freq, method=None, how=None, normalize=False,
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in groupby(obj, by, **kwds)
-       2150         raise TypeError('invalid type: %s' % type(obj))
-       2151 
-    -> 2152     return klass(obj, by, **kwds)
-       2153 
-       2154 
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in __init__(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, **kwargs)
-        597                                                     sort=sort,
-        598                                                     observed=observed,
-    --> 599                                                     mutated=self.mutated)
-        600 
-        601         self.obj = obj
-
-
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/groupby/groupby.py in _get_grouper(obj, key, axis, level, sort, observed, mutated, validate)
-       3289                 in_axis, name, level, gpr = False, None, gpr, None
-       3290             else:
-    -> 3291                 raise KeyError(gpr)
-       3292         elif isinstance(gpr, Grouper) and gpr.key is not None:
-       3293             # Add key to exclusions
-
-
-    KeyError: 'plot_id'
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+Text(0.5,0,'Site')
+</code>
+</pre>
 
 
 
 
-
-
-
-![Stacked Bar Plot](images/stacked_barplot.png)
-
-
+![png](working_with_data_files/working_with_data_52_1.png)
 
 
 
