@@ -72,6 +72,14 @@ mkdocs serve
 
 Go to [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+## Deploying the static site to Github Pages
+
+To update the site at https://MonashDataFluency.github.io/python-workshop-base/, run:
+
+```bash
+deploy.sh
+```
+
 # License
 
 This workshop material is made available under a [Creative Commons Attribution license (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/legalcode)
