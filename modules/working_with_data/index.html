@@ -233,7 +233,23 @@ and they can replicate the same analysis.</p>
 <p>For this lesson, we will be using the Portal Teaching data, a subset of the data
 from Ernst et al
 <a href="http://www.esapubs.org/archive/ecol/E090/118/default.htm">Long-term monitoring and experimental manipulation of a Chihuahuan Desert ecosystem near Portal, Arizona, USA</a></p>
-<p>We will be using this dataset, which is stored under your login/account under the <strong>Files</strong> tab.</p>
+<p>We will be using this dataset, which can be downloaded here: <a href="../data/surveys.csv">surveys.csv</a> ... but don't click to download it in your browser - we are going to use Python !</p>
+<pre><code class="python">import urllib.request
+# You can also get this URL value by right-clicking the `surveys.csv` link above and selecting &quot;Copy Link Address&quot;
+url = 'https://monashdatafluency.github.io/python-workshop-base/modules/data/surveys.csv'
+# url = 'https://goo.gl/9ZxqBg'  # or a shortened version to save typing
+urllib.request.urlretrieve(url, 'surveys.csv')
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+('surveys.csv', <http.client.HTTPMessage at 0x10c564438>)
+</code>
+</pre>
+
+<p>If Jupyter is running locally on your computer, you'll now have a file <code>surveys.csv</code> in the current working directory.
+If you are running Jupyter on a remote server or cloud service (eg Colaboratory or Azure Notebooks), the file will be there instead.</p>
 <p>We are studying the species and weight of animals caught in plots in our study
 area. The dataset is stored as a <code>.csv</code> file: each row holds information for a
 single animal, and the columns represent:</p>
@@ -317,13 +333,13 @@ that use <a href="http://www.numpy.org/">NumPy</a> (which is another Python libr
 <code class="text">
 Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
 Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
 </code>
@@ -2129,7 +2145,7 @@ array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
 
 <!--
 
-wzxhzdk:11
+wzxhzdk:12
 
 
 <pre class="output">
@@ -2279,7 +2295,7 @@ summary stats.</p>
 ## Did you get #3 right?
  **A Snippet of the Output from part 3 of the challenge looks like:**
 
-wzxhzdk:16
+wzxhzdk:17
 
 
 
@@ -2447,7 +2463,7 @@ Name: weight, Length: 35549, dtype: float64
 species_counts.plot(kind='bar');
 </code></pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_49_0.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_52_0.png" /></p>
 <p>Weight by species plot</p>
 <p>We can also look at how many animals were captured in each plot:</p>
 <pre><code class="python">total_count = surveys_df.groupby('site_id')['record_id'].nunique()
@@ -2458,11 +2474,11 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10d0ef128>
+<matplotlib.axes._subplots.AxesSubplot at 0x110e69400>
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_51_1.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_54_1.png" /></p>
 <h2 id="extra-plotting-challenge"><em>Extra Plotting Challenge</em></h2>
 <ol>
 <li>
@@ -2701,7 +2717,7 @@ Text(0.5,0,'Site')
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_58_1.png" /></p></div>
+<p><img alt="png" src="../working_with_data_files/working_with_data_61_1.png" /></p></div>
         
     </div>
 
