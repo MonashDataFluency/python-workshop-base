@@ -55,7 +55,43 @@ For this lesson, we will be using the Portal Teaching data, a subset of the data
 from Ernst et al
 [Long-term monitoring and experimental manipulation of a Chihuahuan Desert ecosystem near Portal, Arizona, USA](http://www.esapubs.org/archive/ecol/E090/118/default.htm)
 
-We will be using this dataset, which is stored under your login/account under the **Files** tab.
+We will be using this dataset, which can be downloaded here: [surveys.csv](data/surveys.csv) ... but don't click to download it in your browser - we are going to use Python !
+
+
+
+
+
+
+```python
+import urllib.request
+# You can also get this URL value by right-clicking the `surveys.csv` link above and selecting "Copy Link Address"
+url = 'https://monashdatafluency.github.io/python-workshop-base/modules/data/surveys.csv'
+# url = 'https://goo.gl/9ZxqBg'  # or a shortened version to save typing
+urllib.request.urlretrieve(url, 'surveys.csv')
+```
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+('surveys.csv', <http.client.HTTPMessage at 0x10c564438>)
+</code>
+</pre>
+
+
+
+
+
+
+
+If Jupyter is running locally on your computer, you'll now have a file `surveys.csv` in the current working directory.
+If you are running Jupyter on a remote server or cloud service (eg Colaboratory or Azure Notebooks), the file will be there instead.
+
+
+
+
 
 We are studying the species and weight of animals caught in plots in our study
 area. The dataset is stored as a `.csv` file: each row holds information for a
@@ -130,13 +166,13 @@ First, lets make sure the Pandas and matplotlib packages are **installed**.
 <code class="text">
 Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
 Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
 </code>
@@ -2617,7 +2653,7 @@ species_counts.plot(kind='bar');
 ```
 
 
-![png](working_with_data_files/working_with_data_49_0.png)
+![png](working_with_data_files/working_with_data_52_0.png)
 
 
 
@@ -2645,14 +2681,14 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10d0ef128>
+<matplotlib.axes._subplots.AxesSubplot at 0x110e69400>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_51_1.png)
+![png](working_with_data_files/working_with_data_54_1.png)
 
 
 
@@ -2954,7 +2990,7 @@ Text(0.5,0,'Site')
 
 
 
-![png](working_with_data_files/working_with_data_58_1.png)
+![png](working_with_data_files/working_with_data_61_1.png)
 
 
 
