@@ -142,7 +142,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/working_with_data.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/tree/master/workshops/docs/modules/notebooks/modules/working_with_data.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -153,8 +153,8 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#data-analysis-in-python">Data Analysis in Python</a></li>
-        <li class="first-level "><a href="#working-with-pandas-dataframes">Working With Pandas DataFrames</a></li>
+        <li class="first-level active"><a href="#data-analysis-with-python">Data Analysis with Python</a></li>
+        <li class="first-level "><a href="#automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</a></li>
             <li class="second-level"><a href="#the-dataset">The Dataset</a></li>
                 
             <li class="second-level"><a href="#about-libraries">About Libraries</a></li>
@@ -169,8 +169,7 @@
                 <li class="third-level"><a href="#useful-ways-to-view-dataframe-objects-in-python">Useful Ways to View DataFrame objects in Python</a></li>
             <li class="second-level"><a href="#challenge-dataframes">Challenge - DataFrames</a></li>
                 
-            <li class="second-level"><a href="#calculating-statistics-from-data-in-a-pandas-dataframe">Calculating Statistics From Data In A Pandas DataFrame</a></li>
-                
+        <li class="first-level "><a href="#calculating-statistics-from-data">Calculating Statistics From Data</a></li>
             <li class="second-level"><a href="#challenge-statistics">Challenge - Statistics</a></li>
                 
         <li class="first-level "><a href="#groups-in-pandas">Groups in Pandas</a></li>
@@ -182,9 +181,8 @@
                 
             <li class="second-level"><a href="#quick-easy-plotting-data-using-pandas">Quick &amp; Easy Plotting Data Using Pandas</a></li>
                 
+                <li class="third-level"><a href="#animals-per-site-plot">Animals per site plot</a></li>
             <li class="second-level"><a href="#extra-plotting-challenge">Extra Plotting Challenge</a></li>
-                
-            <li class="second-level"><a href="#solution-to-extra-challenge-3">Solution to Extra Challenge 3</a></li>
                 
     </ul>
 </div></div>
@@ -200,30 +198,41 @@
 }
 </style>
 
-<h1 id="data-analysis-in-python">Data Analysis in Python</h1>
-<p><em>Estimated teaching time:</em> 30 min</p>
-<p><em>Estimated challenge time:</em> 30 min</p>
-<p><em>Key questions:</em></p>
-<ul>
-<li>"How can I import data in Python ?"</li>
-<li>"What is Pandas ?"</li>
-<li>"Why should I use Pandas to work with data ?"</li>
-</ul>
-<p><em>Learning objectives:</em></p>
-<ul>
-<li>"Navigate the workshop directory and download a dataset."</li>
-<li>"Explain what a library is and what libraries are used for."</li>
-<li>"Describe what the Python Data Analysis Library (Pandas) is."</li>
-<li>"Load the Python Data Analysis Library (Pandas)."</li>
-<li>"Use <code>read_csv</code> to read tabular data into Python."</li>
-<li>"Describe what a DataFrame is in Python."</li>
-<li>"Access and summarize data stored in a DataFrame."</li>
-<li>"Define indexing as it relates to data structures."</li>
-<li>"Perform basic mathematical operations and summary statistics on data in a Pandas DataFrame."</li>
-<li>"Create simple plots."</li>
-</ul>
+<!-- 
+# Data Analysis in Python
+
+*Estimated teaching time:* 30 min
+
+*Estimated challenge time:* 30 min
+
+ -->
+
+<h1 id="data-analysis-with-python">Data Analysis with Python</h1>
 <hr />
-<h1 id="working-with-pandas-dataframes">Working With Pandas DataFrames</h1>
+<!-- 
+## Module Information
+
+*Key questions:*
+
+  - "How can I import data in Python ?"
+  - "What is Pandas ?"
+  - "Why should I use Pandas to work with data ?"
+
+*Learning objectives:*
+
+  - "Navigate the workshop directory and download a dataset."
+  - "Explain what a library is and what libraries are used for."
+  - "Describe what the Python Data Analysis Library (Pandas) is."
+  - "Load the Python Data Analysis Library (Pandas)."
+  - "Use `read_csv` to read tabular data into Python."
+  - "Describe what a DataFrame is in Python."
+  - "Access and summarize data stored in a DataFrame."
+  - "Define indexing as it relates to data structures."
+  - "Perform basic mathematical operations and summary statistics on data in a Pandas DataFrame."
+  - "Create simple plots."
+ -->
+
+<h1 id="automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</h1>
 <p>We can automate the process of performing data manipulations in Python. It's efficient to spend time
 building the code to perform these tasks because once it's built, we can use it
 over and over on different datasets that use a similar format. This makes our
@@ -233,7 +242,7 @@ and they can replicate the same analysis.</p>
 <p>For this lesson, we will be using the Portal Teaching data, a subset of the data
 from Ernst et al
 <a href="http://www.esapubs.org/archive/ecol/E090/118/default.htm">Long-term monitoring and experimental manipulation of a Chihuahuan Desert ecosystem near Portal, Arizona, USA</a></p>
-<p>We will be using this dataset, which can be downloaded here: <a href="../data/surveys.csv">surveys.csv</a> ... but don't click to download it in your browser - we are going to use Python !</p>
+<p>We will be using this dataset, which can be downloaded here: <a href="../data/surveys.csv">surveys.csv</a> ... but <strong>don't click</strong> to download it in your browser - <strong>we are going to use Python !</strong></p>
 <pre><code class="python">import urllib.request
 # You can also get this URL value by right-clicking the `surveys.csv` link above and selecting &quot;Copy Link Address&quot;
 url = 'https://monashdatafluency.github.io/python-workshop-base/modules/data/surveys.csv'
@@ -244,12 +253,12 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x10c564438>)
+('surveys.csv', <http.client.HTTPMessage at 0x10e6942b0>)
 </code>
 </pre>
 
 <p>If Jupyter is running locally on your computer, you'll now have a file <code>surveys.csv</code> in the current working directory.
-If you are running Jupyter on a remote server or cloud service (eg Colaboratory or Azure Notebooks), the file will be there instead.</p>
+You can check by clicking on <code>File</code> tab on the top left of the notebook to see if the file exists. If you are running Jupyter on a remote server or cloud service (eg Colaboratory or Azure Notebooks), the file will be there instead.</p>
 <p>We are studying the species and weight of animals caught in plots in our study
 area. The dataset is stored as a <code>.csv</code> file: each row holds information for a
 single animal, and the columns represent:</p>
@@ -299,7 +308,7 @@ single animal, and the columns represent:</p>
 </tr>
 </tbody>
 </table>
-<p>The first few rows of our first file look like this:</p>
+<p>The first few rows of our file look like this:</p>
 <pre><code>record_id,month,day,year,site_id,species_id,sex,hindfoot_length,weight
 1,7,16,1977,2,NL,M,32,
 2,7,16,1977,3,NL,M,33,
@@ -318,8 +327,10 @@ single animal, and the columns represent:</p>
 tasks on our data. Importing a library is like getting a piece of lab equipment
 out of a storage locker and setting it up on the bench for use in a project.
 Once a library is set up, it can be used or called to perform many tasks.</p>
+<p>If you have noticed in the previous code <code>import urllib.request</code>, we are calling 
+a <strong>request</strong> function from library <strong>urllib</strong> to download our dataset from web.</p>
 <h2 id="pandas-in-python">Pandas in Python</h2>
-<p>One of the best options for working with tabular data in Python is to use the
+<p>The dataset we have, is in table format. One of the best options for working with tabular data in Python is to use the
 <a href="http://pandas.pydata.org/">Python Data Analysis Library</a> (a.k.a. Pandas). The
 Pandas library provides data structures, produces high quality plots with
 <a href="http://matplotlib.org/">matplotlib</a> and integrates nicely with other libraries
@@ -331,16 +342,16 @@ that use <a href="http://www.numpy.org/">NumPy</a> (which is another Python libr
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
-Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
+Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
 
 </code>
 </pre>
@@ -359,7 +370,7 @@ function name tells Python where to find the function. In the example above, we
 have imported Pandas as <code>pd</code>. This means we don't have to type out <code>pandas</code> each
 time we call a Pandas function.</p>
 <h1 id="reading-csv-data-using-pandas">Reading CSV Data Using Pandas</h1>
-<p>We will begin by locating and reading our survey data which are in CSV format. CSV stands for Comma-Separated Values and is a common way store formatted data. Other symbols my also be used, so you might see tab-separated, colon-separated or space separated files. It is quite easy to replace one separator with another, to match your application. The first line in the file often has headers to explain what is in each column. CSV (and other separators) make it easy to share data, and can be imported and exported from many applications, including Microsoft Excel. For mo</p>
+<p>We will begin by locating and reading our survey data which are in CSV format. CSV stands for Comma-Separated Values and is a common way store formatted data. Other symbols my also be used, so you might see tab-separated, colon-separated or space separated files. It is quite easy to replace one separator with another, to match your application. The first line in the file often has headers to explain what is in each column. CSV (and other separators) make it easy to share data, and can be imported and exported from many applications, including Microsoft Excel.</p>
 <p>We can use Pandas' <code>read_csv</code> function to pull the file directly into a
 <a href="http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe">DataFrame</a>.</p>
 <h2 id="so-whats-a-dataframe">So What's a DataFrame?</h2>
@@ -1925,9 +1936,10 @@ object by typing its name into the cell.</p>
 </div>
 
 <p>which prints contents like above.</p>
-<p>You can also select just a few rows, so it is easier to fit on one window, you can see that pandas has neatly formatted the data to fit our screen:</p>
-<pre><code class="python"># The head() function displays the first several lines of a file. It is discussed below.
-surveys_df.head()
+<p>You can also select just a few rows, so it is easier to fit on one window, you can see that pandas has neatly formatted the data to fit our screen.</p>
+<p>Here, we will be using a function called <strong>head</strong>.</p>
+<p>The <code>head()</code> function displays the first several lines of a file. It is discussed below.</p>
+<pre><code class="python">surveys_df.head()
 </code></pre>
 
 <div>
@@ -2059,7 +2071,7 @@ dtype: object
 </code>
 </pre>
 
-<p>All the values in a column have the same type. For example, months have type
+<p>All the values in a single column have the same type. For example, months have type
 <code>int64</code>, which is a kind of integer. Cells in the month column cannot have
 fractional values, but the weight and hindfoot_length columns can, because they
 have type <code>float64</code>. The <code>object</code> type doesn't have a very helpful name, but in
@@ -2092,7 +2104,7 @@ what they return.</p>
 ... try it yourself !
  -->
 
-<h2 id="calculating-statistics-from-data-in-a-pandas-dataframe">Calculating Statistics From Data In A Pandas DataFrame</h2>
+<h1 id="calculating-statistics-from-data">Calculating Statistics From Data</h1>
 <p>We've read our data into Python. Next, let's perform some quick summary
 statistics to learn more about the data that we're working with. We might want
 to know how many animals were collected in each plot, or how many of each
@@ -2160,7 +2172,7 @@ array(['NL', 'DM', 'PF', 'PE', 'DS', 'PP', 'SH', 'OT', 'DO', 'OX', 'SS',
 <h1 id="groups-in-pandas">Groups in Pandas</h1>
 <p>We often want to calculate summary statistics grouped by subsets or attributes
 within fields of our data. For example, we might want to calculate the average
-weight of all individuals per plot.</p>
+weight of all individuals per site.</p>
 <p>We can calculate basic statistics for all records in a single column using the
 syntax below:</p>
 <pre><code class="python">surveys_df['weight'].describe()
@@ -2205,12 +2217,14 @@ grouped_data = surveys_df.groupby('sex')
 </code></pre>
 
 <p>The <strong>pandas function <code>describe</code></strong> will return descriptive stats including: mean,
-median, max, min, std and count for a particular column in the data. Pandas'
+median, max, min, std and count for a particular column in the data. <strong>Note</strong> Pandas'
 <code>describe</code> function will only return summary values for columns containing
 numeric data.</p>
 <pre><code class="python"># Summary statistics for all numeric columns by sex
 grouped_data.describe()
+
 # Provide the mean for each numeric column by sex
+# As above, only the last command shows output below - you can try the others above in new cells
 grouped_data.mean()
 </code></pre>
 
@@ -2280,22 +2294,442 @@ grouped_data.mean()
 summary stats.</p>
 <h2 id="challenge-summary-data">Challenge - Summary Data</h2>
 <ol>
-<li>How many recorded individuals are female <code>F</code> and how many male <code>M</code></li>
-<li>What happens when you group by two columns using the following syntax and
-    then grab mean values:<ul>
+<li>
+<p>How many recorded individuals are female <code>F</code> and how many male <code>M</code></p>
+<ul>
+<li>A) 17348 and 15690</li>
+<li>B) 14894 and 16476</li>
+<li>C) 15303 and 16879</li>
+<li>D) 15690 and 17348</li>
+</ul>
+</li>
+<li>
+<p>What happens when you group by two columns using the following syntax and
+    then grab mean values:</p>
+<ul>
 <li><code>grouped_data2 = surveys_df.groupby(['site_id','sex'])</code></li>
 <li><code>grouped_data2.mean()</code></li>
 </ul>
 </li>
-<li>Summarize weight values for each site in your data. HINT: you can use the
+<li>
+<p>Summarize weight values for each site in your data. HINT: you can use the
   following syntax to only create summary statistics for one column in your data
-  <code>by_site['weight'].describe()</code></li>
+  <code>by_site['weight'].describe()</code></p>
+</li>
 </ol>
+<!-- 
+## Solution- Summary Data
+ -->
+
+<!--
+
+wzxhzdk:17
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+    <tr>
+      <th>sex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>F</th>
+      <td>15690</td>
+      <td>15690</td>
+      <td>15690</td>
+      <td>15690</td>
+      <td>15690</td>
+      <td>15690</td>
+      <td>14894</td>
+      <td>15303</td>
+    </tr>
+    <tr>
+      <th>M</th>
+      <td>17348</td>
+      <td>17348</td>
+      <td>17348</td>
+      <td>17348</td>
+      <td>17348</td>
+      <td>17348</td>
+      <td>16476</td>
+      <td>16879</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+ -->
+
+<!-- 
+### Solution - Challenge 2
+
+The mean value for each combination of site and sex is calculated. Remark that the 
+mean does not make sense for each variable, so you can specify this column-wise: 
+e.g. I want to know the last survey year, median foot-length and mean weight for each site/sex combination:
+ -->
+
+<!--
+
+wzxhzdk:18
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>site_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1903.0</td>
+      <td>51.822911</td>
+      <td>38.176670</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>44.0</td>
+      <td>53.0</td>
+      <td>231.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2074.0</td>
+      <td>52.251688</td>
+      <td>46.503602</td>
+      <td>5.0</td>
+      <td>24.0</td>
+      <td>41.0</td>
+      <td>50.0</td>
+      <td>278.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1710.0</td>
+      <td>32.654386</td>
+      <td>35.641630</td>
+      <td>4.0</td>
+      <td>14.0</td>
+      <td>23.0</td>
+      <td>36.0</td>
+      <td>250.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1866.0</td>
+      <td>47.928189</td>
+      <td>32.886598</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>43.0</td>
+      <td>50.0</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1092.0</td>
+      <td>40.947802</td>
+      <td>34.086616</td>
+      <td>5.0</td>
+      <td>21.0</td>
+      <td>37.0</td>
+      <td>48.0</td>
+      <td>248.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1463.0</td>
+      <td>36.738893</td>
+      <td>30.648310</td>
+      <td>5.0</td>
+      <td>18.0</td>
+      <td>30.0</td>
+      <td>45.0</td>
+      <td>243.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>638.0</td>
+      <td>20.663009</td>
+      <td>21.315325</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>17.0</td>
+      <td>23.0</td>
+      <td>235.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1781.0</td>
+      <td>47.758001</td>
+      <td>33.192194</td>
+      <td>5.0</td>
+      <td>26.0</td>
+      <td>44.0</td>
+      <td>51.0</td>
+      <td>178.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1811.0</td>
+      <td>51.432358</td>
+      <td>33.724726</td>
+      <td>6.0</td>
+      <td>36.0</td>
+      <td>45.0</td>
+      <td>50.0</td>
+      <td>275.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>279.0</td>
+      <td>18.541219</td>
+      <td>20.290806</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>12.0</td>
+      <td>21.0</td>
+      <td>237.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1793.0</td>
+      <td>43.451757</td>
+      <td>28.975514</td>
+      <td>5.0</td>
+      <td>26.0</td>
+      <td>42.0</td>
+      <td>48.0</td>
+      <td>212.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2219.0</td>
+      <td>49.496169</td>
+      <td>41.630035</td>
+      <td>6.0</td>
+      <td>26.0</td>
+      <td>42.0</td>
+      <td>50.0</td>
+      <td>280.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1371.0</td>
+      <td>40.445660</td>
+      <td>34.042767</td>
+      <td>5.0</td>
+      <td>20.5</td>
+      <td>33.0</td>
+      <td>45.0</td>
+      <td>241.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1728.0</td>
+      <td>46.277199</td>
+      <td>27.570389</td>
+      <td>5.0</td>
+      <td>36.0</td>
+      <td>44.0</td>
+      <td>49.0</td>
+      <td>222.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>869.0</td>
+      <td>27.042578</td>
+      <td>35.178142</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>18.0</td>
+      <td>26.0</td>
+      <td>259.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>480.0</td>
+      <td>24.585417</td>
+      <td>17.682334</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>20.0</td>
+      <td>34.0</td>
+      <td>158.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1893.0</td>
+      <td>47.889593</td>
+      <td>35.802399</td>
+      <td>4.0</td>
+      <td>27.0</td>
+      <td>42.0</td>
+      <td>50.0</td>
+      <td>216.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1351.0</td>
+      <td>40.005922</td>
+      <td>38.480856</td>
+      <td>5.0</td>
+      <td>17.5</td>
+      <td>30.0</td>
+      <td>44.0</td>
+      <td>256.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1084.0</td>
+      <td>21.105166</td>
+      <td>13.269840</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>19.0</td>
+      <td>27.0</td>
+      <td>139.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1222.0</td>
+      <td>48.665303</td>
+      <td>50.111539</td>
+      <td>5.0</td>
+      <td>17.0</td>
+      <td>31.0</td>
+      <td>47.0</td>
+      <td>223.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1029.0</td>
+      <td>24.627794</td>
+      <td>21.199819</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>22.0</td>
+      <td>31.0</td>
+      <td>190.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1298.0</td>
+      <td>54.146379</td>
+      <td>38.743967</td>
+      <td>5.0</td>
+      <td>29.0</td>
+      <td>42.0</td>
+      <td>54.0</td>
+      <td>212.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>369.0</td>
+      <td>19.634146</td>
+      <td>18.382678</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>14.0</td>
+      <td>23.0</td>
+      <td>199.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>960.0</td>
+      <td>43.679167</td>
+      <td>45.936588</td>
+      <td>4.0</td>
+      <td>19.0</td>
+      <td>27.5</td>
+      <td>45.0</td>
+      <td>251.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+ -->
+
 <!-- 
 ## Did you get #3 right?
  **A Snippet of the Output from part 3 of the challenge looks like:**
 
-wzxhzdk:17
+wzxhzdk:19
 
 
 
@@ -2463,9 +2897,9 @@ Name: weight, Length: 35549, dtype: float64
 species_counts.plot(kind='bar');
 </code></pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_52_0.png" /></p>
-<p>Weight by species plot</p>
-<p>We can also look at how many animals were captured in each plot:</p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_58_0.png" /></p>
+<h4 id="animals-per-site-plot">Animals per site plot</h4>
+<p>We can also look at how many animals were captured in each site.</p>
 <pre><code class="python">total_count = surveys_df.groupby('site_id')['record_id'].nunique()
 # Let's plot that too
 total_count.plot(kind='bar')
@@ -2474,11 +2908,11 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x110e69400>
+<matplotlib.axes._subplots.AxesSubplot at 0x112f2ac88>
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_54_1.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_60_1.png" /></p>
 <h2 id="extra-plotting-challenge"><em>Extra Plotting Challenge</em></h2>
 <ol>
 <li>
@@ -2488,65 +2922,96 @@ total_count.plot(kind='bar')
 <p>Create a plot of total males versus total females for the entire dataset.</p>
 </li>
 <li>
-<p>Create a stacked bar plot, with weight on the Y axis, and the stacked variable being sex. The plot should show total weight by sex for each plot. Some tips are below to help you solve this challenge:</p>
+<p>Create a stacked bar plot, with weight on the Y axis, and the stacked variable being sex. The plot should show total weight by sex for each plot. Some tips are below to help you solve this challenge:
+<a href="http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot">For more on Pandas plots, visit this link.</a></p>
 </li>
-<li>
-<p><a href="http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot">For more on Pandas plots, visit this link.</a></p>
-</li>
-<li>You can use the code that follows to create a stacked bar plot but the data to stack
- need to be in individual columns.  Here's a simple example with some data where
-  'a', 'b', and 'c' are the groups, and 'one' and 'two' are the subgroups.</li>
 </ol>
-<pre><code>d = {'one' : pd.Series([1., 2., 3.], index=['a', 'b', 'c']),'two' : pd.Series([1., 2., 3., 4.], index=['a', 'b', 'c', 'd'])}
-pd.DataFrame(d)
-</code></pre>
+<!-- 
+### _Solution to Extra Plotting Challenge 1_
+ -->
 
-<p>shows the following data</p>
-<pre><code>      one  two
-   a    1    1
-   b    2    2
-   c    3    3
-   d  NaN    4
-</code></pre>
+<!--
 
-<p>We can plot the above with</p>
-<pre><code># Plot stacked data so columns 'one' and 'two' are stacked
-my_df = pd.DataFrame(d)
-my_df.plot(kind='bar',stacked=True,title=&quot;The title of my graph&quot;)
-</code></pre>
+wzxhzdk:25
 
-<ul>
-<li>You can use the <code>.unstack()</code> method to transform grouped data into columns
-for each plotting.  Try running <code>.unstack()</code> on some DataFrames above and see
- what it yields.</li>
-</ul>
-<p>Start by transforming the grouped data (by plot and sex) into an unstacked layout, then create
- a stacked plot.</p>
-<h2 id="solution-to-extra-challenge-3"><em>Solution to Extra Challenge 3</em></h2>
-<p>First we group data by plot and by sex, and then calculate a total for each plot.</p>
-<pre><code class="python">by_plot_sex = surveys_df.groupby(['site_id','sex'])
-plot_sex_count = by_plot_sex['weight'].sum()
-</code></pre>
 
-<p>This calculates the sums of weights for each sex within each plot as a table</p>
-<pre><code>plot  sex
-plot_id  sex
-1        F      38253
-         M      59979
-2        F      50144
-         M      57250
-3        F      27251
-         M      28253
-4        F      39796
-         M      49377
-&lt;other plots removed for brevity&gt;
-</code></pre>
 
-<p>Below we'll use <code>.unstack()</code> on our grouped data to figure out the total weight that each sex contributed to each plot.</p>
-<pre><code class="python">by_site_sex = surveys_df.groupby(['site_id','sex'])
-site_sex_count = by_site_sex['weight'].sum()
-site_sex_count.unstack()
-</code></pre>
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+<matplotlib.axes._subplots.AxesSubplot at 0x1133daf98>
+</code>
+</pre>
+
+
+
+
+![png](working_with_data_files/working_with_data_63_1.png)
+
+ -->
+
+<!-- 
+### _Solution to Extra Plotting Challenge 2_
+ -->
+
+<!--
+
+wzxhzdk:26
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+<matplotlib.axes._subplots.AxesSubplot at 0x113531390>
+</code>
+</pre>
+
+
+
+
+![png](working_with_data_files/working_with_data_65_1.png)
+
+ -->
+
+<!-- 
+### _Solution to Extra Plotting Challenge 3_
+
+First we group data by plot and by sex, and then calculate a total for each plot.
+
+
+ -->
+
+<!--
+
+wzxhzdk:27
+
+ -->
+
+<!--
+
+This calculates the sums of weights for each sex within each plot as a table
+
+
+wzxhzdk:28
+
+
+Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
+
+
+ -->
+
+<!--
+
+wzxhzdk:29
+
+
+
+
 
 <div>
 <style scoped>
@@ -2700,15 +3165,22 @@ site_sex_count.unstack()
 </table>
 </div>
 
-<p>Now, create a stacked bar plot with that data where the weights for each sex are stacked by plot.</p>
-<p>Rather than display it as a table, we can plot the above data by stacking the values of each sex as follows:</p>
-<pre><code class="python">by_plot_sex = surveys_df.groupby(['site_id','sex'])
-plot_sex_count = by_plot_sex['weight'].sum()
-spc = plot_sex_count.unstack()
-s_plot = spc.plot(kind='bar',stacked=True,title=&quot;Total weight by site and sex&quot;)
-s_plot.set_ylabel(&quot;Weight&quot;)
-s_plot.set_xlabel(&quot;Site&quot;)
-</code></pre>
+
+ -->
+
+<!-- 
+Now, create a stacked bar plot with that data where the weights for each sex are stacked by plot.
+
+Rather than display it as a table, we can plot the above data by stacking the values of each sex as follows:
+ -->
+
+<!--
+
+wzxhzdk:30
+
+
+
+
 
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
@@ -2717,7 +3189,12 @@ Text(0.5,0,'Site')
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_61_1.png" /></p></div>
+
+
+
+![png](working_with_data_files/working_with_data_71_1.png)
+
+ --></div>
         
     </div>
 
