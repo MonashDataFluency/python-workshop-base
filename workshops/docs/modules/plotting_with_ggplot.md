@@ -78,22 +78,22 @@ First, install the `pandas` and `plotnine` packages to ensure they are available
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
-Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.3.0)
-Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.0)
-Requirement already satisfied: six in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.11.0)
-Requirement already satisfied: matplotlib>=2.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (2.2.2)
-Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.9.0)
-Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
-Requirement already satisfied: mizani>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.4.6)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (2.2.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (0.10.0)
-Requirement already satisfied: palettable in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine) (3.1.1)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine) (39.1.0)
+Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: plotnine in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.3.0)
+Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: six in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (1.11.0)
+Requirement already satisfied: mizani>=0.4.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.4.6)
+Requirement already satisfied: scipy>=1.0.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (1.1.0)
+Requirement already satisfied: statsmodels>=0.8.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.9.0)
+Requirement already satisfied: patsy>=0.4.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.5.0)
+Requirement already satisfied: matplotlib>=2.1.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (2.2.2)
+Requirement already satisfied: palettable in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine) (3.1.1)
+Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (1.0.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (2.2.0)
+Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine) (39.2.0)
 
 </code>
 </pre>
@@ -171,7 +171,7 @@ ggplot(survs_df, aes('weight', 'hindfoot_length')) + geom_point()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036562528487)>
+<ggplot: (-9223372036571247160)>
 </code>
 </pre>
 
@@ -206,7 +206,7 @@ ggplot(survs_df, aes('weight', 'hindfoot_length',
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036562528410)>
+<ggplot: (282319031)>
 </code>
 </pre>
 
@@ -239,7 +239,7 @@ ggplot(survs_df, aes('weight', 'hindfoot_length',
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (293054051)>
+<ggplot: (-9223372036563420735)>
 </code>
 </pre>
 
@@ -274,7 +274,7 @@ ggplot(survs_df, aes('year')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (285088162)>
+<ggplot: (-9223372036569539128)>
 </code>
 </pre>
 
@@ -309,7 +309,7 @@ ggplot(survs_df, aes('year', fill = 'species_id')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (293742768)>
+<ggplot: (-9223372036569547674)>
 </code>
 </pre>
 
@@ -361,7 +361,7 @@ ggplot(survs_df, aes('year', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (293934484)>
+<ggplot: (-9223372036564265149)>
 </code>
 </pre>
 
@@ -399,7 +399,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036562175628)>
+<ggplot: (-9223372036564429154)>
 </code>
 </pre>
 
@@ -432,7 +432,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036561916072)>
+<ggplot: (286939880)>
 </code>
 </pre>
 
@@ -470,9 +470,9 @@ ggsave(filename = "plot1.png", \
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/plotnine/ggplot.py:688: UserWarning: Saving 25 x 25 in image.
+/Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/plotnine/ggplot.py:688: UserWarning: Saving 25 x 25 in image.
   from_inches(height, units), units))
-/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/plotnine/ggplot.py:689: UserWarning: Filename: plot1.png
+/Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/plotnine/ggplot.py:689: UserWarning: Filename: plot1.png
   warn('Filename: {}'.format(filename))
 
 </code>
@@ -522,7 +522,7 @@ ggplot(survs_df, aes('year_fact', 'weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036561805596)>
+<ggplot: (-9223372036563910070)>
 </code>
 </pre>
 
@@ -568,7 +568,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (285403312)>
+<ggplot: (290865756)>
 </code>
 </pre>
 
@@ -603,7 +603,7 @@ ggplot(survs_df, aes('year_fact', 'weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (293087997)>
+<ggplot: (283247543)>
 </code>
 </pre>
 
@@ -645,7 +645,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036560132036)>
+<ggplot: (-9223372036562193078)>
 </code>
 </pre>
 
@@ -681,7 +681,7 @@ ggplot(survs_df, aes('year_fact', 'weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036559953983)>
+<ggplot: (-9223372036562172135)>
 </code>
 </pre>
 
@@ -748,7 +748,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (294529558)>
+<ggplot: (-9223372036562506194)>
 </code>
 </pre>
 
@@ -784,7 +784,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (293852189)>
+<ggplot: (-9223372036568446646)>
 </code>
 </pre>
 
@@ -836,7 +836,7 @@ ggplot(survs_df, aes("year_fact", "weight_log")) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036560860451)>
+<ggplot: (291787261)>
 </code>
 </pre>
 
@@ -876,7 +876,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
 
     KeyError                                  Traceback (most recent call last)
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
        3062             try:
     -> 3063                 return self._engine.get_loc(key)
        3064             except KeyError:
@@ -909,7 +909,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
           4 survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False]
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
        2683             return self._getitem_multilevel(key)
        2684         else:
     -> 2685             return self._getitem_column(key)
@@ -917,7 +917,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
        2687     def _getitem_column(self, key):
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
        2690         # get column
        2691         if self.columns.is_unique:
     -> 2692             return self._get_item_cache(key)
@@ -925,7 +925,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
        2694         # duplicate columns & possible reduce dimensionality
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
        2484         res = cache.get(item)
        2485         if res is None:
     -> 2486             values = self._data.get(item)
@@ -933,7 +933,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
        2488             cache[item] = res
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
        4113 
        4114             if not isna(item):
     -> 4115                 loc = self.items.get_loc(item)
@@ -941,7 +941,7 @@ survs_df_filt = survs_df[survs_df['species_id'].isin(species_to_remove) == False
        4117                 indexer = np.arange(len(self.items))[isna(self.items)]
 
 
-    ~/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
        3063                 return self._engine.get_loc(key)
        3064             except KeyError:
     -> 3065                 return self._engine.get_loc(self._maybe_cast_indexer(key))
