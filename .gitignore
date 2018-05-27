@@ -3,6 +3,9 @@
 # mkdocs generated site
 /workshops/site
 
+# Some side-effect outputs from ./build.sh we don't want
+/workshops/docs/modules/notebooks/surveys.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

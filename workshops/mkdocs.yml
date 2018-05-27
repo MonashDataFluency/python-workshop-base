@@ -1,8 +1,8 @@
 ---
-site_name: Introduction to Python Workshop
-repo_url: https://github.com/MonashDataFluency/python-workshop-base
-edit_uri: https://github.com/MonashDataFluency/python-workshop-base/tree/master/workshops/docs/modules/notebooks
-site_description: Monash Data Fluency Python Workshops
+site_name: 'Introduction to Python Workshop'
+repo_url: 'https://github.com/MonashDataFluency/python-workshop-base'
+edit_uri: 'blob/master/README.md#modifying-and-building'
+site_description: 'Monash Data Fluency Python Workshops'
 theme: cinder
 # theme: windmill
 # theme: cluster
