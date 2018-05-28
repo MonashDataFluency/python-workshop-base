@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,31 +13,37 @@
         
     <url>
      <loc>/modules/intro/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/modules/working_with_data/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/modules/missing_values/</loc>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/modules/indexing/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/modules/loops/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/modules/plotting_with_ggplot/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -46,7 +52,7 @@
     
     <url>
      <loc>/halfday/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -54,7 +60,7 @@
     
     <url>
      <loc>/fullday/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

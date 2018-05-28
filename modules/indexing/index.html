@@ -90,6 +90,12 @@
 
                         
                             
+<li >
+    <a href="../missing_values/">Missing values</a>
+</li>
+
+                        
+                            
 <li class="active">
     <a href="./">Indexing</a>
 </li>
@@ -132,7 +138,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../working_with_data/">
+                        <a rel="next" href="../missing_values/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -166,6 +172,8 @@
                 
             <li class="second-level"><a href="#challenge-extracting-data">Challenge - Extracting data</a></li>
                 
+            <li class="second-level"><a href="#solutions-extracting-data">Solutions - Extracting data</a></li>
+                
             <li class="second-level"><a href="#slicing-subsets-of-rows-in-python">Slicing Subsets of Rows in Python</a></li>
                 
             <li class="second-level"><a href="#slicing-subsets-of-rows-and-columns-in-python">Slicing Subsets of Rows and Columns in Python</a></li>
@@ -177,11 +185,21 @@
                 <li class="third-level"><a href="#python-syntax-cheat-sheet">Python Syntax Cheat Sheet</a></li>
             <li class="second-level"><a href="#challenge-queries">Challenge - Queries</a></li>
                 
-        <li class="first-level "><a href="#using-masks-to-identify-a-specific-condition">Using masks to identify a specific condition</a></li>
-            <li class="second-level"><a href="#missing-values">Missing Values</a></li>
+            <li class="second-level"><a href="#extra-challenges">Extra Challenges</a></li>
                 
-                <li class="third-level"><a href="#where-are-the-nans">Where Are the NaN's?</a></li>
-                <li class="third-level"><a href="#extra-information">Extra Information</a></li>
+        <li class="first-level "><a href="#using-masks-to-identify-a-specific-condition">Using masks to identify a specific condition</a></li>
+            <li class="second-level"><a href="#finding-missing-values">Finding Missing Values</a></li>
+                
+            <li class="second-level"><a href="#how-to-select-rows-with-missing-data">How to select rows with missing data</a></li>
+                
+            <li class="second-level"><a href="#explaination">Explaination</a></li>
+                
+            <li class="second-level"><a href="#handling-missing-values">Handling missing values</a></li>
+                
+            <li class="second-level"><a href="#where-are-the-nans">Where Are the NaN's?</a></li>
+                
+            <li class="second-level"><a href="#extra-information">Extra Information</a></li>
+                
             <li class="second-level"><a href="#writing-out-data-to-csv">Writing Out Data to CSV</a></li>
                 
             <li class="second-level"><a href="#recap">Recap</a></li>
@@ -204,27 +222,40 @@
 }
 </style>
 
+<!-- 
+# Indexing, Slicing and Subsetting
+
+*Estimated teaching time:* 30 min
+
+*Estimated challenge time:* 30 min
+
+*Key questions:*
+
+  - "How can I access specific data within my data set?"
+  - "How  can Python and Pandas help me to analyse my data?"
+
+*Learning objectives:*
+
+  - Describe what 0-based indexing is.
+  - Manipulate and extract data using column headings and index locations.
+  - Employ slicing to select sets of data from a DataFrame.
+  - Employ label and integer-based indexing to select ranges of data in a dataframe.
+  - Reassign values within subsets of a DataFrame.
+  - Create a copy of a DataFrame.
+  - "Query /select a subset of data using a set of criteria using the following operators: =, !=, >, <, >=, <=."
+  - Locate subsets of data using masks.
+  - Describe BOOLEAN objects in Python and manipulate data using BOOLEANs.
+
+---
+
+In this lesson, we will explore **ways to access different parts of the data** in a Pandas DataFrame using:
+
+  - Indexing,
+  - Slicing, and
+  - Subsetting
+ -->
+
 <h1 id="indexing-slicing-and-subsetting">Indexing, Slicing and Subsetting</h1>
-<p><em>Estimated teaching time:</em> 30 min</p>
-<p><em>Estimated challenge time:</em> 30 min</p>
-<p><em>Key questions:</em></p>
-<ul>
-<li>"How can I access specific data within my data set?"</li>
-<li>"How  can Python and Pandas help me to analyse my data?"</li>
-</ul>
-<p><em>Learning objectives:</em></p>
-<ul>
-<li>Describe what 0-based indexing is.</li>
-<li>Manipulate and extract data using column headings and index locations.</li>
-<li>Employ slicing to select sets of data from a DataFrame.</li>
-<li>Employ label and integer-based indexing to select ranges of data in a dataframe.</li>
-<li>Reassign values within subsets of a DataFrame.</li>
-<li>Create a copy of a DataFrame.</li>
-<li>"Query /select a subset of data using a set of criteria using the following operators: =, !=, &gt;, &lt;, &gt;=, &lt;=."</li>
-<li>Locate subsets of data using masks.</li>
-<li>Describe BOOLEAN objects in Python and manipulate data using BOOLEANs.</li>
-</ul>
-<hr />
 <p>In this lesson, we will explore <strong>ways to access different parts of the data</strong> in a Pandas DataFrame using:</p>
 <ul>
 <li>Indexing,</li>
@@ -232,17 +263,22 @@
 <li>Subsetting</li>
 </ul>
 <h2 id="ensure-the-pandas-package-is-installed">Ensure the Pandas package is installed</h2>
-<pre><code class="python">!pip install pandas
+<pre><code class="python">!pip install pandas matplotlib
 </code></pre>
 
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
 Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
 Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: six>=1.5 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas) (1.11.0)
+Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
 
 </code>
 </pre>
@@ -266,8 +302,21 @@ we can select all data from a column named <code>species_id</code> from the <cod
 DataFrame by name. There are two ways to do this:</p>
 <pre><code class="python"># Method 1: select a 'subset' of the data using the column name
 surveys_df['species_id'].head()
+</code></pre>
 
-# Method 2: use the column name as an 'attribute'; gives the same output
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+0    NL
+1    NL
+2    DM
+3    DM
+4    DM
+Name: species_id, dtype: object
+</code>
+</pre>
+
+<pre><code class="python"># Method 2: use the column name as an 'attribute'; gives the same output
 surveys_df.species_id.head()
 </code></pre>
 
@@ -349,81 +398,104 @@ surveys_df[['species_id', 'site_id']].head()
 </table>
 </div>
 
-<pre><code class="python"># What happens if you ask for a column that doesn't exist?
+<pre><code class="python">
+# What happens if you ask for a column that doesn't exist?
 surveys_df['speciess']
+
+
 </code></pre>
 
-<p>Outputs:</p>
 <pre><code>---------------------------------------------------------------------------
+
 KeyError                                  Traceback (most recent call last)
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-   2521             try:
--&gt; 2522                 return self._engine.get_loc(key)
-   2523             except KeyError:
+
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3062             try:
+-&gt; 3063                 return self._engine.get_loc(key)
+   3064             except KeyError:
+
 
 pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
+
 pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
-pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
 
 pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
 
 KeyError: 'speciess'
+
 
 During handling of the above exception, another exception occurred:
 
+
 KeyError                                  Traceback (most recent call last)
-&lt;ipython-input-15-211eec9ce8b9&gt; in &lt;module&gt;()
-      1 # What happens if you ask for a column that doesn't exist?
-----&gt; 2 surveys_df['speciess']
 
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
-   2137             return self._getitem_multilevel(key)
-   2138         else:
--&gt; 2139             return self._getitem_column(key)
-   2140 
-   2141     def _getitem_column(self, key):
+&lt;ipython-input-7-8c68e7647ac0&gt; in &lt;module&gt;()
+      1 
+      2 # What happens if you ask for a column that doesn't exist?
+----&gt; 3 surveys_df['speciess']
 
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
-   2144         # get column
-   2145         if self.columns.is_unique:
--&gt; 2146             return self._get_item_cache(key)
-   2147 
-   2148         # duplicate columns &amp; possible reduce dimensionality
 
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
-   1840         res = cache.get(item)
-   1841         if res is None:
--&gt; 1842             values = self._data.get(item)
-   1843             res = self._box_item_values(item, values)
-   1844             cache[item] = res
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
+   2683             return self._getitem_multilevel(key)
+   2684         else:
+-&gt; 2685             return self._getitem_column(key)
+   2686 
+   2687     def _getitem_column(self, key):
 
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
-   3836 
-   3837             if not isna(item):
--&gt; 3838                 loc = self.items.get_loc(item)
-   3839             else:
-   3840                 indexer = np.arange(len(self.items))[isna(self.items)]
 
-~/.virtualenvs/jupyter/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-   2522                 return self._engine.get_loc(key)
-   2523             except KeyError:
--&gt; 2524                 return self._engine.get_loc(self._maybe_cast_indexer(key))
-   2525 
-   2526         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
+   2690         # get column
+   2691         if self.columns.is_unique:
+-&gt; 2692             return self._get_item_cache(key)
+   2693 
+   2694         # duplicate columns &amp; possible reduce dimensionality
+
+
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
+   2484         res = cache.get(item)
+   2485         if res is None:
+-&gt; 2486             values = self._data.get(item)
+   2487             res = self._box_item_values(item, values)
+   2488             cache[item] = res
+
+
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
+   4113 
+   4114             if not isna(item):
+-&gt; 4115                 loc = self.items.get_loc(item)
+   4116             else:
+   4117                 indexer = np.arange(len(self.items))[isna(self.items)]
+
+
+~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3063                 return self._engine.get_loc(key)
+   3064             except KeyError:
+-&gt; 3065                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   3066 
+   3067         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+
 
 pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
+
 pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
-pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
 
 pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
 
 KeyError: 'speciess'
 </code></pre>
-
+<p>Python tells us what type of error it is in the traceback, at the bottom it says <code>KeyError: 'speciess'</code> which means that <code>speciess</code> is not a column name (or Key in the related python data type dictionary).</p>
 <pre><code class="python"># What happens when you flip the order?
 surveys_df[['site_id', 'species_id']].head()
 </code></pre>
@@ -480,7 +552,6 @@ surveys_df[['site_id', 'species_id']].head()
 </table>
 </div>
 
-<p>Python tells us what type of error it is in the traceback, at the bottom it says <code>KeyError: 'speciess'</code> which means that <code>speciess</code> is not a column name (or Key in the related python data type dictionary).</p>
 <h2 id="extracting-range-based-subsets-slicing">Extracting Range based Subsets: Slicing</h2>
 <p><strong>REMINDER</strong>: Python Uses 0-based Indexing</p>
 <p>Let's remind ourselves that Python uses 0-based
@@ -508,12 +579,78 @@ a = [1, 2, 3, 4, 5]
 <p>What about <strong>a[len(a)]</strong> ?</p>
 </li>
 </ol>
+<h2 id="solutions-extracting-data">Solutions - Extracting data</h2>
+<!--
+
+wzxhzdk:9
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+1
+</code>
+</pre>
+
+
+ -->
+
+<!--
+
+wzxhzdk:10
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    <ipython-input-11-adbe9ec9cb73> in <module>()
+          1 # Solution #2
+    ---->
+
+<p>2 a[5]</p>
+<pre><code>IndexError: list index out of range
+</code></pre>
+<p>--&gt;</p>
+<!-- 
+#### Solution #2
+
+In above example, the error says `list index out of range`. This means we don't have index 5 in our list. The maximum index for `a` is `4`, as indexing starts at `0`.
+ -->
+
+<!--
+
+wzxhzdk:11
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    <ipython-input-12-5abafb3da951> in <module>()
+          1 # Solution #3
+    ---->
+
+<p>2 a[len(a)]</p>
+<pre><code>IndexError: list index out of range
+</code></pre>
+<p>--&gt;</p>
+<!-- 
+#### Solution - # 4 - Extracting data 
+This also gives an error, because len(a) is `5` which is not the maximum index
+ -->
+
 <h2 id="slicing-subsets-of-rows-in-python">Slicing Subsets of Rows in Python</h2>
 <p>Slicing using the <code>[]</code> operator selects a set of rows and/or columns from a
 DataFrame. To slice out a set of rows, you use the following syntax:
 <code>data[start:stop]</code>. When slicing in pandas the start bound is included in the
 output. The stop bound is one step BEYOND the row you want to select. So if you
-want to select rows 0, 1 and 2 your code would look like this:</p>
+want to select rows 0, 1 and 2 your code would look like this with our <code>surveys data</code>:</p>
 <pre><code class="python"># Select rows 0, 1, 2 (row 3 is not selected)
 surveys_df[0:3]
 </code></pre>
@@ -590,10 +727,105 @@ surveys_df[0:3]
 
 <p>The stop bound in Python is different from what you might be used to in
 languages like Matlab and R.</p>
-<pre><code class="python"># Select the first 5 rows (rows 0, 1, 2, 3, 4)
-surveys_df[:5]
+<p>Now lets select the <code>first 5 rows (rows 0, 1, 2, 3, 4)</code>.</p>
+<pre><code class="python">surveys_df[:5]
+</code></pre>
 
-# Select the last element in the list
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>33.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python"># Select the last element in the list
 # (the slice starts at the last element, and ends at the end of the list)
 surveys_df[-1:]
 </code></pre>
@@ -661,8 +893,8 @@ using either label or integer-based indexing.</p>
 <p>To select a subset of rows <strong>and</strong> columns from our DataFrame, we can use the
 <code>iloc</code> method. For example, we can select month, day and year (columns 2, 3
 and 4 if we start counting at 1), like this:</p>
-<pre><code class="python"># iloc[row slicing, column slicing]
-surveys_df.iloc[0:3, 1:4]
+<p><code>iloc[row slicing, column slicing]</code></p>
+<pre><code class="python">surveys_df.iloc[0:3, 1:4]
 </code></pre>
 
 <div>
@@ -711,24 +943,87 @@ surveys_df.iloc[0:3, 1:4]
 </table>
 </div>
 
-<p>which gives the <strong>output</strong></p>
-<pre><code>   month  day  year
-0      7   16  1977
-1      7   16  1977
-2      7   16  1977
-</code></pre>
-
 <p>Notice that we asked for a slice from 0:3. This yielded 3 rows of data. When you
 ask for 0:3, you are actually telling Python to start at index 0 and select rows
 0, 1, 2 <strong>up to but not including 3</strong>.</p>
 <p>Let's explore some other ways to index and select subsets of data:</p>
 <pre><code class="python"># Select all columns for rows of index values 0 and 10
 surveys_df.loc[[0, 10], :]
+</code></pre>
 
-# What does this do?
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>5</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>53.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="python"># What does this do?
 surveys_df.loc[0, ['species_id', 'site_id', 'weight']]
+</code></pre>
 
-# What happens when you type the code below?
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+species_id     NL
+site_id         2
+weight        NaN
+Name: 0, dtype: object
+</code>
+</pre>
+
+<pre><code class="python"># What happens when you type the code below?
 surveys_df.loc[[0, 10, 35549], :]
 </code></pre>
 
@@ -828,7 +1123,7 @@ column location within the DataFrame and <code>iloc</code> indexing:</p>
 dat.iloc[row, column]
 </code></pre>
 
-<p>In this <code>iloc</code> example,</p>
+<p>In following iloc example:</p>
 <pre><code class="python">surveys_df.iloc[2, 6]
 </code></pre>
 
@@ -860,9 +1155,997 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.</p>
 <p><code>surveys_df.iloc[0:4, 1:4]</code></p>
 </li>
 </ol>
+<!-- 
+## Solution - Range
+ -->
+
+<!--
+
+wzxhzdk:22
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+ -->
+
+<!--
+
+wzxhzdk:23
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>33.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+ -->
+
+<!--
+
+wzxhzdk:24
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>33.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>PF</td>
+      <td>M</td>
+      <td>14.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>PE</td>
+      <td>F</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>6</td>
+      <td>PF</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>5</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>53.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>38.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>8</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>6</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>48.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>22.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>PF</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>48.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>NL</td>
+      <td>F</td>
+      <td>31.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>13</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>13</td>
+      <td>SH</td>
+      <td>M</td>
+      <td>21.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>31.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>38.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>10</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>52.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35518</th>
+      <td>35519</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>49.0</td>
+    </tr>
+    <tr>
+      <th>35519</th>
+      <td>35520</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>SF</td>
+      <td>NaN</td>
+      <td>24.0</td>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>35520</th>
+      <td>35521</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>35521</th>
+      <td>35522</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>35.0</td>
+      <td>45.0</td>
+    </tr>
+    <tr>
+      <th>35522</th>
+      <td>35523</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>44.0</td>
+    </tr>
+    <tr>
+      <th>35523</th>
+      <td>35524</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>25.0</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>35524</th>
+      <td>35525</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>OL</td>
+      <td>M</td>
+      <td>21.0</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>35525</th>
+      <td>35526</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>8</td>
+      <td>OT</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>35526</th>
+      <td>35527</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>DO</td>
+      <td>F</td>
+      <td>33.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>35527</th>
+      <td>35528</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35528</th>
+      <td>35529</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>25.0</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>35529</th>
+      <td>35530</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>OT</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35530</th>
+      <td>35531</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>27.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35531</th>
+      <td>35532</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>35532</th>
+      <td>35533</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>35533</th>
+      <td>35534</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>56.0</td>
+    </tr>
+    <tr>
+      <th>35534</th>
+      <td>35535</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>53.0</td>
+    </tr>
+    <tr>
+      <th>35535</th>
+      <td>35536</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>35.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>35536</th>
+      <td>35537</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>35537</th>
+      <td>35538</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>26.0</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>35538</th>
+      <td>35539</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>SF</td>
+      <td>M</td>
+      <td>26.0</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <th>35539</th>
+      <td>35540</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>26.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>35540</th>
+      <td>35541</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>24.0</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>35541</th>
+      <td>35542</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>26.0</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>35542</th>
+      <td>35543</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>27.0</td>
+      <td>34.0</td>
+    </tr>
+    <tr>
+      <th>35543</th>
+      <td>35544</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35544</th>
+      <td>35545</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35545</th>
+      <td>35546</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35546</th>
+      <td>35547</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>RM</td>
+      <td>F</td>
+      <td>15.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>35547</th>
+      <td>35548</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>7</td>
+      <td>DO</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>51.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>35548 rows × 9 columns</p>
+</div>
+
+
+ -->
+
+<pre><code class="python"># Solution - Range - #2
+surveys_df.iloc[0:4, 1:4]
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 <h2 id="subsetting-data-using-criteria">Subsetting Data using Criteria</h2>
 <p>We can also select a subset of our data using criteria. For example, we can
-select all rows that have a year value of 2002:</p>
+select all rows that <code>have a year value of 2002</code>:</p>
 <pre><code class="python">surveys_df[surveys_df.year == 2002].head()
 </code></pre>
 
@@ -960,24 +2243,7 @@ select all rows that have a year value of 2002:</p>
 </table>
 </div>
 
-<p>Which produces the following output:</p>
-<pre><code>record_id  month  day  year  plot_id species_id  sex  hindfoot_length  weight
-33320      33321      1   12  2002        1         DM    M     38      44
-33321      33322      1   12  2002        1         DO    M     37      58
-33322      33323      1   12  2002        1         PB    M     28      45
-33323      33324      1   12  2002        1         AB  NaN    NaN     NaN
-33324      33325      1   12  2002        1         DO    M     35      29
-...
-35544      35545     12   31  2002       15         AH  NaN    NaN     NaN
-35545      35546     12   31  2002       15         AH  NaN    NaN     NaN
-35546      35547     12   31  2002       10         RM    F     15      14
-35547      35548     12   31  2002        7         DO    M     36      51
-35548      35549     12   31  2002        5        NaN  NaN    NaN     NaN
-
-[2229 rows x 9 columns]
-</code></pre>
-
-<p>Or we can select all rows that do not contain the year 2002:</p>
+<p>Or we can select all rows that <code>do not contain the year 2002</code>:</p>
 <pre><code class="python">surveys_df[surveys_df.year != 2002]
 </code></pre>
 
@@ -2537,19 +3803,184 @@ Experiment with selecting various subsets of the "surveys" data.</p>
    many rows did you end up with? What did your neighbor get?</p>
 </li>
 <li>
-<p><strong>(Extra)</strong> You can use the <code>isin</code> command in Python to query a DataFrame based upon a
-   list of values as follows:</p>
+<p><strong>(Extra)</strong> Use the <code>isin</code> function to find all plots that contain <code>PB</code> and <code>PL</code> species
+in the "surveys" DataFrame. How many records contain these values?</p>
 </li>
 </ol>
+<p>You can use the <code>isin</code> command in Python to query a DataFrame based upon a
+   list of values as follows:</p>
 <pre><code class="python">surveys_df[surveys_df['species_id'].isin([listGoesHere])]
 </code></pre>
 
-<p>Use the <code>isin</code> function to find all plots that contain particular species
-in the "surveys" DataFrame. How many records contain these values?</p>
+<!-- 
+## Solution - Queries 
+ -->
+
+<!--
+
+wzxhzdk:30
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>29082</th>
+      <td>29083</td>
+      <td>1</td>
+      <td>16</td>
+      <td>1999</td>
+      <td>21</td>
+      <td>RM</td>
+      <td>M</td>
+      <td>16.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>29196</th>
+      <td>29197</td>
+      <td>2</td>
+      <td>20</td>
+      <td>1999</td>
+      <td>18</td>
+      <td>RM</td>
+      <td>M</td>
+      <td>18.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>29421</th>
+      <td>29422</td>
+      <td>3</td>
+      <td>15</td>
+      <td>1999</td>
+      <td>16</td>
+      <td>RM</td>
+      <td>M</td>
+      <td>15.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>29903</th>
+      <td>29904</td>
+      <td>10</td>
+      <td>10</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>20.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>29905</th>
+      <td>29906</td>
+      <td>10</td>
+      <td>10</td>
+      <td>1999</td>
+      <td>4</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>21.0</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+ -->
+
+<!--
+
+wzxhzdk:31
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+5
+</code>
+</pre>
+
+
+ -->
+
+<!--
+
+wzxhzdk:32
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+array([ 1, 10,  6, 24,  2, 23, 19, 12, 20, 22,  3,  9, 14, 13, 21,  7, 11,
+       15,  4, 16, 17,  8, 18,  5])
+</code>
+</pre>
+
+
+ -->
+
+<!--
+
+wzxhzdk:33
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+(2927, 9)
+</code>
+</pre>
+
+
+ -->
+
+<h2 id="extra-challenges">Extra Challenges</h2>
 <ol>
 <li>
-<p><strong>(Extra)</strong> Experiment with other queries. Create a query that finds all rows with a
-   weight value &gt; or equal to 0.</p>
+<p><strong>(Extra)</strong> Create a query that finds all rows with a
+   weight value greater than (<code>&gt;</code>) or equal to 0.</p>
 </li>
 <li>
 <p><strong>(Extra)</strong> The <code>~</code> symbol in Python can be used to return the OPPOSITE of the
@@ -2558,6 +3989,802 @@ in the "surveys" DataFrame. How many records contain these values?</p>
    the "surveys" data.</p>
 </li>
 </ol>
+<!--
+
+wzxhzdk:34
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+32283
+</code>
+</pre>
+
+
+ -->
+
+<!--
+
+wzxhzdk:35
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>8</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>PF</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>34</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>17</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>57</td>
+      <td>7</td>
+      <td>18</td>
+      <td>1977</td>
+      <td>22</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>77</td>
+      <td>8</td>
+      <td>19</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>SS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>93</td>
+      <td>8</td>
+      <td>20</td>
+      <td>1977</td>
+      <td>18</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>106</td>
+      <td>8</td>
+      <td>20</td>
+      <td>1977</td>
+      <td>12</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>107</td>
+      <td>8</td>
+      <td>20</td>
+      <td>1977</td>
+      <td>18</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>110</td>
+      <td>8</td>
+      <td>20</td>
+      <td>1977</td>
+      <td>10</td>
+      <td>DS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>121</td>
+      <td>8</td>
+      <td>21</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>155</td>
+      <td>8</td>
+      <td>21</td>
+      <td>1977</td>
+      <td>20</td>
+      <td>DS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>171</td>
+      <td>9</td>
+      <td>11</td>
+      <td>1977</td>
+      <td>12</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>193</td>
+      <td>9</td>
+      <td>12</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>PE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>194</td>
+      <td>9</td>
+      <td>12</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>212</td>
+      <td>9</td>
+      <td>12</td>
+      <td>1977</td>
+      <td>16</td>
+      <td>PF</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>214</td>
+      <td>9</td>
+      <td>12</td>
+      <td>1977</td>
+      <td>17</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>221</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>224</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>225</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>227</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>230</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>231</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>241</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>266</td>
+      <td>10</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>272</td>
+      <td>10</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>18</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>277</td>
+      <td>10</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>6</td>
+      <td>OL</td>
+      <td>NaN</td>
+      <td>20.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>281</td>
+      <td>10</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>20</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>282</td>
+      <td>10</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>22</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>296</td>
+      <td>10</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>17</td>
+      <td>OT</td>
+      <td>NaN</td>
+      <td>18.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>297</td>
+      <td>10</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>NL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>34748</th>
+      <td>34749</td>
+      <td>9</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>6</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34754</th>
+      <td>34755</td>
+      <td>9</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34755</th>
+      <td>34756</td>
+      <td>9</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34756</th>
+      <td>34757</td>
+      <td>9</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34783</th>
+      <td>34784</td>
+      <td>10</td>
+      <td>5</td>
+      <td>2002</td>
+      <td>17</td>
+      <td>SS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34789</th>
+      <td>34790</td>
+      <td>10</td>
+      <td>5</td>
+      <td>2002</td>
+      <td>17</td>
+      <td>PB</td>
+      <td>NaN</td>
+      <td>26.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34852</th>
+      <td>34853</td>
+      <td>10</td>
+      <td>5</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>PB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34929</th>
+      <td>34930</td>
+      <td>10</td>
+      <td>6</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34969</th>
+      <td>34970</td>
+      <td>10</td>
+      <td>6</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35016</th>
+      <td>35017</td>
+      <td>11</td>
+      <td>9</td>
+      <td>2002</td>
+      <td>18</td>
+      <td>PB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35026</th>
+      <td>35027</td>
+      <td>11</td>
+      <td>9</td>
+      <td>2002</td>
+      <td>12</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35137</th>
+      <td>35138</td>
+      <td>11</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>SS</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35168</th>
+      <td>35169</td>
+      <td>11</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35187</th>
+      <td>35188</td>
+      <td>11</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35277</th>
+      <td>35278</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35322</th>
+      <td>35323</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35370</th>
+      <td>35371</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35384</th>
+      <td>35385</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35457</th>
+      <td>35458</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35477</th>
+      <td>35478</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>24</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35495</th>
+      <td>35496</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>4</td>
+      <td>PB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35510</th>
+      <td>35511</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>DX</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35511</th>
+      <td>35512</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35512</th>
+      <td>35513</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35519</th>
+      <td>35520</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>SF</td>
+      <td>NaN</td>
+      <td>24.0</td>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>35527</th>
+      <td>35528</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35543</th>
+      <td>35544</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35544</th>
+      <td>35545</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35545</th>
+      <td>35546</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35548</th>
+      <td>35549</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2511 rows × 9 columns</p>
+</div>
+
+
+ -->
+
 <h1 id="using-masks-to-identify-a-specific-condition">Using masks to identify a specific condition</h1>
 <p>A <strong>mask</strong> can be useful to locate where a particular subset of values exist or
 don't exist - for example,  NaN, or "Not a Number" values. To understand masks,
@@ -2565,11 +4792,20 @@ we also need to understand <code>BOOLEAN</code> objects in Python.</p>
 <p>Boolean values include <code>True</code> or <code>False</code>. For example,</p>
 <pre><code class="python"># Set x to 5
 x = 5
+</code></pre>
 
-# What does the code below return?
+<pre><code class="python"># What does the code below return?
 x &gt; 5
+</code></pre>
 
-# How about this?
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+False
+</code>
+</pre>
+
+<pre><code class="python"># How about this?
 x == 5
 </code></pre>
 
@@ -2580,8 +4816,8 @@ True
 </code>
 </pre>
 
-<h2 id="missing-values">Missing Values</h2>
-<p>Let's try this out. Let's identify all locations in the survey data that have
+<h3 id="finding-missing-values">Finding Missing Values</h3>
+<p>Let's identify all locations in the survey data that have
 null (missing or NaN) data values. We can use the <code>isnull</code> method to do this.
 The <code>isnull</code> method will compare each cell with a null value. If an element
 has a null value, it will be assigned a value of  <code>True</code> in the output object.</p>
@@ -2682,17 +4918,7 @@ has a null value, it will be assigned a value of  <code>True</code> in the outpu
 </table>
 </div>
 
-<p>A snippet of the output is below:</p>
-<pre><code>record_id  month    day   year plot_id species_id    sex  hindfoot_length weight
-0         False  False  False  False   False      False  False   False      True
-1         False  False  False  False   False      False  False   False      True
-2         False  False  False  False   False      False  False   False      True
-3         False  False  False  False   False      False  False   False      True
-4         False  False  False  False   False      False  False   False      True
-
-[35549 rows x 9 columns]
-</code></pre>
-
+<h3 id="how-to-select-rows-with-missing-data">How to select rows with missing data</h3>
 <p>To select the rows where there are null values, we can use
 the mask as an index to subset our data as follows:</p>
 <pre><code class="python"># To select just the rows with NaN values, we can use the 'any()' method
@@ -3466,6 +5692,10 @@ surveys_df[pd.isnull(surveys_df).any(axis=1)]
 <p>4873 rows × 9 columns</p>
 </div>
 
+<h3 id="explaination">Explaination</h3>
+<p>Notice that we have <code>4873</code> observations/rows that contain one or more missing values. 
+Thats roughly <code>14%</code> of data contains missing values.</p>
+<p>We have used <code>[]</code> convension to select subset of data. </p>
 <p><strong>(axis=1)</strong> is a numpy convention to specify columns. </p>
 <p>Note that the <code>weight</code> column of our DataFrame contains many <code>null</code> or <code>NaN</code>
 values. Next, we will explore ways of dealing with this.</p>
@@ -3475,17 +5705,7 @@ values that cannot be represented mathematically. Pandas, for example, will read
 an empty cell in a CSV or Excel sheet as a NaN. NaNs have some desirable properties: if we
 were to average the <code>weight</code> column without replacing our NaNs, Python would know to skip
 over those cells.</p>
-<pre><code class="python">surveys_df['weight'].mean()
-42.672428212991356
-</code></pre>
-
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-42.672428212991356
-</code>
-</pre>
-
+<h3 id="handling-missing-values">Handling missing values</h3>
 <p>Dealing with missing data values is always a challenge. It's sometimes hard to
 know why values are missing - was it because of a data entry error? Or data that
 someone was unable to collect? Should the value be 0? We need to know how
@@ -3504,8 +5724,18 @@ in the future when you (or someone else) explores your data.</p>
 learned in lesson 02, we can figure out how many rows contain NaN values for
 weight. We can also create a new subset from our data that only contains rows
 with weight values &gt; 0 (i.e., select meaningful weight values):</p>
-<pre><code class="python">len(surveys_df[pd.isnull(surveys_df.weight)])
-# How many rows have weight values?
+<pre><code class="python">## How many missing values are there in weight column?
+len(surveys_df[pd.isnull(surveys_df.weight)])
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+3266
+</code>
+</pre>
+
+<pre><code class="python"># How many rows have weight values?
 len(surveys_df[surveys_df.weight&gt; 0])
 </code></pre>
 
@@ -3528,8 +5758,19 @@ df1['weight'] = df1['weight'].fillna(0)
 <p>However NaN and 0 yield different analysis results. The mean value when NaN
 values are replaced with 0 is different from when NaN values are simply thrown
 out or ignored.</p>
-<pre><code class="python">df1['weight'].mean()
-38.751976145601844
+<pre><code class="python">## Mean of weights ignoring NaN
+surveys_df['weight'].mean()
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42.672428212991356
+</code>
+</pre>
+
+<pre><code class="python">## Mean of weights replacing NaN with zero
+df1['weight'].mean()
 </code></pre>
 
 <pre class="output">
@@ -3545,15 +5786,21 @@ NaN values with a mean for all weight values.</p>
 <pre><code class="python">df1['weight'] = surveys_df['weight'].fillna(surveys_df['weight'].mean())
 </code></pre>
 
+<pre><code class="python">df1['weight'].mean()
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42.672428212991356
+</code>
+</pre>
+
 <h2 id="writing-out-data-to-csv">Writing Out Data to CSV</h2>
 <p>We've learned about using manipulating data to get desired outputs. But we've also discussed
 keeping data that has been manipulated separate from our raw data. Something we might be interested
-in doing is working with only the columns that have full data. First, let's reload the data so
-we're not mixing up all of our previous manipulations.</p>
-<pre><code class="python">surveys_df = pd.read_csv(&quot;data/surveys.csv&quot;)
-</code></pre>
-
-<p>Next, let's drop all the rows that contain missing values. We will use the command <code>dropna</code>.
+in doing is working with only the columns that have full data.</p>
+<p>Now, let's drop all the rows that contain missing values. We will use the command <code>dropna</code>.
 By default, dropna removes columns that contain missing data for even just one row.</p>
 <pre><code class="python">df_na = surveys_df.dropna()
 </code></pre>
@@ -3563,7 +5810,7 @@ and 9 columns, much smaller than the 35549 row original.</p>
 <p>We can now use the <code>to_csv</code> command to do export a DataFrame in CSV format. Note that the code
 below will by default save the data into the current working directory. We can
 save it to a different folder by adding the foldername and a slash before the filename:
-<code>df1.to_csv('foldername/out.csv')</code>. We use 'index=False' so that
+<code>df1.to_csv('foldername/out.csv')</code>. We use <code>'index=False'</code> so that
 pandas doesn't include the index number for each line.</p>
 <pre><code class="python"># Write DataFrame to CSV
 df_na.to_csv('data_output/surveys_complete.csv', index=False)
@@ -3670,7 +5917,67 @@ asking Python to select rows that have a <code>NaN</code> value of weight.</p>
    plot.</p>
 </li>
 <li>Count the number of missing values per column. Hint: The method .count() gives you the number of non-NA observations per column. </li>
-</ol></div>
+</ol>
+<!-- 
+## Solution _Extra Challenges_
+ -->
+
+<!--
+
+wzxhzdk:51
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+2511
+
+</code>
+</pre>
+ -->
+
+<!--
+
+wzxhzdk:52
+
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+2511
+</code>
+</pre>
+
+
+ -->
+
+<pre><code class="python"># Solution extra challenge 2
+
+# selection of the data with isin
+stack_selection = surveys_df[(surveys_df['sex'].isin(['M', 'F'])) &amp;
+                            surveys_df[&quot;weight&quot;] &gt; 0.][[&quot;sex&quot;, &quot;weight&quot;, &quot;site_id&quot;]]
+
+# calculate the mean weight for each site id and sex combination:
+stack_selection = stack_selection.groupby([&quot;site_id&quot;, &quot;sex&quot;]).mean().unstack()
+
+# Plot inside jupyter notebook
+%matplotlib inline
+
+# and we can make a stacked bar plot from this:
+stack_selection.plot(kind='bar', stacked=True)
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+<matplotlib.axes._subplots.AxesSubplot at 0x108d4bd30>
+</code>
+</pre>
+
+<p><img alt="png" src="../indexing_files/indexing_98_1.png" /></p></div>
         
     </div>
 

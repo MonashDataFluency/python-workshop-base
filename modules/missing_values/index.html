@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monash Data Fluency Python Workshops">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Missing values - Introduction to Python Workshop</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/extra.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Introduction to Python Workshop</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../intro/">Introduction - the basics of Python</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../working_with_data/">Working with Data</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Missing values</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../indexing/">Indexing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../loops/">Loops</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plotting_with_ggplot/">Plotting with ggplot for Python</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../halfday/">Half Day Course</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../fullday/">Full Day Course</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../working_with_data/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../indexing/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/tree/master/workshops/docs/modules/notebooks/modules/missing_values.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#handling-missing-data">Handling Missing Data</a></li>
+            <li class="second-level"><a href="#using-masks-to-identify-a-specific-condition">Using masks to identify a specific condition</a></li>
+                
+            <li class="second-level"><a href="#finding-missing-values">Finding Missing Values</a></li>
+                
+            <li class="second-level"><a href="#how-to-select-rows-with-missing-data">How to select rows with missing data</a></li>
+                
+            <li class="second-level"><a href="#explaination">Explaination</a></li>
+                
+            <li class="second-level"><a href="#dealing-with-missing-values">Dealing with missing values.</a></li>
+                
+            <li class="second-level"><a href="#where-are-the-nans">Where Are the NaN's?</a></li>
+                
+            <li class="second-level"><a href="#extra-information">Extra Information</a></li>
+                
+            <li class="second-level"><a href="#writing-out-data-to-csv">Writing Out Data to CSV</a></li>
+                
+                <li class="third-level"><a href="#recap">Recap</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<style>
+.output_label {
+    text-align: right;
+    margin: -1em;
+    padding: 0;
+    font-size: 0.5em;
+    color: grey
+}
+</style>
+
+<!-- 
+## Handling Missing data
+
+*Estimated teaching time:* 20 min
+
+*Estimated challenge time:* 0 min
+
+
+## Module information
+
+*Key questions:*
+
+  - "What is missing data?"
+  - "How  can I analyse my data with missing values using Pandas?"
+
+*Learning objectives:*
+
+  - Describe what missing values mean.
+  - How to access missing values in dataset.
+  - What NaN values are, how they might be represented, and what this means for your work
+  - How to replace NaN values, if desired
+  - How to use `to_csv` to write manipulated data to a file.
+---
+
+
+ -->
+
+<h1 id="handling-missing-data">Handling Missing Data</h1>
+<p>Most of the times real-world data is rarely clean and homogeneous. In many cases, dataset of interest will have some amount of data missing. To make matters even more complicated, different data sources may indicate missing data in different ways.</p>
+<p>In this module, we will discuss some general considerations for missing data, discuss how Pandas chooses to represent it, and demonstrate some built-in Pandas tools for handling missing data in Python. We refer the missing data as null, NaN, or NA values in general.</p>
+<p>Before we start, lets make sure the Pandas and matplotlib packages are <strong>installed</strong>. </p>
+<pre><code class="python">!pip install pandas matplotlib
+</code></pre>
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
+
+</code>
+</pre>
+
+<pre><code class="python"># Now import pandas into your notebook as pd
+import pandas as pd
+</code></pre>
+
+<p>Now again import <code>surveys.csv</code> dataset into our notebook as we did in previous lesson.</p>
+<pre><code class="python">surveys_df = pd.read_csv(&quot;data/surveys.csv&quot;)
+</code></pre>
+
+<h3 id="using-masks-to-identify-a-specific-condition">Using masks to identify a specific condition</h3>
+<p>A <strong>mask</strong> can be useful to locate where a particular subset of values exist or
+don't exist - for example,  NaN, or "Not a Number" values. To understand masks,
+we also need to understand <code>BOOLEAN</code> objects in Python.</p>
+<p>Boolean values include <code>True</code> or <code>False</code>. For example,</p>
+<pre><code class="python"># set value of x to be 5
+x = 5
+</code></pre>
+
+<pre><code class="python">x &gt; 5
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+False
+</code>
+</pre>
+
+<pre><code class="python">x == 5
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+True
+</code>
+</pre>
+
+<h3 id="finding-missing-values">Finding Missing Values</h3>
+<p>Let's identify all locations in the survey data that have
+null (missing or NaN) data values. We can use the <code>isnull</code> method to do this.
+The <code>isnull</code> method will compare each cell with a null value. If an element
+has a null value, it will be assigned a value of  <code>True</code> in the output object.</p>
+<pre><code class="python">pd.isnull(surveys_df).head()
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="how-to-select-rows-with-missing-data">How to select rows with missing data</h3>
+<p>To select the rows where there are null values, we can use
+the mask as an index to subset our data as follows:</p>
+<pre><code class="python"># To select only the rows with NaN values, we can use the 'any()' method
+surveys_df[pd.isnull(surveys_df).any(axis=1)]
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>record_id</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year</th>
+      <th>site_id</th>
+      <th>species_id</th>
+      <th>sex</th>
+      <th>hindfoot_length</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>32.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>NL</td>
+      <td>M</td>
+      <td>33.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>PF</td>
+      <td>M</td>
+      <td>14.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>PE</td>
+      <td>F</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>1</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>6</td>
+      <td>PF</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>5</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>53.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>7</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>38.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>8</td>
+      <td>DM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>6</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>3</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>48.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>2</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>22.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>7</td>
+      <td>16</td>
+      <td>1977</td>
+      <td>4</td>
+      <td>PF</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>48.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>14</td>
+      <td>DM</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>NL</td>
+      <td>F</td>
+      <td>31.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>13</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>13</td>
+      <td>SH</td>
+      <td>M</td>
+      <td>21.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>9</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>31.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>15</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>36.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>DM</td>
+      <td>M</td>
+      <td>38.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>11</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>7</td>
+      <td>17</td>
+      <td>1977</td>
+      <td>10</td>
+      <td>DS</td>
+      <td>F</td>
+      <td>52.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35187</th>
+      <td>35188</td>
+      <td>11</td>
+      <td>10</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35256</th>
+      <td>35257</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2002</td>
+      <td>22</td>
+      <td>PB</td>
+      <td>M</td>
+      <td>26.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35259</th>
+      <td>35260</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2002</td>
+      <td>21</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>24.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35277</th>
+      <td>35278</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35279</th>
+      <td>35280</td>
+      <td>12</td>
+      <td>7</td>
+      <td>2002</td>
+      <td>16</td>
+      <td>PB</td>
+      <td>M</td>
+      <td>28.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35322</th>
+      <td>35323</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35328</th>
+      <td>35329</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>PP</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>35370</th>
+      <td>35371</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>14</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35378</th>
+      <td>35379</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>26.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35384</th>
+      <td>35385</td>
+      <td>12</td>
+      <td>8</td>
+      <td>2002</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35387</th>
+      <td>35388</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>1</td>
+      <td>DO</td>
+      <td>M</td>
+      <td>35.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35403</th>
+      <td>35404</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>2</td>
+      <td>NL</td>
+      <td>F</td>
+      <td>30.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35448</th>
+      <td>35449</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>OT</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35452</th>
+      <td>35453</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>PB</td>
+      <td>M</td>
+      <td>28.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35457</th>
+      <td>35458</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>20</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35477</th>
+      <td>35478</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>24</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35485</th>
+      <td>35486</td>
+      <td>12</td>
+      <td>29</td>
+      <td>2002</td>
+      <td>16</td>
+      <td>DO</td>
+      <td>M</td>
+      <td>37.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35495</th>
+      <td>35496</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>4</td>
+      <td>PB</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35510</th>
+      <td>35511</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>DX</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35511</th>
+      <td>35512</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35512</th>
+      <td>35513</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35514</th>
+      <td>35515</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>11</td>
+      <td>SF</td>
+      <td>F</td>
+      <td>27.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35519</th>
+      <td>35520</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>9</td>
+      <td>SF</td>
+      <td>NaN</td>
+      <td>24.0</td>
+      <td>36.0</td>
+    </tr>
+    <tr>
+      <th>35527</th>
+      <td>35528</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35529</th>
+      <td>35530</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>OT</td>
+      <td>F</td>
+      <td>20.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35530</th>
+      <td>35531</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>13</td>
+      <td>PB</td>
+      <td>F</td>
+      <td>27.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35543</th>
+      <td>35544</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>US</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35544</th>
+      <td>35545</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35545</th>
+      <td>35546</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>15</td>
+      <td>AH</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35548</th>
+      <td>35549</td>
+      <td>12</td>
+      <td>31</td>
+      <td>2002</td>
+      <td>5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>4873 rows × 9 columns</p>
+</div>
+
+<h3 id="explaination">Explaination</h3>
+<p>Notice that we have <code>4873</code> observations/rows that contain one or more missing values. 
+Thats roughly <code>14%</code> of data contains missing values.</p>
+<p>We have used <code>[]</code> convension to select subset of data. </p>
+<p>More information about slicing and indexing can be found out <a href="../indexing/">here</a>.</p>
+<p><strong>(axis=1)</strong> is a numpy convention to specify columns. </p>
+<p>Note that the <code>weight</code> column of our DataFrame contains many <code>null</code> or <code>NaN</code>
+values. Next, we will explore ways of dealing with this.</p>
+<p>If we look at the <code>weight</code> column in the surveys
+data we notice that there are NaN (<strong>N</strong>ot <strong>a</strong> <strong>N</strong>umber) values. <em>NaN</em> values are undefined
+values that cannot be represented mathematically. Pandas, for example, will read
+an empty cell in a CSV or Excel sheet as a NaN. NaNs have some desirable properties: if we
+were to average the <code>weight</code> column without replacing our NaNs, Python would know to skip
+over those cells.</p>
+<h3 id="dealing-with-missing-values">Dealing with missing values.</h3>
+<p>Dealing with missing data values is always a challenge. It's sometimes hard to
+know why values are missing - was it because of a data entry error? Or data that
+someone was unable to collect? Should the value be 0? We need to know how
+missing values are represented in the dataset in order to make good decisions.
+If we're lucky, we have some metadata that will tell us more about how null
+values were handled.</p>
+<p>For instance, in some disciplines, like Remote Sensing, missing data values are
+often defined as -9999. Having a bunch of -9999 values in your data could really
+alter numeric calculations. Often in spreadsheets, cells are left empty where no
+data are available. Pandas will, by default, replace those missing values with
+NaN. However it is good practice to get in the habit of intentionally marking
+cells that have no data, with a no data value! That way there are no questions
+in the future when you (or someone else) explores your data.</p>
+<h3 id="where-are-the-nans">Where Are the NaN's?</h3>
+<p>Let's explore the NaN values in our data a bit further. Using the tools we
+learned in lesson 02, we can figure out how many rows contain NaN values for
+weight. We can also create a new subset from our data that only contains rows
+with weight values &gt; 0 (i.e., select meaningful weight values):</p>
+<pre><code class="python">## How many missing values are there in weight column?
+len(surveys_df[pd.isnull(surveys_df.weight)])
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+3266
+</code>
+</pre>
+
+<pre><code class="python"># How many rows have weight values?
+len(surveys_df[surveys_df.weight&gt; 0])
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+32283
+</code>
+</pre>
+
+<p>We can replace all NaN values with zeroes using the <code>.fillna()</code> method (after
+making a copy of the data so we don't lose our work):</p>
+<pre><code class="python"># Creat a new DataFrame using copy
+df1 = surveys_df.copy()
+
+# Fill all NaN values with 0
+df1['weight'] = df1['weight'].fillna(0)
+</code></pre>
+
+<p>However NaN and 0 yield different analysis results. The mean value when NaN
+values are replaced with 0 is different from when NaN values are simply thrown
+out or ignored.</p>
+<pre><code class="python">surveys_df['weight'].mean()
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42.672428212991356
+</code>
+</pre>
+
+<pre><code class="python">df1['weight'].mean()
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+38.751976145601844
+</code>
+</pre>
+
+<h3 id="extra-information"><em>Extra Information</em></h3>
+<p>We can fill NaN values with any value that we chose. The code below fills all
+NaN values with a mean for all weight values.</p>
+<pre><code class="python">df1['weight'] = surveys_df['weight'].fillna(surveys_df['weight'].mean())
+</code></pre>
+
+<pre><code class="python">df1['weight'].mean()
+</code></pre>
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42.672428212991356
+</code>
+</pre>
+
+<h2 id="writing-out-data-to-csv">Writing Out Data to CSV</h2>
+<p>We've learned about using manipulating data to get desired outputs. But we've also discussed
+keeping data that has been manipulated separate from our raw data. Something we might be interested
+in doing is working with only the columns that have full data. First, let's reload the data so
+we're not mixing up all of our previous manipulations.</p>
+<pre><code class="python">df_na = surveys_df.dropna()
+</code></pre>
+
+<p>If you now type <code>df_na</code>, you should observe that the resulting DataFrame has <code>30676</code> rows
+and 9 columns, much smaller than the <code>35549</code> row original.</p>
+<p>We can now use the <code>to_csv</code> command to do export a DataFrame in CSV format. Note that the code
+below will by default save the data into the current working directory. We can
+save it to a different folder by adding the foldername and a slash before the filename:
+<code>df1.to_csv('foldername/out.csv')</code>. 
+We use 'index=False' so that
+pandas doesn't include the index number for each line.</p>
+<pre><code class="python"># Write DataFrame to CSV
+df_na.to_csv('data_output/surveys_complete.csv', index=False)
+</code></pre>
+
+<h3 id="recap">Recap</h3>
+<p>What we've learned:</p>
+<ul>
+<li>What NaN values are, how they might be represented, and what this means for your work</li>
+<li>How to replace NaN values, if desired</li>
+<li>How to use <code>to_csv</code> to write manipulated data to a file.</li>
+</ul></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/require.js"></script>
+    <script src="../../search/search.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
