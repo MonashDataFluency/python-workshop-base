@@ -67,12 +67,12 @@ Before we start, lets make sure the Pandas and matplotlib packages are **install
 Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
 Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
 Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
 Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
 Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
 
 </code>
@@ -1346,6 +1346,103 @@ What we've learned:
 + What NaN values are, how they might be represented, and what this means for your work
 + How to replace NaN values, if desired
 + How to use `to_csv` to write manipulated data to a file.
+
+
+
+
+
+
+
+## _Extra_
+We can run `isnull` on a particular column too. What does the code below do?
+
+
+
+
+
+
+```python
+# What does this do?
+empty_weights = surveys_df[pd.isnull(surveys_df['weight'])]['weight']
+print(empty_weights)
+```
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+0       NaN
+1       NaN
+2       NaN
+3       NaN
+4       NaN
+5       NaN
+6       NaN
+7       NaN
+8       NaN
+9       NaN
+10      NaN
+11      NaN
+12      NaN
+13      NaN
+14      NaN
+15      NaN
+16      NaN
+17      NaN
+18      NaN
+19      NaN
+20      NaN
+21      NaN
+22      NaN
+23      NaN
+24      NaN
+25      NaN
+26      NaN
+27      NaN
+28      NaN
+29      NaN
+         ..
+35138   NaN
+35168   NaN
+35187   NaN
+35256   NaN
+35259   NaN
+35277   NaN
+35279   NaN
+35322   NaN
+35370   NaN
+35378   NaN
+35384   NaN
+35387   NaN
+35403   NaN
+35448   NaN
+35452   NaN
+35457   NaN
+35477   NaN
+35485   NaN
+35495   NaN
+35510   NaN
+35511   NaN
+35512   NaN
+35514   NaN
+35527   NaN
+35529   NaN
+35530   NaN
+35543   NaN
+35544   NaN
+35545   NaN
+35548   NaN
+Name: weight, Length: 3266, dtype: float64
+
+</code>
+</pre>
+
+
+
+
+
+Let's take a minute to look at the statement above. We are using the Boolean
+object `pd.isnull(surveys_df['weight'])` as an index to `surveys_df`. We are
+asking Python to select rows that have a `NaN` value of weight.
 
 
 
