@@ -111,6 +111,7 @@ While this works, it's a bad approach for two reasons:
 
 
 
+Running:
 
 ```python
 word = 'tin'
@@ -120,29 +121,22 @@ print(word[2])
 print(word[3])
 ```
 
-<pre class="output">
-<div class="output_label">output</div>
-<code class="text">
-t
-i
-n
-
-</code>
-</pre>
 
 
-    ---------------------------------------------------------------------------
 
-    IndexError                                Traceback (most recent call last)
 
-    <ipython-input-3-e59d5eac5430> in <module>()
-          3 print(word[1])
-          4 print(word[2])
-    ----> 5 print(word[3])
-    
+Gives the error:
 
-    IndexError: string index out of range
+```
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-4-e59d5eac5430> in <module>()
+      3 print(word[1])
+      4 print(word[2])
+----> 5 print(word[3])
 
+IndexError: string index out of range
+```
 
 
 

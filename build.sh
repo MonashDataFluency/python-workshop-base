@@ -5,13 +5,13 @@ INPUT_DIR="workshops/docs/modules/notebooks"
 OUT_DIR="workshops/docs/modules"
 TEMPLATE_DIR="workshops/docs/modules/notebooks/nbconvert_templates"
 
-# We need to allow errors when executing since there are examples that
-# intentionally elicit a traceback.
-# TODO: If we move those examples into Markdown cells we can remove
-# --allow-errors and better test notebooks at build time
-#
+# We allow errors (--allow-errors) when executing to catch and broken examples.
+# Any example that requires printing a traceback should be moved into a
+# Markdown example cell so that code is displayed by not executed.
+
 # ggplot/plotnine cells are sometimes slow, so we increase the default timeout
-EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
+# EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
+EXECUTE="--execute --ExecutePreprocessor.timeout=240"
 
 generate_html='no'
 generate_instructor_notes='no'
