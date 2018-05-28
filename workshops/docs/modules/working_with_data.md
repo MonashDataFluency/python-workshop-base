@@ -10,17 +10,6 @@
 }
 </style>
 
-<!-- 
-# Data Analysis in Python
-
-*Estimated teaching time:* 30 min
-
-*Estimated challenge time:* 30 min
-
- -->
-
-
-
 
 # Data Analysis with Python
 
@@ -31,7 +20,11 @@
 
 
 <!-- 
-## Module Information
+## Instructor notes
+
+*Estimated teaching time:* 30 min
+
+*Estimated challenge time:* 30 min
 
 *Key questions:*
 
@@ -56,7 +49,7 @@
 
 
 
-# Automating data analysis tasks in Python
+## Automating data analysis tasks in Python
 
 We can automate the process of performing data manipulations in Python. It's efficient to spend time
 building the code to perform these tasks because once it's built, we can use it
@@ -91,7 +84,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x10e6942b0>)
+('surveys.csv', <http.client.HTTPMessage at 0x105588438>)
 </code>
 </pre>
 
@@ -183,16 +176,16 @@ First, lets make sure the Pandas and matplotlib packages are **installed**.
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
-Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
-Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
-Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
 </code>
 </pre>
@@ -3106,7 +3099,7 @@ species_counts.plot(kind='bar');
 ```
 
 
-![png](working_with_data_files/working_with_data_58_0.png)
+![png](working_with_data_files/working_with_data_57_0.png)
 
 
 
@@ -3134,14 +3127,14 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x112f2ac88>
+<matplotlib.axes._subplots.AxesSubplot at 0x109ee7e10>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_60_1.png)
+![png](working_with_data_files/working_with_data_59_1.png)
 
 
 
@@ -3183,14 +3176,14 @@ surveys_df.groupby('site_id').mean()["weight"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x1133daf98>
+<matplotlib.axes._subplots.AxesSubplot at 0x109ee76a0>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_63_1.png)
+![png](working_with_data_files/working_with_data_62_1.png)
 
  -->
 
@@ -3217,14 +3210,14 @@ surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x113531390>
+<matplotlib.axes._subplots.AxesSubplot at 0x10a491fd0>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_65_1.png)
+![png](working_with_data_files/working_with_data_64_1.png)
 
  -->
 
@@ -3475,7 +3468,7 @@ Text(0.5,0,'Site')
 
 
 
-![png](working_with_data_files/working_with_data_71_1.png)
+![png](working_with_data_files/working_with_data_70_1.png)
 
  -->
 

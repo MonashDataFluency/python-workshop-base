@@ -13,6 +13,12 @@
 
 # Automation with Loops
 
+
+
+
+<!-- 
+## Instructor notes
+
 *Estimated teaching time:* 30 min
 
 *Estimated challenge time:* 0 min
@@ -35,7 +41,7 @@
   - "Use `len(thing)` to determine the length of something that contains other values."
 
 ---
-
+ -->
 
 
 
@@ -89,15 +95,15 @@ d
 
 While this works, it's a bad approach for two reasons:
 
-1.  It doesn't scale:
-    if we want to print the characters in a string that's hundreds of letters long,
-    we'd be better off just typing them in.
+1. It doesn't scale:
+   if we want to print the characters in a string that's hundreds of letters long,
+   we'd be better off just typing them in.
 
-2.  It's fragile:
-    if we give it a longer string,
-    it only prints part of the data,
-    and if we give it a shorter one,
-    it produces an error because we're asking for characters that don't exist.
+2. It's fragile:
+   if we give it a longer string,
+   it only prints part of the data,
+   and if we give it a shorter one,
+   it produces an error because we're asking for characters that don't exist.
 
 
 
@@ -406,7 +412,7 @@ accept 1, 2, or 3 parameters.
 
 
 
-## Challenge
+## Challenge - loop over a range
 Using `range`,
 write a loop that uses `range` to print the first 3 natural numbers:
 
@@ -422,17 +428,29 @@ write a loop that uses `range` to print the first 3 natural numbers:
 
 
 
-
+<!-- 
 ## Solution
-```
+ -->
+
+
+
+<!-- 
+
+```python
 for i in range(1, 4):
    print(i)
 ```
 
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+1
+2
+3
 
-
-
-
+</code>
+</pre>
+ -->
 
 
 
@@ -441,15 +459,28 @@ for i in range(1, 4):
 
 Exponentiation is built into Python:
 
-```
+
+
+
+
+
+```python
 print(5 ** 3)
 ```
 
-
-```
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
 125
-```
 
+</code>
+</pre>
+
+
+
+
+
+## Challenge - multiplication in a loop
 
 Write a loop that calculates the same result as `5 ** 3` using
 multiplication (and without exponentiation).
@@ -457,25 +488,34 @@ multiplication (and without exponentiation).
 
 
 
-
-
-
+<!-- 
 ## Solution
-```
+ -->
+
+
+
+<!-- 
+
+```python
 result = 1
 for i in range(0, 3):
    result = result * 5
 print(result)
 ```
 
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+125
+
+</code>
+</pre>
+ -->
 
 
 
 
-
-
-
-## Reverse a String
+## Challenge  - reverse a string
 
 Knowing that two strings can be concatenated using the `+` operator,
 write a loop that takes a string
@@ -485,11 +525,15 @@ so `'Newton'` becomes `'notweN'`.
 
 
 
-
-
-
+<!-- 
 ## Solution
-```
+ -->
+
+
+
+<!-- 
+
+```python
 newstring = ''
 oldstring = 'Newton'
 for char in oldstring:
@@ -497,9 +541,14 @@ for char in oldstring:
 print(newstring)
 ```
 
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+notweN
 
-
-
+</code>
+</pre>
+ -->
 
 
 
@@ -517,6 +566,12 @@ for i, x in enumerate(xs):
 
 
 The code above loops through `xs`, assigning the index to `i` and the value to `x`.
+
+
+
+
+
+## Challenge - enumeration
 
 Suppose you have encoded a polynomial as a list of coefficients in
 the following way: the first element is the constant term, the
@@ -541,15 +596,32 @@ polynomial, given `x` and `cc`.
 
 
 
-
-
-
+<!-- 
 ## Solution
-```
+ -->
+
+
+
+<!-- 
+
+```python
+x = 5
+cc = [2, 4, 3]
+y = cc[0] * x**0 + cc[1] * x**1 + cc[2] * x**2
+
 y = 0
 for i, c in enumerate(cc):
     y = y + x**i * c
+    
+print(y)
 ```
 
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+97
 
+</code>
+</pre>
+ -->
 
