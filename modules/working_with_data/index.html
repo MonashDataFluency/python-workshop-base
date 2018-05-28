@@ -148,7 +148,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/MonashDataFluency/python-workshop-base/tree/master/workshops/docs/modules/notebooks/modules/working_with_data.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/working_with_data.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -160,9 +160,9 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#data-analysis-with-python">Data Analysis with Python</a></li>
-        <li class="first-level "><a href="#automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</a></li>
-            <li class="second-level"><a href="#the-dataset">The Dataset</a></li>
+            <li class="second-level"><a href="#automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</a></li>
                 
+                <li class="third-level"><a href="#the-dataset">The Dataset</a></li>
             <li class="second-level"><a href="#about-libraries">About Libraries</a></li>
                 
             <li class="second-level"><a href="#pandas-in-python">Pandas in Python</a></li>
@@ -204,19 +204,14 @@
 }
 </style>
 
+<h1 id="data-analysis-with-python">Data Analysis with Python</h1>
+<hr />
 <!-- 
-# Data Analysis in Python
+## Instructor notes
 
 *Estimated teaching time:* 30 min
 
 *Estimated challenge time:* 30 min
-
- -->
-
-<h1 id="data-analysis-with-python">Data Analysis with Python</h1>
-<hr />
-<!-- 
-## Module Information
 
 *Key questions:*
 
@@ -238,7 +233,7 @@
   - "Create simple plots."
  -->
 
-<h1 id="automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</h1>
+<h2 id="automating-data-analysis-tasks-in-python">Automating data analysis tasks in Python</h2>
 <p>We can automate the process of performing data manipulations in Python. It's efficient to spend time
 building the code to perform these tasks because once it's built, we can use it
 over and over on different datasets that use a similar format. This makes our
@@ -259,7 +254,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x10e6942b0>)
+('surveys.csv', <http.client.HTTPMessage at 0x1033232b0>)
 </code>
 </pre>
 
@@ -351,12 +346,12 @@ that use <a href="http://www.numpy.org/">NumPy</a> (which is another Python libr
 Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
 Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
 Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
 Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
 Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
 Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
 Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
 
 </code>
@@ -2903,7 +2898,7 @@ Name: weight, Length: 35549, dtype: float64
 species_counts.plot(kind='bar');
 </code></pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_58_0.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_57_0.png" /></p>
 <h4 id="animals-per-site-plot">Animals per site plot</h4>
 <p>We can also look at how many animals were captured in each site.</p>
 <pre><code class="python">total_count = surveys_df.groupby('site_id')['record_id'].nunique()
@@ -2914,11 +2909,11 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x112f2ac88>
+<matplotlib.axes._subplots.AxesSubplot at 0x107bb8dd8>
 </code>
 </pre>
 
-<p><img alt="png" src="../working_with_data_files/working_with_data_60_1.png" /></p>
+<p><img alt="png" src="../working_with_data_files/working_with_data_59_1.png" /></p>
 <h2 id="extra-plotting-challenge"><em>Extra Plotting Challenge</em></h2>
 <ol>
 <li>
@@ -2947,14 +2942,14 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x1133daf98>
+<matplotlib.axes._subplots.AxesSubplot at 0x108107550>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_63_1.png)
+![png](working_with_data_files/working_with_data_62_1.png)
 
  -->
 
@@ -2973,14 +2968,14 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x113531390>
+<matplotlib.axes._subplots.AxesSubplot at 0x1081f7a20>
 </code>
 </pre>
 
 
 
 
-![png](working_with_data_files/working_with_data_65_1.png)
+![png](working_with_data_files/working_with_data_64_1.png)
 
  -->
 
@@ -3198,7 +3193,7 @@ Text(0.5,0,'Site')
 
 
 
-![png](working_with_data_files/working_with_data_71_1.png)
+![png](working_with_data_files/working_with_data_70_1.png)
 
  --></div>
         

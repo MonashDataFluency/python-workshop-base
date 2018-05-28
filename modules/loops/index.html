@@ -148,7 +148,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/MonashDataFluency/python-workshop-base/tree/master/workshops/docs/modules/notebooks/modules/loops.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/loops.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -164,21 +164,17 @@
                 
             <li class="second-level"><a href="#from-1-to-n">From 1 to N</a></li>
                 
-            <li class="second-level"><a href="#challenge">Challenge</a></li>
-                
-            <li class="second-level"><a href="#solution">Solution</a></li>
+            <li class="second-level"><a href="#challenge-loop-over-a-range">Challenge - loop over a range</a></li>
                 
             <li class="second-level"><a href="#computing-powers-with-loops">Computing Powers With Loops</a></li>
                 
-            <li class="second-level"><a href="#solution_1">Solution</a></li>
+            <li class="second-level"><a href="#challenge-multiplication-in-a-loop">Challenge - multiplication in a loop</a></li>
                 
-            <li class="second-level"><a href="#reverse-a-string">Reverse a String</a></li>
-                
-            <li class="second-level"><a href="#solution_2">Solution</a></li>
+            <li class="second-level"><a href="#challenge-reverse-a-string">Challenge  - reverse a string</a></li>
                 
             <li class="second-level"><a href="#computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</a></li>
                 
-            <li class="second-level"><a href="#solution_3">Solution</a></li>
+            <li class="second-level"><a href="#challenge-enumeration">Challenge - enumeration</a></li>
                 
     </ul>
 </div></div>
@@ -195,26 +191,33 @@
 </style>
 
 <h1 id="automation-with-loops">Automation with Loops</h1>
-<p><em>Estimated teaching time:</em> 30 min</p>
-<p><em>Estimated challenge time:</em> 0 min</p>
-<p><em>Key questions:</em></p>
-<ul>
-<li>"How can I do the same operations on many different values?""</li>
-</ul>
-<p><em>Learning objectives:</em></p>
-<ul>
-<li>"Explain what a <code>for</code> loop does."</li>
-<li>"Correctly write <code>for</code> loops to repeat simple calculations."</li>
-<li>"Trace changes to a loop variable as the loop runs."</li>
-<li>"Trace changes to other variables as they are updated by a <code>for</code> loop."</li>
-</ul>
-<p><em>Key points:</em></p>
-<ul>
-<li>"Use <code>for variable in sequence</code> to process the elements of a sequence one at a time."</li>
-<li>"The body of a <code>for</code> loop must be indented."</li>
-<li>"Use <code>len(thing)</code> to determine the length of something that contains other values."</li>
-</ul>
-<hr />
+<!-- 
+## Instructor notes
+
+*Estimated teaching time:* 30 min
+
+*Estimated challenge time:* 0 min
+
+*Key questions:*
+
+  - "How can I do the same operations on many different values?""
+
+*Learning objectives:*
+
+  - "Explain what a `for` loop does."
+  - "Correctly write `for` loops to repeat simple calculations."
+  - "Trace changes to a loop variable as the loop runs."
+  - "Trace changes to other variables as they are updated by a `for` loop."
+
+*Key points:*
+
+  - "Use `for variable in sequence` to process the elements of a sequence one at a time."
+  - "The body of a `for` loop must be indented."
+  - "Use `len(thing)` to determine the length of something that contains other values."
+
+---
+ -->
+
 <p>An example task that we might want to repeat is printing each character in a
 word on a line of its own.</p>
 <pre><code class="python">word = 'lead'
@@ -244,15 +247,15 @@ d
 <ol>
 <li>
 <p>It doesn't scale:
-    if we want to print the characters in a string that's hundreds of letters long,
-    we'd be better off just typing them in.</p>
+   if we want to print the characters in a string that's hundreds of letters long,
+   we'd be better off just typing them in.</p>
 </li>
 <li>
 <p>It's fragile:
-    if we give it a longer string,
-    it only prints part of the data,
-    and if we give it a shorter one,
-    it produces an error because we're asking for characters that don't exist.</p>
+   if we give it a longer string,
+   it only prints part of the data,
+   and if we give it a shorter one,
+   it produces an error because we're asking for characters that don't exist.</p>
 </li>
 </ol>
 <pre><code class="python">word = 'tin'
@@ -437,7 +440,7 @@ accept 1, 2, or 3 parameters.</p>
   it starts at the first one, ends just before the second one, and increments by the third one.
   For exmaple <code>range(3, 10, 2)</code> produces <code>3, 5, 7, 9</code>.</li>
 </ul>
-<h2 id="challenge">Challenge</h2>
+<h2 id="challenge-loop-over-a-range">Challenge - loop over a range</h2>
 <p>Using <code>range</code>,
 write a loop that uses <code>range</code> to print the first 3 natural numbers:</p>
 <pre><code>1
@@ -445,40 +448,82 @@ write a loop that uses <code>range</code> to print the first 3 natural numbers:<
 3
 </code></pre>
 
-<h2 id="solution">Solution</h2>
-<pre><code>for i in range(1, 4):
-   print(i)
-</code></pre>
+<!-- 
+## Solution
+ -->
+
+<!--
+
+wzxhzdk:11
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+1
+2
+3
+
+</code>
+</pre>
+ -->
 
 <h2 id="computing-powers-with-loops">Computing Powers With Loops</h2>
 <p>Exponentiation is built into Python:</p>
-<pre><code>print(5 ** 3)
+<pre><code class="python">print(5 ** 3)
 </code></pre>
 
-<pre><code>125
-</code></pre>
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+125
 
+</code>
+</pre>
+
+<h2 id="challenge-multiplication-in-a-loop">Challenge - multiplication in a loop</h2>
 <p>Write a loop that calculates the same result as <code>5 ** 3</code> using
 multiplication (and without exponentiation).</p>
-<h2 id="solution_1">Solution</h2>
-<pre><code>result = 1
-for i in range(0, 3):
-   result = result * 5
-print(result)
-</code></pre>
+<!-- 
+## Solution
+ -->
 
-<h2 id="reverse-a-string">Reverse a String</h2>
+<!--
+
+wzxhzdk:13
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+125
+
+</code>
+</pre>
+ -->
+
+<h2 id="challenge-reverse-a-string">Challenge  - reverse a string</h2>
 <p>Knowing that two strings can be concatenated using the <code>+</code> operator,
 write a loop that takes a string
 and produces a new string with the characters in reverse order,
 so <code>'Newton'</code> becomes <code>'notweN'</code>.</p>
-<h2 id="solution_2">Solution</h2>
-<pre><code>newstring = ''
-oldstring = 'Newton'
-for char in oldstring:
-   newstring = char + newstring
-print(newstring)
-</code></pre>
+<!-- 
+## Solution
+ -->
+
+<!--
+
+wzxhzdk:14
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+notweN
+
+</code>
+</pre>
+ -->
 
 <h2 id="computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</h2>
 <p>The built-in function <code>enumerate</code> takes a sequence (e.g. a list) and generates a
@@ -489,6 +534,7 @@ new sequence of the same length. Each element of the new sequence is a pair comp
 </code></pre>
 
 <p>The code above loops through <code>xs</code>, assigning the index to <code>i</code> and the value to <code>x</code>.</p>
+<h2 id="challenge-enumeration">Challenge - enumeration</h2>
 <p>Suppose you have encoded a polynomial as a list of coefficients in
 the following way: the first element is the constant term, the
 second element is the coefficient of the linear term, the third is the
@@ -503,11 +549,23 @@ y = 97
 
 <p>Write a loop using <code>enumerate(cc)</code> which computes the value <code>y</code> of any
 polynomial, given <code>x</code> and <code>cc</code>.</p>
-<h2 id="solution_3">Solution</h2>
-<pre><code>y = 0
-for i, c in enumerate(cc):
-    y = y + x**i * c
-</code></pre></div>
+<!-- 
+## Solution
+ -->
+
+<!--
+
+wzxhzdk:18
+
+
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+97
+
+</code>
+</pre>
+ --></div>
         
     </div>
 
