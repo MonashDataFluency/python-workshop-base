@@ -11,7 +11,7 @@ TEMPLATE_DIR="workshops/docs/modules/notebooks/nbconvert_templates"
 # --allow-errors and better test notebooks at build time
 #
 # ggplot/plotnine cells are sometimes slow, so we increase the default timeout
-EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=60"
+EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
 
 generate_html='no'
 generate_instructor_notes='no'
@@ -20,6 +20,11 @@ index=1
 for f in ${INPUT_DIR}/*.ipynb; do
   fn=$(basename -- "$f")
   name="${fn%.*}"
+
+  if [ -d ${OUT_DIR}/${name}_files ]; then
+    echo "Removing old generated images from ${OUT_DIR}/${name}_files/"
+    rm ${OUT_DIR}/${name}_files/*
+  fi
 
   printf -v i "%02d" $index
 
