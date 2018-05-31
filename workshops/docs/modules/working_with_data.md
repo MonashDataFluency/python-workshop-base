@@ -84,7 +84,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x1086fa390>)
+('surveys.csv', <http.client.HTTPMessage at 0x10d442400>)
 </code>
 </pre>
 
@@ -181,10 +181,10 @@ Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-wo
 Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
 Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
 </code>
@@ -3127,7 +3127,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10d121da0>
+<matplotlib.axes._subplots.AxesSubplot at 0x11154dda0>
 </code>
 </pre>
 
@@ -3176,7 +3176,7 @@ surveys_df.groupby('site_id').mean()["weight"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10d59efd0>
+<matplotlib.axes._subplots.AxesSubplot at 0x111a42438>
 </code>
 </pre>
 
@@ -3210,7 +3210,7 @@ surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10d57b160>
+<matplotlib.axes._subplots.AxesSubplot at 0x1119a5630>
 </code>
 </pre>
 
@@ -3226,9 +3226,7 @@ surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 <!-- 
 ### _Solution to Extra Plotting Challenge 3_
 
-First we group data by plot and by sex, and then calculate a total for each plot.
-
-
+First we group data by site and by sex, and then calculate a total for each site.
  -->
 
 
@@ -3236,8 +3234,8 @@ First we group data by plot and by sex, and then calculate a total for each plot
 <!-- 
 
 ```python
-by_plot_sex = surveys_df.groupby(['site_id','sex'])
-plot_sex_count = by_plot_sex['weight'].sum()
+by_site_sex = surveys_df.groupby(['site_id','sex'])
+site_sex_count = by_site_sex['weight'].sum()
 ```
  -->
 
@@ -3248,8 +3246,8 @@ plot_sex_count = by_plot_sex['weight'].sum()
 This calculates the sums of weights for each sex within each plot as a table
 
 ```
-plot  sex
-plot_id  sex
+site  sex
+site_id  sex
 1        F      38253
          M      59979
 2        F      50144
@@ -3258,7 +3256,7 @@ plot_id  sex
          M      28253
 4        F      39796
          M      49377
-<other plots removed for brevity>
+<other sites removed for brevity>
 ```
 
 Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
@@ -3447,10 +3445,10 @@ Rather than display it as a table, we can plot the above data by stacking the va
 <!-- 
 
 ```python
-by_plot_sex = surveys_df.groupby(['site_id','sex'])
-plot_sex_count = by_plot_sex['weight'].sum()
-spc = plot_sex_count.unstack()
-s_plot = spc.plot(kind='bar',stacked=True,title="Total weight by site and sex")
+by_site_sex = surveys_df.groupby(['site_id', 'sex'])
+site_sex_count = by_site_sex['weight'].sum()
+spc = site_sex_count.unstack()
+s_plot = spc.plot(kind='bar', stacked=True, title="Total weight by site and sex")
 s_plot.set_ylabel("Weight")
 s_plot.set_xlabel("Site")
 ```
