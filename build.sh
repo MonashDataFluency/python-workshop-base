@@ -5,13 +5,13 @@ INPUT_DIR="workshops/docs/modules/notebooks"
 OUT_DIR="workshops/docs/modules"
 TEMPLATE_DIR="workshops/docs/modules/notebooks/nbconvert_templates"
 
-# We allow errors (--allow-errors) when executing to catch and broken examples.
+# We omit --allow-errors when executing to catch and broken examples.
 # Any example that requires printing a traceback should be moved into a
 # Markdown example cell so that code is displayed by not executed.
 
 # ggplot/plotnine cells are sometimes slow, so we increase the default timeout
-# EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
-EXECUTE="--execute --ExecutePreprocessor.timeout=240"
+EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
+# EXECUTE="--execute --ExecutePreprocessor.timeout=240"
 
 generate_html='no'
 generate_instructor_notes='no'
@@ -22,8 +22,8 @@ for f in ${INPUT_DIR}/*.ipynb; do
   name="${fn%.*}"
 
   if [ -d ${OUT_DIR}/${name}_files ]; then
-    echo "Removing old generated images from ${OUT_DIR}/${name}_files/"
-    rm ${OUT_DIR}/${name}_files/*
+    echo "Removing old generated images at ${OUT_DIR}/${name}_files"
+    rm -rf ${OUT_DIR}/${name}_files
   fi
 
   printf -v i "%02d" $index
