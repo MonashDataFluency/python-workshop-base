@@ -5,6 +5,35 @@ This is a base repository for Data Fluency Python Workshop modules.
 To add or modify content, edit the notebooks in 
 `workshops/docs/modules/notebooks`.
 
+## Quick start
+```bash
+# install pipenv to ~/.local/bin/pipenv
+pip install --user pipenv
+
+git clone https://github.com/MonashDataFluency/python-workshop-base.git
+cd python-workshop-base
+
+# Install dependencies
+pipenv install
+
+# Enter the virtual environment
+pipenv shell
+jupyter notebook
+# Edit the notebooks in workshops/docs/modules/notebooks
+# Ctrl-C in terminal to stop Jupyter when you are done
+./build.sh
+
+# To view the generated site
+cd workshops
+open http://127.0.0.1:8000 && mkdocs serve
+```
+
+If everything looks fine, commit your changes (ideally to a branch), `git push` and send a Pull Request.
+
+To deploy the public docs, [see here](#deploying-the-static-site-to-github-pages).
+
+----
+
 ## Setup
 
 Install [Pipenv](https://docs.pipenv.org/) (eg `pip install pipenv`).
