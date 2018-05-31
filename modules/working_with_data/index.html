@@ -254,7 +254,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x10d582438>)
+('surveys.csv', <http.client.HTTPMessage at 0x1086fa390>)
 </code>
 </pre>
 
@@ -345,12 +345,12 @@ that use <a href="http://www.numpy.org/">NumPy</a> (which is another Python libr
 <code class="text">
 Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
 Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
 Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
 Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
@@ -381,7 +381,7 @@ in columns. It is similar to a spreadsheet or an SQL table or the <code>data.fra
 R. A DataFrame always has an index (0-based). An index refers to the position of
 an element in the data structure.</p>
 <pre><code class="python"># Note that pd.read_csv is used because we imported pandas as pd
-pd.read_csv(&quot;data/surveys.csv&quot;)
+pd.read_csv(&quot;surveys.csv&quot;)
 </code></pre>
 
 <div>
@@ -1160,7 +1160,7 @@ we haven't saved any data to memory so we can work with it.We need to assign the
 DataFrame to a variable. Remember that a variable is a name for a value, such as <code>x</code>,
 or <code>data</code>. We can create a new  object with a variable name by assigning a value to it using <code>=</code>.</p>
 <p>Let's call the imported survey data <code>surveys_df</code>:</p>
-<pre><code class="python">surveys_df = pd.read_csv(&quot;data/surveys.csv&quot;)
+<pre><code class="python">surveys_df = pd.read_csv(&quot;surveys.csv&quot;)
 </code></pre>
 
 <p>Notice when you assign the imported DataFrame to a variable, Python does not
@@ -2909,7 +2909,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x111ee2e48>
+<matplotlib.axes._subplots.AxesSubplot at 0x10d121da0>
 </code>
 </pre>
 
@@ -2942,7 +2942,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x1123cdda0>
+<matplotlib.axes._subplots.AxesSubplot at 0x10d59efd0>
 </code>
 </pre>
 
@@ -2968,7 +2968,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11235e5c0>
+<matplotlib.axes._subplots.AxesSubplot at 0x10d57b160>
 </code>
 </pre>
 
