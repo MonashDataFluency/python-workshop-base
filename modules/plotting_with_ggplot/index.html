@@ -174,6 +174,8 @@
                 
             <li class="second-level"><a href="#faceting">Faceting</a></li>
                 
+            <li class="second-level"><a href="#the-layered-grammar-of-graphics">The "Layered Grammar of Graphics"</a></li>
+                
             <li class="second-level"><a href="#theming">Theming</a></li>
                 
             <li class="second-level"><a href="#extra-bits-1">Extra bits 1</a></li>
@@ -250,15 +252,15 @@ Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/python-work
 Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
 Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
 Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: mizani>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.4.6)
-Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
 Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.9.0)
-Requirement already satisfied: matplotlib>=2.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (2.2.2)
-Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.0)
+Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
 Requirement already satisfied: six in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.11.0)
+Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.0)
+Requirement already satisfied: mizani>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.4.6)
+Requirement already satisfied: matplotlib>=2.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (2.2.2)
 Requirement already satisfied: palettable in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine) (3.1.1)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (1.0.1)
 Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (1.0.1)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (2.2.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine) (39.1.0)
 
@@ -271,7 +273,7 @@ warnings.filterwarnings('ignore')
 </code></pre>
 
 <h1 id="plotting-in-ggplot-style">Plotting in ggplot style</h1>
-<p>Let set up our working environment with necessary libraries and also load our csv file into data frame called <code>survs_df</code>,</p>
+<p>Let's set up our working environment with necessary libraries and also load our csv file into data frame called <code>survs_df</code>,</p>
 <pre><code class="python">import numpy as np
 import pandas as pd
 from plotnine import *
@@ -287,18 +289,18 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <li>The actual graphical elements to display ("geometric objects").</li>
 </ol>
 <h2 id="introduction-to-plotting">Introduction to plotting</h2>
-<pre><code class="python">ggplot(survs_df, aes('weight', 'hindfoot_length')) + geom_point()
+<pre><code class="python">ggplot(survs_df, aes(x='weight', y='hindfoot_length')) + geom_point()
 </code></pre>
 
 <p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_10_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572125317)>
+<ggplot: (-9223372036571731673)>
 </code>
 </pre>
 
-<p>Lets see if we can also include information about species and year</p>
+<p>Let's see if we can also include information about species and year.</p>
 <pre><code class="python">ggplot(survs_df, aes('weight', 'hindfoot_length',
     size = 'year')) + geom_point()
 </code></pre>
@@ -307,19 +309,20 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572389190)>
+<ggplot: (283044230)>
 </code>
 </pre>
 
+<p>Notice that we've dropped the <code>x=</code> and <code>y=</code> ? These are implied for the first and second argument of <code>aes()</code>.</p>
 <pre><code class="python">ggplot(survs_df, aes('weight', 'hindfoot_length', 
     size = 'year', color = 'species_id')) + geom_point()
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_13_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_14_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036573609405)>
+<ggplot: (-9223372036570925729)>
 </code>
 </pre>
 
@@ -328,11 +331,11 @@ survs_df = pd.read_csv('surveys.csv').dropna()
     geom_bar(stat = 'count')
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_15_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_16_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572416014)>
+<ggplot: (283072881)>
 </code>
 </pre>
 
@@ -341,11 +344,11 @@ survs_df = pd.read_csv('surveys.csv').dropna()
     geom_bar(stat = 'count')
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_17_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_18_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572416021)>
+<ggplot: (-9223372036571404400)>
 </code>
 </pre>
 
@@ -362,7 +365,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 
 
 
-![png](plotting_with_ggplot_files/plotting_with_ggplot_20_0.png)
+![png](plotting_with_ggplot_files/plotting_with_ggplot_21_0.png)
 
 
 
@@ -371,7 +374,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036565378332)>
+<ggplot: (-9223372036571456796)>
 </code>
 </pre>
 
@@ -383,27 +386,27 @@ survs_df = pd.read_csv('surveys.csv').dropna()
     geom_boxplot()
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_22_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_23_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564620814)>
+<ggplot: (283368659)>
 </code>
 </pre>
 
 <p>Why are we not seeing mulitple boxplots, one for each year?
-This is because year variable is continues in our data frame, but for the purpose we want it to be categorical.</p>
-<pre><code class="python">survs_df['year_fact'] = pd.Series(survs_df['year'], dtype = &quot;category&quot;)
+This is because year variable is continuous in our data frame, but for this purpose we want it to be categorical.</p>
+<pre><code class="python">survs_df['year_fact'] = survs_df['year'].astype(&quot;category&quot;)
 
 ggplot(survs_df, aes('year_fact', 'weight')) + \
     geom_boxplot()
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_24_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_25_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (289856839)>
+<ggplot: (279206762)>
 </code>
 </pre>
 
@@ -413,11 +416,11 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
     theme(axis_text_x = element_text(angle=90, hjust=1))
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_26_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_27_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036570658360)>
+<ggplot: (-9223372036570042543)>
 </code>
 </pre>
 
@@ -430,11 +433,11 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
     flip_xlabels
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_29_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_30_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282114515)>
+<ggplot: (283082048)>
 </code>
 </pre>
 
@@ -477,7 +480,7 @@ ggsave(filename=&quot;plot1.png&quot;,
 
 
 
-![png](plotting_with_ggplot_files/plotting_with_ggplot_34_0.png)
+![png](plotting_with_ggplot_files/plotting_with_ggplot_35_0.png)
 
 
 
@@ -486,30 +489,12 @@ ggsave(filename=&quot;plot1.png&quot;,
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036569377308)>
+<ggplot: (275861782)>
 </code>
 </pre>
 
 
  -->
-
-<pre><code class="python">survs_df['weight_log'] = np.log2(survs_df['weight'])
-
-ggplot(survs_df, aes('year_fact', 'weight_log')) + \
-    geom_boxplot() + \
-    xlab(&quot;Years&quot;) + \
-    ylab(&quot;Weight log2(kg)&quot;) + \
-    ggtitle(&quot;Boxplots, summary of species wieght in each year&quot;) + \
-    flip_xlabels
-</code></pre>
-
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_35_0.png" /></p>
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-<ggplot: (289254113)>
-</code>
-</pre>
 
 <h2 id="faceting">Faceting</h2>
 <p>ggplot has a special technique called <em>faceting</em> that allows to split one plot
@@ -517,7 +502,7 @@ into multiple plots based on a factor included in the dataset. We will use it to
 make one plot for a time series for each species.</p>
 <pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
     geom_boxplot() + \
-    facet_wrap(&quot;~sex&quot;) + \
+    facet_wrap(['sex']) + \
     flip_xlabels + \
     theme(axis_text_x = element_text(size=6))
 </code></pre>
@@ -526,14 +511,14 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036565232871)>
+<ggplot: (284672411)>
 </code>
 </pre>
 
 <pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight_log')) + \
     geom_boxplot() + \
     theme(axis_text_x = element_text(size=6, angle=90, hjust=1)) + \
-    facet_wrap(&quot;~species_id&quot;) + \
+    facet_wrap(['species_id']) + \
     flip_xlabels + \
     theme(axis_text_x = element_text(size=8))
 </code></pre>
@@ -542,9 +527,20 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290171631)>
+<ggplot: (-9223372036571521543)>
 </code>
 </pre>
+
+<h2 id="the-layered-grammar-of-graphics">The "Layered Grammar of Graphics"</h2>
+<pre><code class="erlang">ggplot(data = &lt;DATA&gt;) + 
+  &lt;GEOM_FUNCTION&gt;(
+     mapping = aes(&lt;MAPPINGS&gt;),
+     stat = &lt;STAT&gt;, 
+     position = &lt;POSITION&gt;
+  ) +
+  &lt;COORDINATE_FUNCTION&gt; +
+  &lt;FACET_FUNCTION&gt;
+</code></pre>
 
 <h2 id="theming">Theming</h2>
 <pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
@@ -553,26 +549,26 @@ make one plot for a time series for each species.</p>
     flip_xlabels
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_40_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_41_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564592240)>
+<ggplot: (-9223372036571239217)>
 </code>
 </pre>
 
 <pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight_log')) + \
     geom_boxplot() + \
-    facet_wrap(&quot;~species_id&quot;) + \
+    facet_wrap(['species_id']) + \
     theme_xkcd() + \
     theme(axis_text_x = element_text(size=4, angle=90, hjust=1))
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_41_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_42_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290407393)>
+<ggplot: (285482276)>
 </code>
 </pre>
 
@@ -593,26 +589,26 @@ survs_df['year_bins'] = np.select(bins, labels)
 plt2
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_44_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_45_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036563118350)>
+<ggplot: (-9223372036570799356)>
 </code>
 </pre>
 
 <pre><code class="python">plt2 = ggplot(survs_df, aes('year_bins', 'weight_log')) + \
            geom_boxplot() + \
-           theme(axis_text_x = element_text(angle=90, hjust=1)) + \
-           facet_wrap(&quot;~species_id&quot;) 
+           flip_xlabels + \
+           facet_wrap(['species_id'])
 plt2
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_45_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_46_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036562431239)>
+<ggplot: (283096703)>
 </code>
 </pre>
 
@@ -631,11 +627,11 @@ ggplot(survs_df, aes(&quot;year_fact&quot;, &quot;weight_log&quot;)) + \
     theme(axis_text_x = element_text(angle=90, hjust=1))
 </code></pre>
 
-<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_47_0.png" /></p>
+<p><img alt="png" src="../plotting_with_ggplot_files/plotting_with_ggplot_48_0.png" /></p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564041770)>
+<ggplot: (284803837)>
 </code>
 </pre></div>
         
