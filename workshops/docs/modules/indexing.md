@@ -73,16 +73,16 @@ In this lesson, we will explore **ways to access different parts of the data** i
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
-Requirement already satisfied: matplotlib in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (2.2.2)
-Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (2.2.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: six>=1.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib) (1.11.0)
-Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.2.0)
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.23.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (2.2.2)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.7.3)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.4)
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.14.3)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.2.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
+Requirement already satisfied: six>=1.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.11.0)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
 
 </code>
 </pre>
@@ -107,7 +107,7 @@ We will continue to use the surveys dataset that we worked with in the last less
 import pandas as pd
 
 # Read in the survey CSV
-surveys_df = pd.read_csv("data/surveys.csv")
+surveys_df = pd.read_csv("surveys.csv")
 ```
 
 
@@ -294,105 +294,90 @@ surveys_df[['species_id', 'site_id']].head()
 
 
 
+What happens if you ask for a column that doesn't exist?
+
 ```python
-
-# What happens if you ask for a column that doesn't exist?
 surveys_df['speciess']
-
-
 ```
 
-
-    ---------------------------------------------------------------------------
-
-    KeyError                                  Traceback (most recent call last)
-
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-       3062             try:
-    -> 3063                 return self._engine.get_loc(key)
-       3064             except KeyError:
+Outputs:
 
 
-    pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
 
-    pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
 
+```python
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   2392             try:
+-> 2393                 return self._engine.get_loc(key)
+   2394             except KeyError:
 
-    pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc (pandas/_libs/index.c:5239)()
 
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc (pandas/_libs/index.c:5085)()
 
-    pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item (pandas/_libs/hashtable.c:20405)()
 
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item (pandas/_libs/hashtable.c:20359)()
 
-    KeyError: 'speciess'
+KeyError: 'speciess'
 
-    
-    During handling of the above exception, another exception occurred:
+During handling of the above exception, another exception occurred:
 
+KeyError                                  Traceback (most recent call last)
+<ipython-input-7-7d65fa0158b8> in <module>()
+      1 
+      2 # What happens if you ask for a column that doesn't exist?
+----> 3 surveys_df['speciess']
+      4 
 
-    KeyError                                  Traceback (most recent call last)
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
+   2060             return self._getitem_multilevel(key)
+   2061         else:
+-> 2062             return self._getitem_column(key)
+   2063 
+   2064     def _getitem_column(self, key):
 
-    <ipython-input-7-8c68e7647ac0> in <module>()
-          1 
-          2 # What happens if you ask for a column that doesn't exist?
-    ----> 3 surveys_df['speciess']
-    
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
+   2067         # get column
+   2068         if self.columns.is_unique:
+-> 2069             return self._get_item_cache(key)
+   2070 
+   2071         # duplicate columns & possible reduce dimensionality
 
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in __getitem__(self, key)
-       2683             return self._getitem_multilevel(key)
-       2684         else:
-    -> 2685             return self._getitem_column(key)
-       2686 
-       2687     def _getitem_column(self, key):
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
+   1532         res = cache.get(item)
+   1533         if res is None:
+-> 1534             values = self._data.get(item)
+   1535             res = self._box_item_values(item, values)
+   1536             cache[item] = res
 
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
+   3588 
+   3589             if not isnull(item):
+-> 3590                 loc = self.items.get_loc(item)
+   3591             else:
+   3592                 indexer = np.arange(len(self.items))[isnull(self.items)]
 
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/frame.py in _getitem_column(self, key)
-       2690         # get column
-       2691         if self.columns.is_unique:
-    -> 2692             return self._get_item_cache(key)
-       2693 
-       2694         # duplicate columns & possible reduce dimensionality
+/Applications/anaconda/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   2393                 return self._engine.get_loc(key)
+   2394             except KeyError:
+-> 2395                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   2396 
+   2397         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
 
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc (pandas/_libs/index.c:5239)()
 
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
-       2484         res = cache.get(item)
-       2485         if res is None:
-    -> 2486             values = self._data.get(item)
-       2487             res = self._box_item_values(item, values)
-       2488             cache[item] = res
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc (pandas/_libs/index.c:5085)()
 
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item (pandas/_libs/hashtable.c:20405)()
 
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/internals.py in get(self, item, fastpath)
-       4113 
-       4114             if not isna(item):
-    -> 4115                 loc = self.items.get_loc(item)
-       4116             else:
-       4117                 indexer = np.arange(len(self.items))[isna(self.items)]
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item (pandas/_libs/hashtable.c:20359)()
 
-
-    ~/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-       3063                 return self._engine.get_loc(key)
-       3064             except KeyError:
-    -> 3065                 return self._engine.get_loc(self._maybe_cast_indexer(key))
-       3066 
-       3067         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
-
-
-    pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-
-    pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-
-    pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-
-    pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-
-    KeyError: 'speciess'
-
+KeyError: 'speciess'
+```
 
 
 
@@ -877,7 +862,7 @@ the original data CSV file.
 
 
 ```python
-surveys_df = pd.read_csv("data/surveys.csv")
+surveys_df = pd.read_csv("surveys.csv")
 ```
 
 
@@ -1084,7 +1069,7 @@ surveys_df.loc[[0, 10, 35549], :]
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/pandas/core/indexing.py:1472: FutureWarning: 
+/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py:1472: FutureWarning: 
 Passing list-likes to .loc or [] with any missing label will raise
 KeyError in the future, you can use .reindex() as an alternative.
 
@@ -5150,14 +5135,14 @@ stack_selection.plot(kind='bar', stacked=True)
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x10eccdc18>
+<matplotlib.axes._subplots.AxesSubplot at 0x1083a6470>
 </code>
 </pre>
 
 
 
 
-![png](indexing_files/indexing_73_1.png)
+![png](indexing_files/indexing_74_1.png)
 
 
 

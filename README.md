@@ -7,7 +7,7 @@ To add or modify content, edit the notebooks in
 
 ## Quick start
 ```bash
-# install pipenv to ~/.local/bin/pipenv
+# Install pipenv to ~/.local/bin/pipenv
 pip install --user pipenv
 
 git clone https://github.com/MonashDataFluency/python-workshop-base.git

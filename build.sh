@@ -10,8 +10,8 @@ TEMPLATE_DIR="workshops/docs/modules/notebooks/nbconvert_templates"
 # Markdown example cell so that code is displayed by not executed.
 
 # ggplot/plotnine cells are sometimes slow, so we increase the default timeout
-EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
-# EXECUTE="--execute --ExecutePreprocessor.timeout=240"
+# EXECUTE="--execute --allow-errors --ExecutePreprocessor.timeout=240"
+EXECUTE="--execute --ExecutePreprocessor.timeout=240"
 
 generate_html='no'
 generate_instructor_notes='no'
