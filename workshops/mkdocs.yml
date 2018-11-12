@@ -19,7 +19,7 @@ pages:
     - 'Missing values': 'modules/missing_values.md'
     - 'Indexing': 'modules/indexing.md'
     - 'Loops': 'modules/loops.md'
-    - 'Combining DataFrames with Pandas': 'modules/merging.data.md'
+    - 'Combining DataFrames with Pandas': 'modules/merging_data.md'
     - 'Plotting with ggplot for Python': 'modules/plotting_with_ggplot.md'
     - 'Reusable and modular code with functions': 'modules/functions.md'
     - 'Defensive Programming': 'modules/defensive_programming.md'
