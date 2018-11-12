@@ -9,4 +9,5 @@ Welcome to _Introduction to Python_ !
 * 03 - [Indexing and slicing](modules/indexing.md)
 * 04 - [Repetitive tasks with loops](modules/loops.md)
 * 05 - [Plotting with plotnine (ggplot)](modules/plotting_with_ggplot.md)
+* 06 - [Defensive Programming](modules/defensive_programming.md)	
 * .. more ..
