@@ -9,8 +9,10 @@ Welcome to _Introduction to Python_ !
 * 03 - [Indexing and slicing](modules/indexing.md)
 * 04 - [Repetitive tasks with loops](modules/loops.md)
 * 05 - [Plotting with plotnine (ggplot)](modules/plotting_with_ggplot.md)
-* 06 - [Defensive Programming](modules/defensive_programming.md)
+* 06 - [Reusable and modular code with functions](modules/functions.md)
+* 07 - [Defensive Programming](modules/defensive_programming.md)
 
 Some of these modules have been adapted from the original versions at 
 [Data Carpentry - Python for Ecologists](http://www.datacarpentry.org/python-ecology-lesson/) 
+and [Software Carpentry - Programming with Python](https://swcarpentry.github.io/python-novice-inflammation/)
 (used under a [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)).
