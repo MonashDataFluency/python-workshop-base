@@ -48,6 +48,12 @@
     </url>
         
     <url>
+     <loc>/modules/functions/</loc>
+     <lastmod>2018-11-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/modules/defensive_programming/</loc>
      <lastmod>2018-11-12</lastmod>
      <changefreq>daily</changefreq>

@@ -115,6 +115,12 @@
                         
                             
 <li >
+    <a href="../functions/">Reusable and modular code with functions</a>
+</li>
+
+                        
+                            
+<li >
     <a href="../defensive_programming/">Defensive Programming</a>
 </li>
 
@@ -149,7 +155,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../defensive_programming/">
+                        <a rel="prev" href="../functions/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -253,23 +259,23 @@
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.23.0)
-Requirement already satisfied: plotnine in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (0.3.0)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2.7.3)
-Requirement already satisfied: numpy>=1.9.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (1.14.3)
-Requirement already satisfied: pytz>=2011k in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from pandas) (2018.4)
-Requirement already satisfied: six in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (1.11.0)
-Requirement already satisfied: statsmodels>=0.8.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.9.0)
-Requirement already satisfied: patsy>=0.4.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.5.0)
-Requirement already satisfied: matplotlib>=2.1.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (2.2.2)
-Requirement already satisfied: mizani>=0.4.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (0.4.6)
-Requirement already satisfied: scipy>=1.0.0 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from plotnine) (1.1.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (1.0.1)
-Requirement already satisfied: cycler>=0.10 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (0.10.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine) (2.2.0)
-Requirement already satisfied: palettable in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine) (3.1.1)
-Requirement already satisfied: setuptools in /Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine) (39.2.0)
-[33mYou are using pip version 10.0.1, however version 18.1 is available.
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages
+Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages
+Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
+Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: matplotlib>=2.1.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: mizani>=0.4.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: six in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
+Requirement already satisfied: palettable in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine)
+[33mYou are using pip version 9.0.1, however version 18.1 is available.
 You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 
 </code>
@@ -304,7 +310,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036573380629)>
+<ggplot: (284343125)>
 </code>
 </pre>
 
@@ -317,7 +323,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036571141502)>
+<ggplot: (284054392)>
 </code>
 </pre>
 
@@ -330,7 +336,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036571105248)>
+<ggplot: (-9223372036562615117)>
 </code>
 </pre>
 
@@ -343,7 +349,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (281445012)>
+<ggplot: (-9223372036562119992)>
 </code>
 </pre>
 
@@ -356,7 +362,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282962261)>
+<ggplot: (-9223372036562667737)>
 </code>
 </pre>
 
@@ -382,7 +388,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036581244086)>
+<ggplot: (-9223372036563053017)>
 </code>
 </pre>
 
@@ -398,7 +404,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (273531754)>
+<ggplot: (294155987)>
 </code>
 </pre>
 
@@ -414,7 +420,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282410069)>
+<ggplot: (-9223372036562949295)>
 </code>
 </pre>
 
@@ -428,7 +434,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282962338)>
+<ggplot: (287066404)>
 </code>
 </pre>
 
@@ -445,7 +451,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (281419405)>
+<ggplot: (-9223372036567707199)>
 </code>
 </pre>
 
@@ -467,9 +473,9 @@ ggsave(filename=&quot;plot1.png&quot;,
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/plotnine/ggplot.py:688: UserWarning: Saving 25 x 25 in image.
+/Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages/plotnine/ggplot.py:688: UserWarning: Saving 25 x 25 in image.
   from_inches(height, units), units))
-/Users/asha0035/.local/share/virtualenvs/python-workshop-base-LFzz33nP/lib/python3.6/site-packages/plotnine/ggplot.py:689: UserWarning: Filename: plot1.png
+/Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages/plotnine/ggplot.py:689: UserWarning: Filename: plot1.png
   warn('Filename: {}'.format(filename))
 
 </code>
@@ -497,7 +503,7 @@ ggsave(filename=&quot;plot1.png&quot;,
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (273520781)>
+<ggplot: (-9223372036570997914)>
 </code>
 </pre>
 
@@ -519,7 +525,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572367251)>
+<ggplot: (-9223372036560174511)>
 </code>
 </pre>
 
@@ -535,7 +541,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (283651995)>
+<ggplot: (-9223372036560947631)>
 </code>
 </pre>
 
@@ -561,7 +567,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (274677729)>
+<ggplot: (291407417)>
 </code>
 </pre>
 
@@ -576,7 +582,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572469525)>
+<ggplot: (-9223372036561416325)>
 </code>
 </pre>
 
@@ -601,7 +607,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036571443519)>
+<ggplot: (291732593)>
 </code>
 </pre>
 
@@ -616,7 +622,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036572480624)>
+<ggplot: (-9223372036563180428)>
 </code>
 </pre>
 
@@ -639,7 +645,7 @@ ggplot(survs_df, aes(&quot;year_fact&quot;, &quot;weight_log&quot;)) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036571698702)>
+<ggplot: (-9223372036561074197)>
 </code>
 </pre></div>
         
