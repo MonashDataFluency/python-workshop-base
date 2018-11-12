@@ -681,18 +681,18 @@ print(n)
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-[1, 2, 3, 4, 52]
+[1, 2, 3, 4, 16]
 
-[1, 2, 3, 4, 52]
-[1, 2, 3, 4, 52, 65]
+[1, 2, 3, 4, 16]
+[1, 2, 3, 4, 16, 59]
 
-[1, 2, 3, 4, 52, 65]
-[1, 2, 3, 4, 52, 65, 14]
+[1, 2, 3, 4, 16, 59]
+[1, 2, 3, 4, 16, 59, 42]
 
-[1, 2, 3, 4, 52, 65, 14]
-[1, 2, 3, 4, 52, 65, 14, 89]
+[1, 2, 3, 4, 16, 59, 42]
+[1, 2, 3, 4, 16, 59, 42, 64]
 
-[1, 2, 3, 4, 52, 65, 14]
+[1, 2, 3, 4, 16, 59, 42]
 
 </code>
 </pre>
@@ -1147,7 +1147,7 @@ one_year_csv_writer(2002, surveys_df)
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Processed directory exists:  output
+Processed directory created:  output
 
 </code>
 </pre>
