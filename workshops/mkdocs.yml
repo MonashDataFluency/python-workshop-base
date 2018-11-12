@@ -20,5 +20,6 @@ pages:
     - 'Indexing': 'modules/indexing.md'
     - 'Loops': 'modules/loops.md'
     - 'Plotting with ggplot for Python': 'modules/plotting_with_ggplot.md'
+    - 'Defensive Programming': 'modules/defensive_programming.md'
   - 'Half Day Course': 'halfday.md'
   - 'Full Day Course': 'fullday.md'
