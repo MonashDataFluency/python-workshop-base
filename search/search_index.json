@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Introduction to Python Workshop\n\n\nWelcome to \nIntroduction to Python\n !\n\n\nModules\n\n\n\n\n01 - \nIntroduction - the basics of Python\n\n\n02 - \nData analysis in Python with Pandas\n\n\n03 - \nIndexing and slicing\n\n\n04 - \nRepetitive tasks with loops\n\n\n05 - \nPlotting with plotnine (ggplot)\n\n\n\n\nSome of these modules have been adapted from the original versions at \n\nData Carpentry - Python for Ecologists\n \n(used under a \nCC-BY 4.0 license\n).",
+            "text": "Introduction to Python Workshop\n\n\nWelcome to \nIntroduction to Python\n !\n\n\nModules\n\n\n\n\n01 - \nIntroduction - the basics of Python\n\n\n02 - \nData analysis in Python with Pandas\n\n\n03 - \nIndexing and slicing\n\n\n04 - \nRepetitive tasks with loops\n\n\n05 - \nPlotting with plotnine (ggplot)\n\n\n06 - \nDefensive Programming\n\n\n\n\nSome of these modules have been adapted from the original versions at \n\nData Carpentry - Python for Ecologists\n \n(used under a \nCC-BY 4.0 license\n).",
             "title": "Home"
         },
         {
@@ -12,7 +12,7 @@
         },
         {
             "location": "/#modules",
-            "text": "01 -  Introduction - the basics of Python  02 -  Data analysis in Python with Pandas  03 -  Indexing and slicing  04 -  Repetitive tasks with loops  05 -  Plotting with plotnine (ggplot)   Some of these modules have been adapted from the original versions at  Data Carpentry - Python for Ecologists  \n(used under a  CC-BY 4.0 license ).",
+            "text": "01 -  Introduction - the basics of Python  02 -  Data analysis in Python with Pandas  03 -  Indexing and slicing  04 -  Repetitive tasks with loops  05 -  Plotting with plotnine (ggplot)  06 -  Defensive Programming   Some of these modules have been adapted from the original versions at  Data Carpentry - Python for Ecologists  \n(used under a  CC-BY 4.0 license ).",
             "title": "Modules"
         },
         {
@@ -517,7 +517,7 @@
         },
         {
             "location": "/fullday/",
-            "text": "Introduction to Python Workshop\n\n\nWelcome to \nIntroduction to Python\n !\n\n\nSections\n\n\n\n\n01 - \nIntroduction - the basics of Python\n\n\n02 - \nData analysis in Python with Pandas\n\n\n03 - \nIndexing and slicing\n\n\n04 - \nRepetitive tasks with loops\n\n\n05 - \nPlotting with plotnine (ggplot)\n\n\n.. more ..",
+            "text": "Introduction to Python Workshop\n\n\nWelcome to \nIntroduction to Python\n !\n\n\nSections\n\n\n\n\n01 - \nIntroduction - the basics of Python\n\n\n02 - \nData analysis in Python with Pandas\n\n\n03 - \nIndexing and slicing\n\n\n04 - \nRepetitive tasks with loops\n\n\n05 - \nPlotting with plotnine (ggplot)\n\n\n06 - \nDefensive Programming\n    \n\n\n.. more ..",
             "title": "Full Day Course"
         },
         {
@@ -527,7 +527,7 @@
         },
         {
             "location": "/fullday/#sections",
-            "text": "01 -  Introduction - the basics of Python  02 -  Data analysis in Python with Pandas  03 -  Indexing and slicing  04 -  Repetitive tasks with loops  05 -  Plotting with plotnine (ggplot)  .. more ..",
+            "text": "01 -  Introduction - the basics of Python  02 -  Data analysis in Python with Pandas  03 -  Indexing and slicing  04 -  Repetitive tasks with loops  05 -  Plotting with plotnine (ggplot)  06 -  Defensive Programming       .. more ..",
             "title": "Sections"
         }
     ]
