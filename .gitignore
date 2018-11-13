@@ -5,6 +5,9 @@
 
 # Some side-effect outputs from ./build.sh we don't want
 /workshops/docs/modules/notebooks/surveys.csv
+/workshops/docs/modules/notebooks/speciesSubset.csv
+/workshops/docs/modules/notebooks/function_surveys*.csv
+/workshops/docs/modules/notebooks/output/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

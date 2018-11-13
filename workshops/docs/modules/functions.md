@@ -656,6 +656,7 @@ abc
 # They are passed as a 'reference' to original object, not a new copy of it.
 
 import random
+random.seed(42)  # so we get the same pseudo-random numbers every time
 
 n = [1, 2, 3, 4]
 
@@ -681,18 +682,18 @@ print(n)
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-[1, 2, 3, 4, 16]
+[1, 2, 3, 4, 82]
 
-[1, 2, 3, 4, 16]
-[1, 2, 3, 4, 16, 59]
+[1, 2, 3, 4, 82]
+[1, 2, 3, 4, 82, 15]
 
-[1, 2, 3, 4, 16, 59]
-[1, 2, 3, 4, 16, 59, 42]
+[1, 2, 3, 4, 82, 15]
+[1, 2, 3, 4, 82, 15, 4]
 
-[1, 2, 3, 4, 16, 59, 42]
-[1, 2, 3, 4, 16, 59, 42, 64]
+[1, 2, 3, 4, 82, 15, 4]
+[1, 2, 3, 4, 82, 15, 4, 95]
 
-[1, 2, 3, 4, 16, 59, 42]
+[1, 2, 3, 4, 82, 15, 4]
 
 </code>
 </pre>
@@ -1147,7 +1148,7 @@ one_year_csv_writer(2002, surveys_df)
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Processed directory created:  output
+Processed directory exists:  output
 
 </code>
 </pre>

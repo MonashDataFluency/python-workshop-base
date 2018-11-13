@@ -903,7 +903,7 @@ We can use the to_csv command to do export a DataFrame in CSV format. Note that 
 
 ```python
 # Write DataFrame to CSV
-vertical_stack.to_csv('data_output/out.csv', index=False)
+vertical_stack.to_csv('output/out.csv', index=False)
 ```
 
 
@@ -919,7 +919,7 @@ Check out your working directory to make sure the CSV wrote out properly, and th
 
 ```python
 # For kicks read our output back into Python and make sure all looks good
-new_output = pd.read_csv('data_output/out.csv', keep_default_na=False, na_values=[""])
+new_output = pd.read_csv('output/out.csv', keep_default_na=False, na_values=[""])
 ```
 
 
