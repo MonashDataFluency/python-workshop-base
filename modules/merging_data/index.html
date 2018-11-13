@@ -1024,12 +1024,12 @@ horizontal_stack = pd.concat([survey_sub, survey_sub_last10], axis=1)
 <h2 id="writing-out-data-to-csv">Writing Out Data to CSV</h2>
 <p>We can use the to_csv command to do export a DataFrame in CSV format. Note that the code below will by default save the data into the current working directory. We can save it to a different folder by adding the foldername and a slash to the file <code>vertical_stack.to_csv('foldername/out.csv')</code>. We use the ‘index=False’ so that pandas doesn’t include the index number for each line.</p>
 <pre><code class="python"># Write DataFrame to CSV
-vertical_stack.to_csv('data_output/out.csv', index=False)
+vertical_stack.to_csv('output/out.csv', index=False)
 </code></pre>
 
 <p>Check out your working directory to make sure the CSV wrote out properly, and that you can open it! If you want, try to bring it back into Python to make sure it imports properly.</p>
 <pre><code class="python"># For kicks read our output back into Python and make sure all looks good
-new_output = pd.read_csv('data_output/out.csv', keep_default_na=False, na_values=[&quot;&quot;])
+new_output = pd.read_csv('output/out.csv', keep_default_na=False, na_values=[&quot;&quot;])
 </code></pre>
 
 <h2 id="challenge-combine-data">Challenge - Combine Data</h2>
