@@ -5,30 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Monash Data Fluency Python Workshops">  
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="description" content="Monash Data Fluency Python Workshops">
+    
+    
+    <link rel="../../img/favicon.ico">
 
+    
     <title>Reusable and modular code with functions - Introduction to Python Workshop</title>
+    
 
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/highlight.css">
-
-
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/highlight.min.css" rel="stylesheet">
     <link href="../../css/extra.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
     <script>
     WebFont.load({
         google: {
@@ -38,6 +40,8 @@
     </script>
 
     
+
+     
 </head>
 
 <body>
@@ -152,21 +156,21 @@
             <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                            <i class="fa fa-search"></i> Search
+                            <i class="fas fa-search"></i> Search
                         </a>
                     </li>
                     <li >
                         <a rel="next" href="../plotting_with_ggplot/">
-                            <i class="fa fa-arrow-left"></i> Previous
+                            <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
                         <a rel="prev" href="../defensive_programming/">
-                            Next <i class="fa fa-arrow-right"></i>
+                            Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/functions.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/functions.md"><i class="fab fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -175,6 +179,7 @@
 
     <div class="container">
         
+        
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#reusable-and-modular-code-with-functions">Reusable and modular code with functions</a></li>
@@ -182,13 +187,17 @@
                 
             <li class="second-level"><a href="#challenge-functions">Challenge - Functions</a></li>
                 
+                <li class="third-level"><a href="#bonus-challenges">Bonus challenges</a></li>
+                <li class="third-level"><a href="#aside-listing-files-and-the-os-module">Aside - listing files and the os module</a></li>
             <li class="second-level"><a href="#challenge-more-functions">Challenge - More Functions</a></li>
                 
-            <li class="second-level"><a href="#challenge-variables">Challenge - Variables</a></li>
+            <li class="second-level"><a href="#challenge-experimenting-with-keyword-arguments">Challenge - Experimenting with keyword arguments</a></li>
                 
             <li class="second-level"><a href="#conditionals-if-statements">Conditionals - if statements</a></li>
                 
-            <li class="second-level"><a href="#challenge-modifying-functions">Challenge - Modifying functions</a></li>
+            <li class="second-level"><a href="#multiple-choice-challenge">Multiple choice challenge</a></li>
+                
+            <li class="second-level"><a href="#bonus-challenge-modifying-functions">Bonus Challenge - Modifying functions</a></li>
                 
     </ul>
 </div></div>
@@ -220,10 +229,6 @@
 
   - "Build reusable code in Python."
   - "Write functions using conditional statements (if, then, else)"
-
-*Key points:*
-
-TODO
 
 ---
  -->
@@ -280,9 +285,16 @@ TODO
     return input_argument1 * input_argument2
 </code></pre>
 
-<p>The function declaration starts with the word <code>def</code>, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.</p>
+<p>The function declaration starts with the word def, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.</p>
+<p>Let's rewrite this function with shorter (but still informative) names so we don't need to type as much:</p>
+<pre><code class="python">def product(a, b):
+    print('The function arguments are:', a, b, '(this is done inside the function!)')
+
+    return a * b
+</code></pre>
+
 <p>This is how we call the function:</p>
-<pre><code class="python">product_of_inputs = this_is_the_function_name(2, 5)
+<pre><code class="python">product_of_inputs = product(2, 5)
 </code></pre>
 
 <pre class="output">
@@ -307,11 +319,14 @@ Their product is: 10 (this is done outside the function!)
 <h2 id="challenge-functions">Challenge - Functions</h2>
 <ol>
 <li>
-<p>Change the values of the arguments in the function and check its output.</p>
+<p>Change the values of the input arguments in the function and check its output.</p>
 </li>
 <li>
 <p>Try calling the function by giving it the wrong number of arguments (not 2) or not assigning the function call to a variable (no <code>product_of_inputs =</code>).</p>
 </li>
+</ol>
+<h3 id="bonus-challenges">Bonus challenges</h3>
+<ol>
 <li>
 <p>Declare a variable inside the function and test to see where it exists (Hint: can you print it from outside the function?).</p>
 </li>
@@ -325,7 +340,7 @@ Their product is: 10 (this is done outside the function!)
 
 <!--
 
-wzxhzdk:5
+wzxhzdk:6
 
 
 <pre class="output">
@@ -341,20 +356,23 @@ The function arguments are: 2 6 (this is done inside the function!)
 <!-- 
 Challenge part 2:
 
-wzxhzdk:6
+wzxhzdk:7
 
  -->
 
 <!--
 
-wzxhzdk:7
+wzxhzdk:8
 
  -->
+
+<pre><code class="python">
+</code></pre>
 
 <!-- 
 Challenge part 3:
 
-wzxhzdk:8
+wzxhzdk:10
 
  -->
 
@@ -371,7 +389,7 @@ NameError: name 'inside_fun' is not defined
 
 <!--
 
-wzxhzdk:10
+wzxhzdk:12
 
 
 <pre class="output">
@@ -386,13 +404,11 @@ unchanged
 
 <p>Say we had some code for taking our <code>survey.csv</code> data and splitting it out into one file for each year:</p>
 <pre><code class="python"># First let's make sure we've read the survey data into a pandas DataFrame.
-# (if you are jumping in to just this lesson and don't yet have the surveys.csv file yet, 
-#  see the &quot;Data analysis in Python with Pandas&quot; `working_with_data` module)
 import pandas as pd
 all_data = pd.read_csv(&quot;surveys.csv&quot;)
 
 this_year = 2002
-# Select data for the year
+# Select data for just that year
 surveys_year = all_data[all_data.year == this_year]
 
 # Write the new DataFrame to a csv file
@@ -400,48 +416,76 @@ filename = 'surveys' + str(this_year) + '.csv'
 surveys_year.to_csv(filename)
 </code></pre>
 
-<p>There are many different “chunks” of this code that we can turn into functions, and we can even create functions that call other functions inside them. Let’s first write a function that separates data for just one year and saves that data to a file:</p>
-<pre><code class="python">def one_year_csv_writer(this_year, all_data):
+<p>There are many different "chunks" of this code that we can turn into functions, and we can even create functions that call other functions inside them. Let’s first write a function that separates data for just one year and saves that data to a file:</p>
+<pre><code class="python">def year_to_csv(year, all_data):
     &quot;&quot;&quot;
     Writes a csv file for data from a given year.
 
-    this_year --- year for which data is extracted
+    year --- year for which data is extracted
     all_data --- DataFrame with multi-year data
     &quot;&quot;&quot;
 
     # Select data for the year
-    surveys_year = all_data[all_data.year == this_year]
+    surveys_year = all_data[all_data.year == year]
 
     # Write the new DataFrame to a csv file
-    filename = 'function_surveys' + str(this_year) + '.csv'
+    filename = 'function_surveys' + str(year) + '.csv'
     surveys_year.to_csv(filename)
 </code></pre>
 
 <p>The text between the two sets of triple double quotes is called a <em>docstring</em> and contains the documentation for the function. It does nothing when the function is running and is therefore not necessary, but it is good practice to include docstrings as a reminder of what the code does. Docstrings in functions also become part of their ‘official’ documentation:</p>
-<pre><code class="python">?one_year_csv_writer
+<pre><code class="python">?year_to_csv
 </code></pre>
 
-<p><strong>Signature:</strong> <code>one_year_csv_writer(this_year, all_data)</code></p>
+<p><strong>Signature:</strong> <code>year_to_csv(year, all_data)</code></p>
 <p><strong><em>Docstring:</em></strong></p>
 <pre><code>Writes a csv file for data from a given year.
 
-this_year --- year for which data is extracted
+year --- year for which data is extracted
 all_data --- DataFrame with multi-year data
 </code></pre>
 
 <p><strong><em>File:</em></strong>      <code>~/devel/python-workshop-base/workshops/docs/modules/notebooks/&lt;ipython-input-16-978149c5937c&gt;</code></p>
 <p><strong><em>Type:</em></strong>      <code>function</code></p>
-<pre><code class="python"># First let's make sure we've read the survey data into a pandas DataFrame.
+<pre><code class="python"># Read the survey data into a pandas DataFrame.
 # (if you are jumping in to just this lesson and don't yet have the surveys.csv file yet, 
 #  see the &quot;Data analysis in Python with Pandas&quot; `working_with_data` module)
 import pandas as pd
 surveys_df = pd.read_csv(&quot;surveys.csv&quot;)
 
-one_year_csv_writer(2002, surveys_df)
+year_to_csv(2002, surveys_df)
 </code></pre>
 
-<p>What we really want to do, though, is create files for multiple years without having to request them one by one. Let’s write another function that uses a <code>for</code> loop over a sequence of years and repeatedly calls the function we just wrote, <code>one_year_csv_writer</code>:</p>
-<pre><code class="python">def yearly_data_csv_writer(start_year, end_year, all_data):
+<h3 id="aside-listing-files-and-the-os-module">Aside - listing files and the <code>os</code> module</h3>
+<p>Google Collaboratory and Juypter Notebooks have a built-in file browser, however, you can list the files and directories in the current directory ("folder") with Python code like:</p>
+<pre><code class="python">import os
+
+print(os.listdir())
+</code></pre>
+
+<p>You'll see a Python list, a bit like:</p>
+<pre><code>['surveys.csv','function_surveys2002.csv']
+</code></pre>
+
+<p>(you may have additional files listed here, generated in previous lessons)</p>
+<p>The <a href="https://docs.python.org/3/library/os.html">os</a> module contains, among other things, a bunch of useful functions for working with the filesystem and file paths.</p>
+<p>Two other useful examples (hint - these might help in a upcoming challenge):</p>
+<pre><code class="python"># This returns True if the file or directory specified exists
+os.path.exists('surveys.csv')
+</code></pre>
+
+<pre><code class="python"># This creates empty (nested) directories based on a path (eg in a 'path' each directory is separated by slashes)
+os.makedirs('data/csvs/')
+</code></pre>
+
+<p>If a directory already exists, <code>os.makedirs</code> fails and produces an error message (in Python terminology we might say it 'raises an exception' ).</p>
+<p>We can avoid this by using <code>os.path.exists</code> and <code>os.makedirs</code> together like:</p>
+<pre><code class="python">if not os.path.exists('data/csvs/'):
+    os.makedirs('data/csvs/')
+</code></pre>
+
+<p>What we really want to do, though, is create files for multiple years without having to request them one by one. Let’s write another function that uses a <code>for</code> loop over a sequence of years and repeatedly calls the function we just wrote, <code>year_to_csv</code>:</p>
+<pre><code class="python">def create_csvs_by_year(start_year, end_year, all_data):
     &quot;&quot;&quot;
     Writes separate CSV files for each year of data.
 
@@ -452,27 +496,24 @@ one_year_csv_writer(2002, surveys_df)
 
     # &quot;end_year&quot; is the last year of data we want to pull, so we loop to end_year+1
     for year in range(start_year, end_year+1):
-        one_year_csv_writer(year, all_data)
+        year_to_csv(year, all_data)
 </code></pre>
 
 <p>Because people will naturally expect that the end year for the files is the last year with data, the <code>for</code> loop inside the function ends at <code>end_year + 1</code>. By writing the entire loop into a function, we’ve made a reusable tool for whenever we need to break a large data file into yearly files. Because we can specify the first and last year for which we want files, we can even use this function to create files for a subset of the years available. This is how we call this function:</p>
 <pre><code class="python"># Create CSV files, one for each year in the given range
-yearly_data_csv_writer(1977, 2002, surveys_df)
+create_csvs_by_year(1977, 2002, surveys_df)
 </code></pre>
 
 <h2 id="challenge-more-functions">Challenge - More Functions</h2>
 <ol>
 <li>
-<p>Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. Create a new set of files with a different name in a different directory.</p>
+<p>Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like <code>def def year_to_csv_at_path(year, all_data, output_path, filename_prefix):</code>. Call your new function to create a new set of files with a different name in a different directory. <strong>Hint:</strong> You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, <em>or</em> for bonus points you could do it in Python inside the function using the <code>os</code> module.</p>
 </li>
 <li>
-<p>How could you use the function <code>yearly_data_csv_writer</code> to create a CSV file for only one year? (Hint: think about the syntax for range)</p>
+<p>How could you use the function <code>create_csvs_by_year</code> to create a CSV file for only one year? (Hint: think about the syntax for range)</p>
 </li>
 <li>
-<p>Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): either of the functions can print to screen, either can use a return statement to give back numbers or strings to their function call, or you can use some combination of the two. You could also try using the os library to list the contents of directories.</p>
-</li>
-<li>
-<p>Explore what happens when variables are declared inside each of the functions versus in the main (non-indented) body of your code. What is the scope of the variables (where are they visible)? What happens when they have the same name but are given different values?</p>
+<p>Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): either of the functions can print to screen, either can use a return statement to give back numbers or strings to their function call, or you can use some combination of the two. You could also try using the <code>os</code> library to list the contents of directories.</p>
 </li>
 </ol>
 <!-- 
@@ -481,19 +522,19 @@ yearly_data_csv_writer(1977, 2002, surveys_df)
 
 <!--
 
-wzxhzdk:18
+wzxhzdk:25
 
  -->
 
 <!--
 
-wzxhzdk:19
+wzxhzdk:26
 
  -->
 
 <!--
 
-wzxhzdk:20
+wzxhzdk:27
 
 
 <pre class="output">
@@ -505,101 +546,24 @@ yearly_data_csv_writer(1977, 2002, surveys_df)
 </pre>
  -->
 
-<!--
-
-wzxhzdk:21
-
-
-<pre class="output">
-<div class="output_label">output</div>
-<code class="text">
-abc: printed from function
-
-</code>
-</pre>
-
-
-
-
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-'unchanged'
-</code>
-</pre>
-
-
- -->
-
-<!--
-
-wzxhzdk:22
-
-
-<pre class="output">
-<div class="output_label">output</div>
-<code class="text">
-abc
-
-</code>
-</pre>
-
-
-
-
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-'uiop'
-</code>
-</pre>
-
-
- -->
-
-<!--
-
-wzxhzdk:23
-
-
-<pre class="output">
-<div class="output_label">output</div>
-<code class="text">
-[1, 2, 3, 4, 82]
-
-[1, 2, 3, 4, 82]
-[1, 2, 3, 4, 82, 15]
-
-[1, 2, 3, 4, 82, 15]
-[1, 2, 3, 4, 82, 15, 4]
-
-[1, 2, 3, 4, 82, 15, 4]
-[1, 2, 3, 4, 82, 15, 4, 95]
-
-[1, 2, 3, 4, 82, 15, 4]
-
-</code>
-</pre>
- -->
-
-<p>The functions we wrote demand that we give them a value for every argument. Ideally, we would like these functions to be as flexible and independent as possible. Let’s modify the function <code>yearly_data_csv_writer</code> so that the <code>start_year</code> and <code>end_year</code> default to the full range of the data if they are not supplied by the user. </p>
+<p>The functions we wrote demand that we give them a value for every argument. Ideally, we would like these functions to be as flexible and independent as possible. Let’s modify the function <code>create_csvs_by_year</code> so that the <code>start_year</code> and <code>end_year</code> default to the full range of the data if they are not supplied by the user. </p>
 <p>Arguments can be given default values with an equal sign in the function declaration - we call these <strong>'keyword'</strong> arguments. Any argument in the function without a default value (here, <code>all_data</code>) is a required argument - we call these <strong>'positional'</strong> arguments. Positional arguements MUST come before any keyword arguments. Keyword arguments are optional - if you don't include them when calling the function, the default value is used.</p>
-<pre><code class="python">def yearly_data_arg_test(all_data, start_year = 1977, end_year = 2002):
+<pre><code class="python">def keyword_arg_test(all_data, start_year = 1977, end_year = 2002):
     &quot;&quot;&quot;
-    Modified from yearly_data_csv_writer to test default argument values!
+    A simple function to demonstrate the use of keyword arguments with defaults !
 
     start_year --- the first year of data we want --- default: 1977
     end_year --- the last year of data we want --- default: 2002
-    all_data --- DataFrame with multi-year data
+    all_data --- DataFrame with multi-year data - not actually used
     &quot;&quot;&quot;
 
     return start_year, end_year
 
 
-start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+start,end = keyword_arg_test(surveys_df, 1988, 1993)
 print('Both optional arguments:\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df)
+start,end = keyword_arg_test(surveys_df)
 print('Default values:\t\t\t', start, end)
 </code></pre>
 
@@ -613,10 +577,12 @@ Default values:          1977 2002
 </pre>
 
 <p>The <code>\t</code> in the print statements are tabs, used to make the text align and be easier to read.</p>
-<p>But what if our dataset doesn’t start in 1977 and end in 2002? We can modify the function so that it looks for the start and end years in the dataset if those dates are not provided:</p>
-<pre><code class="python">def yearly_data_arg_test(all_data, start_year = None, end_year = None):
+<p>What if our dataset doesn’t start in 1977 and end in 2002? We can modify the function so that it looks for the ealiest and latest years in the dataset if those dates are not provided. Let's redefine <code>csvs_by_year</code>:</p>
+<pre><code class="python">def csvs_by_year(all_data, start_year = None, end_year = None):
     &quot;&quot;&quot;
-    Modified from yearly_data_csv_writer to test default argument values!
+    Writes separate CSV files for each year of data. The start year and end year can 
+    be optionally provided, otherwise the earliest and latest year in the dataset are
+    used as the range.
 
     start_year --- the first year of data we want --- default: None - check all_data
     end_year --- the last year of data we want --- default: None - check all_data
@@ -631,10 +597,10 @@ Default values:          1977 2002
     return start_year, end_year
 
 
-start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+start,end = csvs_by_year(surveys_df, 1988, 1993)
 print('Both optional arguments:\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df)
+start,end = csvs_by_year(surveys_df)
 print('Default values:\t\t\t', start, end)
 </code></pre>
 
@@ -647,26 +613,26 @@ Default values:          1977 2002
 </code>
 </pre>
 
-<p>The default values of the <code>start_year</code> and <code>end_year</code> arguments in the function <code>yearly_data_arg_test</code> are now <code>None</code>. This is a build-it constant in Python that indicates the absence of a value - essentially, that the variable exists in the namespace of the function (the directory of variable names) but that it doesn’t correspond to any existing object.</p>
-<h2 id="challenge-variables">Challenge - Variables</h2>
+<p>The default values of the <code>start_year</code> and <code>end_year</code> arguments in this new version of the <code>csvs_by_year</code> function are now <code>None</code>. This is a built-in constant in Python that indicates the absence of a value - essentially, that the variable exists in the namespace of the function (the directory of variable names) but that it doesn’t correspond to any existing object.</p>
+<h2 id="challenge-experimenting-with-keyword-arguments">Challenge - Experimenting with keyword arguments</h2>
 <ol>
 <li>
 <p>What type of object corresponds to a variable declared as <code>None</code> ? (Hint: create a variable set to None and use the function <code>type()</code>)</p>
 </li>
 <li>
-<p>Compare the behavior of the function <code>yearly_data_arg_test</code> when the arguments have <code>None</code> as a default and when they do not have default values.</p>
+<p>Compare the behavior of the function <code>csvs_by_year</code> when the arguments have <code>None</code> as a default and when they do not have default values (you might want to make a few variations of this function with different names).</p>
 </li>
 <li>
 <p>What happens if you only include a value for <code>start_year</code> in the function call? Can you write the function call with only a value for <code>end_year</code> ? (Hint: think about how the function must be assigning values to each of the arguments - this is related to the need to put the arguments without default values before those with default values in the function definition!)</p>
 </li>
 </ol>
 <!-- 
-## Solutions - Variables
+## Solutions - Experimenting with keyword arguments
  -->
 
 <!--
 
-wzxhzdk:26
+wzxhzdk:30
 
 
 
@@ -684,7 +650,7 @@ NoneType
 
 <!--
 
-wzxhzdk:27
+wzxhzdk:31
 
 
 <pre class="output">
@@ -699,7 +665,7 @@ NoneType
 
 <!--
 
-wzxhzdk:28
+wzxhzdk:32
 
 
 <pre class="output">
@@ -743,25 +709,25 @@ a is a positive number
 </code>
 </pre>
 
-<p>Change the value of a to see how this function works. The statement <code>elif</code> means “else if”, and all of the conditional statements must end in a colon.</p>
-<p>The <code>if</code> statements in the function <code>yearly_data_arg_test</code> check whether there is an object associated with the variable names <code>start_year</code> and <code>end_year</code>. If those variables are <code>None</code>, the <code>if</code> statements return the boolean <code>True</code> and execute whatever is in their body. On the other hand, if the variable names are associated with some value (they got a number in the function call), the <code>if</code> statements return <code>False</code> and do not execute. The opposite conditional statements, which would return <code>True</code> if the variables were associated with objects (if they had received value in the function call), would be <code>if start_year</code> and <code>if end_year</code>.</p>
-<p>As we’ve written it so far, the function <code>yearly_data_arg_test</code> associates values in the function call with arguments in the function definition just based in their order. If the function gets only two values in the function call, the first one will be associated with <code>all_data</code> and the second with <code>start_year</code>, regardless of what we intended them to be. We can get around this problem by calling the function using keyword arguments, where each of the arguments in the function definition is associated with a keyword and the function call passes values to the function using these keywords:</p>
-<pre><code class="python">start,end = yearly_data_arg_test (surveys_df)
+<p>Change the value of <code>a</code> to see how this function works. The statement <code>elif</code> means “else if”, and all of the conditional statements must end in a colon.</p>
+<p>The <code>if</code> statements in the function <code>csvs_by_year</code> check whether there is an object associated with the variable names <code>start_year</code> and <code>end_year</code>. If those variables are <code>None</code>, the <code>if</code> statements return the boolean <code>True</code> and execute whatever is in their body. On the other hand, if the variable names are associated with some value (they got a number in the function call), the <code>if</code> statements return <code>False</code> and do not execute. The opposite conditional statements, which would return <code>True</code> if the variables were associated with objects (if they had received value in the function call), would be <code>if start_year</code> and <code>if end_year</code>.</p>
+<p>As we’ve written it so far, the function <code>csvs_by_year</code> associates values in the function call with arguments in the function definition just based in their order. If the function gets only two values in the function call, the first one will be associated with <code>all_data</code> and the second with <code>start_year</code>, regardless of what we intended them to be. We can get around this problem by calling the function using keyword arguments, where each of the arguments in the function definition is associated with a keyword and the function call passes values to the function using these keywords:</p>
+<pre><code class="python">start,end = csvs_by_year(surveys_df)
 print('Default values:\t\t\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df, 1988, 1993)
+start,end = csvs_by_year(surveys_df, 1988, 1993)
 print('No keywords:\t\t\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df, start_year = 1988, end_year = 1993)
+start,end = csvs_by_year(surveys_df, start_year = 1988, end_year = 1993)
 print('Both keywords, in order:\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df, end_year = 1993, start_year = 1988)
+start,end = csvs_by_year(surveys_df, end_year = 1993, start_year = 1988)
 print('Both keywords, flipped:\t\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df, start_year = 1988)
+start,end = csvs_by_year(surveys_df, start_year = 1988)
 print('One keyword, default end:\t', start, end)
 
-start,end = yearly_data_arg_test (surveys_df, end_year = 1993)
+start,end = csvs_by_year(surveys_df, end_year = 1993)
 print('One keyword, default start:\t', start, end)
 </code></pre>
 
@@ -778,10 +744,38 @@ One keyword, default start:  1977 1993
 </code>
 </pre>
 
-<h2 id="challenge-modifying-functions">Challenge - Modifying functions</h2>
+<h2 id="multiple-choice-challenge">Multiple choice challenge</h2>
+<p>What output would you expect from the <code>if</code> statement (try to figure out the answer without running the code):</p>
+<pre><code class="python">pod_bay_doors_open = False
+dave_want_doors_open = False
+hal_insanity_level = 2001
+
+if not pod_bay_doors_open:
+    print(&quot;Dave: Open the pod bay doors please HAL.&quot;)
+    dave_wants_doors_open = True
+elif pod_bay_doors_open and hal_insanity_level &gt;= 95:
+    print(&quot;HAL: I'm closing the pod bay doors, Dave.&quot;)
+
+if dave_wants_doors_open and not pod_bay_doors_open and hal_insanity_level &gt;= 95:
+    print(&quot;HAL: I’m sorry, Dave. I’m afraid I can’t do that.&quot;)
+elif dave_wants_doors_open and not pod_bay_doors_open:
+    print(&quot;HAL: I'm opening the pod bay doors, welcome back Dave.&quot;)
+else:
+    print(&quot;... silence of space ...&quot;)
+</code></pre>
+
+<p><strong>a)</strong> "HAL: I'm closing the pod bay doors, Dave.", "... silence of space ..."</p>
+<p><strong>b)</strong> "Dave: Open the pod bay doors please HAL.", "HAL: I’m sorry, Dave. I’m afraid I can’t do that."</p>
+<p><strong>c)</strong> "... silence of space ..."</p>
+<p><strong>d)</strong> "Dave: Open the pod bay doors please HAL.", HAL: I'm opening the pod bay doors, welcome back Dave."</p>
+<!-- 
+**Option (b)**
+ -->
+
+<h2 id="bonus-challenge-modifying-functions">Bonus Challenge - Modifying functions</h2>
 <ol>
 <li>
-<p>Rewrite the <code>one_year_csv_writer</code> and <code>yearly_data_csv_writer</code> functions to have keyword arguments with default values.</p>
+<p>Rewrite the <code>year_to_csv</code> and <code>csvs_by_year</code> functions to have keyword arguments with default values.</p>
 </li>
 <li>
 <p>Modify the functions so that they don’t create yearly files if there is no data for a given year and display an alert to the user (Hint: use conditional statements to do this. For an extra challenge, use <code>try</code> statements !).</p>
@@ -792,16 +786,14 @@ One keyword, default start:  1977 1993
 </ol>
 <pre><code class="python">import os
 
-if 'dir_name_here' in os.listdir('.'):
+if 'dir_name_here' in os.listdir():
    print('Processed directory exists')
 else:
    os.mkdir('dir_name_here')
    print('Processed directory created')
 </code></pre>
 
-<ol>
-<li>The code that you have written so far to loop through the years is good, however it is not necessarily reproducible with different datasets. For instance, what happens to the code if we have additional years of data in our CSV files? Using the tools that you learned in the previous activities, make a list of all years represented in the data. Then create a loop to process your data, that begins at the earliest year and ends at the latest year using that list.</li>
-</ol>
+<p><code>4.</code> The code that you have written so far to loop through the years is good, however it is not necessarily reproducible with different datasets. For instance, what happens to the code if we have additional years of data in our CSV files? Using the tools that you learned in the previous activities, make a list of all years represented in the data. Then create a loop to process your data, that begins at the earliest year and ends at the latest year using that list.</p>
 <p><em>HINT:</em> you can create a loop with a list as follows: <code>for years in year_list:</code></p>
 <!-- 
 ## Solutions - Modifying functions
@@ -809,19 +801,19 @@ else:
 
 <!--
 
-wzxhzdk:32
+wzxhzdk:37
 
  -->
 
 <!--
 
-wzxhzdk:33
+wzxhzdk:38
 
  -->
 
 <!--
 
-wzxhzdk:34
+wzxhzdk:39
 
 
 <pre class="output">
@@ -835,66 +827,45 @@ Processed directory exists:  output
 
 <!--
 
-wzxhzdk:35
-
-
-
+wzxhzdk:40
 
 
 <pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<div class="output_label">output</div>
 <code class="text">
-[1977,
- 1978,
- 1979,
- 1980,
- 1981,
- 1982,
- 1983,
- 1984,
- 1985,
- 1986,
- 1987,
- 1988,
- 1989,
- 1990,
- 1991,
- 1992,
- 1993,
- 1994,
- 1995,
- 1996,
- 1997,
- 1998,
- 1999,
- 2000,
- 2001,
- 2002]
+[1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977]
+
+[1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002]
+
 </code>
 </pre>
+ -->
 
-
- --></div>
+<pre><code class="python">
+</code></pre></div>
+        
         
     </div>
 
     <footer class="col-md-12 text-center">
+        
         <hr>
         <p>
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+
+        
+        
     </footer>
 
-    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
     var base_url = '../..';
     </script>
-    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
     <script src="../../js/base.js"></script>
-    <script src="../../search/require.js"></script>
-    <script src="../../search/search.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">

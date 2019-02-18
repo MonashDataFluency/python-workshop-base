@@ -5,30 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Monash Data Fluency Python Workshops">  
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="description" content="Monash Data Fluency Python Workshops">
+    
+    
+    <link rel="../../img/favicon.ico">
 
+    
     <title>Plotting with ggplot for Python - Introduction to Python Workshop</title>
+    
 
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/highlight.css">
-
-
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/highlight.min.css" rel="stylesheet">
     <link href="../../css/extra.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
     <script>
     WebFont.load({
         google: {
@@ -38,6 +40,8 @@
     </script>
 
     
+
+     
 </head>
 
 <body>
@@ -152,21 +156,21 @@
             <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                            <i class="fa fa-search"></i> Search
+                            <i class="fas fa-search"></i> Search
                         </a>
                     </li>
                     <li >
                         <a rel="next" href="../merging_data/">
-                            <i class="fa fa-arrow-left"></i> Previous
+                            <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
                         <a rel="prev" href="../functions/">
-                            Next <i class="fa fa-arrow-right"></i>
+                            Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/plotting_with_ggplot.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/MonashDataFluency/python-workshop-base/blob/master/README.md#modifying-and-building/modules/plotting_with_ggplot.md"><i class="fab fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -174,6 +178,7 @@
 </div>
 
     <div class="container">
+        
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
@@ -265,23 +270,24 @@
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages
-Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages
-Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
-Requirement already satisfied: numpy>=1.9.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from pandas)
-Requirement already satisfied: six in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: matplotlib>=2.1.0 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: mizani>=0.4.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from plotnine)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from matplotlib>=2.1.0->plotnine)
-Requirement already satisfied: palettable in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from mizani>=0.4.1->plotnine)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=2.1.0->plotnine)
-[33mYou are using pip version 9.0.1, however version 18.1 is available.
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.24.1)
+Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.5.1)
+Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
+Requirement already satisfied: numpy>=1.12.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.16.1)
+Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.9)
+Requirement already satisfied: descartes>=1.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
+Requirement already satisfied: mizani>=0.5.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.3)
+Requirement already satisfied: matplotlib>=3.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (3.0.2)
+Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.2.1)
+Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.9.0)
+Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.1)
+Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas) (1.12.0)
+Requirement already satisfied: palettable in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from mizani>=0.5.2->plotnine) (3.1.1)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (1.0.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (2.3.1)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (0.10.0)
+Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=3.0.0->plotnine) (39.1.0)
+[33mYou are using pip version 10.0.1, however version 19.0.2 is available.
 You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 
 </code>
@@ -316,7 +322,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282250339)>
+<ggplot: (304430063)>
 </code>
 </pre>
 
@@ -329,7 +335,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (289054072)>
+<ggplot: (305901923)>
 </code>
 </pre>
 
@@ -342,7 +348,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564766292)>
+<ggplot: (308472356)>
 </code>
 </pre>
 
@@ -355,7 +361,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (289968353)>
+<ggplot: (-9223372036549539580)>
 </code>
 </pre>
 
@@ -368,7 +374,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290660300)>
+<ggplot: (305184646)>
 </code>
 </pre>
 
@@ -400,7 +406,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (282250374)>
+<ggplot: (-9223372036545151579)>
 </code>
 </pre>
 
@@ -422,7 +428,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564115652)>
+<ggplot: (305194872)>
 </code>
 </pre>
 
@@ -438,7 +444,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036563951514)>
+<ggplot: (-9223372036549283128)>
 </code>
 </pre>
 
@@ -454,7 +460,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290824975)>
+<ggplot: (304716513)>
 </code>
 </pre>
 
@@ -468,7 +474,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (291947335)>
+<ggplot: (-9223372036549822334)>
 </code>
 </pre>
 
@@ -485,7 +491,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (289228117)>
+<ggplot: (-9223372036549822362)>
 </code>
 </pre>
 
@@ -507,9 +513,9 @@ ggsave(filename=&quot;plot1.png&quot;,
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages/plotnine/ggplot.py:688: UserWarning: Saving 25 x 25 in image.
+/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/plotnine/ggplot.py:706: UserWarning: Saving 25 x 25 in image.
   from_inches(height, units), units))
-/Users/perry/.virtualenvs/jupyter/lib/python3.6/site-packages/plotnine/ggplot.py:689: UserWarning: Filename: plot1.png
+/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/plotnine/ggplot.py:707: UserWarning: Filename: plot1.png
   warn('Filename: {}'.format(filename))
 
 </code>
@@ -543,7 +549,7 @@ ggsave(filename=&quot;plot1.png&quot;,
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (280627930)>
+<ggplot: (-9223372036545142412)>
 </code>
 </pre>
 
@@ -565,7 +571,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290824596)>
+<ggplot: (-9223372036560212357)>
 </code>
 </pre>
 
@@ -581,7 +587,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (289693809)>
+<ggplot: (-9223372036549870697)>
 </code>
 </pre>
 
@@ -607,7 +613,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036565139761)>
+<ggplot: (-9223372036569664049)>
 </code>
 </pre>
 
@@ -622,7 +628,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564777882)>
+<ggplot: (304811966)>
 </code>
 </pre>
 
@@ -647,7 +653,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036565497358)>
+<ggplot: (305748477)>
 </code>
 </pre>
 
@@ -662,7 +668,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036564654462)>
+<ggplot: (-9223372036545887821)>
 </code>
 </pre>
 
@@ -685,29 +691,35 @@ ggplot(survs_df, aes(&quot;year_fact&quot;, &quot;weight_log&quot;)) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (290264559)>
+<ggplot: (308183409)>
 </code>
-</pre></div>
+</pre>
+
+<pre><code class="python">
+</code></pre></div>
+        
         
     </div>
 
     <footer class="col-md-12 text-center">
+        
         <hr>
         <p>
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+
+        
+        
     </footer>
 
-    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
     var base_url = '../..';
     </script>
-    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
     <script src="../../js/base.js"></script>
-    <script src="../../search/require.js"></script>
-    <script src="../../search/search.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
