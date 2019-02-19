@@ -9,5 +9,4 @@ Welcome to _Introduction to Python_ !
 * 03 - [Data analysis in Python with Pandas](modules/working_with_data.md)
 * 04 - [Reusable and modular code with functions](modules/functions.md)
 * 05 - [Handling Missing Values](modules/missing_values.md)
-* 06 - [Combining DataFrames with Pandas](modules/merging_data.md)
-* 07 - [Plotting with plotnine (ggplot)](modules/plotting_with_ggplot.md)
+* 06 - [Plotting with plotnine (ggplot)](modules/plotting_with_ggplot.md)
