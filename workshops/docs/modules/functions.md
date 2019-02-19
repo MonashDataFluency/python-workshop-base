@@ -930,7 +930,7 @@ else:
 
 **c)** "... silence of space ..."
 
-**d)** "Dave: Open the pod bay doors please HAL.", HAL: I'm opening the pod bay doors, welcome back Dave."
+**d)** "Dave: Open the pod bay doors please HAL.", HAL: "I'm opening the pod bay doors, welcome back Dave."
 
 
 
