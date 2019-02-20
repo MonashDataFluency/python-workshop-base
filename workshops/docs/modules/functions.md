@@ -251,15 +251,6 @@ TypeError: this_is_the_function_name() takes 2 positional arguments but 3 were g
 
 
 
-
-
-```python
-
-```
-
-
-
-
 <!-- 
 Challenge part 3:
 
@@ -278,7 +269,7 @@ print(inside_fun)
 
 
 
-
+<!-- 
 ```python
 The function arguments are: 2 5 (this is done inside the function!)
 ---------------------------------------------------------------------------
@@ -290,7 +281,7 @@ NameError                                 Traceback (most recent call last)
 
 NameError: name 'inside_fun' is not defined
 ```
-
+ -->
 
 
 
@@ -503,7 +494,7 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 ## Challenge - More Functions
 
-1. Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like `def def year_to_csv_at_path(year, all_data, output_path, filename_prefix):`. Call your new function to create a new set of files with a different name in a different directory. **Hint:** You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, *or* for bonus points you could do it in Python inside the function using the `os` module.
+1. Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like `def year_to_csv_at_path(year, all_data, output_path, filename_prefix):`. Call your new function to create a new set of files with a different name in a different directory. **Hint:** You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, *or* for bonus points you could do it in Python inside the function using the `os` module.
 
 2. How could you use the function `create_csvs_by_year` to create a CSV file for only one year? (Hint: think about the syntax for range)
 
@@ -718,7 +709,7 @@ The default values of the `start_year` and `end_year` arguments in this new vers
 
 1. What type of object corresponds to a variable declared as `None` ? (Hint: create a variable set to None and use the function `type()`)
 
-2. Compare the behavior of the function `csvs_by_year` when the arguments have `None` as a default and when they do not have default values (you might want to make a few variations of this function with different names).
+2. Compare the behavior of the function `csvs_by_year` when the keyword arguments have `None` as a default vs. calling the function by supplying (non-default) values to the keyword arguments
 
 3. What happens if you only include a value for `start_year` in the function call? Can you write the function call with only a value for `end_year` ? (Hint: think about how the function must be assigning values to each of the arguments - this is related to the need to put the arguments without default values before those with default values in the function definition!)
 
@@ -1166,13 +1157,4 @@ print(list(set(surveys_df.year)))
 </code>
 </pre>
  -->
-
-
-
-
-
-```python
-
-```
-
 
