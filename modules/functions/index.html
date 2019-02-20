@@ -366,30 +366,22 @@ Challenge part 2:
 
  -->
 
-<pre><code class="python">
-</code></pre>
-
 <!-- 
 Challenge part 3:
+
+wzxhzdk:9
+
+ -->
+
+<!--
 
 wzxhzdk:10
 
  -->
 
-<pre><code class="python">The function arguments are: 2 5 (this is done inside the function!)
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-&lt;ipython-input-13-e7a0563b00a6&gt; in &lt;module&gt;()
-     12 
-     13 this_is_the_function_name(2, 5)
----&gt; 14 print(inside_fun)
-
-NameError: name 'inside_fun' is not defined
-</code></pre>
-
 <!--
 
-wzxhzdk:12
+wzxhzdk:11
 
 
 <pre class="output">
@@ -507,7 +499,7 @@ create_csvs_by_year(1977, 2002, surveys_df)
 <h2 id="challenge-more-functions">Challenge - More Functions</h2>
 <ol>
 <li>
-<p>Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like <code>def def year_to_csv_at_path(year, all_data, output_path, filename_prefix):</code>. Call your new function to create a new set of files with a different name in a different directory. <strong>Hint:</strong> You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, <em>or</em> for bonus points you could do it in Python inside the function using the <code>os</code> module.</p>
+<p>Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like <code>def year_to_csv_at_path(year, all_data, output_path, filename_prefix):</code>. Call your new function to create a new set of files with a different name in a different directory. <strong>Hint:</strong> You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, <em>or</em> for bonus points you could do it in Python inside the function using the <code>os</code> module.</p>
 </li>
 <li>
 <p>How could you use the function <code>create_csvs_by_year</code> to create a CSV file for only one year? (Hint: think about the syntax for range)</p>
@@ -522,6 +514,12 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 <!--
 
+wzxhzdk:24
+
+ -->
+
+<!--
+
 wzxhzdk:25
 
  -->
@@ -529,12 +527,6 @@ create_csvs_by_year(1977, 2002, surveys_df)
 <!--
 
 wzxhzdk:26
-
- -->
-
-<!--
-
-wzxhzdk:27
 
 
 <pre class="output">
@@ -620,7 +612,7 @@ Default values:          1977 2002
 <p>What type of object corresponds to a variable declared as <code>None</code> ? (Hint: create a variable set to None and use the function <code>type()</code>)</p>
 </li>
 <li>
-<p>Compare the behavior of the function <code>csvs_by_year</code> when the arguments have <code>None</code> as a default and when they do not have default values (you might want to make a few variations of this function with different names).</p>
+<p>Compare the behavior of the function <code>csvs_by_year</code> when the keyword arguments have <code>None</code> as a default vs. calling the function by supplying (non-default) values to the keyword arguments</p>
 </li>
 <li>
 <p>What happens if you only include a value for <code>start_year</code> in the function call? Can you write the function call with only a value for <code>end_year</code> ? (Hint: think about how the function must be assigning values to each of the arguments - this is related to the need to put the arguments without default values before those with default values in the function definition!)</p>
@@ -632,7 +624,7 @@ Default values:          1977 2002
 
 <!--
 
-wzxhzdk:30
+wzxhzdk:29
 
 
 
@@ -650,7 +642,7 @@ NoneType
 
 <!--
 
-wzxhzdk:31
+wzxhzdk:30
 
 
 <pre class="output">
@@ -665,7 +657,7 @@ NoneType
 
 <!--
 
-wzxhzdk:32
+wzxhzdk:31
 
 
 <pre class="output">
@@ -801,6 +793,12 @@ else:
 
 <!--
 
+wzxhzdk:36
+
+ -->
+
+<!--
+
 wzxhzdk:37
 
  -->
@@ -808,12 +806,6 @@ else:
 <!--
 
 wzxhzdk:38
-
- -->
-
-<!--
-
-wzxhzdk:39
 
 
 <pre class="output">
@@ -827,7 +819,7 @@ Processed directory exists:  output
 
 <!--
 
-wzxhzdk:40
+wzxhzdk:39
 
 
 <pre class="output">
@@ -839,10 +831,7 @@ Processed directory exists:  output
 
 </code>
 </pre>
- -->
-
-<pre><code class="python">
-</code></pre></div>
+ --></div>
         
         
     </div>
