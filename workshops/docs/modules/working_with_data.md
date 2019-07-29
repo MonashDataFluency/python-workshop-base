@@ -84,7 +84,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x11193ba20>)
+('surveys.csv', <http.client.HTTPMessage at 0x10660b710>)
 </code>
 </pre>
 
@@ -176,18 +176,16 @@ First, lets make sure the Pandas and matplotlib packages are **installed**.
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.24.1)
-Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.0.2)
-Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.9)
-Requirement already satisfied: numpy>=1.12.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.16.1)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.1.1)
+Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
+Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
+Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.1.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.4.1.1)
 Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.3.1)
-Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas) (1.12.0)
+Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
-[33mYou are using pip version 10.0.1, however version 19.0.2 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 
 </code>
 </pre>
@@ -3015,57 +3013,7 @@ surveys_df['weight']*2
 2          NaN
 3          NaN
 4          NaN
-5          NaN
-6          NaN
-7          NaN
-8          NaN
-9          NaN
-10         NaN
-11         NaN
-12         NaN
-13         NaN
-14         NaN
-15         NaN
-16         NaN
-17         NaN
-18         NaN
-19         NaN
-20         NaN
-21         NaN
-22         NaN
-23         NaN
-24         NaN
-25         NaN
-26         NaN
-27         NaN
-28         NaN
-29         NaN
          ...  
-35519     72.0
-35520     96.0
-35521     90.0
-35522     88.0
-35523     54.0
-35524     52.0
-35525     48.0
-35526     86.0
-35527      NaN
-35528     50.0
-35529      NaN
-35530      NaN
-35531     86.0
-35532     96.0
-35533    112.0
-35534    106.0
-35535     84.0
-35536     92.0
-35537     62.0
-35538    136.0
-35539     46.0
-35540     62.0
-35541     58.0
-35542     68.0
-35543      NaN
 35544      NaN
 35545      NaN
 35546     28.0
@@ -3106,7 +3054,7 @@ species_counts.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11c3c3c88>
+<matplotlib.axes._subplots.AxesSubplot at 0x1109f9ba8>
 </code>
 </pre>
 
@@ -3141,7 +3089,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11e58b208>
+<matplotlib.axes._subplots.AxesSubplot at 0x1135a81d0>
 </code>
 </pre>
 
@@ -3190,7 +3138,7 @@ surveys_df.groupby('site_id').mean()["weight"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11e6392b0>
+<matplotlib.axes._subplots.AxesSubplot at 0x11361a630>
 </code>
 </pre>
 
@@ -3224,7 +3172,7 @@ surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11e7a5710>
+<matplotlib.axes._subplots.AxesSubplot at 0x113692e80>
 </code>
 </pre>
 

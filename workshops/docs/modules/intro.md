@@ -1038,7 +1038,7 @@ class list(object)
  |      Return self<value.
  |  
  |  __mul__(self, value, /)
- |      Return self*value.n
+ |      Return self*value.
  |  
  |  __ne__(self, value, /)
  |      Return self!=value.
@@ -1053,7 +1053,7 @@ class list(object)
  |      L.__reversed__() -- return a reverse iterator over the list
  |  
  |  __rmul__(self, value, /)
- |      Return self*value.
+ |      Return value*self.
  |  
  |  __setitem__(self, key, value, /)
  |      Set self[key] to value.

@@ -125,7 +125,7 @@ def this_is_the_function_name(input_argument1, input_argument2):
     return input_argument1 * input_argument2
 ```
 
-The function declaration starts with the word def, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.
+The function declaration starts with the word `def`, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.
 
 
 Let's rewrite this function with shorter (but still informative) names so we don't need to type as much:
@@ -498,7 +498,7 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 2. How could you use the function `create_csvs_by_year` to create a CSV file for only one year? (Hint: think about the syntax for range)
 
-3. Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): either of the functions can print to screen, either can use a return statement to give back numbers or strings to their function call, or you can use some combination of the two. You could also try using the `os` library to list the contents of directories.
+3. Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): you could make the function print the filenames to screen, or you could use a `return` statement to make the function produce a list of filenames, or you can use some combination of the two. You could also try using the `os` library to list the contents of directories.
 
 
 
