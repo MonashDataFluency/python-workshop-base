@@ -30,7 +30,7 @@
             <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 
-    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
     WebFont.load({
         google: {
@@ -160,12 +160,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../missing_values/">
+                        <a rel="prev" href="../missing_values/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../loops/">
+                        <a rel="next" href="../loops/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -274,18 +274,16 @@ In this lesson, we will explore **ways to access different parts of the data** i
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.24.1)
-Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.0.2)
-Requirement already satisfied: python-dateutil>=2.5.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
-Requirement already satisfied: pytz>=2011k in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2018.9)
-Requirement already satisfied: numpy>=1.12.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.16.1)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.0.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.3.1)
+Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
+Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.1.1)
+Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
+Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.4.1.1)
 Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas) (1.12.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.1.0)
+Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
-[33mYou are using pip version 10.0.1, however version 19.0.2 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 
 </code>
 </pre>
@@ -569,7 +567,8 @@ a = [1, 2, 3, 4, 5]
 <h2 id="solutions-extracting-data">Solutions - Extracting data</h2>
 <!--
 
-wzxhzdk:10
+<pre><code class="python">a[0]
+</code></pre>
 
 
 
@@ -587,7 +586,9 @@ a = [1, 2, 3, 4, 5]
 
 <!--
 
-wzxhzdk:11
+<pre><code class="python"># Solution #2
+# a[5]
+</code></pre>
 
  -->
 
@@ -599,7 +600,9 @@ In above example, the error says `list index out of range`. This means we don't 
 
 <!--
 
-wzxhzdk:12
+<pre><code class="python"># Solution #3
+# a[len(a)]
+</code></pre>
 
  -->
 
@@ -993,12 +996,12 @@ surveys_df.loc[[0, 10, 35549], :]
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py:1494: FutureWarning: 
+/Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages/pandas/core/indexing.py:1404: FutureWarning: 
 Passing list-likes to .loc or [] with any missing label will raise
 KeyError in the future, you can use .reindex() as an alternative.
 
 See the documentation here:
-https://pandas.pydata.org/pandas-docs/stable/indexing.html#deprecate-loc-reindex-listlike
+https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#deprecate-loc-reindex-listlike
   return self._getitem_tuple(key)
 
 </code>
@@ -1122,7 +1125,9 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.</p>
 
 <!--
 
-wzxhzdk:23
+<pre><code class="python"># Solution - Range - #1 (a)
+surveys_df[0:1]
+</code></pre>
 
 
 
@@ -1179,7 +1184,9 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.</p>
 
 <!--
 
-wzxhzdk:24
+<pre><code class="python"># Solution - Range - #1 (b)
+surveys_df[:4]
+</code></pre>
 
 
 
@@ -1272,7 +1279,9 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.</p>
 
 <!--
 
-wzxhzdk:25
+<pre><code class="python"># Solution - Range - #1 (c)
+surveys_df[:-1]
+</code></pre>
 
 
 
@@ -2050,7 +2059,9 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.</p>
 
 <!--
 
-wzxhzdk:26
+<pre><code class="python"># Solution - Range - #2
+surveys_df.iloc[0:4, 1:4]
+</code></pre>
 
 
 
@@ -3786,7 +3797,9 @@ in the "surveys" DataFrame. How many records contain these values?</p>
 
 <!--
 
-wzxhzdk:31
+<pre><code class="python">## Solution - Queries #1
+surveys_df[(surveys_df[&quot;year&quot;] == 1999) &amp; (surveys_df[&quot;weight&quot;] &lt;= 8)]
+</code></pre>
 
 
 
@@ -3891,7 +3904,9 @@ in the "surveys" DataFrame. How many records contain these values?</p>
 
 <!--
 
-wzxhzdk:32
+<pre><code class="python"># when only interested in how many, the sum of True values could be used as well: 
+sum((surveys_df[&quot;year&quot;] == 1999) &amp; (surveys_df[&quot;weight&quot;] &lt;= 8))
+</code></pre>
 
 
 
@@ -3909,7 +3924,9 @@ in the "surveys" DataFrame. How many records contain these values?</p>
 
 <!--
 
-wzxhzdk:33
+<pre><code class="python"># Solution - Queries #2
+surveys_df[surveys_df['species_id'].isin(['PB', 'PL'])]['site_id'].unique()
+</code></pre>
 
 
 
@@ -3928,7 +3945,9 @@ array([ 1, 10,  6, 24,  2, 23, 19, 12, 20, 22,  3,  9, 14, 13, 21,  7, 11,
 
 <!--
 
-wzxhzdk:34
+<pre><code class="python"># To get number of records
+surveys_df[surveys_df['species_id'].isin(['PB', 'PL'])].shape
+</code></pre>
 
 
 
@@ -3959,7 +3978,8 @@ array([ 1, 10,  6, 24,  2, 23, 19, 12, 20, 22,  3,  9, 14, 13, 21,  7, 11,
 </ol>
 <!--
 
-wzxhzdk:35
+<pre><code class="python">sum(surveys_df[&quot;weight&quot;]&gt;=0)
+</code></pre>
 
 
 
@@ -3977,7 +3997,9 @@ array([ 1, 10,  6, 24,  2, 23, 19, 12, 20, 22,  3,  9, 14, 13, 21,  7, 11,
 
 <!--
 
-wzxhzdk:36
+<pre><code class="python">surveys_df[~surveys_df[&quot;sex&quot;].isin(['M', 'F'])]
+
+</code></pre>
 
 
 
@@ -4805,7 +4827,11 @@ True
 
 <!--
 
-wzxhzdk:40
+<pre><code class="python"># Solution extra challenge 1
+new = surveys_df[~surveys_df['sex'].isin(['M', 'F'])].copy()
+new['sex']='x'
+print(len(new))
+</code></pre>
 
 
 <pre class="output">
@@ -4819,7 +4845,9 @@ True
 
 <!--
 
-wzxhzdk:41
+<pre><code class="python"># We can verify the number of NaN values with
+sum(surveys_df['sex'].isnull())
+</code></pre>
 
 
 
@@ -4854,7 +4882,7 @@ stack_selection.plot(kind='bar', stacked=True)
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x115542908>
+<matplotlib.axes._subplots.AxesSubplot at 0x115a8f9b0>
 </code>
 </pre>
 
@@ -4872,44 +4900,78 @@ stack_selection.plot(kind='bar', stacked=True)
         
         
     </footer>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script>
-    var base_url = '../..';
-    </script>
+    <script>var base_url = "../.."</script>
+    
     <script src="../../js/base.js"></script>
     <script src="../../search/main.js"></script>
 
-    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        From here you can search these documents. Enter your search terms below.
-                    </p>
-                    <form role="form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                        </div>
-                    </form>
-                    <div id="mkdocs-search-results"></div>
-                </div>
-                <div class="modal-footer">
-                </div>
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
-
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
     </body>
 
 </html>

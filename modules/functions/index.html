@@ -30,7 +30,7 @@
             <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 
-    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.28/webfont.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
     WebFont.load({
         google: {
@@ -160,12 +160,12 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="../plotting_with_ggplot/">
+                        <a rel="prev" href="../plotting_with_ggplot/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../defensive_programming/">
+                        <a rel="next" href="../defensive_programming/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -237,7 +237,12 @@
 <p>Functions wrap up reusable pieces of code - they help you apply the <em>Do Not Repeat Yourself</em> (DRY) principle.</p>
 <!--
 
-wzxhzdk:0
+<pre><code class="python">def square(x):
+    # The body of the function is indicated by indenting by 4 spaces.
+    return x**2
+
+square(4)
+</code></pre>
 
 
 
@@ -255,7 +260,14 @@
 
 <!--
 
-wzxhzdk:1
+<pre><code class="python">def hyphenate(a, b):
+    # return statements immediately return a value (or None if no value is given)
+    return a + '-' + b
+    # Any code in the function after the return statement does not get executed.
+    print(&quot;We will never get here&quot;)
+
+hyphenate('python', 'esque')
+</code></pre>
 
 
 
@@ -285,7 +297,7 @@
     return input_argument1 * input_argument2
 </code></pre>
 
-<p>The function declaration starts with the word def, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.</p>
+<p>The function declaration starts with the word <code>def</code>, followed by the function name and any arguments in parenthesis, and ends in a colon. The body of the function is indented just like loops are. If the function returns something when it is called, it includes a return statement at the end.</p>
 <p>Let's rewrite this function with shorter (but still informative) names so we don't need to type as much:</p>
 <pre><code class="python">def product(a, b):
     print('The function arguments are:', a, b, '(this is done inside the function!)')
@@ -340,7 +352,10 @@ Their product is: 10 (this is done outside the function!)
 
 <!--
 
-wzxhzdk:6
+<pre><code class="python"># Challenge part 1
+product_of_inputs = product(2, 6)
+print(product_of_inputs)
+</code></pre>
 
 
 <pre class="output">
@@ -356,32 +371,69 @@ The function arguments are: 2 6 (this is done inside the function!)
 <!-- 
 Challenge part 2:
 
-wzxhzdk:7
+<pre><code class="python">product(2, 6, &quot;nope&quot;)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:8
+<pre><code class="python">---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-12-fe9d9cd35fe2&gt; in &lt;module&gt;()
+      1 # 2
+----&gt; 2 this_is_the_function_name(2, 6, &quot;nope&quot;)
+
+TypeError: this_is_the_function_name() takes 2 positional arguments but 3 were given
+</code></pre>
 
  -->
 
 <!-- 
 Challenge part 3:
 
-wzxhzdk:9
+<pre><code class="python">def product(a, b):
+
+    inside_fun = &quot;existential crisis&quot;
+    print('The function arguments are:', a, b, '(this is done inside the function!)')
+
+    return a * b
+
+product(2, 5)
+print(inside_fun)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:10
+<pre><code class="python">The function arguments are: 2 5 (this is done inside the function!)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-13-e7a0563b00a6&gt; in &lt;module&gt;()
+     12 
+     13 this_is_the_function_name(2, 5)
+---&gt; 14 print(inside_fun)
+
+NameError: name 'inside_fun' is not defined
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:11
+<pre><code class="python"># Challenge part 4
+outside = &quot;unchanged&quot;
+def product(a, b):
+
+    outside = &quot;I'm being manipulated&quot;
+    print('The function arguments are:', a, b, '(this is done inside the function!)')
+
+    return a * b
+
+product(2, 5)
+print(outside)
+</code></pre>
 
 
 <pre class="output">
@@ -505,7 +557,7 @@ create_csvs_by_year(1977, 2002, surveys_df)
 <p>How could you use the function <code>create_csvs_by_year</code> to create a CSV file for only one year? (Hint: think about the syntax for range)</p>
 </li>
 <li>
-<p>Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): either of the functions can print to screen, either can use a return statement to give back numbers or strings to their function call, or you can use some combination of the two. You could also try using the <code>os</code> library to list the contents of directories.</p>
+<p>Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): you could make the function print the filenames to screen, or you could use a <code>return</code> statement to make the function produce a list of filenames, or you can use some combination of the two. You could also try using the <code>os</code> library to list the contents of directories.</p>
 </li>
 </ol>
 <!-- 
@@ -514,19 +566,85 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 <!--
 
-wzxhzdk:24
+<pre><code class="python"># Solution - part 1
+import os
+
+def year_to_csv_at_path(year, all_data, output_path, filename_prefix):
+    &quot;&quot;&quot;
+    Writes a csv file for data from a given year.
+
+    year --- year for which data is extracted
+    all_data --- DataFrame with multi-year data
+    output_path --- The output path for the generated file
+    filename_prefix --- Output filename will be of the form &quot;{filename_prefix}{year}.csv&quot;
+    &quot;&quot;&quot;
+
+    # Select data for the year
+    surveys_year = all_data[all_data.year == year]
+
+    # Create directories if required
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    # Write the new DataFrame to a csv file
+    filename = output_path + '/' + filename_prefix + str(year) + '.csv'
+    surveys_year.to_csv(filename)
+
+def create_csvs_by_year_at_path(start_year, end_year, all_data, output_path, filename_prefix):
+    &quot;&quot;&quot;
+    Writes separate CSV files for each year of data.
+
+    start_year --- the first year of data we want
+    end_year --- the last year of data we want
+    all_data --- DataFrame with multi-year data
+    output_path --- The output path for the generated file
+    filename_prefix --- Output filename will be of the form &quot;{filename_prefix}{year}.csv&quot;
+    &quot;&quot;&quot;
+
+    # &quot;end_year&quot; is the last year of data we want to pull, so we loop to end_year+1
+    for year in range(start_year, end_year+1):
+        year_to_csv_at_path(year, all_data, output_path, filename_prefix)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:25
+<pre><code class="python"># Solution - part 2
+create_csvs_by_year(2002, 2002, surveys_df)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:26
+<pre><code class="python"># Solution - part 3
+
+def year_to_csv_return_filenames(year, all_data):
+    # Select data for the year
+    surveys_year = all_data[all_data.year == year]
+
+    # Write the new DataFrame to a csv file
+    filename = 'function_surveys' + str(year) + '.csv'
+    surveys_year.to_csv(filename)
+
+    # We could just print the filename. We can see the result, but won't capture the value
+    # print(filename)
+
+    # It's often more useful to return data rather than print it, so we can do something with it
+    return filename
+
+def create_csvs_by_year_return_filenames(start_year, end_year, all_data):
+
+    generated_files = []
+    for year in range(start_year, end_year+1):
+        fn = year_to_csv_return_filenames(year, all_data)
+        generated_files.append(fn)
+
+    return generated_files
+
+print(create_csvs_by_year_return_filenames(2000, 2002, surveys_df))
+</code></pre>
 
 
 <pre class="output">
@@ -624,7 +742,10 @@ Default values:          1977 2002
 
 <!--
 
-wzxhzdk:29
+<pre><code class="python"># Challenge 1
+the_void = None
+type(the_void)
+</code></pre>
 
 
 
@@ -642,7 +763,10 @@ NoneType
 
 <!--
 
-wzxhzdk:30
+<pre><code class="python"># Challenge 2
+print(csvs_by_year(surveys_df))
+print(csvs_by_year(surveys_df, start_year=1999, end_year=2001))
+</code></pre>
 
 
 <pre class="output">
@@ -657,7 +781,21 @@ NoneType
 
 <!--
 
-wzxhzdk:31
+<pre><code class="python"># Challenge 3
+print(csvs_by_year(surveys_df, start_year=1999))
+
+# Keyword args are taken in order if there is no keyword used
+# Doing this is a bit dangerous (what if you later decide to add more keyword args to the function ?)
+print(csvs_by_year(surveys_df, 1999))
+print(csvs_by_year(surveys_df, 1999, end_year=2001))
+
+# But keyword args must always come last - this throws an error
+# print(csvs_by_year(surveys_df, start_year=1999, 2001))
+
+# We don't need to specify all keyword args, nor do they need to be in order
+print(csvs_by_year(surveys_df, end_year=1999))
+print(csvs_by_year(surveys_df, end_year=2001, start_year=1999))
+</code></pre>
 
 
 <pre class="output">
@@ -793,19 +931,129 @@ else:
 
 <!--
 
-wzxhzdk:36
+<pre><code class="python"># Solution - part 1
+
+def year_to_csv(year=None, all_data=None):
+    &quot;&quot;&quot;
+    Writes a csv file for data from a given year.
+
+    year --- year for which data is extracted
+    all_data --- DataFrame with multi-year data
+    &quot;&quot;&quot;
+
+    if all_data is None:
+        all_data = pd.read_csv(&quot;surveys.csv&quot;)
+
+    if year is None:
+        year = min(all_data.year)
+
+    # Select data for the year
+    surveys_year = all_data[all_data.year == year]
+
+    # Write the new DataFrame to a csv file
+    filename = 'function_surveys' + str(year) + '.csv'
+    surveys_year.to_csv(filename)
+
+
+def csvs_by_year(start_year=None, end_year=None, all_data=None):
+    &quot;&quot;&quot;
+    Writes separate CSV files for each year of data.
+
+    start_year --- the first year of data we want
+    end_year --- the last year of data we want
+    all_data --- DataFrame with multi-year data
+    &quot;&quot;&quot;
+
+    if all_data is None:
+        all_data = pd.read_csv(&quot;surveys.csv&quot;)
+
+    if start_year is None:
+        start_year = min(all_data.year)
+
+    if end_year is None:
+        end_year = max(all_data.year)
+
+    # &quot;end_year&quot; is the last year of data we want to pull, so we loop to end_year+1
+    for year in range(start_year, end_year+1):
+        year_to_csv(year, all_data)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:37
+<pre><code class="python"># Solution - part 2
+
+def csvs_by_year(start_year=None, end_year=None, all_data=None):
+    &quot;&quot;&quot;
+    Writes separate CSV files for each year of data.
+
+    start_year --- the first year of data we want
+    end_year --- the last year of data we want
+    all_data --- DataFrame with multi-year data
+    &quot;&quot;&quot;
+
+    if all_data is None:
+        all_data = pd.read_csv(&quot;surveys.csv&quot;)
+
+    if start_year is None:
+        start_year = min(all_data.year)
+
+    if end_year is None:
+        end_year = max(all_data.year)
+
+    # &quot;end_year&quot; is the last year of data we want to pull, so we loop to end_year+1
+    for year in range(start_year, end_year+1):
+        # print(len(all_data[all_data.year == year]))
+        if len(all_data[all_data.year == year]) &gt; 0:
+            year_to_csv(year, all_data)
+        else:
+            print(&quot;Skipping: &quot;, year, &quot; - no data points for this year.&quot;)
+
+surveys_df = pd.read_csv(&quot;surveys.csv&quot;)
+csvs_by_year(1977, 2002, surveys_df)
+</code></pre>
 
  -->
 
 <!--
 
-wzxhzdk:38
+<pre><code class="python">import os
+
+# Solution - part 3
+def year_to_csv(year=None, all_data=None, output_dir='output'):
+    &quot;&quot;&quot;
+    Writes a csv file for data from a given year.
+
+    year --- year for which data is extracted
+    all_data --- DataFrame with multi-year data
+    output_dir --- the output directory when CSV files will be written
+    &quot;&quot;&quot;
+
+    if all_data is None:
+        all_data = pd.read_csv(&quot;surveys.csv&quot;)
+
+    if year is None:
+        year = min(all_data.year)
+
+    # Select data for the year
+    surveys_year = all_data[all_data.year == year]
+
+
+    if output_dir in os.listdir('.'):
+        print('Processed directory exists: ', output_dir)
+    else:
+        os.mkdir(output_dir)
+        print('Processed directory created: ', output_dir)
+
+    # Write the new DataFrame to a csv file
+    filename = output_dir + '/' + 'function_surveys' + str(year) + '.csv'
+    # The more correct way to create paths is:
+    # filename = os.path.join(output_dir, 'function_surveys' + str(year) + '.csv')
+    surveys_year.to_csv(filename)
+
+year_to_csv(2002, surveys_df)
+</code></pre>
 
 
 <pre class="output">
@@ -819,7 +1067,43 @@ Processed directory exists:  output
 
 <!--
 
-wzxhzdk:39
+<pre><code class="python"># Solution - part 4
+def csvs_by_year(all_data):
+    &quot;&quot;&quot;
+    Writes separate CSV files for each year of data.
+
+    all_data --- DataFrame with multi-year data
+    &quot;&quot;&quot;
+
+    # We could do this, but missing years will be included in the 'range'
+    # start_year = min(all_data.year)
+    # end_year = max(all_data.year)
+    # year_list = range(start_year, end_year+1)
+
+    # Instead, we create an empty list, then loop over all the rows, adding years
+    # we haven't seen yet to the list.
+    year_list = []
+    for year in surveys_df.year:
+        if year not in year_list:
+            year_list.append(year)
+
+    # An elegant alternative is to use a 'set' object.
+    # A 'set' is a collection where every value is unique - no duplicates.
+    # This ensures no repeated years and has the advantage of also skipping missing years.
+    # year_list = set(surveys_df.year)
+
+    # &quot;end_year&quot; is the last year of data we want to pull, so we loop to end_year+1
+    for year in year_list:
+        year_to_csv(year, all_data)
+
+# The 'list' of years from each row contains duplicates (we just list the first 20 here)
+print(list(surveys_df.year)[0:20])
+
+print()
+
+# Making it a 'set' removes duplicates
+print(list(set(surveys_df.year)))
+</code></pre>
 
 
 <pre class="output">
@@ -845,44 +1129,78 @@ Processed directory exists:  output
         
         
     </footer>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script>
-    var base_url = '../..';
-    </script>
+    <script>var base_url = "../.."</script>
+    
     <script src="../../js/base.js"></script>
     <script src="../../search/main.js"></script>
 
-    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        From here you can search these documents. Enter your search terms below.
-                    </p>
-                    <form role="form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                        </div>
-                    </form>
-                    <div id="mkdocs-search-results"></div>
-                </div>
-                <div class="modal-footer">
-                </div>
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
-
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
     </body>
 
 </html>
