@@ -494,11 +494,15 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 ## Challenge - More Functions
 
-1. Add two arguments to the functions we wrote that take the path of the directory where the files will be written and the root of the file name. eg, something like `def year_to_csv_at_path(year, all_data, output_path, filename_prefix):`. Call your new function to create a new set of files with a different name in a different directory. **Hint:** You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, *or* for bonus points you could do it in Python inside the function using the `os` module.
+1. How could you use the function `create_csvs_by_year` to create a CSV file for only one year? (Hint: think about the syntax for range)
 
-2. How could you use the function `create_csvs_by_year` to create a CSV file for only one year? (Hint: think about the syntax for range)
+2. Modify `year_to_csv` so that it has two new arguments, `output_path` (the path of the directory where the files will be written) and `filename_prefix` (a prefix to be added to the start of the file name). Call your new function `year_to_csv_at_path`. Eg, `def year_to_csv_at_path(year, all_data, output_path, filename_prefix):`. Call your new function to create a new file with a different name in a different directory.
 
-3. Make the functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): you could make the function print the filenames to screen, or you could use a `return` statement to make the function produce a list of filenames, or you can use some combination of the two. You could also try using the `os` library to list the contents of directories.
+**Hint:** You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, *or* for bonus points you could do it in Python inside the function using the `os` module.
+
+3. Create a new version of the `create_csvs_by_year` function called `create_csvs_by_year_at_path` that also takes the additional arguments `output_path` and `filename_prefix`. Internally `create_csvs_by_year_at_path` should pass these values to `year_to_csv_at_path`. Call your new function to create a new set of files with a different name in a different directory.
+
+4. Make these new functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): you could make the function print the filenames to screen, or you could use a `return` statement to make the function produce a list of filenames, or you can use some combination of the two. You could also try using the `os` library to list the contents of directories.
 
 
 
@@ -513,6 +517,16 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 ```python
 # Solution - part 1
+create_csvs_by_year(2002, 2002, surveys_df)
+```
+ -->
+
+
+
+<!-- 
+
+```python
+# Solution - part 2 and 3
 import os
 
 def year_to_csv_at_path(year, all_data, output_path, filename_prefix):
@@ -558,17 +572,7 @@ def create_csvs_by_year_at_path(start_year, end_year, all_data, output_path, fil
 <!-- 
 
 ```python
-# Solution - part 2
-create_csvs_by_year(2002, 2002, surveys_df)
-```
- -->
-
-
-
-<!-- 
-
-```python
-# Solution - part 3
+# Solution - part 4
 
 def year_to_csv_return_filenames(year, all_data):
     # Select data for the year

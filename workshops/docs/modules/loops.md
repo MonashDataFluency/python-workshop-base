@@ -322,9 +322,16 @@ since there is nothing left in `'aeiou'` for Python to process,
 the loop finishes
 and the `print` statement on line 4 tells us our final answer.
 
-Note that a loop variable is just a variable that's being used to record progress in a loop.
-It still exists after the loop is over,
-and we can re-use variables previously defined as loop variables as well:
+Note that a loop variable `vowel` is just a variable that's being used to record progress in a loop.
+
+
+
+
+
+## Challenge - scope of the loop variable
+
+1. In the loop over `"aeiou"` above, does the loop variable `vowel` exist after the loop has finished ?
+
 
 
 
@@ -332,19 +339,18 @@ and we can re-use variables previously defined as loop variables as well:
 
 
 ```python
-letter = 'z'
-for letter in 'abc':
-    print(letter)
-print('after the loop, letter is', letter)
+length = 0
+for vowel in 'aeiou':
+    length = length + 1
+print('After the loop, `vowel` exists and has the value: ' + vowel)
+
+# The loop variable `vowel` exists after the loop is completed, not only inside the loop
 ```
 
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-a
-b
-c
-after the loop, letter is c
+After the loop, `vowel` exists and has the value: u
 
 </code>
 </pre>
@@ -509,7 +515,7 @@ print(result)
 
 
 
-## Challenge  - reverse a string
+## Bonus challenge: reverse a string
 
 Knowing that two strings can be concatenated using the `+` operator,
 write a loop that takes a string
@@ -547,7 +553,7 @@ notweN
 
 
 
-## Computing the Value of a Polynomial
+## Enumerate
 
 The built-in function `enumerate` takes a sequence (e.g. a list) and generates a
 new sequence of the same length. Each element of the new sequence is a pair composed of the index
@@ -565,7 +571,7 @@ The code above loops through `xs`, assigning the index to `i` and the value to `
 
 
 
-## Challenge - enumeration
+## Bonus challenge: enumeration for computing the value of a polynomial
 
 Suppose you have encoded a polynomial as a list of coefficients in
 the following way: the first element is the constant term, the

@@ -1186,67 +1186,6 @@ TypeError: 'tuple' object does not support item assignment
 
 
 
-## Challenge - Tuples
-
-Define a tuple:
-
-```python
-a_tuple = (1, 2, 3)
-```
-
-1. What happens when you type `a_tuple[2] = 5` vs `a_list[1] = 5` ?
-2. Type `type(a_tuple)` into python - what is the object type?
-
-
-
-
-
-<!-- 
-## Solution - Tuples
-
-```python
-a_tuple= (1, 2, 3)
-a_tuple[2] = 5
-```
-
-Outputs:
-
-```
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-39-7092dae1484a> in <module>()
-      1 a_tuple= (1, 2, 3)
-----> 2 a_tuple[2] = 5
-
-TypeError: 'tuple' object does not support item assignment
-```
- -->
-
-
-
-<!-- 
-
-```python
-a_tuple= (1, 2, 3)
-type(a_tuple)
-```
-
-
-
-
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-tuple
-</code>
-</pre>
-
-
- -->
-
-
-
-
 ### Dictionaries
 
 Dictionaries are a container that store key-value pairs. They are unordered. 
