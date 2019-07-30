@@ -272,19 +272,19 @@
 <code class="text">
 Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
 Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.5.1)
-Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
 Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
+Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
 Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
-Requirement already satisfied: descartes>=1.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
-Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.3.0)
 Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.1)
-Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.10.1)
 Requirement already satisfied: mizani>=0.5.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.4)
 Requirement already satisfied: matplotlib>=3.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (3.1.1)
+Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.3.0)
+Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.10.1)
+Requirement already satisfied: descartes>=1.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
 Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
 Requirement already satisfied: palettable in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from mizani>=0.5.2->plotnine) (3.2.0)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (0.10.0)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (2.4.1.1)
+Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (0.10.0)
 Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (1.1.0)
 Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=3.0.0->plotnine) (39.1.0)
 
@@ -320,12 +320,12 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (276671517)>
+<ggplot: (283259747)>
 </code>
 </pre>
 
 <p>Let's see if we can also include information about species and year.</p>
-<pre><code class="python">ggplot(survs_df, aes('weight', 'hindfoot_length',
+<pre><code class="python">ggplot(survs_df, aes(x='weight', y='hindfoot_length',
     size = 'year')) + geom_point()
 </code></pre>
 
@@ -333,12 +333,12 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (298722084)>
+<ggplot: (303046881)>
 </code>
 </pre>
 
 <p>Notice that we've dropped the <code>x=</code> and <code>y=</code> ? These are implied for the first and second argument of <code>aes()</code>.</p>
-<pre><code class="python">ggplot(survs_df, aes('weight', 'hindfoot_length', 
+<pre><code class="python">ggplot(survs_df, aes(x='weight', y='hindfoot_length', 
     size = 'year', color = 'species_id')) + geom_point()
 </code></pre>
 
@@ -346,12 +346,12 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (302164200)>
+<ggplot: (307359303)>
 </code>
 </pre>
 
 <p>We can do simple counting plot, to see how many observation (data points) we have for each year for example</p>
-<pre><code class="python">ggplot(survs_df, aes('year')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year')) + \
     geom_bar(stat = 'count')
 </code></pre>
 
@@ -359,12 +359,12 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (297884364)>
+<ggplot: (-9223372036550974783)>
 </code>
 </pre>
 
 <p>Let's now also color by species to see how many observation we have per species in a given year</p>
-<pre><code class="python">ggplot(survs_df, aes('year', fill = 'species_id')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year', fill = 'species_id')) + \
     geom_bar(stat = 'count')
 </code></pre>
 
@@ -372,7 +372,7 @@ survs_df = pd.read_csv('surveys.csv').dropna()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (297908684)>
+<ggplot: (292312026)>
 </code>
 </pre>
 
@@ -413,7 +413,7 @@ ggplot(survs_df, aes(x='site_id', fill = 'species_id')) \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036556867317)>
+<ggplot: (292311942)>
 </code>
 </pre>
 
@@ -423,7 +423,7 @@ ggplot(survs_df, aes(x='site_id', fill = 'species_id')) \
 <!--
 
 <pre><code class="python"># Part 2
-ggplot(survs_df, aes('species_id', 'hindfoot_length')) + \
+ggplot(survs_df, aes(x='species_id', y='hindfoot_length')) + \
     geom_boxplot() + \
     theme(axis_text_x = element_text(angle=90, hjust=1))
 </code></pre>
@@ -439,7 +439,7 @@ ggplot(survs_df, aes('species_id', 'hindfoot_length')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (297915333)>
+<ggplot: (-9223372036548405879)>
 </code>
 </pre>
 
@@ -447,7 +447,7 @@ ggplot(survs_df, aes('species_id', 'hindfoot_length')) + \
  -->
 
 <h2 id="more-geom-types">More geom types</h2>
-<pre><code class="python">ggplot(survs_df, aes('year', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year', y='weight')) + \
     geom_boxplot()
 </code></pre>
 
@@ -455,7 +455,7 @@ ggplot(survs_df, aes('species_id', 'hindfoot_length')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036578101160)>
+<ggplot: (303419740)>
 </code>
 </pre>
 
@@ -463,7 +463,7 @@ ggplot(survs_df, aes('species_id', 'hindfoot_length')) + \
 This is because year variable is continuous in our data frame, but for this purpose we want it to be categorical.</p>
 <pre><code class="python">survs_df['year_fact'] = survs_df['year'].astype(&quot;category&quot;)
 
-ggplot(survs_df, aes('year_fact', 'weight')) + \
+ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_boxplot()
 </code></pre>
 
@@ -471,12 +471,12 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036551614825)>
+<ggplot: (308838941)>
 </code>
 </pre>
 
 <p>You'll notice the x-axis labels are overlapped. To flip them 90-degrees we can apply a <code>theme</code> so they look less cluttered. We will revisit themes later.</p>
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_boxplot() + \
     theme(axis_text_x = element_text(angle=90, hjust=1))
 </code></pre>
@@ -485,7 +485,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (303500047)>
+<ggplot: (-9223372036546014355)>
 </code>
 </pre>
 
@@ -493,7 +493,7 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre><code class="python">flip_xlabels = theme(axis_text_x = element_text(angle=90, hjust=1))
 </code></pre>
 
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_violin() + \
     flip_xlabels
 </code></pre>
@@ -502,12 +502,12 @@ ggplot(survs_df, aes('year_fact', 'weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036551633001)>
+<ggplot: (308795859)>
 </code>
 </pre>
 
 <p>To save an image for later:</p>
-<pre><code class="python">plt1 = ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">plt1 = ggplot(survs_df, aes(x='year_fact', y='weight')) + \
            geom_boxplot() + \
            xlab(&quot;Years&quot;) + \
            ylab(&quot;Weight log2(kg)&quot;) + \
@@ -538,7 +538,7 @@ ggsave(filename=&quot;plot1.png&quot;,
 
 <pre><code class="python">survs_df['weight_log'] = np.log2(survs_df['weight'])
 
-ggplot(survs_df, aes('year_fact', 'weight_log')) + \
+ggplot(survs_df, aes(x='year_fact', y='weight_log')) + \
     geom_boxplot() + \
     xlab(&quot;Years&quot;) + \
     ylab(&quot;Weight log2(kg)&quot;) + \
@@ -557,7 +557,7 @@ ggplot(survs_df, aes('year_fact', 'weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036556237417)>
+<ggplot: (303427648)>
 </code>
 </pre>
 
@@ -568,7 +568,7 @@ ggplot(survs_df, aes('year_fact', 'weight_log')) + \
 <p>ggplot has a special technique called <em>faceting</em> that allows to split one plot
 into multiple plots based on a factor included in the dataset. We will use it to
 make one plot for a time series for each species.</p>
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_boxplot() + \
     facet_wrap(['sex']) + \
     flip_xlabels + \
@@ -579,11 +579,11 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (303591323)>
+<ggplot: (-9223372036550583727)>
 </code>
 </pre>
 
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_boxplot() + \
     theme(axis_text_x = element_text(size=4)) + \
     facet_wrap(['species_id']) + \
@@ -594,7 +594,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (287116008)>
+<ggplot: (308830917)>
 </code>
 </pre>
 
@@ -613,7 +613,7 @@ make one plot for a time series for each species.</p>
 <h2 id="theming">Theming</h2>
 <p><code>plotnine</code> allows pre-defined 'themes' to be applied as aesthetics to the plot.</p>
 <p>A list available theme you may want to experiment with is here: https://plotnine.readthedocs.io/en/stable/api.html#themes</p>
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight')) + \
     geom_boxplot() + \
     theme_bw() + \
     flip_xlabels
@@ -623,11 +623,11 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036553244065)>
+<ggplot: (291638557)>
 </code>
 </pre>
 
-<pre><code class="python">ggplot(survs_df, aes('year_fact', 'weight_log')) + \
+<pre><code class="python">ggplot(survs_df, aes(x='year_fact', y='weight_log')) + \
     geom_boxplot() + \
     facet_wrap(['species_id']) + \
     theme_xkcd() + \
@@ -638,7 +638,7 @@ make one plot for a time series for each species.</p>
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036551902064)>
+<ggplot: (307989936)>
 </code>
 </pre>
 
@@ -654,7 +654,7 @@ labels = ['70s', '80s', '90s', 'Z']
 survs_df['year_bins'] = np.select(bins, labels)
 </code></pre>
 
-<pre><code class="python">plt2 = ggplot(survs_df, aes('year_bins', 'weight_log')) + \
+<pre><code class="python">plt2 = ggplot(survs_df, aes(x='year_bins', y='weight_log')) + \
            geom_boxplot()
 plt2
 </code></pre>
@@ -663,11 +663,11 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (302395561)>
+<ggplot: (-9223372036547267605)>
 </code>
 </pre>
 
-<pre><code class="python">plt2 = ggplot(survs_df, aes('year_bins', 'weight_log')) + \
+<pre><code class="python">plt2 = ggplot(survs_df, aes(x='year_bins', y='weight_log')) + \
            geom_boxplot() + \
            flip_xlabels + \
            facet_wrap(['species_id'])
@@ -678,7 +678,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036553506991)>
+<ggplot: (-9223372036547280538)>
 </code>
 </pre>
 
@@ -701,7 +701,7 @@ ggplot(survs_df, aes(&quot;year_fact&quot;, &quot;weight_log&quot;)) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (298801917)>
+<ggplot: (-9223372036550526264)>
 </code>
 </pre>
 

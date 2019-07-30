@@ -185,6 +185,8 @@
         <li class="first-level active"><a href="#automation-with-loops">Automation with Loops</a></li>
             <li class="second-level"><a href="#whats-in-a-name">What's in a name?</a></li>
                 
+            <li class="second-level"><a href="#challenge-scope-of-the-loop-variable">Challenge - scope of the loop variable</a></li>
+                
             <li class="second-level"><a href="#from-1-to-n">From 1 to N</a></li>
                 
             <li class="second-level"><a href="#challenge-loop-over-a-range">Challenge - loop over a range</a></li>
@@ -193,11 +195,11 @@
                 
             <li class="second-level"><a href="#challenge-multiplication-in-a-loop">Challenge - multiplication in a loop</a></li>
                 
-            <li class="second-level"><a href="#challenge-reverse-a-string">Challenge  - reverse a string</a></li>
+            <li class="second-level"><a href="#bonus-challenge-reverse-a-string">Bonus challenge: reverse a string</a></li>
                 
-            <li class="second-level"><a href="#computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</a></li>
+            <li class="second-level"><a href="#enumerate">Enumerate</a></li>
                 
-            <li class="second-level"><a href="#challenge-enumeration">Challenge - enumeration</a></li>
+            <li class="second-level"><a href="#bonus-challenge-enumeration-for-computing-the-value-of-a-polynomial">Bonus challenge: enumeration for computing the value of a polynomial</a></li>
                 
     </ul>
 </div></div>
@@ -403,22 +405,23 @@ so <code>length</code> is updated to be 2.</p>
 since there is nothing left in <code>'aeiou'</code> for Python to process,
 the loop finishes
 and the <code>print</code> statement on line 4 tells us our final answer.</p>
-<p>Note that a loop variable is just a variable that's being used to record progress in a loop.
-It still exists after the loop is over,
-and we can re-use variables previously defined as loop variables as well:</p>
-<pre><code class="python">letter = 'z'
-for letter in 'abc':
-    print(letter)
-print('after the loop, letter is', letter)
+<p>Note that a loop variable <code>vowel</code> is just a variable that's being used to record progress in a loop.</p>
+<h2 id="challenge-scope-of-the-loop-variable">Challenge - scope of the loop variable</h2>
+<ol>
+<li>In the loop over <code>"aeiou"</code> above, does the loop variable <code>vowel</code> exist after the loop has finished ?</li>
+</ol>
+<pre><code class="python">length = 0
+for vowel in 'aeiou':
+    length = length + 1
+print('After the loop, `vowel` exists and has the value: ' + vowel)
+
+# The loop variable `vowel` exists after the loop is completed, not only inside the loop
 </code></pre>
 
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-a
-b
-c
-after the loop, letter is c
+After the loop, `vowel` exists and has the value: u
 
 </code>
 </pre>
@@ -521,7 +524,7 @@ print(result)
 </pre>
  -->
 
-<h2 id="challenge-reverse-a-string">Challenge  - reverse a string</h2>
+<h2 id="bonus-challenge-reverse-a-string">Bonus challenge: reverse a string</h2>
 <p>Knowing that two strings can be concatenated using the <code>+</code> operator,
 write a loop that takes a string
 and produces a new string with the characters in reverse order,
@@ -549,7 +552,7 @@ notweN
 </pre>
  -->
 
-<h2 id="computing-the-value-of-a-polynomial">Computing the Value of a Polynomial</h2>
+<h2 id="enumerate">Enumerate</h2>
 <p>The built-in function <code>enumerate</code> takes a sequence (e.g. a list) and generates a
 new sequence of the same length. Each element of the new sequence is a pair composed of the index
 (0, 1, 2,...) and the value from the original sequence:</p>
@@ -558,7 +561,7 @@ new sequence of the same length. Each element of the new sequence is a pair comp
 </code></pre>
 
 <p>The code above loops through <code>xs</code>, assigning the index to <code>i</code> and the value to <code>x</code>.</p>
-<h2 id="challenge-enumeration">Challenge - enumeration</h2>
+<h2 id="bonus-challenge-enumeration-for-computing-the-value-of-a-polynomial">Bonus challenge: enumeration for computing the value of a polynomial</h2>
 <p>Suppose you have encoded a polynomial as a list of coefficients in
 the following way: the first element is the constant term, the
 second element is the coefficient of the linear term, the third is the
