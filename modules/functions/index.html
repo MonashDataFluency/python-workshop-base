@@ -554,11 +554,8 @@ create_csvs_by_year(1977, 2002, surveys_df)
 <p>How could you use the function <code>create_csvs_by_year</code> to create a CSV file for only one year? (Hint: think about the syntax for range)</p>
 </li>
 <li>
-<p>Modify <code>year_to_csv</code> so that it has two new arguments, <code>output_path</code> (the path of the directory where the files will be written) and <code>filename_prefix</code> (a prefix to be added to the start of the file name). Call your new function <code>year_to_csv_at_path</code>. Eg, <code>def year_to_csv_at_path(year, all_data, output_path, filename_prefix):</code>. Call your new function to create a new file with a different name in a different directory.</p>
+<p>Modify <code>year_to_csv</code> so that it has two new arguments, <code>output_path</code> (the path of the directory where the files will be written) and <code>filename_prefix</code> (a prefix to be added to the start of the file name). Call your new function <code>year_to_csv_at_path</code>. Eg, <code>def year_to_csv_at_path(year, all_data, output_path, filename_prefix):</code>. Call your new function to create a new file with a different name in a different directory. ... <strong>Hint:</strong> You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, <em>or</em> for bonus points you could do it in Python inside the function using the <code>os</code> module.</p>
 </li>
-</ol>
-<p><strong>Hint:</strong> You could manually create the target directory before calling the function using the Collaboratory / Jupyter file browser, <em>or</em> for bonus points you could do it in Python inside the function using the <code>os</code> module.</p>
-<ol>
 <li>
 <p>Create a new version of the <code>create_csvs_by_year</code> function called <code>create_csvs_by_year_at_path</code> that also takes the additional arguments <code>output_path</code> and <code>filename_prefix</code>. Internally <code>create_csvs_by_year_at_path</code> should pass these values to <code>year_to_csv_at_path</code>. Call your new function to create a new set of files with a different name in a different directory.</p>
 </li>
