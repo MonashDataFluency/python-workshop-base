@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;
@@ -84,7 +82,7 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-('surveys.csv', <http.client.HTTPMessage at 0x10b8cf7b8>)
+('surveys.csv', <http.client.HTTPMessage at 0x7f1314068e10>)
 </code>
 </pre>
 
@@ -176,16 +174,16 @@ First, lets make sure the Pandas and matplotlib packages are **installed**.
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
-Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.1.1)
-Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
-Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
-Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.4.1.1)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.1.0)
-Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
+Requirement already satisfied: pandas in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (0.25.0)
+Requirement already satisfied: matplotlib in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (3.1.3)
+Requirement already satisfied: numpy>=1.13.3 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.6.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2.8.1)
+Requirement already satisfied: pytz>=2017.2 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2019.3)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (1.1.0)
+Requirement already satisfied: cycler>=0.10 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (2.4.6)
+Requirement already satisfied: six>=1.5 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.14.0)
+Requirement already satisfied: setuptools in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (46.1.3)
 
 </code>
 </pre>
@@ -3054,7 +3052,7 @@ species_counts.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x115c52ba8>
+<matplotlib.axes._subplots.AxesSubplot at 0x7f12dda74240>
 </code>
 </pre>
 
@@ -3089,7 +3087,7 @@ total_count.plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x118846470>
+<matplotlib.axes._subplots.AxesSubplot at 0x7f12dd2aeac8>
 </code>
 </pre>
 
@@ -3138,7 +3136,7 @@ surveys_df.groupby('site_id').mean()["weight"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x118983f98>
+<matplotlib.axes._subplots.AxesSubplot at 0x7f12dd20cda0>
 </code>
 </pre>
 
@@ -3172,7 +3170,7 @@ surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<matplotlib.axes._subplots.AxesSubplot at 0x11897d550>
+<matplotlib.axes._subplots.AxesSubplot at 0x7f12dd20c5c0>
 </code>
 </pre>
 

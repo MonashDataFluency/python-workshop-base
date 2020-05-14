@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;

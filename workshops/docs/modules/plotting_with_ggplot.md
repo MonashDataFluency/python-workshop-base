@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;
@@ -84,23 +82,23 @@ First, install the `pandas` and `plotnine` packages to ensure they are available
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
-Requirement already satisfied: plotnine in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.5.1)
-Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
-Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
-Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
-Requirement already satisfied: descartes>=1.1.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.1.0)
-Requirement already satisfied: scipy>=1.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (1.3.0)
-Requirement already satisfied: patsy>=0.4.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.1)
-Requirement already satisfied: matplotlib>=3.0.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (3.1.1)
-Requirement already satisfied: statsmodels>=0.8.0 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.10.1)
-Requirement already satisfied: mizani>=0.5.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from plotnine) (0.5.4)
-Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (1.1.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (2.4.1.1)
-Requirement already satisfied: palettable in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from mizani>=0.5.2->plotnine) (3.2.0)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=3.0.0->plotnine) (39.1.0)
+Requirement already satisfied: pandas in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (0.25.0)
+Requirement already satisfied: plotnine in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (0.5.1)
+Requirement already satisfied: numpy>=1.13.3 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (1.17.0)
+Requirement already satisfied: pytz>=2017.2 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2019.3)
+Requirement already satisfied: python-dateutil>=2.6.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2.8.1)
+Requirement already satisfied: scipy>=1.0.0 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (1.4.1)
+Requirement already satisfied: descartes>=1.1.0 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (1.1.0)
+Requirement already satisfied: patsy>=0.4.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (0.5.1)
+Requirement already satisfied: mizani>=0.5.2 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (0.6.0)
+Requirement already satisfied: statsmodels>=0.8.0 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (0.11.1)
+Requirement already satisfied: matplotlib>=3.0.0 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from plotnine) (3.1.3)
+Requirement already satisfied: six>=1.5 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.14.0)
+Requirement already satisfied: palettable in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from mizani>=0.5.2->plotnine) (3.3.0)
+Requirement already satisfied: cycler>=0.10 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (2.4.6)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib>=3.0.0->plotnine) (1.1.0)
+Requirement already satisfied: setuptools in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib>=3.0.0->plotnine) (46.1.3)
 
 </code>
 </pre>
@@ -178,7 +176,7 @@ ggplot(survs_df, aes(x='weight', y='hindfoot_length')) + geom_point()
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (275481864)>
+<ggplot: (8753787683185)>
 </code>
 </pre>
 
@@ -210,7 +208,7 @@ ggplot(survs_df, aes(x='weight', y='hindfoot_length',
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (295313142)>
+<ggplot: (-9223363283153396732)>
 </code>
 </pre>
 
@@ -242,7 +240,7 @@ ggplot(survs_df, aes(x='weight', y='hindfoot_length',
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (299641906)>
+<ggplot: (-9223363283155666695)>
 </code>
 </pre>
 
@@ -277,7 +275,7 @@ ggplot(survs_df, aes(x='year')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (274955419)>
+<ggplot: (8753699091902)>
 </code>
 </pre>
 
@@ -312,7 +310,7 @@ ggplot(survs_df, aes(x='year', fill = 'species_id')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036559208532)>
+<ggplot: (8753699221757)>
 </code>
 </pre>
 
@@ -361,7 +359,7 @@ ggplot(survs_df, aes(x='site_id', fill = 'species_id')) \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036559208665)>
+<ggplot: (-9223363283155554300)>
 </code>
 </pre>
 
@@ -389,7 +387,7 @@ ggplot(survs_df, aes(x='species_id', y='hindfoot_length')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036558968204)>
+<ggplot: (8753697485979)>
 </code>
 </pre>
 
@@ -423,7 +421,7 @@ ggplot(survs_df, aes(x='year', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036558968190)>
+<ggplot: (8753699187853)>
 </code>
 </pre>
 
@@ -458,7 +456,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036553754957)>
+<ggplot: (8753699173661)>
 </code>
 </pre>
 
@@ -491,7 +489,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036553653735)>
+<ggplot: (8753699120283)>
 </code>
 </pre>
 
@@ -533,7 +531,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (301020918)>
+<ggplot: (8753699146055)>
 </code>
 </pre>
 
@@ -607,7 +605,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036558995035)>
+<ggplot: (-9223363283155758178)>
 </code>
 </pre>
 
@@ -648,7 +646,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (301142420)>
+<ggplot: (8753697483784)>
 </code>
 </pre>
 
@@ -677,7 +675,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (295742412)>
+<ggplot: (8753698804905)>
 </code>
 </pre>
 
@@ -738,7 +736,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036580658190)>
+<ggplot: (-9223363283156053034)>
 </code>
 </pre>
 
@@ -757,8 +755,18 @@ ggplot(survs_df, aes(x='year_fact', y='weight_log')) + \
     theme(axis_text_x = element_text(size=4, angle=90, hjust=1))
 ```
 
+<pre class="output">
+<div class="output_label">output</div>
+<code class="text">
+findfont: Font family ['xkcd', 'Humor Sans', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
+findfont: Font family ['xkcd', 'Humor Sans', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
+findfont: Font family ['xkcd', 'Humor Sans', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
 
-![png](plotting_with_ggplot_files/plotting_with_ggplot_44_0.png)
+</code>
+</pre>
+
+
+![png](plotting_with_ggplot_files/plotting_with_ggplot_44_1.png)
 
 
 
@@ -767,7 +775,7 @@ ggplot(survs_df, aes(x='year_fact', y='weight_log')) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036555930487)>
+<ggplot: (-9223363283163945724)>
 </code>
 </pre>
 
@@ -820,7 +828,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (-9223372036554427725)>
+<ggplot: (-9223363283164285394)>
 </code>
 </pre>
 
@@ -849,7 +857,7 @@ plt2
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (299804466)>
+<ggplot: (-9223363283163669963)>
 </code>
 </pre>
 
@@ -894,7 +902,7 @@ ggplot(survs_df, aes("year_fact", "weight_log")) + \
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-<ggplot: (284801081)>
+<ggplot: (-9223363283163129491)>
 </code>
 </pre>
 

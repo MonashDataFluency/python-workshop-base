@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;
@@ -437,9 +435,13 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 
+
 ```python
 6 * 7  # Multiplication
 ```
+
+
+
 
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
@@ -454,8 +456,9 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 
+
 ```python
-5 / 2  # Division
+5/2 # Division
 ```
 
 
@@ -467,6 +470,9 @@ We can perform mathematical calculations in Python using the basic operators:
 2.5
 </code>
 </pre>
+
+
+
 
 
 
@@ -489,8 +495,12 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 
+
+
+
+
 ```python
-13 // 5  # Floor division
+13 // 5  # Floor Division
 ```
 
 
@@ -523,12 +533,6 @@ We can perform mathematical calculations in Python using the basic operators:
 65536
 </code>
 </pre>
-
-
-
-
-
-
 
 
 
