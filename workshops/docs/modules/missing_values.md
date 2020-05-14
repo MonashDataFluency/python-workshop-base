@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;
@@ -64,16 +62,16 @@ Before we start, lets make sure the Pandas and matplotlib packages are **install
 <pre class="output">
 <div class="output_label">output</div>
 <code class="text">
-Requirement already satisfied: pandas in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (0.25.0)
-Requirement already satisfied: matplotlib in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (3.1.1)
-Requirement already satisfied: numpy>=1.13.3 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (1.17.0)
-Requirement already satisfied: python-dateutil>=2.6.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2.8.0)
-Requirement already satisfied: pytz>=2017.2 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from pandas) (2019.1)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (2.4.1.1)
-Requirement already satisfied: cycler>=0.10 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (0.10.0)
-Requirement already satisfied: kiwisolver>=1.0.1 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from matplotlib) (1.1.0)
-Requirement already satisfied: six>=1.5 in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
-Requirement already satisfied: setuptools in /Users/perry/.virtualenvs/python-workshop-base-ufuVBSbV/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (39.1.0)
+Requirement already satisfied: pandas in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (0.25.0)
+Requirement already satisfied: matplotlib in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (3.1.3)
+Requirement already satisfied: python-dateutil>=2.6.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2.8.1)
+Requirement already satisfied: pytz>=2017.2 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (2019.3)
+Requirement already satisfied: numpy>=1.13.3 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from pandas) (1.17.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (1.1.0)
+Requirement already satisfied: cycler>=0.10 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (0.10.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from matplotlib) (2.4.6)
+Requirement already satisfied: six>=1.5 in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from python-dateutil>=2.6.1->pandas) (1.14.0)
+Requirement already satisfied: setuptools in /home/ranjeet/.local/share/virtualenvs/python-workshop-base-tJ99sjUn/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (46.1.3)
 
 </code>
 </pre>

@@ -1,5 +1,3 @@
-
-
 <style>
 .output_label {
     text-align: right;
@@ -410,7 +408,7 @@ or more exotic forms of text (even emoji!).
 
 We can perform mathematical calculations in Python using the basic operators:
 
-`+`  `-`  `*`  `/`  `%`  `**`
+`+`  `-`  `*`  `/`  `%` `//` `**`
 
 
 
@@ -460,7 +458,7 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 ```python
-2 ** 16  # Power
+5/2 # Division
 ```
 
 
@@ -469,7 +467,7 @@ We can perform mathematical calculations in Python using the basic operators:
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-65536
+2.5
 </code>
 </pre>
 
@@ -491,6 +489,48 @@ We can perform mathematical calculations in Python using the basic operators:
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
 3
+</code>
+</pre>
+
+
+
+
+
+
+
+
+```python
+13 // 5  # Floor Division
+```
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+2
+</code>
+</pre>
+
+
+
+
+
+
+
+
+```python
+2 ** 16  # Power
+```
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+65536
 </code>
 </pre>
 
