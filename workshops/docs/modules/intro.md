@@ -410,7 +410,7 @@ or more exotic forms of text (even emoji!).
 
 We can perform mathematical calculations in Python using the basic operators:
 
-`+`  `-`  `*`  `/`  `%`  `**`
+`+`  `-`  `*`  `/`  `%` `//` `**`
 
 
 
@@ -437,9 +437,25 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 
-
 ```python
 6 * 7  # Multiplication
+```
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+42
+</code>
+</pre>
+
+
+
+
+
+
+
+```python
+5 / 2  # Division
 ```
 
 
@@ -448,7 +464,42 @@ We can perform mathematical calculations in Python using the basic operators:
 <pre class="output">
 <div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
 <code class="text">
-42
+2.5
+</code>
+</pre>
+
+
+
+
+
+```python
+13 % 5  # Modulo
+```
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+3
+</code>
+</pre>
+
+
+
+
+```python
+13 // 5  # Floor division
+```
+
+
+
+
+<pre class="output">
+<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
+<code class="text">
+2
 </code>
 </pre>
 
@@ -478,21 +529,6 @@ We can perform mathematical calculations in Python using the basic operators:
 
 
 
-
-
-```python
-13 % 5  # Modulo
-```
-
-
-
-
-<pre class="output">
-<div style="text-align: right; margin: -1em; padding: 0;"><span style="font-size: 0.5em; color: grey">output</span></div>
-<code class="text">
-3
-</code>
-</pre>
 
 
 
