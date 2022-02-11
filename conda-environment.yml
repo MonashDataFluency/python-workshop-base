@@ -1,0 +1,17 @@
+name: pyshop
+channels:
+  - bioconda
+  - conda-forge
+  - anaconda
+  - defaults
+  - r
+  - conda-forge/label/broken
+dependencies:
+  - python==3.10
+  - jupytext
+  - jupyter-book
+  - jupyterlab
+  - plotnine
+  - pandas
+  - numpy
+prefix: /home/perry/miniconda3/envs/pyshop

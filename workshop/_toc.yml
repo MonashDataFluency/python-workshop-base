@@ -1,0 +1,24 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+chapters:
+- file: intro
+- file: working_with_data
+- file: plotting_with_plotnine
+
+
+#   - 'Home': 'index.md'
+#   - 'Modules':
+#     - 'Introduction - the basics of Python': 'modules/intro.md'
+#     - 'Working with Data': 'modules/working_with_data.md'
+#     - 'Missing values': 'modules/missing_values.md'
+#     - 'Indexing': 'modules/indexing.md'
+#     - 'Loops': 'modules/loops.md'
+#     - 'Combining DataFrames with Pandas': 'modules/merging_data.md'
+#     - 'Plotting with ggplot for Python': 'modules/plotting_with_ggplot.md'
+#     - 'Reusable and modular code with functions': 'modules/functions.md'
+#     - 'Defensive Programming': 'modules/defensive_programming.md'
+#   - 'Half Day Course': 'halfday.md'
+#   - 'Full Day Course': 'fullday.md'

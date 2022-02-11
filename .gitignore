@@ -1,13 +1,13 @@
 .ipynb_checkpoints
 
-# mkdocs generated site
-/workshops/site
+# generated site
+workshop/_build
 
 # Some side-effect outputs from ./build.sh we don't want
-/workshops/docs/modules/notebooks/surveys.csv
-/workshops/docs/modules/notebooks/speciesSubset.csv
-/workshops/docs/modules/notebooks/function_surveys*.csv
-/workshops/docs/modules/notebooks/output/*
+/workshop/notebooks/surveys.csv
+/workshop/notebooks/speciesSubset.csv
+/workshop/notebooks/function_surveys*.csv
+/workshop/notebooks/output/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -16,5 +16,3 @@ __pycache__/
 
 # C extensions
 *.so
-
-

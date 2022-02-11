@@ -7,84 +7,56 @@ To add or modify content, edit the notebooks in
 
 ## Quick start
 ```bash
-# Install pipenv to ~/.local/bin/pipenv
-pip install --user pipenv
+
+# Create a virtualenv
+conda create -n python-workshop -f conda-environment.frozen.yml
+
+# ... or without exact dependency versions
+# conda create -n python-workshop -f conda-environment.yml
 
 git clone https://github.com/MonashDataFluency/python-workshop-base.git
 cd python-workshop-base
 
-# Install dependencies
-pipenv install
+# jupyter lab
 
-# Enter the virtual environment
-pipenv shell
-jupyter notebook
-# Edit the notebooks in workshops/docs/modules/notebooks
-# Ctrl-C in terminal to stop Jupyter when you are done
-./build.sh
-
-# To view the generated site
-cd workshops
-open http://127.0.0.1:8000 && mkdocs serve
+# To generate the rendered html
+jupyter-book build workshop/
 ```
+
+You can edit notebooks in Jupyterlab, but the final version will be rendered based on the corresponding Markdown (MyST) files. Ensure any new notebooks you create are `jupytext` "Paired MyST notebooks".
 
 If everything looks fine, commit your changes (ideally to a branch), `git push` and send a Pull Request.
 
-To deploy the public docs, [see here](#deploying-the-static-site-to-github-pages).
+## Jupyter-book fork plan
 
-----
+- All notebooks are `jupytext` MyST paired notebooks
+- HTML (Github pages) is generated via `jupyter-book build`
+- Contributers can edit the MyST Markdown (eg via the Github web interface)
+  - Github Actions automatically runs `jupyter-book build`, pushes to `gh-pages` branch.
+  - Notebooks are automatically regenerated using `jupytext --to notebook *.md`. These are kept alongside the `*.md` files on the main branch.
+- Content developers can also edit the notebooks in JupyterLab - this requires with `jupytext` extension with MyST Markdown paired notebooks. The notebook and MyST output should be synchronised (by saving !) before committing.
 
-## Setup
+### TODO:
+- Ensure that https://monashdatafluency.github.io/python-workshop-base/ link is still the same with new published version
+- Also for https://monashdatafluency.github.io/python-workshop-base/fullday and https://monashdatafluency.github.io/python-workshop-base/halfday
+- Ensure data download link (`surveys.csv`) near start of "Working with Data" is still correct.
+- Investigate the possibility of generating student and instructor notes from a single source (ie, special cell tags recognized by MyST and/or Jupyter Book)
 
-Install [Pipenv](https://docs.pipenv.org/) (eg `pip install pipenv`).
-
-Run:
-
-```bash
-pipenv install
-```
-
-You can enter the virtualenv with `pipenv shell`, or run single commands in the 
-enviroment of the virtualenv with `pipenv run`.
-
-## Modifying and building
-
-Workshop modules can be found in `workshops/docs/modules/notebooks`.
-
-To edit and update a module:
-* edit the Jupyter Notebook, following the required [conventions](#jupyter-notebook-conventions).
-* ensure your code runs
-* save the notebook
-* **stop the kernel for the notebook**
-
-Then run:
-
-```bash
-# Export the notebooks, build the docs
-pipenv run ./build.sh
-```
-
-This script runs `jupyter nbconvert` to generate Markdown from the notebooks, 
-then runs `mkdocs build` to generate the static HTML.
-
-New modules should be listed in `workshops/mkdocs.yml`, `workshops/docs/index.md` 
-and possibly `workshops/docs/fullday.md` and/or `workshops/docs/halfday.md` if they form part of the 
-full or half day workshops.
+----------------
 
 ### Jupyter notebook conventions
+
+For small / quick edits to the content, the MyST markdown files can be edited directly - send a PR.
+
+For more involved development, including new workshop modules, working Jupyter notebooks might be more comfortable.
 
 The intention of developing the workshop materials directly from Jupyter notebooks is to:
 
 1. Ensure code examples run correctly, catch errors early.
 2. Make each module a self-contained unit, including pulling in dependencies.
-3. Enable generation of student and instructor notes from a single source.
 
 Here are some conventions to follow to achieve this:
 
-* **Cell tagging**: challenges should be tagged `challenge` and **solutions should be tagged** `solution`.
-  The `nbconvert` templates hide cells tagged `solution` from the main student notes,
-  but output them for instructor notes. Currently (May-2018) only `jupyter notebook` 
-  allows editing cell tags - the required UI for `jupyter lab` hasn't been completed yet.
 * **Package dependencies**: Include a `!pip install somepackage` cell near to start of every module
   that installs any required dependencies. This makes the modules work as standalone units in a range 
   of environments (local Jupyter or IPython REPL, Azure Notebooks, Colaboratory, Python Anywhere).
@@ -92,28 +64,6 @@ Here are some conventions to follow to achieve this:
   This allows the notes to be used in various hosted or local Jupyter environments 
   (it's also a useful operation for students to learn).
 
-## Viewing the generated site
-
-You can view the site locally via:
-
-```bash
-pipenv shell
-cd workshops
-mkdocs serve
-
-# or, run
-# pipenv run bash -c "cd workshops; mkdocs serve"
-```
-
-Go to [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-## Deploying the static site to Github Pages
-
-To update the site at https://MonashDataFluency.github.io/python-workshop-base/, run:
-
-```bash
-pipenv run ./deploy.sh
-```
 
 # License
 
