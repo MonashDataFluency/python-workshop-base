@@ -14,8 +14,8 @@ execute:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/MonashDataFluency/python-workshop-base
-  path_to_book: html # Optional path to your book, relative to the repository root
-  branch: master # Which branch of the repository should be used when creating links (optional)
+  path_to_book: workshop # Optional path to your book, relative to the repository root
+  branch: jupyterbook # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
