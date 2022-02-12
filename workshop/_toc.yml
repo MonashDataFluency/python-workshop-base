@@ -3,12 +3,25 @@
 
 format: jb-book
 root: index
-chapters:
-- file: intro
-- file: working_with_data
-- file: plotting_with_plotnine
+parts:
+  - caption: Standard workshop
+    chapters:
+      - file: notebooks/intro
+      - file: notebooks/working_with_data
+      - file: notebooks/indexing
+      - file: notebooks/missing_values
+      - file: notebooks/loops
+      - file: notebooks/plotting_with_plotnine
+      - file: notebooks/functions
+      - file: notebooks/defensive_programming
 
-
+  # - caption: Other workshops
+  #   chapters:
+  #     - file: halfday
+  #       sections:
+  #         - file: notebooks/intro
+  #         - file: notebooks/working_with_data
+  #         - file: notebooks/plotting_with_plotnine
 #   - 'Home': 'index.md'
 #   - 'Modules':
 #     - 'Introduction - the basics of Python': 'modules/intro.md'
