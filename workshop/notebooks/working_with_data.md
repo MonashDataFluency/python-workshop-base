@@ -7,12 +7,12 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
 
-# Data Analysis with Python
+# Data analysis in Python with Pandas
 
 
 ---
@@ -121,7 +121,6 @@ Once a library is set up, it can be used or called to perform many tasks.
 If you have noticed in the previous code `import urllib.request`, we are calling 
 a **request** function from library **urllib** to download our dataset from web.
 
-
 +++
 
 ## Pandas in Python
@@ -147,7 +146,6 @@ example of importing the pandas library using the common nickname `pd` is below.
 import pandas as pd
 ```
 
-
 Each time we call a function that's in a library, we use the syntax
 `LibraryName.FunctionName`. Adding the library name with a `.` before the
 function name tells Python where to find the function. In the example above, we
@@ -162,7 +160,6 @@ We will begin by locating and reading our survey data which are in CSV format. C
 We can use Pandas' `read_csv` function to pull the file directly into a
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
-
 +++
 
 ## So What's a DataFrame?
@@ -172,7 +169,6 @@ types (including characters, integers, floating point values, factors and more)
 in columns. It is similar to a spreadsheet or an SQL table or the `data.frame` in
 R. A DataFrame always has an index (0-based). An index refers to the position of
 an element in the data structure.
-
 
 ```{code-cell} ipython3
 # Note that pd.read_csv is used because we imported pandas as pd
@@ -203,7 +199,6 @@ object by typing its name into the cell.
 surveys_df
 ```
 
-
 which prints contents like above.
 
 +++
@@ -222,18 +217,15 @@ surveys_df.head()
 
 Again, we can use the `type` function to see what kind of thing `surveys_df` is:
 
-
 ```{code-cell} ipython3
 type(surveys_df)
 ```
-
 
 As expected, it's a DataFrame (or, to use the full name that Python uses to refer
 to it internally, a `pandas.core.frame.DataFrame`).
 
 What kind of things does `surveys_df` contain? DataFrames have an attribute
 called `dtypes` that answers this:
-
 
 ```{code-cell} ipython3
 surveys_df.dtypes
@@ -275,8 +267,6 @@ what they return.
 3. `surveys_df.head()` Also, what does `surveys_df.head(15)` do?
 4. `surveys_df.tail()`
 
-
-
 +++ {"tags": ["solution"]}
 
 ## Solution - DataFrames
@@ -294,7 +284,6 @@ species were caught. We can perform summary stats quickly using groups. But
 first we need to figure out what we want to group by.
 
 Let's begin by exploring our data:
-
 
 ```{code-cell} ipython3
 # Look at the column names
@@ -342,9 +331,7 @@ syntax below:
 surveys_df['weight'].describe()
 ```
 
-
 We can also extract one specific metric if we wish:
-
 
 ```{code-cell} ipython3
 surveys_df['weight'].min()
@@ -355,23 +342,19 @@ surveys_df['weight'].std()
 surveys_df['weight'].count()
 ```
 
-
 But if we want to summarize by one or more variables, for example sex, we can
 use **Pandas' `.groupby` method**. Once we've created a groupby DataFrame, we
 can quickly calculate summary statistics by a group of our choice.
-
 
 ```{code-cell} ipython3
 # Group data by sex
 grouped_data = surveys_df.groupby('sex')
 ```
 
-
 The **pandas function `describe`** will return descriptive stats including: mean,
 median, max, min, std and count for a particular column in the data. **Note** Pandas'
 `describe` function will only return summary values for columns containing
 numeric data.
-
 
 ```{code-cell} ipython3
 # Summary statistics for all numeric columns by sex
@@ -382,10 +365,8 @@ grouped_data.describe()
 grouped_data.mean()
 ```
 
-
 The `groupby` command is powerful in that it allows us to quickly generate
 summary stats.
-
 
 +++ {"tags": ["challenge"]}
 
@@ -407,7 +388,6 @@ summary stats.
 3. Summarize weight values for each site in your data. HINT: you can use the
   following syntax to only create summary statistics for one column in your data
   `by_site['weight'].describe()`
-
 
 +++ {"tags": ["solution"]}
 
@@ -453,7 +433,6 @@ surveys_df.groupby(['site_id'])['weight'].describe()
          ...
 ```
 
-
 +++
 
 ## Quickly Creating Summary Counts in Pandas
@@ -461,17 +440,13 @@ surveys_df.groupby(['site_id'])['weight'].describe()
 Let's next count the number of samples for each species. We can do this in a few
 ways, but we'll use `groupby` combined with **a `count()` method**.
 
-
-
 ```{code-cell} ipython3
 # Count the number of samples by species
 species_counts = surveys_df.groupby('species_id')['record_id'].count()
 print(species_counts)
 ```
 
-
 Or, we can also count just the rows that have the species "DO":
-
 
 ```{code-cell} ipython3
 surveys_df.groupby('species_id')['record_id'].count()['DO']
@@ -484,7 +459,6 @@ example let's multiply all weight values by 2. A more practical use of this migh
 be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
-
 ```{code-cell} ipython3
 # Multiply all weight values by 2 but does not change the original weight data
 surveys_df['weight']*2
@@ -493,7 +467,6 @@ surveys_df['weight']*2
 ## Quick & Easy Plotting Data Using Pandas
 
 We can plot our summary stats using Pandas, too.
-
 
 ```{code-cell} ipython3
 ## To make sure figures appear inside Jupyter Notebook
@@ -523,9 +496,6 @@ total_count.plot(kind='bar')
  
 3. Create a stacked bar plot, with weight on the Y axis, and the stacked variable being sex. The plot should show total weight by sex for each plot. Some tips are below to help you solve this challenge:
 [For more on Pandas plots, visit this link.](http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot)
-
-
-
 
 +++ {"tags": ["solution"]}
 
@@ -566,7 +536,6 @@ site_sex_count = by_site_sex['weight'].sum()
 
 +++ {"tags": ["solution"]}
 
-
 This calculates the sums of weights for each sex within each plot as a table
 
 ```
@@ -584,7 +553,6 @@ site_id  sex
 ```
 
 Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
-
 
 ```{code-cell} ipython3
 :tags: [solution]
