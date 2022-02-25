@@ -38,10 +38,11 @@ If everything looks fine, commit your changes (ideally to a branch), `git push` 
 
 ### TODO:
 - Ensure that https://monashdatafluency.github.io/python-workshop-base/ link is still the same with new published version
-- Also for https://monashdatafluency.github.io/python-workshop-base/fullday and https://monashdatafluency.github.io/python-workshop-base/halfday
+  - Also for https://monashdatafluency.github.io/python-workshop-base/fullday and https://monashdatafluency.github.io/python-workshop-base/halfday
 - Ensure data download link (`surveys.csv`) near start of "Working with Data" is still correct.
 - Investigate the possibility of generating student and instructor notes from a single source (ie, special cell tags recognized by MyST and/or Jupyter Book)
-- Refactor notebook `functions.ipynb` to generate .csv files in a separate folder
+- Refactor notebook `functions.ipynb` to generate `.csv` files in a separate folder
+- Make solutions hidden under [content reveal](https://jupyterbook.org/interactive/hiding.html#toggle-admonition-content-with-dropdowns)
 ----------------
 
 ### Jupyter notebook conventions
