@@ -4,12 +4,15 @@
 title: Introduction to Python
 author: The Monash Data Fluency Community
 logo: logo.png
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
   timeout: 360
+  # Won't work (yet), can't find surveys.csv etc
+  # run_in_temp: true
 
 # Information about where the book exists on the web
 repository:
