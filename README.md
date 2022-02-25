@@ -43,6 +43,7 @@ If everything looks fine, commit your changes (ideally to a branch), `git push` 
 - Investigate the possibility of generating student and instructor notes from a single source (ie, special cell tags recognized by MyST and/or Jupyter Book)
 - Refactor notebook `functions.ipynb` to generate `.csv` files in a separate folder
 - Make solutions hidden under [content reveal](https://jupyterbook.org/interactive/hiding.html#toggle-admonition-content-with-dropdowns)
+- Front section explaining formatting conventions (eg that solutions are behind dropdown reveal, but don't peek until you had a proper go yourself), [example](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/qiime2/qiime2/#tutorial-layout)
 ----------------
 
 ### Jupyter notebook conventions
