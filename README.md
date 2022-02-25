@@ -21,6 +21,10 @@ cd python-workshop-base
 
 # To generate the rendered html
 jupyter-book build workshop/
+
+# Tip: you can run a local webserver to view the docs like:
+python -m http.server --directory workshop/_build/html/ 8000
+# Connect to http://localhost:8000 in your browser
 ```
 
 You can edit notebooks in Jupyterlab, but the final version will be rendered based on the corresponding Markdown (MyST) files. Ensure any new notebooks you create are `jupytext` "Paired MyST notebooks".
