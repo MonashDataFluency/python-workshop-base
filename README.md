@@ -50,6 +50,7 @@ If everything looks fine, commit your changes (ideally to a branch), `git push` 
 - Refactor notebook `functions.ipynb` to generate `.csv` files in a separate folder
 - Make solutions hidden under [content reveal](https://jupyterbook.org/interactive/hiding.html#toggle-admonition-content-with-dropdowns)
 - Front section explaining formatting conventions (eg that solutions are behind dropdown reveal, but don't peek until you had a proper go yourself), [example](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/qiime2/qiime2/#tutorial-layout)
+- Github Actions CI to build and publish.
 ----------------
 
 ### Jupyter notebook conventions
