@@ -8,11 +8,13 @@ To add or modify content, edit the notebooks in
 ## Quick start
 ```bash
 
-# Create a virtualenv
+# Create a conda environment
 conda create -n python-workshop -f conda-environment.frozen.yml
 
 # ... or without exact dependency versions
 # conda create -n python-workshop -f conda-environment.yml
+
+conda activate python-workshop
 
 git clone https://github.com/MonashDataFluency/python-workshop-base.git
 cd python-workshop-base

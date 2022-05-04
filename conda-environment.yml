@@ -1,4 +1,4 @@
-name: pyshop
+name: python-workshop
 channels:
   - bioconda
   - conda-forge
