@@ -4,10 +4,11 @@
 workshop/_build
 
 # Some side-effect outputs from ./build.sh we don't want
-/workshop/notebooks/surveys.csv
-/workshop/notebooks/speciesSubset.csv
-/workshop/notebooks/function_surveys*.csv
-/workshop/notebooks/output/*
+/workshop/modules/surveys.csv
+/workshop/modules/speciesSubset.csv
+/workshop/modules/function_surveys*.csv
+/workshop/modules/data/function_surveys*.csv
+/workshop/modules/output/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -16,3 +17,5 @@ __pycache__/
 
 # C extensions
 *.so
+
+/.quarto/

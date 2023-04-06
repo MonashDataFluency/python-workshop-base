@@ -1,0 +1,14 @@
+# Introduction to Python Workshop (half-day)
+
+Welcome to _Introduction to Python_ !
+
+This is a selection of modules designed for an intensive half-day workshop. Your instructor my decide to skip a module (eg _Handling Missing Values_) if you are tight on time.
+
+## Sections
+
+* 01 - [Introduction - the basics of Python](notebooks/intro.qmd)
+* 02 - [Data analysis in Python with Pandas](notebooks/working_with_data.qmd)
+* 03 - [Missing Values](notebooks/missing_values.qmd)
+* 04 - [Repetitive tasks with loops](notebooks/loops.qmd)
+* 05 - [Plotting with plotnine (ggplot)](notebooks/plotting_with_plotnine.qmd)
+

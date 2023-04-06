@@ -1,23 +1,18 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Data analysis in Python with Pandas
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-# Data analysis in Python with Pandas
 
 
 ---
 
-+++ {"tags": ["solution"]}
 
 ## Instructor notes
 
@@ -44,8 +39,6 @@ kernelspec:
   - "Perform basic mathematical operations and summary statistics on data in a Pandas DataFrame."
   - "Create simple plots."
 
-+++
-
 ## Automating data analysis tasks in Python
 
 We can automate the process of performing data manipulations in Python. It's efficient to spend time
@@ -62,7 +55,7 @@ from Ernst et al
 
 We will be using this dataset, which can be downloaded here: [surveys.csv](data/surveys.csv) ... but **don't click** to download it in your browser - **we are going to use Python !**
 
-```{code-cell} ipython3
+```{python}
 import urllib.request
 # You can also get this URL value by right-clicking the `surveys.csv` link above and selecting "Copy Link Address"
 url = 'https://monashdatafluency.github.io/python-workshop-base/modules/data/surveys.csv'
@@ -72,8 +65,6 @@ urllib.request.urlretrieve(url, 'surveys.csv')
 
 If Jupyter is running locally on your computer, you'll now have a file `surveys.csv` in the current working directory.
 You can check by clicking on `File` tab on the top left of the notebook to see if the file exists. If you are running Jupyter on a remote server or cloud service (eg Colaboratory or Azure Notebooks), the file will be there instead.
-
-+++
 
 We are studying the species and weight of animals caught in plots in our study
 area. The dataset is stored as a `.csv` file: each row holds information for a
@@ -109,8 +100,6 @@ record_id,month,day,year,site_id,species_id,sex,hindfoot_length,weight
 
 ---
 
-+++
-
 ## About Libraries
 
 A library in Python contains a set of tools (called functions) that perform
@@ -121,8 +110,6 @@ Once a library is set up, it can be used or called to perform many tasks.
 If you have noticed in the previous code `import urllib.request`, we are calling 
 a **request** function from library **urllib** to download our dataset from web.
 
-+++
-
 ## Pandas in Python
 The dataset we have, is in table format. One of the best options for working with tabular data in Python is to use the
 [Python Data Analysis Library](http://pandas.pydata.org/) (a.k.a. Pandas). The
@@ -132,7 +119,7 @@ that use [NumPy](http://www.numpy.org/) (which is another Python library) arrays
 
 First, lets make sure the Pandas and matplotlib packages are **installed**.
 
-```{code-cell} ipython3
+```{python}
 !pip install pandas matplotlib
 ```
 
@@ -142,7 +129,7 @@ a library, we use the syntax `import libraryName`. If we want to give the
 library a nickname to shorten the command, we can add `as nickNameHere`.  An
 example of importing the pandas library using the common nickname `pd` is below.
 
-```{code-cell} ipython3
+```{python}
 import pandas as pd
 ```
 
@@ -160,8 +147,6 @@ We will begin by locating and reading our survey data which are in CSV format. C
 We can use Pandas' `read_csv` function to pull the file directly into a
 [DataFrame](http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe).
 
-+++
-
 ## So What's a DataFrame?
 
 A DataFrame is a 2-dimensional data structure that can store data of different
@@ -170,7 +155,7 @@ in columns. It is similar to a spreadsheet or an SQL table or the `data.frame` i
 R. A DataFrame always has an index (0-based). An index refers to the position of
 an element in the data structure.
 
-```{code-cell} ipython3
+```{python}
 # Note that pd.read_csv is used because we imported pandas as pd
 pd.read_csv("surveys.csv")
 ```
@@ -187,7 +172,7 @@ or `data`. We can create a new  object with a variable name by assigning a value
 
 Let's call the imported survey data `surveys_df`:
 
-```{code-cell} ipython3
+```{python}
 surveys_df = pd.read_csv("surveys.csv")
 ```
 
@@ -195,13 +180,11 @@ Notice when you assign the imported DataFrame to a variable, Python does not
 produce any output on the screen. We can view the value of the `surveys_df`
 object by typing its name into the cell.
 
-```{code-cell} ipython3
+```{python}
 surveys_df
 ```
 
 which prints contents like above.
-
-+++
 
 You can also select just a few rows, so it is easier to fit on one window, you can see that pandas has neatly formatted the data to fit our screen.
 
@@ -209,7 +192,7 @@ Here, we will be using a function called **head**.
 
 The `head()` function displays the first several lines of a file. It is discussed below.
 
-```{code-cell} ipython3
+```{python}
 surveys_df.head()
 ```
 
@@ -217,7 +200,7 @@ surveys_df.head()
 
 Again, we can use the `type` function to see what kind of thing `surveys_df` is:
 
-```{code-cell} ipython3
+```{python}
 type(surveys_df)
 ```
 
@@ -227,7 +210,7 @@ to it internally, a `pandas.core.frame.DataFrame`).
 What kind of things does `surveys_df` contain? DataFrames have an attribute
 called `dtypes` that answers this:
 
-```{code-cell} ipython3
+```{python}
 surveys_df.dtypes
 ```
 
@@ -254,8 +237,6 @@ information in the parens to control behaviour.
 
 Let's look at the data using these.
 
-+++ {"tags": ["challenge"]}
-
 ## Challenge - DataFrames
 
 Using our DataFrame `surveys_df`, try out the attributes & methods below to see
@@ -267,13 +248,9 @@ what they return.
 3. `surveys_df.head()` Also, what does `surveys_df.head(15)` do?
 4. `surveys_df.tail()`
 
-+++ {"tags": ["solution"]}
-
 ## Solution - DataFrames
 
 ... try it yourself !
-
-+++
 
 # Calculating Statistics From Data
 
@@ -285,7 +262,7 @@ first we need to figure out what we want to group by.
 
 Let's begin by exploring our data:
 
-```{code-cell} ipython3
+```{python}
 # Look at the column names
 surveys_df.columns
 ```
@@ -293,11 +270,9 @@ surveys_df.columns
 Let's get a list of all the species. The `pd.unique` function tells us all of
 the unique values in the `species_id` column.
 
-```{code-cell} ipython3
+```{python}
 pd.unique(surveys_df['species_id'])
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - Statistics
 
@@ -307,13 +282,10 @@ pd.unique(surveys_df['species_id'])
 
 2. What is the difference between `len(site_names)` and `surveys_df['site_id'].nunique()`?
 
-+++ {"tags": ["solution"]}
-
 ## Solution - Statistics
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 site_names = pd.unique(surveys_df['site_id'])
 print(len(site_names), surveys_df['site_id'].nunique())
 ```
@@ -327,13 +299,13 @@ weight of all individuals per site.
 We can calculate basic statistics for all records in a single column using the
 syntax below:
 
-```{code-cell} ipython3
+```{python}
 surveys_df['weight'].describe()
 ```
 
 We can also extract one specific metric if we wish:
 
-```{code-cell} ipython3
+```{python}
 surveys_df['weight'].min()
 surveys_df['weight'].max()
 surveys_df['weight'].mean()
@@ -346,7 +318,7 @@ But if we want to summarize by one or more variables, for example sex, we can
 use **Pandas' `.groupby` method**. Once we've created a groupby DataFrame, we
 can quickly calculate summary statistics by a group of our choice.
 
-```{code-cell} ipython3
+```{python}
 # Group data by sex
 grouped_data = surveys_df.groupby('sex')
 ```
@@ -356,7 +328,7 @@ median, max, min, std and count for a particular column in the data. **Note** Pa
 `describe` function will only return summary values for columns containing
 numeric data.
 
-```{code-cell} ipython3
+```{python}
 # Summary statistics for all numeric columns by sex
 grouped_data.describe()
 
@@ -367,8 +339,6 @@ grouped_data.mean()
 
 The `groupby` command is powerful in that it allows us to quickly generate
 summary stats.
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - Summary Data
 
@@ -389,18 +359,13 @@ summary stats.
   following syntax to only create summary statistics for one column in your data
   `by_site['weight'].describe()`
 
-+++ {"tags": ["solution"]}
-
 ## Solution- Summary Data
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 ## Solution Challenge 1
 grouped_data.count()
 ```
-
-+++ {"tags": ["solution"]}
 
 ### Solution - Challenge 2
 
@@ -408,14 +373,11 @@ The mean value for each combination of site and sex is calculated. Remark that t
 mean does not make sense for each variable, so you can specify this column-wise: 
 e.g. I want to know the last survey year, median foot-length and mean weight for each site/sex combination:
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution- Challenge 3
 surveys_df.groupby(['site_id'])['weight'].describe()
 ```
-
-+++ {"tags": ["solution"]}
 
 ## Did you get #3 right?
  **A Snippet of the Output from part 3 of the challenge looks like:**
@@ -433,14 +395,12 @@ surveys_df.groupby(['site_id'])['weight'].describe()
          ...
 ```
 
-+++
-
 ## Quickly Creating Summary Counts in Pandas
 
 Let's next count the number of samples for each species. We can do this in a few
 ways, but we'll use `groupby` combined with **a `count()` method**.
 
-```{code-cell} ipython3
+```{python}
 # Count the number of samples by species
 species_counts = surveys_df.groupby('species_id')['record_id'].count()
 print(species_counts)
@@ -448,7 +408,7 @@ print(species_counts)
 
 Or, we can also count just the rows that have the species "DO":
 
-```{code-cell} ipython3
+```{python}
 surveys_df.groupby('species_id')['record_id'].count()['DO']
 ```
 
@@ -459,7 +419,7 @@ example let's multiply all weight values by 2. A more practical use of this migh
 be to normalize the data according to a mean, area, or some other value
 calculated from our data.
 
-```{code-cell} ipython3
+```{python}
 # Multiply all weight values by 2 but does not change the original weight data
 surveys_df['weight']*2
 ```
@@ -468,7 +428,7 @@ surveys_df['weight']*2
 
 We can plot our summary stats using Pandas, too.
 
-```{code-cell} ipython3
+```{python}
 ## To make sure figures appear inside Jupyter Notebook
 %matplotlib inline
 
@@ -480,13 +440,11 @@ species_counts.plot(kind='bar')
 
 We can also look at how many animals were captured in each site.
 
-```{code-cell} ipython3
+```{python}
 total_count = surveys_df.groupby('site_id')['record_id'].nunique()
 # Let's plot that too
 total_count.plot(kind='bar')
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## _Extra Plotting Challenge_
 
@@ -497,44 +455,33 @@ total_count.plot(kind='bar')
 3. Create a stacked bar plot, with weight on the Y axis, and the stacked variable being sex. The plot should show total weight by sex for each plot. Some tips are below to help you solve this challenge:
 [For more on Pandas plots, visit this link.](http://pandas.pydata.org/pandas-docs/stable/visualization.html#basic-plotting-plot)
 
-+++ {"tags": ["solution"]}
-
 ### _Solution to Extra Plotting Challenge 1_
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 ## Solution Plotting Challenge 1
 surveys_df.groupby('site_id').mean()["weight"].plot(kind='bar')
 ```
 
-+++ {"tags": ["solution"]}
-
 ### _Solution to Extra Plotting Challenge 2_
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution Plotting Challenge 2
 ## Create plot of total males versus total females for the entire dataset.
 
 surveys_df.groupby('sex').count()["record_id"].plot(kind='bar')
 ```
 
-+++ {"tags": ["solution"]}
-
 ### _Solution to Extra Plotting Challenge 3_
 
 First we group data by site and by sex, and then calculate a total for each site.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 by_site_sex = surveys_df.groupby(['site_id','sex'])
 site_sex_count = by_site_sex['weight'].sum()
 ```
-
-+++ {"tags": ["solution"]}
 
 This calculates the sums of weights for each sex within each plot as a table
 
@@ -554,23 +501,19 @@ site_id  sex
 
 Below we'll use `.unstack()` on our grouped data to figure out the total weight that each sex contributed to each plot.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 by_site_sex = surveys_df.groupby(['site_id','sex'])
 site_sex_count = by_site_sex['weight'].sum()
 site_sex_count.unstack()
 ```
 
-+++ {"tags": ["solution"]}
-
 Now, create a stacked bar plot with that data where the weights for each sex are stacked by plot.
 
 Rather than display it as a table, we can plot the above data by stacking the values of each sex as follows:
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 by_site_sex = surveys_df.groupby(['site_id', 'sex'])
 site_sex_count = by_site_sex['weight'].sum()
 spc = site_sex_count.unstack()
@@ -579,6 +522,4 @@ s_plot.set_ylabel("Weight")
 s_plot.set_xlabel("Site")
 ```
 
-```{code-cell} ipython3
 
-```

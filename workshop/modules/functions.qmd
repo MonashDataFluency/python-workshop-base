@@ -1,20 +1,15 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Reusable and modular code with functions
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-# Reusable and modular code with functions
 
-+++ {"tags": ["solution"]}
 
 ## Instructor notes
 
@@ -33,15 +28,12 @@ kernelspec:
 
 ---
 
-+++
-
 ## Functions
 
 Functions wrap up reusable pieces of code - they help you apply the _Do Not Repeat Yourself_ (DRY) principle.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 def square(x):
     # The body of the function is indicated by indenting by 4 spaces.
     return x**2
@@ -49,9 +41,8 @@ def square(x):
 square(4)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 def hyphenate(a, b):
     # return statements immediately return a value (or None if no value is given)
     return a + '-' + b
@@ -67,11 +58,7 @@ Functions are reusable, self-contained pieces of code that are called with a sin
 
 Every method used in Python (for example, `print`) is a function, and the libraries we import (say, `pandas`) are a collection of functions. We will only use functions that are housed within the same code that uses them, but it’s also easy to write functions that can be used by different programs.
 
-+++
-
 Functions are declared following this general structure:
-
-+++
 
 ```python
 def this_is_the_function_name(input_argument1, input_argument2):
@@ -89,7 +76,7 @@ The function declaration starts with the word `def`, followed by the function na
 
 Let's rewrite this function with shorter (but still informative) names so we don't need to type as much:
 
-```{code-cell} ipython3
+```{python}
 def product(a, b):
     print('The function arguments are:', a, b, '(this is done inside the function!)')
 
@@ -98,15 +85,13 @@ def product(a, b):
 
 This is how we call the function:
 
-```{code-cell} ipython3
+```{python}
 product_of_inputs = product(2, 5)
 ```
 
-```{code-cell} ipython3
+```{python}
 print('Their product is:', product_of_inputs, '(this is done outside the function!)')
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - Functions
 
@@ -120,27 +105,20 @@ print('Their product is:', product_of_inputs, '(this is done outside the functio
 
 4. Explore what happens when a variable both inside and outside the function have the same name. What happens to the global variable when you change the value of the local variable?
 
-+++ {"tags": ["solution"]}
-
 ## Solutions - Functions
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Challenge part 1
 product_of_inputs = product(2, 6)
 print(product_of_inputs)
 ```
-
-+++ {"tags": ["solution"]}
 
 Challenge part 2:
 
 ```python
 product(2, 6, "nope")
 ```
-
-+++ {"tags": ["solution"]}
 
 ```python
 ---------------------------------------------------------------------------
@@ -151,8 +129,6 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: this_is_the_function_name() takes 2 positional arguments but 3 were given
 ```
-
-+++ {"tags": ["solution"]}
 
 Challenge part 3:
 
@@ -168,8 +144,6 @@ product(2, 5)
 print(inside_fun)
 ```
 
-+++ {"tags": ["solution"]}
-
 ```python
 The function arguments are: 2 5 (this is done inside the function!)
 ---------------------------------------------------------------------------
@@ -182,9 +156,8 @@ NameError                                 Traceback (most recent call last)
 NameError: name 'inside_fun' is not defined
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Challenge part 4
 outside = "unchanged"
 def product(a, b):
@@ -216,7 +189,7 @@ surveys_year.to_csv(filename)
 
 There are many different "chunks" of this code that we can turn into functions, and we can even create functions that call other functions inside them. Let’s first write a function that separates data for just one year and saves that data to a file:
 
-```{code-cell} ipython3
+```{python}
 def year_to_csv(year, all_data):
     """
     Writes a csv file for data from a given year.
@@ -235,7 +208,7 @@ def year_to_csv(year, all_data):
 
 The text between the two sets of triple double quotes is called a _docstring_ and contains the documentation for the function. It does nothing when the function is running and is therefore not necessary, but it is good practice to include docstrings as a reminder of what the code does. Docstrings in functions also become part of their ‘official’ documentation:
 
-```{code-cell} ipython3
+```{python}
 ?year_to_csv
 ```
 
@@ -253,7 +226,7 @@ all_data --- DataFrame with multi-year data
 
 ***Type:***      `function`
 
-```{code-cell} ipython3
+```{python}
 # Read the survey data into a pandas DataFrame.
 # (if you are jumping in to just this lesson and don't yet have the surveys.csv file yet, 
 #  see the "Data analysis in Python with Pandas" `working_with_data` module)
@@ -262,8 +235,6 @@ surveys_df = pd.read_csv("surveys.csv")
 
 year_to_csv(2002, surveys_df)
 ```
-
-+++ {"tags": ["protip", "aside"]}
 
 ### Aside - listing files and the `os` module
 
@@ -305,11 +276,9 @@ if not os.path.exists('data/csvs/'):
     os.makedirs('data/csvs/')
 ```
 
-+++
-
 What we really want to do, though, is create files for multiple years without having to request them one by one. Let’s write another function that uses a `for` loop over a sequence of years and repeatedly calls the function we just wrote, `year_to_csv`:
 
-```{code-cell} ipython3
+```{python}
 def create_csvs_by_year(start_year, end_year, all_data):
     """
     Writes separate CSV files for each year of data.
@@ -326,12 +295,10 @@ def create_csvs_by_year(start_year, end_year, all_data):
 
 Because people will naturally expect that the end year for the files is the last year with data, the `for` loop inside the function ends at `end_year + 1`. By writing the entire loop into a function, we’ve made a reusable tool for whenever we need to break a large data file into yearly files. Because we can specify the first and last year for which we want files, we can even use this function to create files for a subset of the years available. This is how we call this function:
 
-```{code-cell} ipython3
+```{python}
 # Create CSV files, one for each year in the given range
 create_csvs_by_year(1977, 2002, surveys_df)
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - More Functions
 
@@ -343,20 +310,16 @@ create_csvs_by_year(1977, 2002, surveys_df)
 
 4. Make these new functions return a list of the files they have written. There are many ways you can do this (and you should try them all!): you could make the function print the filenames to screen, or you could use a `return` statement to make the function produce a list of filenames, or you can use some combination of the two. You could also try using the `os` library to list the contents of directories.
 
-+++ {"tags": ["solution"]}
-
 ## Solutions - More Functions
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 1
 create_csvs_by_year(2002, 2002, surveys_df)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 2 and 3
 import os
 
@@ -397,9 +360,8 @@ def create_csvs_by_year_at_path(start_year, end_year, all_data, output_path, fil
         year_to_csv_at_path(year, all_data, output_path, filename_prefix)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 4
 
 def year_to_csv_return_filenames(year, all_data):
@@ -432,7 +394,7 @@ The functions we wrote demand that we give them a value for every argument. Idea
 
 Arguments can be given default values with an equal sign in the function declaration - we call these **'keyword'** arguments. Any argument in the function without a default value (here, `all_data`) is a required argument - we call these **'positional'** arguments. Positional arguements MUST come before any keyword arguments. Keyword arguments are optional - if you don't include them when calling the function, the default value is used.
 
-```{code-cell} ipython3
+```{python}
 def keyword_arg_test(all_data, start_year = 1977, end_year = 2002):
     """
     A simple function to demonstrate the use of keyword arguments with defaults !
@@ -456,7 +418,7 @@ The `\t` in the print statements are tabs, used to make the text align and be ea
 
 What if our dataset doesn’t start in 1977 and end in 2002? We can modify the function so that it looks for the ealiest and latest years in the dataset if those dates are not provided. Let's redefine `csvs_by_year`:
 
-```{code-cell} ipython3
+```{python}
 def csvs_by_year(all_data, start_year = None, end_year = None):
     """
     Writes separate CSV files for each year of data. The start year and end year can 
@@ -485,8 +447,6 @@ print('Default values:\t\t\t', start, end)
 
 The default values of the `start_year` and `end_year` arguments in this new version of the `csvs_by_year` function are now `None`. This is a built-in constant in Python that indicates the absence of a value - essentially, that the variable exists in the namespace of the function (the directory of variable names) but that it doesn’t correspond to any existing object.
 
-+++ {"tags": ["challenge"]}
-
 ## Challenge - Experimenting with keyword arguments
 
 1. What type of object corresponds to a variable declared as `None` ? (Hint: create a variable set to None and use the function `type()`)
@@ -495,29 +455,24 @@ The default values of the `start_year` and `end_year` arguments in this new vers
 
 3. What happens if you only include a value for `start_year` in the function call? Can you write the function call with only a value for `end_year` ? (Hint: think about how the function must be assigning values to each of the arguments - this is related to the need to put the arguments without default values before those with default values in the function definition!)
 
-+++ {"tags": ["solution"]}
-
 ## Solutions - Experimenting with keyword arguments
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Challenge 1
 the_void = None
 type(the_void)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Challenge 2
 print(csvs_by_year(surveys_df))
 print(csvs_by_year(surveys_df, start_year=1999, end_year=2001))
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Challenge 3
 print(csvs_by_year(surveys_df, start_year=1999))
 
@@ -536,11 +491,9 @@ print(csvs_by_year(surveys_df, end_year=2001, start_year=1999))
 
 ## Conditionals - `if` statements
 
-+++
-
 The body of the test function now has two conditionals (`if` statements) that check the values of `start_year` and `end_year`. `if` statements execute a segment of code when some condition is met. They commonly look something like this:
 
-```{code-cell} ipython3
+```{python}
 a = 5
 
 if a < 0:  # Meets first condition?
@@ -565,7 +518,7 @@ The `if` statements in the function `csvs_by_year` check whether there is an obj
 
 As we’ve written it so far, the function `csvs_by_year` associates values in the function call with arguments in the function definition just based in their order. If the function gets only two values in the function call, the first one will be associated with `all_data` and the second with `start_year`, regardless of what we intended them to be. We can get around this problem by calling the function using keyword arguments, where each of the arguments in the function definition is associated with a keyword and the function call passes values to the function using these keywords:
 
-```{code-cell} ipython3
+```{python}
 start,end = csvs_by_year(surveys_df)
 print('Default values:\t\t\t', start, end)
 
@@ -584,8 +537,6 @@ print('One keyword, default end:\t', start, end)
 start,end = csvs_by_year(surveys_df, end_year = 1993)
 print('One keyword, default start:\t', start, end)
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Multiple choice challenge
 
@@ -618,11 +569,7 @@ else:
 
 **d)** "Dave: Open the pod bay doors please HAL.", HAL: "I'm opening the pod bay doors, welcome back Dave."
 
-+++ {"tags": ["solution"]}
-
 **Option (b)**
-
-+++ {"tags": ["challenge"]}
 
 ## Bonus Challenge - Modifying functions
 
@@ -646,13 +593,10 @@ else:
 
 _HINT:_ you can create a loop with a list as follows: `for years in year_list:`
 
-+++ {"tags": ["solution"]}
-
 ## Solutions - Modifying functions
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 1
 
 def year_to_csv(year=None, all_data=None):
@@ -700,9 +644,8 @@ def csvs_by_year(start_year=None, end_year=None, all_data=None):
         year_to_csv(year, all_data)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 2
 
 def csvs_by_year(start_year=None, end_year=None, all_data=None):
@@ -735,9 +678,8 @@ surveys_df = pd.read_csv("surveys.csv")
 csvs_by_year(1977, 2002, surveys_df)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 import os
 
 # Solution - part 3
@@ -775,9 +717,8 @@ def year_to_csv(year=None, all_data=None, output_dir='output'):
 year_to_csv(2002, surveys_df)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - part 4
 def csvs_by_year(all_data):
     """
@@ -815,3 +756,4 @@ print()
 # Making it a 'set' removes duplicates
 print(list(set(surveys_df.year)))
 ```
+

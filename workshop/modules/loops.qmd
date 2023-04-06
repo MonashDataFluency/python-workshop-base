@@ -1,20 +1,15 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Automation with Loops
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-# Automation with Loops
 
-+++ {"tags": ["solution"]}
 
 ```{toggle}
 ## Instructor notes
@@ -43,12 +38,10 @@ kernelspec:
 ---
 ```
 
-+++
-
 An example task that we might want to repeat is printing each character in a
 word on a line of its own.
 
-```{code-cell} ipython3
+```{python}
 word = 'lead'
 ```
 
@@ -56,7 +49,7 @@ We can access a character in a string using its index. For example, we can get t
 character of the word `'lead'`, by using `word[0]`. One way to print each character is to use
 four `print` statements:
 
-```{code-cell} ipython3
+```{python}
 print(word[0])
 print(word[1])
 print(word[2])
@@ -76,8 +69,6 @@ While this works, it's a bad approach for two reasons:
    it produces an error because we're asking for characters that don't exist.
 
 
-+++
-
 Running:
 
 ```python
@@ -87,8 +78,6 @@ print(word[1])
 print(word[2])
 print(word[3])
 ```
-
-+++
 
 Gives the error:
 
@@ -103,14 +92,12 @@ IndexError                                Traceback (most recent call last)
 IndexError: string index out of range
 ```
 
-+++
-
 
 
 Here's a better approach:
 
 
-```{code-cell} ipython3
+```{python}
 word = 'lead'
 for char in word:
     print(char)
@@ -119,7 +106,7 @@ for char in word:
 This is shorter --- certainly shorter than something that prints every character in a hundred-letter string --- and
 more robust as well:
 
-```{code-cell} ipython3
+```{python}
 word = 'oxygen'
 for char in word:
     print(char)
@@ -132,8 +119,6 @@ The general form of a loop is:
 for variable in collection:
     # do things with variable
 ```
-
-+++
 
 
 Using the oxygen example above, the loop might look like this:
@@ -148,8 +133,6 @@ but there must be a colon at the end of the line starting the loop, and we must 
 
 
 
-+++
-
 ## What's in a name?
 
 
@@ -157,7 +140,7 @@ In the example above, the loop variable was given the name `char` as a mnemonic;
 We can choose any name we want for variables. We might just as easily have chosen the name `banana` for the loop variable, as long as we use the same name when we invoke the variable inside the loop:
 
 
-```{code-cell} ipython3
+```{python}
 word = 'oxygen'
 for banana in word:
     print(banana)
@@ -168,7 +151,7 @@ It is a good idea to choose variable names that are meaningful, otherwise it wou
 
 Here's another loop that repeatedly updates a variable:
 
-```{code-cell} ipython3
+```{python}
 length = 0
 for vowel in 'aeiou':
     length = length + 1
@@ -199,13 +182,11 @@ and the `print` statement on line 4 tells us our final answer.
 
 Note that a loop variable `vowel` is just a variable that's being used to record progress in a loop.
 
-+++
-
 ## Challenge - scope of the loop variable
 
 1. In the loop over `"aeiou"` above, does the loop variable `vowel` exist after the loop has finished ?
 
-```{code-cell} ipython3
+```{python}
 length = 0
 for vowel in 'aeiou':
     length = length + 1
@@ -216,7 +197,7 @@ print('After the loop, `vowel` exists and has the value: ' + vowel)
 
 Note also that finding the length of a string is such a common operation that Python actually has a built-in function to do it called `len`:
 
-```{code-cell} ipython3
+```{python}
 print(len('aeiou'))
 ```
 
@@ -224,8 +205,6 @@ print(len('aeiou'))
 and much easier to read than a two-line loop;
 it will also give us the length of many other things that we haven't met yet,
 so we should always use it when we can.
-
-+++
 
 ## From 1 to N
 
@@ -243,8 +222,6 @@ accept 1, 2, or 3 parameters.
   For exmaple `range(3, 10, 2)` produces `3, 5, 7, 9`.
 
 
-+++ {"tags": ["challenge"]}
-
 ## Challenge - loop over a range
 Using `range`,
 write a loop that uses `range` to print the first 3 natural numbers:
@@ -257,13 +234,10 @@ write a loop that uses `range` to print the first 3 natural numbers:
 
 
 
-+++ {"tags": ["solution"]}
-
 ## Solution
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 for i in range(1, 4):
    print(i)
 ```
@@ -272,31 +246,24 @@ for i in range(1, 4):
 
 Exponentiation is built into Python:
 
-```{code-cell} ipython3
+```{python}
 print(5 ** 3)
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - multiplication in a loop
 
 Write a loop that calculates the same result as `5 ** 3` using
 multiplication (and without exponentiation).
 
-+++ {"tags": ["solution"]}
-
 ## Solution
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 result = 1
 for i in range(0, 3):
    result = result * 5
 print(result)
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Bonus challenge: reverse a string
 
@@ -305,13 +272,10 @@ write a loop that takes a string
 and produces a new string with the characters in reverse order,
 so `'Newton'` becomes `'notweN'`.
 
-+++ {"tags": ["solution"]}
-
 ## Solution
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 newstring = ''
 oldstring = 'Newton'
 for char in oldstring:
@@ -332,8 +296,6 @@ for i, x in enumerate(xs):
 
 
 The code above loops through `xs`, assigning the index to `i` and the value to `x`.
-
-+++ {"tags": ["challenge"]}
 
 ## Bonus challenge: enumeration for computing the value of a polynomial
 
@@ -357,13 +319,10 @@ y = 97
 Write a loop using `enumerate(cc)` which computes the value `y` of any
 polynomial, given `x` and `cc`.
 
-+++ {"tags": ["solution"]}
-
 ## Solution
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 x = 5
 cc = [2, 4, 3]
 y = cc[0] * x**0 + cc[1] * x**1 + cc[2] * x**2
@@ -375,6 +334,4 @@ for i, c in enumerate(cc):
 print(y)
 ```
 
-```{code-cell} ipython3
 
-```

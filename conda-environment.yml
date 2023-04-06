@@ -1,17 +1,13 @@
 name: python-workshop
 channels:
-  - bioconda
   - conda-forge
-  - anaconda
   - defaults
-  - r
-  - conda-forge/label/broken
 dependencies:
   - python==3.10
-  - jupytext
-  - jupyter-book
-  - jupyterlab
-  - plotnine
-  - pandas
-  - numpy
-prefix: /home/perry/miniconda3/envs/pyshop
+  - jupyterlab=3.6.3
+  - plotnine=0.10.1
+  - pandas=1.4.0
+  - numpy=1.24.2
+  # The quatro package on conda-forge currently appears broken
+  # Once this is fixed we should install quarto this way
+  # - quarto

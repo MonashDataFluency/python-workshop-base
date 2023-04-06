@@ -1,20 +1,14 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Defensive Programming
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-+++ {"tags": ["solution"]}
-
-## Defensive Programming
 *Estimated teaching time:* 30 min
 
 *Estimated challenge time:* 0 min
@@ -35,7 +29,6 @@ kernelspec:
   - Explain why variables should be initialized using actual data values rather than arbitrary constants.
 ---
 
-+++
 
 ## Defensive Programming
 
@@ -50,13 +43,9 @@ To achieve that, we need to:
     
 The good news is, doing these things will speed up our programming, not slow it down. As in real carpentry — the kind done with lumber — the time saved by measuring carefully before cutting a piece of wood is much greater than the time that measuring takes.
 
-+++
-
 ## Assertions
 
 The first step toward getting the right answers from our programs is to assume that mistakes will happen and to guard against them. This is called defensive programming, and the most common way to do it is to add assertions to our code so that it checks itself as it runs. An assertion is simply a statement that something must be true at a certain point in a program. When Python sees one, it evaluates the assertion’s condition. If it’s true, Python does nothing, but if it’s false, Python halts the program immediately and prints the error message if one is provided. For example, this piece of code halts as soon as the loop encounters a value that isn’t positive:
-
-+++
 
 ``` python
 numbers = [1.5, 2.3, 0.7, -0.001, 4.4]
@@ -67,8 +56,6 @@ for n in numbers:
 print('total is:', total)
 
 ```
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -84,8 +71,6 @@ AssertionError: Data should only contain positive values
 
 ```
 
-+++
-
 Programs like the Firefox browser are full of assertions: 10-20% of the code they contain are there to check that the other 80–90% are working correctly. Broadly speaking, assertions fall into three categories:
 
 A `precondition` is something that must be true at the start of a function in order for it to work correctly.
@@ -96,7 +81,7 @@ An `invariant` is something that is always true at a particular point inside a p
 
 For example, suppose we are representing rectangles using a `tuple` of four coordinates `(x0, y0, x1, y1)`, representing the lower left and upper right corners of the rectangle. In order to do some calculations, we need to normalize the rectangle so that the lower left corner is at the origin and the longest side is 1.0 units long. This function does that, but checks that its input is correctly formatted and that its result makes sense:
 
-```{code-cell} ipython3
+```{python}
 def normalize_rectangle(rect):
     '''Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.
     Input should be of the format (x0, y0, x1, y1).
@@ -124,14 +109,10 @@ def normalize_rectangle(rect):
 
 The preconditions on lines 3, 5, and 6 catch invalid inputs:
 
-+++
-
 ``` python
 print(normalize_rectangle( (0.0, 1.0, 2.0) )) # missing the fourth coordinate
 
 ```
-
-+++
 
 ``` python
 ---------------------------------------------------------------------------
@@ -150,13 +131,9 @@ AssertionError: Rectangles must contain 4 coordinates
 
 ```
 
-+++
-
 ```python
 print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) )) # X axis inverted
 ```
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -175,23 +152,17 @@ AssertionError: Invalid X coordinates
 
 ```
 
-+++
-
 The post-conditions on lines 17 and 18 help us catch bugs by telling us when our calculations cannot have been correct. For example, if we normalize a rectangle that is taller than it is wide everything seems OK:
 
-```{code-cell} ipython3
+```{python}
 print(normalize_rectangle( (0.0, 0.0, 1.0, 5.0) ))
 ```
 
 but if we normalize one that’s wider than it is tall, the assertion is triggered:
 
-+++
-
 ```python
 print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
 ```
-
-+++
 
 ``` python
 ---------------------------------------------------------------------------
@@ -210,8 +181,6 @@ AssertionError: Calculated upper Y coordinate invalid
 
 ```
 
-+++
-
 Re-reading our function, we realize that line 11 should divide `dy` by `dx` rather than `dx` by `dy`.  If we had left out the assertion at the end of the function, we would have created and returned something that had the right shape as a valid answer, but wasn’t. Detecting and debugging that would almost certainly have taken more time in the long run than writing the assertion.
 
 But assertions aren’t just about catching errors: they also help people understand programs. Each assertion gives the person reading the program a chance to check (consciously or otherwise) that their understanding matches what the code is doing.
@@ -221,17 +190,11 @@ Most good programmers follow two rules when adding assertions to their code. The
 The second rule is, turn bugs into assertions or tests. Whenever you fix a bug, write an assertion that catches the mistake should you make it again. If you made a mistake in a piece of code, the odds are good that you have made other mistakes nearby, or will make the same mistake (or a related one) the next time you change it. Writing assertions to check that you haven’t regressed (i.e., haven’t re-introduced an old problem) can save a lot of time in the long run, and helps to warn people who are reading the code (including your future self) that this bit is tricky.
 
 
-+++
-
 ### Test-Driven Development
 
 An assertion checks that something is true at a particular point in the program. The next step is to check the overall behavior of a piece of code, i.e., to make sure that it produces the right output when it’s given a particular input. For example, suppose we need to find where two or more time series overlap. The range of each time series is represented as a pair of numbers, which are the time the interval started and ended. The output is the largest range that they all include:
 
-+++
-
 ![test diagram](images/testing.svg)
-
-+++
 
 Most novice programmers would solve this problem like this:
 
@@ -252,15 +215,11 @@ Writing the tests before writing the function they exercise is called `test-driv
 
 Here are three test functions for `range_overlap`:
 
-+++
-
 ``` python
 assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
 assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
 assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
 ```
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -273,33 +232,23 @@ NameError                                 Traceback (most recent call last)
 NameError: name 'range_overlap' is not defined
 ```
 
-+++
-
 The error is actually reassuring: we haven’t written `range_overlap` yet, so if the tests passed, it would be a sign that someone else had and that we were accidentally using their function.
 
 And as a bonus of writing these tests, we’ve implicitly defined what our input and output look like: we expect a list of pairs as input, and produce a single pair as output.
 
 Something important is missing, though. We don’t have any tests for the case where the ranges don’t overlap at all:
 
-+++
-
 ```python
 assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == ???
 ```
-
-+++
 
 What should `range_overlap` do in this case: fail with an error message, produce a special value like `(0.0, 0.0)` to signal that there’s no overlap, or *something* else? Any actual implementation of the function will do one of these things; writing the tests first helps us figure out which is *best before* we’re emotionally invested in whatever we happened to write before we realized there was an issue.
 
 And what about this case?
 
-+++
-
 ```python
 assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == ???
 ```
-
-+++
 
 Do two segments that touch at their endpoints overlap or not? Mathematicians usually say “yes”, but engineers usually say “no”. The best answer is “whatever is most useful in the rest of our program”, but again, any actual implementation of `range_overlap` is going to do *something*, and whatever it is ought to be consistent with what it does when there’s no overlap at all.
 
@@ -310,14 +259,10 @@ Since we’re planning to use the range this function returns as the X axis in a
  
 `None` is built into Python, and means “nothing here”. (Other languages often call the equivalent value `null` or `nil`). With that decision made, we can finish writing our last two tests:
 
-+++
-
 ```python
 assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
 assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
 ```
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -329,11 +274,9 @@ NameError                                 Traceback (most recent call last)
 NameError: name 'range_overlap' is not defined
 ```
 
-+++
-
 Again, we get an error because we haven’t written our function, but we’re now ready to do so:
 
-```{code-cell} ipython3
+```{python}
 def range_overlap(ranges):
     '''Return common overlap among a set of [low, high] ranges.'''
     lowest = 0.0
@@ -346,7 +289,7 @@ def range_overlap(ranges):
 
 (Take a moment to think about why we use `max` to raise `lowest` and `min` to lower `highest`). We’d now like to re-run our tests, but they’re scattered across three different cells. To make running them easier, let’s put them all in a function:
 
-```{code-cell} ipython3
+```{python}
 def test_range_overlap():
     assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
     assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
@@ -357,13 +300,9 @@ def test_range_overlap():
 
 We can now test `range_overlap` with a single function call:
 
-+++
-
 ```python 
 test_range_overlap() 
 ```
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -381,17 +320,12 @@ AssertionError                            Traceback (most recent call last)
 AssertionError: 
 ```
 
-+++
-
 The first test that was supposed to produce `None` fails, so we know something is wrong with our function. We don’t know whether the other tests passed or failed because Python halted the program as soon as it spotted the first error. Still, some information is better than none, and if we trace the behavior of the function with that input, we realize that we’re initializing `lowest` and `highest` to 0.0 and 1.0 respectively, regardless of the input values. This violates another important rule of programming: always initialize from data.
-
-+++ {"tags": ["challenge"]}
 
 Fix `range_overlap`. Re-run `test_range_overlap` after each change you make.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 import numpy
 
 def range_overlap(ranges):
@@ -421,6 +355,4 @@ def range_overlap(ranges):
 
  - Write tests before writing code in order to help determine exactly what that code is supposed to do.
 
-```{code-cell} ipython3
 
-```

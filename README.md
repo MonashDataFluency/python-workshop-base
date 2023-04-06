@@ -2,69 +2,67 @@
 
 This is a base repository for Data Fluency Python Workshop modules.
 
-To add or modify content, edit the notebooks in 
-`workshops/docs/modules/notebooks`.
+To add or modify content, edit the Quarto `.qmd` files in 
+`workshops/docs/modules`.
 
 ## Quick start
 ```bash
+# Clone the repo
+git clone https://github.com/MonashDataFluency/python-workshop-base.git
+cd python-workshop-base
 
 # Create a conda environment
-conda create -n python-workshop -f conda-environment.frozen.yml
+conda env create -n python-workshop -f conda-environment.frozen.yml
 
 # ... or without exact dependency versions
 # conda create -n python-workshop -f conda-environment.yml
 
 conda activate python-workshop
 
-git clone https://github.com/MonashDataFluency/python-workshop-base.git
-cd python-workshop-base
+# Install quarto from https://quarto.org/download/
+# NOTE: In the future, `conda install -c conda-forge quarto` should work, 
+# and will be included in conda-environment.yml 
+# however the package appears broken on Linux at the moment, so you'll
+# need to install Quarto manually for now.
 
-# jupyter lab
+# Preview your changes in the browser
+quarto preview
 
-# To generate the rendered html
-jupyter-book build workshop/
-
-# Tip: you can run a local webserver to view the docs like:
-python -m http.server --directory workshop/_build/html/ 8000
-# Connect to http://localhost:8000 in your browser
+# To generate the rendered html into the `docs/` folder
+# Github Actions will do this automatically when you push to the main branch
+quarto render
 ```
 
-You can edit notebooks in Jupyterlab, but the final version will be rendered based on the corresponding Markdown (MyST) files. Ensure any new notebooks you create are `jupytext` "Paired MyST notebooks".
+To modify the content, edit the Quarto files in `workshop/modules/*.qmd`. You can even do this directly within Github and send a pull request (PR) of your proposed changes.
 
-If everything looks fine, commit your changes (ideally to a branch), `git push` and send a Pull Request.
+When a new version of the site is rendered via Github Actions, Jupyter notebooks are automatically generated from the Quarto Markdown.
 
-## Jupyter-book fork plan
+## Quarto fork plan / checklist
+- [x] Convert notebooks to qmds with `quarto convert`
+- [ ] Investigate rendering of challenge solutions (`code-fold: true` or [custom hide/reveal like ?](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/qiime2/qiime2/#tutorial-layout)), extra instructor notes
+- Github Actions:
+  - [ ] HTML is generated via Github Action, into `docs` [`quarto render`](https://quarto.org/docs/websites/#website-render)
+  - [ ] Automatically generate notebooks are automatically regenerated using [`for md in *.qmd; do quarto convert $md; done`](https://quarto.org/docs/tools/jupyter-lab.html#converting-notebooks). These are kept alongside the `*.qmd` files on the main branch.
 
-- All notebooks are `jupytext` MyST paired notebooks
-- HTML (Github pages) is generated via `jupyter-book build`
-- Contributers can edit the MyST Markdown (eg via the Github web interface)
-  - Github Actions automatically runs `jupyter-book build`, pushes to `gh-pages` branch.
-  - Notebooks are automatically regenerated using `jupytext --to notebook *.md`. These are kept alongside the `*.md` files on the main branch.
-- Content developers can also edit the notebooks in JupyterLab - this requires with `jupytext` extension with MyST Markdown paired notebooks. The notebook and MyST output should be synchronised (by saving !) before committing.
-
-### TODO:
-- Ensure that https://monashdatafluency.github.io/python-workshop-base/ link is still the same with new published version
-  - Also for https://monashdatafluency.github.io/python-workshop-base/fullday and https://monashdatafluency.github.io/python-workshop-base/halfday
-- Ensure data download link (`surveys.csv`) near start of "Working with Data" is still correct.
-- Investigate the possibility of generating student and instructor notes from a single source (ie, special cell tags recognized by MyST and/or Jupyter Book)
-- Refactor notebook `functions.ipynb` to generate `.csv` files in a separate folder
-- Make solutions hidden under [content reveal](https://jupyterbook.org/interactive/hiding.html#toggle-admonition-content-with-dropdowns)
-- Front section explaining formatting conventions (eg that solutions are behind dropdown reveal, but don't peek until you had a proper go yourself), [example](http://melbournebioinformatics.github.io/MelBioInf_docs/tutorials/qiime2/qiime2/#tutorial-layout)
-- Github Actions CI to build and publish.
+- [ ] Ensure that https://monashdatafluency.github.io/python-workshop-base/ link is still the same with new published version
+- [ ] Ensure https://monashdatafluency.github.io/python-workshop-base/fullday and https://monashdatafluency.github.io/python-workshop-base/halfday are correct
+- [ ] Ensure data download link (`surveys.csv`) near start of "Working with Data" is still correct.
+- [ ] Refactor notebook `functions.qmd` to generate `.csv` files in a separate folder
 ----------------
 
-### Jupyter notebook conventions
+### Content conventions
 
-For small / quick edits to the content, the MyST markdown files can be edited directly - send a PR.
+For small / quick edits to the content, the Quarto markdown files can be edited directly - send a PR.
 
-For more involved development, including new workshop modules, working Jupyter notebooks might be more comfortable.
+For more involved development, including new workshop modules, working Jupyter notebooks might be more efficient when testing code examples. Use [`quarto convert`](https://quarto.org/docs/computations/python.html#jupyter-lab) to convert between Quarto (`.qmd`) and IPython notebooks (`.ipynb`).
 
-The intention of developing the workshop materials directly from Jupyter notebooks is to:
+Some guidelines:
 
-1. Ensure code examples run correctly, catch errors early.
-2. Make each module a self-contained unit, including pulling in dependencies.
+- Make each module a self-contained unit, including pulling in dependencies.
+- Ensure your code examples run correctly in the context of the whole module. These should work when running the module from start to finish in a freshly initialized Python session.
+- Check the rendered HTML output using `quarto preview` - as a final check be sure to look at that whole module (_after_ the part you've edited) to ensure your changes didn't break any downstream example.
 
-Here are some conventions to follow to achieve this:
+Here are some conventions to follow to help achieve this:
 
 * **Package dependencies**: Include a `!pip install somepackage` cell near to start of every module
   that installs any required dependencies. This makes the modules work as standalone units in a range 
@@ -72,7 +70,6 @@ Here are some conventions to follow to achieve this:
 * **Acquire data via URLs in the notebook**: Include cells like `import urllib; urllib.request.urlretrieve("https://files.rcsb.org/download/3FPR.pdb")` to download external data.
   This allows the notes to be used in various hosted or local Jupyter environments 
   (it's also a useful operation for students to learn).
-
 
 # License
 

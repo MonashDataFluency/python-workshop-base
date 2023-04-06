@@ -1,20 +1,14 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Indexing and Slicing
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-+++ {"tags": ["solution"]}
-
-# Indexing and Slicing
 
 *Estimated teaching time:* 30 min
 
@@ -45,7 +39,6 @@ In this lesson, we will explore **ways to access different parts of the data** i
   - Slicing, and
   - Subsetting
 
-+++
 
 # Indexing, Slicing and Subsetting
 
@@ -56,11 +49,9 @@ In this lesson, we will explore **ways to access different parts of the data** i
   - Slicing, and
   - Subsetting
 
-+++
-
 ## Ensure the Pandas package is installed
 
-```{code-cell} ipython3
+```{python}
 !pip install pandas matplotlib
 ```
 
@@ -69,7 +60,7 @@ In this lesson, we will explore **ways to access different parts of the data** i
 We will continue to use the surveys dataset that we worked with in the last lesson. Let's reopen and read in the data again:
 
 
-```{code-cell} ipython3
+```{python}
 # Make sure pandas is loaded
 import pandas as pd
 
@@ -85,8 +76,6 @@ numeric ranges, or specific x,y index locations.
 
 
 
-+++
-
 ## Selecting data using Labels (Column Headings)
 
 We use square brackets `[]` to select a subset of an Python object. For example,
@@ -94,12 +83,12 @@ we can select all data from a column named `species_id` from the `surveys_df`
 DataFrame by name. There are two ways to do this:
 
 
-```{code-cell} ipython3
+```{python}
 # Method 1: select a 'subset' of the data using the column name
 surveys_df['species_id'].head()
 ```
 
-```{code-cell} ipython3
+```{python}
 # Method 2: use the column name as an 'attribute'; gives the same output
 surveys_df.species_id.head()
 ```
@@ -109,7 +98,7 @@ We can also create a new object that contains only the data within the
 `species_id` column as follows:
 
 
-```{code-cell} ipython3
+```{python}
 # Creates an object, surveys_species, that only contains the `species_id` column
 surveys_species = surveys_df['species_id']
 ```
@@ -122,7 +111,7 @@ order. This is useful when we need to reorganize our data.
 (error) will be raised.
 
 
-```{code-cell} ipython3
+```{python}
 # Select the species and plot columns from the DataFrame
 surveys_df[['species_id', 'site_id']].head()
 ```
@@ -135,8 +124,6 @@ surveys_df['speciess']
 ```
 
 Outputs:
-
-+++
 
 ```python
 ---------------------------------------------------------------------------
@@ -211,11 +198,9 @@ pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTa
 KeyError: 'speciess'
 ```
 
-+++
-
 Python tells us what type of error it is in the traceback, at the bottom it says `KeyError: 'speciess'` which means that `speciess` is not a column name (or Key in the related python data type dictionary).
 
-```{code-cell} ipython3
+```{python}
 # What happens when you flip the order?
 surveys_df[['site_id', 'species_id']].head()
 ```
@@ -230,15 +215,13 @@ indexing. This means that the first element in an object is located at position
 within objects starting at 1.
 
 
-```{code-cell} ipython3
+```{python}
 # Create a list of numbers:
 a = [1, 2, 3, 4, 5]
 ```
 
 ![indexing diagram](images/slicing-indexing.svg)
 ![slicing diagram](images/slicing-slicing.svg)
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - Extracting data
 
@@ -252,42 +235,31 @@ a = [1, 2, 3, 4, 5]
 
 
 
-+++
-
 ## Solutions - Extracting data
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 a[0]
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution #2
 # a[5]
 ```
-
-+++ {"tags": ["solution"]}
 
 #### Solution #2
 
 In above example, the error says `list index out of range`. This means we don't have index 5 in our list. The maximum index for `a` is `4`, as indexing starts at `0`.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution #3
 # a[len(a)]
 ```
 
-+++ {"tags": ["solution"]}
-
 #### Solution - # 4 - Extracting data 
 This also gives an error, because len(a) is `5` which is not the maximum index
-
-+++
 
 ## Slicing Subsets of Rows in Python
 
@@ -298,7 +270,7 @@ output. The stop bound is one step BEYOND the row you want to select. So if you
 want to select rows 0, 1 and 2 your code would look like this with our `surveys data`:
 
 
-```{code-cell} ipython3
+```{python}
 # Select rows 0, 1, 2 (row 3 is not selected)
 surveys_df[0:3]
 ```
@@ -309,11 +281,11 @@ languages like Matlab and R.
 
 Now lets select the `first 5 rows (rows 0, 1, 2, 3, 4)`.
 
-```{code-cell} ipython3
+```{python}
 surveys_df[:5]
 ```
 
-```{code-cell} ipython3
+```{python}
 # Select the last element in the list
 # (the slice starts at the last element, and ends at the end of the list)
 surveys_df[-1:]
@@ -327,7 +299,7 @@ Let's create a brand new clean dataframe from
 the original data CSV file.
 
 
-```{code-cell} ipython3
+```{python}
 surveys_df = pd.read_csv("surveys.csv")
 ```
 
@@ -347,7 +319,7 @@ and 4 if we start counting at 1), like this:
 `iloc[row slicing, column slicing]`
 
 
-```{code-cell} ipython3
+```{python}
 surveys_df.iloc[0:3, 1:4]
 ```
 
@@ -358,17 +330,17 @@ ask for 0:3, you are actually telling Python to start at index 0 and select rows
 Let's explore some other ways to index and select subsets of data:
 
 
-```{code-cell} ipython3
+```{python}
 # Select all columns for rows of index values 0 and 10
 surveys_df.loc[[0, 10], :]
 ```
 
-```{code-cell} ipython3
+```{python}
 # What does this do?
 surveys_df.loc[0, ['species_id', 'site_id', 'weight']]
 ```
 
-```{code-cell} ipython3
+```{python}
 # What happens when you uncomment and run the code below?
 # surveys_df.loc[[0, 10, 35549], :]
 ```
@@ -392,14 +364,12 @@ dat.iloc[row, column]
 
 In following iloc example:
 
-```{code-cell} ipython3
+```{python}
 surveys_df.iloc[2, 6]
 ```
 
 Remember that Python indexing begins at 0. So, the index location [2, 6]
 selects the element that is 3 rows down and 7 columns over in the DataFrame.
-
-+++ {"tags": ["challenge"]}
 
 ## Challenge - Range
 
@@ -413,34 +383,28 @@ selects the element that is 3 rows down and 7 columns over in the DataFrame.
 
        - `surveys_df.iloc[0:4, 1:4]`
 
-+++ {"tags": ["solution"]}
-
 ## Solution - Range
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - Range - #1 (a)
 surveys_df[0:1]
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - Range - #1 (b)
 surveys_df[:4]
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - Range - #1 (c)
 surveys_df[:-1]
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - Range - #2
 surveys_df.iloc[0:4, 1:4]
 ```
@@ -451,7 +415,7 @@ We can also select a subset of our data using criteria. For example, we can
 select all rows that `have a year value of 2002`:
 
 
-```{code-cell} ipython3
+```{python}
 surveys_df[surveys_df.year == 2002].head()
 ```
 
@@ -459,7 +423,7 @@ surveys_df[surveys_df.year == 2002].head()
 Or we can select all rows that `do not contain the year 2002`:
 
 
-```{code-cell} ipython3
+```{python}
 surveys_df[surveys_df.year != 2002]
 ```
 
@@ -467,7 +431,7 @@ surveys_df[surveys_df.year != 2002]
 We can define sets of criteria too:
 
 
-```{code-cell} ipython3
+```{python}
 surveys_df[(surveys_df.year >= 1980) & (surveys_df.year <= 1985)]
 ```
 
@@ -485,8 +449,6 @@ Experiment with selecting various subsets of the "surveys" data.
 
 
 
-+++ {"tags": ["challenge"]}
-
 ## Challenge - Queries
 
 1. Select a subset of rows in the `surveys_df` DataFrame that contain data from
@@ -503,39 +465,31 @@ You can use the `isin` command in Python to query a DataFrame based upon a
 surveys_df[surveys_df['species_id'].isin([listGoesHere])]
 ```
 
-+++ {"tags": ["solution"]}
-
 ## Solution - Queries 
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 ## Solution - Queries #1
 surveys_df[(surveys_df["year"] == 1999) & (surveys_df["weight"] <= 8)]
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # when only interested in how many, the sum of True values could be used as well: 
 sum((surveys_df["year"] == 1999) & (surveys_df["weight"] <= 8))
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution - Queries #2
 surveys_df[surveys_df['species_id'].isin(['PB', 'PL'])]['site_id'].unique()
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # To get number of records
 surveys_df[surveys_df['species_id'].isin(['PB', 'PL'])].shape
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## Extra Challenges
 
@@ -548,15 +502,13 @@ surveys_df[surveys_df['species_id'].isin(['PB', 'PL'])].shape
    Write a query that selects all rows with sex NOT equal to 'M' or 'F' in
    the "surveys" data.
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 sum(surveys_df["weight"]>=0)
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 surveys_df[~surveys_df["sex"].isin(['M', 'F'])]
 ```
 
@@ -568,22 +520,20 @@ we also need to understand `BOOLEAN` objects in Python.
 
 Boolean values include `True` or `False`. For example,
 
-```{code-cell} ipython3
+```{python}
 # Set x to 5
 x = 5
 ```
 
-```{code-cell} ipython3
+```{python}
 # What does the code below return?
 x > 5
 ```
 
-```{code-cell} ipython3
+```{python}
 # How about this?
 x == 5
 ```
-
-+++ {"tags": ["challenge"]}
 
 ## _Extra Challenges - Putting it all together_
 
@@ -598,27 +548,23 @@ x == 5
   3. Count the number of missing values per column. Hint: The method .count() gives you the number of non-NA observations per column. 
 
 
-+++ {"tags": ["solution"]}
-
 ## Solution _Extra Challenges_
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # Solution extra challenge 1
 new = surveys_df[~surveys_df['sex'].isin(['M', 'F'])].copy()
 new['sex']='x'
 print(len(new))
 ```
 
-```{code-cell} ipython3
-:tags: [solution]
-
+```{python}
+#| tags: [solution]
 # We can verify the number of NaN values with
 sum(surveys_df['sex'].isnull())
 ```
 
-```{code-cell} ipython3
+```{python}
 # Solution extra challenge 2
 
 # selection of the data with isin
@@ -634,3 +580,4 @@ stack_selection = stack_selection.groupby(["site_id", "sex"]).mean().unstack()
 # and we can make a stacked bar plot from this:
 stack_selection.plot(kind='bar', stacked=True)
 ```
+

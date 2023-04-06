@@ -1,20 +1,14 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+title: Handling Missing data
+jupyter:
+  jupytext:
+    formats: 'ipynb,md:myst'
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
 ---
 
-+++ {"tags": ["solution"]}
-
-## Handling Missing data
 
 *Estimated teaching time:* 20 min
 
@@ -38,7 +32,6 @@ kernelspec:
 ---
 
 
-+++
 
 # Handling Missing Data
 
@@ -46,26 +39,22 @@ Most of the times real-world data is rarely clean and homogeneous. In many cases
 
 In this module, we will discuss some general considerations for missing data, discuss how Pandas chooses to represent it, and demonstrate some built-in Pandas tools for handling missing data in Python. We refer the missing data as null, NaN, or NA values in general.
 
-+++
-
 Before we start, lets make sure the Pandas and matplotlib packages are **installed**. 
 
-```{code-cell} ipython3
+```{python}
 !pip install pandas matplotlib
 ```
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 # Now import pandas into your notebook as pd
 import pandas as pd
 ```
 
 Now again import `surveys.csv` dataset into our notebook as we did in previous lesson.
 
-```{code-cell} ipython3
+```{python}
 surveys_df = pd.read_csv("surveys.csv")
 ```
 
@@ -77,20 +66,18 @@ we also need to understand `BOOLEAN` objects in Python.
 
 Boolean values include `True` or `False`. For example,
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 # set value of x to be 5
 x = 5
 ```
 
-```{code-cell} ipython3
+```{python}
 x > 5
 ```
 
-```{code-cell} ipython3
+```{python}
 x == 5
 ```
 
@@ -101,7 +88,7 @@ null (missing or NaN) data values. We can use the `isnull` method to do this.
 The `isnull` method will compare each cell with a null value. If an element
 has a null value, it will be assigned a value of  `True` in the output object.
 
-```{code-cell} ipython3
+```{python}
 pd.isnull(surveys_df).head()
 ```
 
@@ -111,7 +98,7 @@ To select the rows where there are null values, we can use
 the mask as an index to subset our data as follows:
 
 
-```{code-cell} ipython3
+```{python}
 # To select only the rows with NaN values, we can use the 'any()' method
 surveys_df[pd.isnull(surveys_df).any(axis=1)]
 ```
@@ -138,8 +125,6 @@ were to average the `weight` column without replacing our NaNs, Python would kno
 over those cells.
 
 
-+++
-
 ### Dealing with missing values.
 
 Dealing with missing data values is always a challenge. It's sometimes hard to
@@ -165,12 +150,12 @@ weight. We can also create a new subset from our data that only contains rows
 with weight values > 0 (i.e., select meaningful weight values):
 
 
-```{code-cell} ipython3
+```{python}
 ## How many missing values are there in weight column?
 len(surveys_df[pd.isnull(surveys_df.weight)])
 ```
 
-```{code-cell} ipython3
+```{python}
 # How many rows have weight values?
 len(surveys_df[surveys_df.weight> 0])
 ```
@@ -178,11 +163,9 @@ len(surveys_df[surveys_df.weight> 0])
 We can replace all NaN values with zeroes using the `.fillna()` method (after
 making a copy of the data so we don't lose our work):
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 # Creat a new DataFrame using copy
 df1 = surveys_df.copy()
 
@@ -195,11 +178,11 @@ However NaN and 0 yield different analysis results. The mean value when NaN
 values are replaced with 0 is different from when NaN values are simply thrown
 out or ignored.
 
-```{code-cell} ipython3
+```{python}
 surveys_df['weight'].mean()
 ```
 
-```{code-cell} ipython3
+```{python}
 df1['weight'].mean()
 ```
 
@@ -207,15 +190,13 @@ df1['weight'].mean()
 We can fill NaN values with any value that we chose. The code below fills all
 NaN values with a mean for all weight values.
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 df1['weight'] = surveys_df['weight'].fillna(surveys_df['weight'].mean())
 ```
 
-```{code-cell} ipython3
+```{python}
 df1['weight'].mean()
 ```
 
@@ -226,11 +207,9 @@ keeping data that has been manipulated separate from our raw data. Something we 
 in doing is working with only the columns that have full data. First, let's reload the data so
 we're not mixing up all of our previous manipulations.
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 df_na = surveys_df.dropna()
 ```
 
@@ -245,11 +224,9 @@ We use 'index=False' so that
 pandas doesn't include the index number for each line.
 
 
-```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
----
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
 # Write DataFrame to CSV
 df_na.to_csv('output/surveys_complete.csv', index=False)
 ```
@@ -263,12 +240,10 @@ What we've learned:
 + How to use `to_csv` to write manipulated data to a file.
 
 
-+++
-
 ## _Extra_
 We can run `isnull` on a particular column too. What does the code below do?
 
-```{code-cell} ipython3
+```{python}
 # What does this do?
 empty_weights = surveys_df[pd.isnull(surveys_df['weight'])]['weight']
 print(empty_weights)
@@ -277,3 +252,5 @@ print(empty_weights)
 Let's take a minute to look at the statement above. We are using the Boolean
 object `pd.isnull(surveys_df['weight'])` as an index to `surveys_df`. We are
 asking Python to select rows that have a `NaN` value of weight.
+
+

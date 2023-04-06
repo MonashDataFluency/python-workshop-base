@@ -1,0 +1,20 @@
+# Introduction to Python Workshop
+
+Welcome to _Introduction to Python_ !
+
+## Modules
+
+* 01 - [Introduction - the basics of Python](notebooks/intro.qmd)
+* 02 - [Data analysis in Python with Pandas](notebooks/working_with_data.qmd)
+* 03 - [Indexing and slicing](notebooks/indexing.qmd)
+* 04 - [Missing Values](notebooks/missing_values.qmd)
+* 05 - [Combining DataFrames in Pandas](notebooks/merging_data.qmd)
+* 06 - [Repetitive tasks with loops](notebooks/loops.qmd)
+* 07 - [Plotting with plotnine (ggplot)](notebooks/plotting_with_ggplot.qmd)
+* 08 - [Reusable and modular code with functions](notebooks/functions.qmd)
+* 09 - [Defensive Programming](notebooks/defensive_programming.qmd)
+
+Some of these modules have been adapted from the original versions at 
+[Data Carpentry - Python for Ecologists](http://www.datacarpentry.org/python-ecology-lesson/) 
+and [Software Carpentry - Programming with Python](https://swcarpentry.github.io/python-novice-inflammation/)
+(used under a [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/)).

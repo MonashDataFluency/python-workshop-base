@@ -1,0 +1,58 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    #- "workshop/modules/*.qmd"
+    #- "!workshop/modules/plotting_with_plotnine.qmd"
+    - workshop/index.qmd
+    - workshop/halfday.qmd
+    - workshop/fullday.qmd
+    - workshop/modules/intro.qmd
+    - workshop/modules/working_with_data.qmd
+    - workshop/modules/indexing.qmd
+    - workshop/modules/missing_values.qmd
+    - workshop/modules/merging_data.qmd
+    - workshop/modules/loops.qmd
+    - workshop/modules/plotting_with_plotnine.qmd
+    - workshop/modules/functions.qmd
+    - workshop/modules/defensive_programming.qmd
+
+
+website:
+  title: "Introduction to Python"
+  image: workshop/logo.png
+  repo-url: https://github.com/MonashDataFluency/python-workshop-base
+  repo-actions: [edit, issue]
+  navbar:
+    logo: workshop/logo.png
+    logo-alt: "Monash Data Fluency"
+    logo-href: "https://www.monash.edu/data-fluency/home"
+    background: rgb(0, 109, 174)
+    left:
+      - href: workshop/index.qmd
+        text: Home
+      - href: workshop/halfday.qmd
+        text: Half Day Workshop
+      - href: workshop/fullday.qmd
+        text: Full Day Workshop
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Modules"
+        contents:
+          - workshop/modules/intro.qmd
+          - workshop/modules/working_with_data.qmd
+          - workshop/modules/indexing.qmd
+          - workshop/modules/missing_values.qmd
+          - workshop/modules/merging_data.qmd
+          - workshop/modules/loops.qmd
+          - workshop/modules/plotting_with_plotnine.qmd
+          - workshop/modules/functions.qmd
+          - workshop/modules/defensive_programming.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
